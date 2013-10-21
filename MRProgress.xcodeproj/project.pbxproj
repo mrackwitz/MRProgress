@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7111E5B618060AF300016A43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7111E5B518060AF300016A43 /* Accelerate.framework */; };
+		7111E5B81806116B00016A43 /* aquarium-fish1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7111E5B71806116B00016A43 /* aquarium-fish1.jpg */; };
+		7111E5BB18062B2D00016A43 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7111E5BA18062B2D00016A43 /* MRActivityIndicatorView.m */; };
+		7111E5BE18062C7A00016A43 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7111E5BD18062C7A00016A43 /* MRBlurView.m */; };
+		711C8A5F1806C6F2003D499A /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C8A5E1806C6F2003D499A /* MRCircularProgressView.m */; };
+		711C8A62180700F5003D499A /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C8A61180700F5003D499A /* MRMessageInterceptor.m */; };
+		71E898CB181443D80035F290 /* MRNativeNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898CA181443D80035F290 /* MRNativeNavigationBarProgressView.m */; };
+		71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */; };
+		71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D1181451710035F290 /* MRColorPaletteViewController.m */; };
+		71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D418158B450035F290 /* MRCircularProgressViewController.m */; };
+		71EC36711805BB7100C85C5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC36701805BB7100C85C5B /* Foundation.framework */; };
+		71EC36731805BB7100C85C5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC36721805BB7100C85C5B /* CoreGraphics.framework */; };
+		71EC36751805BB7100C85C5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC36741805BB7100C85C5B /* UIKit.framework */; };
+		71EC367B1805BB7100C85C5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71EC36791805BB7100C85C5B /* InfoPlist.strings */; };
+		71EC367D1805BB7100C85C5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC367C1805BB7100C85C5B /* main.m */; };
+		71EC36811805BB7100C85C5B /* MRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36801805BB7100C85C5B /* MRAppDelegate.m */; };
+		71EC36841805BB7100C85C5B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EC36821805BB7100C85C5B /* Main_iPhone.storyboard */; };
+		71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36891805BB7100C85C5B /* MRNavigationBarProgressViewController.m */; };
+		71EC368F1805BB7100C85C5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EC368E1805BB7100C85C5B /* Images.xcassets */; };
+		71EC36B11805BBC300C85C5B /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */; };
+		71EC36B71805D67200C85C5B /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B61805D67200C85C5B /* MRProgressView.m */; };
+		71EC36BA1805D94500C85C5B /* MRProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B91805D94500C85C5B /* MRProgressViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7111E5B518060AF300016A43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		7111E5B71806116B00016A43 /* aquarium-fish1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aquarium-fish1.jpg"; sourceTree = "<group>"; };
+		7111E5B918062B2D00016A43 /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		7111E5BA18062B2D00016A43 /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
+		7111E5BC18062C7A00016A43 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
+		7111E5BD18062C7A00016A43 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
+		711C8A5D1806C6F2003D499A /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
+		711C8A5E1806C6F2003D499A /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
+		711C8A60180700F5003D499A /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
+		711C8A61180700F5003D499A /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
+		71C82E96180C110200E3D65D /* MRProgressHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
+		71E898C9181443D80035F290 /* MRNativeNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNativeNavigationBarProgressView.h; sourceTree = "<group>"; };
+		71E898CA181443D80035F290 /* MRNativeNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNativeNavigationBarProgressView.m; sourceTree = "<group>"; };
+		71E898CC181449430035F290 /* MRProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
+		71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorViewController.h; sourceTree = "<group>"; };
+		71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorViewController.m; sourceTree = "<group>"; };
+		71E898D0181451710035F290 /* MRColorPaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRColorPaletteViewController.h; sourceTree = "<group>"; };
+		71E898D1181451710035F290 /* MRColorPaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRColorPaletteViewController.m; sourceTree = "<group>"; };
+		71E898D318158B450035F290 /* MRCircularProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressViewController.h; sourceTree = "<group>"; };
+		71E898D418158B450035F290 /* MRCircularProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressViewController.m; sourceTree = "<group>"; };
+		71EC366D1805BB7100C85C5B /* MRProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MRProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71EC36701805BB7100C85C5B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		71EC36721805BB7100C85C5B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		71EC36741805BB7100C85C5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		71EC36781805BB7100C85C5B /* MRProgress-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MRProgress-Info.plist"; sourceTree = "<group>"; };
+		71EC367A1805BB7100C85C5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		71EC367C1805BB7100C85C5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		71EC367E1805BB7100C85C5B /* MRProgress-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgress-Prefix.pch"; sourceTree = "<group>"; };
+		71EC367F1805BB7100C85C5B /* MRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRAppDelegate.h; sourceTree = "<group>"; };
+		71EC36801805BB7100C85C5B /* MRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRAppDelegate.m; sourceTree = "<group>"; };
+		71EC36831805BB7100C85C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		71EC36881805BB7100C85C5B /* MRNavigationBarProgressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressViewController.h; sourceTree = "<group>"; };
+		71EC36891805BB7100C85C5B /* MRNavigationBarProgressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressViewController.m; sourceTree = "<group>"; };
+		71EC368E1805BB7100C85C5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		71EC36951805BB7100C85C5B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		71EC36AF1805BBC300C85C5B /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
+		71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
+		71EC36B51805D67200C85C5B /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
+		71EC36B61805D67200C85C5B /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
+		71EC36B81805D94500C85C5B /* MRProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressViewController.h; sourceTree = "<group>"; };
+		71EC36B91805D94500C85C5B /* MRProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71EC366A1805BB7100C85C5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7111E5B618060AF300016A43 /* Accelerate.framework in Frameworks */,
+				71EC36731805BB7100C85C5B /* CoreGraphics.framework in Frameworks */,
+				71EC36751805BB7100C85C5B /* UIKit.framework in Frameworks */,
+				71EC36711805BB7100C85C5B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71EC36641805BB7100C85C5B = {
+			isa = PBXGroup;
+			children = (
+				71EC36AE1805BBC300C85C5B /* src */,
+				71EC36761805BB7100C85C5B /* MRProgress */,
+				71EC366F1805BB7100C85C5B /* Frameworks */,
+				71EC366E1805BB7100C85C5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71EC366E1805BB7100C85C5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71EC366D1805BB7100C85C5B /* MRProgress.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71EC366F1805BB7100C85C5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7111E5B518060AF300016A43 /* Accelerate.framework */,
+				71EC36701805BB7100C85C5B /* Foundation.framework */,
+				71EC36721805BB7100C85C5B /* CoreGraphics.framework */,
+				71EC36741805BB7100C85C5B /* UIKit.framework */,
+				71EC36951805BB7100C85C5B /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71EC36761805BB7100C85C5B /* MRProgress */ = {
+			isa = PBXGroup;
+			children = (
+				71EC367F1805BB7100C85C5B /* MRAppDelegate.h */,
+				71EC36801805BB7100C85C5B /* MRAppDelegate.m */,
+				7111E5B71806116B00016A43 /* aquarium-fish1.jpg */,
+				71EC36821805BB7100C85C5B /* Main_iPhone.storyboard */,
+				71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */,
+				71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */,
+				71E898D318158B450035F290 /* MRCircularProgressViewController.h */,
+				71E898D418158B450035F290 /* MRCircularProgressViewController.m */,
+				71E898D0181451710035F290 /* MRColorPaletteViewController.h */,
+				71E898D1181451710035F290 /* MRColorPaletteViewController.m */,
+				71EC36881805BB7100C85C5B /* MRNavigationBarProgressViewController.h */,
+				71EC36891805BB7100C85C5B /* MRNavigationBarProgressViewController.m */,
+				71EC36B81805D94500C85C5B /* MRProgressViewController.h */,
+				71EC36B91805D94500C85C5B /* MRProgressViewController.m */,
+				71EC368E1805BB7100C85C5B /* Images.xcassets */,
+				71EC36771805BB7100C85C5B /* Supporting Files */,
+			);
+			path = MRProgress;
+			sourceTree = "<group>";
+		};
+		71EC36771805BB7100C85C5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				71EC36781805BB7100C85C5B /* MRProgress-Info.plist */,
+				71EC36791805BB7100C85C5B /* InfoPlist.strings */,
+				71EC367C1805BB7100C85C5B /* main.m */,
+				71EC367E1805BB7100C85C5B /* MRProgress-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71EC36AE1805BBC300C85C5B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7111E5B918062B2D00016A43 /* MRActivityIndicatorView.h */,
+				7111E5BA18062B2D00016A43 /* MRActivityIndicatorView.m */,
+				7111E5BC18062C7A00016A43 /* MRBlurView.h */,
+				7111E5BD18062C7A00016A43 /* MRBlurView.m */,
+				711C8A5D1806C6F2003D499A /* MRCircularProgressView.h */,
+				711C8A5E1806C6F2003D499A /* MRCircularProgressView.m */,
+				711C8A60180700F5003D499A /* MRMessageInterceptor.h */,
+				711C8A61180700F5003D499A /* MRMessageInterceptor.m */,
+				71E898C9181443D80035F290 /* MRNativeNavigationBarProgressView.h */,
+				71E898CA181443D80035F290 /* MRNativeNavigationBarProgressView.m */,
+				71EC36AF1805BBC300C85C5B /* MRNavigationBarProgressView.h */,
+				71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */,
+				71E898CC181449430035F290 /* MRProgress.h */,
+				71C82E96180C110200E3D65D /* MRProgressHelper.h */,
+				71EC36B51805D67200C85C5B /* MRProgressView.h */,
+				71EC36B61805D67200C85C5B /* MRProgressView.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71EC366C1805BB7100C85C5B /* MRProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71EC36A51805BB7100C85C5B /* Build configuration list for PBXNativeTarget "MRProgress" */;
+			buildPhases = (
+				71EC36691805BB7100C85C5B /* Sources */,
+				71EC366A1805BB7100C85C5B /* Frameworks */,
+				71EC366B1805BB7100C85C5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MRProgress;
+			productName = MRNavigationControllerProgressBar;
+			productReference = 71EC366D1805BB7100C85C5B /* MRProgress.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71EC36651805BB7100C85C5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MR;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Marius Rackwitz";
+			};
+			buildConfigurationList = 71EC36681805BB7100C85C5B /* Build configuration list for PBXProject "MRProgress" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71EC36641805BB7100C85C5B;
+			productRefGroup = 71EC366E1805BB7100C85C5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71EC366C1805BB7100C85C5B /* MRProgress */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71EC366B1805BB7100C85C5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EC368F1805BB7100C85C5B /* Images.xcassets in Resources */,
+				71EC36841805BB7100C85C5B /* Main_iPhone.storyboard in Resources */,
+				7111E5B81806116B00016A43 /* aquarium-fish1.jpg in Resources */,
+				71EC367B1805BB7100C85C5B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71EC36691805BB7100C85C5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EC367D1805BB7100C85C5B /* main.m in Sources */,
+				7111E5BB18062B2D00016A43 /* MRActivityIndicatorView.m in Sources */,
+				711C8A62180700F5003D499A /* MRMessageInterceptor.m in Sources */,
+				71EC36811805BB7100C85C5B /* MRAppDelegate.m in Sources */,
+				71EC36BA1805D94500C85C5B /* MRProgressViewController.m in Sources */,
+				71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */,
+				711C8A5F1806C6F2003D499A /* MRCircularProgressView.m in Sources */,
+				71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */,
+				71EC36B71805D67200C85C5B /* MRProgressView.m in Sources */,
+				71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */,
+				71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */,
+				7111E5BE18062C7A00016A43 /* MRBlurView.m in Sources */,
+				71E898CB181443D80035F290 /* MRNativeNavigationBarProgressView.m in Sources */,
+				71EC36B11805BBC300C85C5B /* MRNavigationBarProgressView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		71EC36791805BB7100C85C5B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71EC367A1805BB7100C85C5B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		71EC36821805BB7100C85C5B /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71EC36831805BB7100C85C5B /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		71EC36A31805BB7100C85C5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71EC36A41805BB7100C85C5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71EC36A61805BB7100C85C5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
+				INFOPLIST_FILE = "MRProgress/MRProgress-Info.plist";
+				PRODUCT_NAME = MRProgress;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		71EC36A71805BB7100C85C5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
+				INFOPLIST_FILE = "MRProgress/MRProgress-Info.plist";
+				PRODUCT_NAME = MRProgress;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71EC36681805BB7100C85C5B /* Build configuration list for PBXProject "MRProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71EC36A31805BB7100C85C5B /* Debug */,
+				71EC36A41805BB7100C85C5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71EC36A51805BB7100C85C5B /* Build configuration list for PBXNativeTarget "MRProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71EC36A61805BB7100C85C5B /* Debug */,
+				71EC36A71805BB7100C85C5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 71EC36651805BB7100C85C5B /* Project object */;
+}
