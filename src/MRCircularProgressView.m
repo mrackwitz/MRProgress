@@ -180,7 +180,6 @@
     
     // Stop running animation
     if (self.displayLink) {
-        NSLog(@"remove");
         [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
         self.displayLink = nil;
     }
@@ -238,7 +237,6 @@
 }
 
 - (void)animateFrame:(CADisplayLink *)displayLink {
-    NSLog(@"enter");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         CGFloat d = (displayLink.timestamp - self.startTime) / self.animationDuration;
         
@@ -260,7 +258,6 @@
             [self updateLabel];
         });
     });
-    NSLog(@"exit");
 }
 
 @end
