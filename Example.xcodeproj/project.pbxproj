@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				71EC36AE1805BBC300C85C5B /* src */,
-				71EC36761805BB7100C85C5B /* MRProgress */,
+				71EC36761805BB7100C85C5B /* Example */,
 				71EC366F1805BB7100C85C5B /* Frameworks */,
 				71EC366E1805BB7100C85C5B /* Products */,
 			);
@@ -126,7 +126,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		71EC36761805BB7100C85C5B /* MRProgress */ = {
+		71EC36761805BB7100C85C5B /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				71EC367F1805BB7100C85C5B /* MRAppDelegate.h */,
@@ -146,7 +146,7 @@
 				71EC368E1805BB7100C85C5B /* Images.xcassets */,
 				71EC36771805BB7100C85C5B /* Supporting Files */,
 			);
-			path = MRProgress;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		71EC36771805BB7100C85C5B /* Supporting Files */ = {
