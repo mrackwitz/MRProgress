@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		710BD58B1816AD3700654750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BD58A1816AD3700654750 /* QuartzCore.framework */; };
+		710BD5931817220900654750 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5911817220900654750 /* UIImage+MRImageEffects.h */; };
+		710BD5941817220900654750 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5921817220900654750 /* UIImage+MRImageEffects.m */; };
 		7197CEBB18169F210022A19D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CEBA18169F210022A19D /* Foundation.framework */; };
 		7197CEFA1816A1830022A19D /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEE018169F470022A19D /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7197CEFB1816A18E0022A19D /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEE218169F470022A19D /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		710BD58A1816AD3700654750 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		710BD5911817220900654750 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
+		710BD5921817220900654750 /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
 		7197CEB718169F210022A19D /* libMRProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMRProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7197CEBA18169F210022A19D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7197CEBE18169F210022A19D /* MRProgress-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgress-Prefix.pch"; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				7197CEF118169F470022A19D /* MRProgressOverlayView.m */,
 				7197CEF218169F470022A19D /* MRWeakProxy.h */,
 				7197CEF318169F470022A19D /* MRWeakProxy.m */,
+				710BD5911817220900654750 /* UIImage+MRImageEffects.h */,
+				710BD5921817220900654750 /* UIImage+MRImageEffects.m */,
 			);
 			name = src;
 			path = ../src;
@@ -169,6 +175,7 @@
 				7197CF001816A19E0022A19D /* MRNavigationBarProgressView.h in Headers */,
 				7197CF011816A1A10022A19D /* MRProgress.h in Headers */,
 				7197CF021816A1A90022A19D /* MRProgressOverlayView.h in Headers */,
+				710BD5931817220900654750 /* UIImage+MRImageEffects.h in Headers */,
 				7197CF031816A1AB0022A19D /* MRWeakProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710BD5941817220900654750 /* UIImage+MRImageEffects.m in Sources */,
 				7197CF1E1816AB0A0022A19D /* MRMessageInterceptor.m in Sources */,
 				7197CF1F1816AB0A0022A19D /* MRNativeNavigationBarProgressView.m in Sources */,
 				7197CF201816AB0A0022A19D /* MRNavigationBarProgressView.m in Sources */,
