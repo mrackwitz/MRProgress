@@ -144,7 +144,7 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--Activity Indicator View Controller-->
+        <!--Activity Indicator View Controller - Activity Indicator View-->
         <scene sceneID="tpP-RF-yYh">
             <objects>
                 <viewController id="Fa8-f0-1WW" customClass="MRActivityIndicatorViewController" sceneMemberID="viewController">
@@ -172,7 +172,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rhN-x2-GVR"/>
+                    <navigationItem key="navigationItem" title="Activity Indicator View" id="rhN-x2-GVR"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="hIr-iS-bY2" id="i3F-6l-mC7"/>
                     </connections>
