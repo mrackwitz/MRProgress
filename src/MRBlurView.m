@@ -84,6 +84,8 @@ vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
     if (error) {
         return nil;
     }
+    free(pixelBuffer);
+    
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef ctx = CGBitmapContextCreate(outBuffer.data,
@@ -100,7 +102,6 @@ vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
     // Clean up
     CGContextRelease(ctx);
     CGColorSpaceRelease(colorSpace);
-    free(pixelBuffer);
     CFRelease(inBitmapData);
     CGImageRelease(imageRef);
     
