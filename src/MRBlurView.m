@@ -105,7 +105,7 @@ vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
                                              8,
                                              outBuffer.rowBytes,
                                              colorSpace,
-                                             (int)kCGImageAlphaNoneSkipLast);
+                                             kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little);
     
     CGImageRef imageRef = CGBitmapContextCreateImage(ctx);
     UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
