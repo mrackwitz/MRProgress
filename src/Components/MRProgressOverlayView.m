@@ -136,6 +136,9 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     self.horizontalBarProgressView.tintColor = self.tintColor;
 }
 
+
+#pragma mark - Mode
+
 - (void)setMode:(MRProgressOverlayViewMode)mode {
     _mode = mode;
     [self updateMode];
@@ -184,6 +187,9 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     }
 }
 
+
+#pragma mark - Transitions
+
 - (void)show {
     [self initialLayoutSubviews];
     
@@ -218,6 +224,10 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
                      }];
 }
 
+
+#pragma mark - Layout
+
+// Don't overwrite layoutSubviews here. This would cause issues with animation.
 - (void)initialLayoutSubviews {
     self.frame = self.superview.frame;
     
