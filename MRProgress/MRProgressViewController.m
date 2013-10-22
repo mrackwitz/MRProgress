@@ -7,7 +7,7 @@
 //
 
 #import "MRProgressViewController.h"
-#import "MRProgressView.h"
+#import "MRProgressOverlayView.h"
 
 
 @interface MRProgressViewController ()

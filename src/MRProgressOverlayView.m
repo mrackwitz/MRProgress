@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
-#import "MRProgressHelper.h"
-#import "MRProgressView.h"
-#import "MRBlurView.h"
+#import "MRProgressOverlayView.h"
 #import "MRActivityIndicatorView.h"
+#import "MRBlurView.h"
 #import "MRCircularProgressView.h"
+#import "MRProgressHelper.h"
 
 
 @interface MRProgressOverlayView ()

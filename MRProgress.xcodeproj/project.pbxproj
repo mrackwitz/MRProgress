@@ -27,7 +27,7 @@
 		71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36891805BB7100C85C5B /* MRNavigationBarProgressViewController.m */; };
 		71EC368F1805BB7100C85C5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EC368E1805BB7100C85C5B /* Images.xcassets */; };
 		71EC36B11805BBC300C85C5B /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */; };
-		71EC36B71805D67200C85C5B /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B61805D67200C85C5B /* MRProgressView.m */; };
+		71EC36B71805D67200C85C5B /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B61805D67200C85C5B /* MRProgressOverlayView.m */; };
 		71EC36BA1805D94500C85C5B /* MRProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B91805D94500C85C5B /* MRProgressViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +69,8 @@
 		71EC36951805BB7100C85C5B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		71EC36AF1805BBC300C85C5B /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
 		71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
-		71EC36B51805D67200C85C5B /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
-		71EC36B61805D67200C85C5B /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
+		71EC36B51805D67200C85C5B /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
+		71EC36B61805D67200C85C5B /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
 		71EC36B81805D94500C85C5B /* MRProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressViewController.h; sourceTree = "<group>"; };
 		71EC36B91805D94500C85C5B /* MRProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,8 +171,8 @@
 				71EC36B01805BBC300C85C5B /* MRNavigationBarProgressView.m */,
 				71E898CC181449430035F290 /* MRProgress.h */,
 				71C82E96180C110200E3D65D /* MRProgressHelper.h */,
-				71EC36B51805D67200C85C5B /* MRProgressView.h */,
-				71EC36B61805D67200C85C5B /* MRProgressView.m */,
+				71EC36B51805D67200C85C5B /* MRProgressOverlayView.h */,
+				71EC36B61805D67200C85C5B /* MRProgressOverlayView.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 				71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */,
 				711C8A5F1806C6F2003D499A /* MRCircularProgressView.m in Sources */,
 				71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */,
-				71EC36B71805D67200C85C5B /* MRProgressView.m in Sources */,
+				71EC36B71805D67200C85C5B /* MRProgressOverlayView.m in Sources */,
 				71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */,
 				71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */,
 				7111E5BE18062C7A00016A43 /* MRBlurView.m in Sources */,
