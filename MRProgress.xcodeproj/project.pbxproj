@@ -17,6 +17,7 @@
 		71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */; };
 		71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D1181451710035F290 /* MRColorPaletteViewController.m */; };
 		71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D418158B450035F290 /* MRCircularProgressViewController.m */; };
+		71E898E3181673F50035F290 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898E2181673F50035F290 /* MRIconView.m */; };
 		71E898E6181683260035F290 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898E5181683260035F290 /* MRWeakProxy.m */; };
 		71EC36711805BB7100C85C5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC36701805BB7100C85C5B /* Foundation.framework */; };
 		71EC36731805BB7100C85C5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC36721805BB7100C85C5B /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 		71E898D1181451710035F290 /* MRColorPaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRColorPaletteViewController.m; sourceTree = "<group>"; };
 		71E898D318158B450035F290 /* MRCircularProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressViewController.h; sourceTree = "<group>"; };
 		71E898D418158B450035F290 /* MRCircularProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressViewController.m; sourceTree = "<group>"; };
+		71E898E1181673F50035F290 /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
+		71E898E2181673F50035F290 /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
 		71E898E4181683260035F290 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		71E898E5181683260035F290 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		71EC366D1805BB7100C85C5B /* MRProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MRProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +169,8 @@
 				7111E5BD18062C7A00016A43 /* MRBlurView.m */,
 				711C8A5D1806C6F2003D499A /* MRCircularProgressView.h */,
 				711C8A5E1806C6F2003D499A /* MRCircularProgressView.m */,
+				71E898E1181673F50035F290 /* MRIconView.h */,
+				71E898E2181673F50035F290 /* MRIconView.m */,
 				711C8A60180700F5003D499A /* MRMessageInterceptor.h */,
 				711C8A61180700F5003D499A /* MRMessageInterceptor.m */,
 				71E898C9181443D80035F290 /* MRNativeNavigationBarProgressView.h */,
@@ -260,6 +265,7 @@
 				71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */,
 				71EC36B71805D67200C85C5B /* MRProgressOverlayView.m in Sources */,
 				71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */,
+				71E898E3181673F50035F290 /* MRIconView.m in Sources */,
 				71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */,
 				7111E5BE18062C7A00016A43 /* MRBlurView.m in Sources */,
 				71E898CB181443D80035F290 /* MRNativeNavigationBarProgressView.m in Sources */,
