@@ -178,6 +178,10 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
             // Nothing to do.
             break;
     }
+    
+    if (!self.hidden) {
+        [self initialLayoutSubviews];
+    }
 }
 
 - (void)show {
