@@ -254,8 +254,6 @@
         self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
         self.blurView.frame = self.dialogView.bounds;
-        [self.blurView redraw];
-        
         self.gradientLayer.frame = self.dialogView.bounds;
     }
 }

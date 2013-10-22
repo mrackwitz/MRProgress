@@ -37,7 +37,8 @@
     self.clipsToBounds = YES;
 }
 
-- (void)redraw {
+- (void)layoutSubviews {
+    [super layoutSubviews];
     self.image = [self blurredImageFromImage:[self windowBelowDialogViewSnapshot]];
 }
 

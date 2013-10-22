@@ -11,6 +11,4 @@
 
 @interface MRBlurView : UIImageView
 
-- (void)redraw;
-
 @end
