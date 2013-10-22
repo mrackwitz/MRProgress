@@ -241,12 +241,15 @@
         CGFloat d = (displayLink.timestamp - self.startTime) / self.animationDuration;
         
         if (d >= 1.0) {
+            // Order is important! Otherwise concurrency will cause errors, because setProgress: will detect an
+            // animation in progress and try to stop it by itself.
+            [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+            self.displayLink = nil;
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.progress = self.toProgress;
             });
             
-            [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-            self.displayLink = nil;
             return;
         }
         
