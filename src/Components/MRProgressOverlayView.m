@@ -120,7 +120,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         [dialogView addSubview:crossIconView];
     }
     
-    [self updateMode];
+    [self hideAllModeViews];
+    [self showCurrentModeView];
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
@@ -140,51 +141,59 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 #pragma mark - Mode
 
 - (void)setMode:(MRProgressOverlayViewMode)mode {
+    UIView *oldView = [self viewForMode:self.mode];
+    oldView.hidden = YES;
+    if ([oldView respondsToSelector:@selector(stopAnimating)]) {
+        [oldView performSelector:@selector(stopAnimating)];
+    }
+    
     _mode = mode;
-    [self updateMode];
+    
+    [self showCurrentModeView];
+    
+    if (!self.hidden) {
+        [self initialLayoutSubviews];
+    }
 }
 
-- (void)updateMode {
+- (void)showCurrentModeView {
+    UIView *newView = [self viewForMode:self.mode];
+    newView.hidden = NO;
+    if ([newView respondsToSelector:@selector(startAnimating)]) {
+        [newView performSelector:@selector(startAnimating)];
+    }
+}
+
+- (void)hideAllModeViews {
     [self.activityIndicatorView stopAnimating];
     [self.smallActivityIndicatorView stopAnimating];
     self.circularProgressView.hidden = YES;
     self.horizontalBarProgressView.hidden = YES;
     self.checkmarkIconView.hidden = YES;
     self.crossIconView.hidden = YES;
-    
-    switch (self.mode) {
+}
+
+- (UIView *)viewForMode:(MRProgressOverlayViewMode)mode {
+    switch (mode) {
         case MRProgressOverlayViewModeIndeterminate:
-            [self.activityIndicatorView startAnimating];
-            break;
+            return self.activityIndicatorView;
             
         case MRProgressOverlayViewModeIndeterminateSmall:
-            [self.smallActivityIndicatorView startAnimating];
-            break;
+            return self.smallActivityIndicatorView;
             
         case MRProgressOverlayViewModeDeterminateCircular:
-            self.circularProgressView.hidden = NO;
-            break;
+            return self.circularProgressView;
             
         case MRProgressOverlayViewModeDeterminateHorizontalBar:
-            self.horizontalBarProgressView.hidden = NO;
-            break;
+            return self.horizontalBarProgressView;
             
         case MRProgressOverlayViewModeCheckmark:
-            self.checkmarkIconView.hidden = NO;
-            break;
+            return self.checkmarkIconView;
             
         case MRProgressOverlayViewModeCross:
-            self.crossIconView.hidden = NO;
-            break;
-            
-        default:
-            // Nothing to do.
-            break;
+            return self.crossIconView;
     }
-    
-    if (!self.hidden) {
-        [self initialLayoutSubviews];
-    }
+    return nil;
 }
 
 
