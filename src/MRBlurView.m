@@ -57,8 +57,19 @@ vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
 
 - (UIImage *)windowBelowDialogViewSnapshot {
     CGPoint origin = [self convertPoint:self.frame.origin toView:UIApplication.sharedApplication.keyWindow];
+    
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        CGContextRotateCTM(ctx, M_PI_2);
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        CGContextRotateCTM(ctx, -M_PI_2);
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        CGContextRotateCTM(ctx, M_PI);
+    }
+    
     CGContextTranslateCTM(ctx, -origin.x, -origin.y);
     [UIApplication.sharedApplication.delegate.window.layer renderInContext:ctx];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
