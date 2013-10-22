@@ -71,7 +71,7 @@ vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
     }
     
     CGContextTranslateCTM(ctx, -origin.x, -origin.y);
-    [UIApplication.sharedApplication.delegate.window.layer renderInContext:ctx];
+    [self.window drawViewHierarchyInRect:self.window.bounds afterScreenUpdates:NO];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
