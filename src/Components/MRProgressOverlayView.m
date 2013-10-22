@@ -10,6 +10,7 @@
 #import "MRActivityIndicatorView.h"
 #import "MRBlurView.h"
 #import "MRCircularProgressView.h"
+#import "MRIconView.h"
 #import "MRProgressHelper.h"
 
 
@@ -28,6 +29,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 @property (nonatomic, weak, readwrite) UIActivityIndicatorView *smallActivityIndicatorView;
 @property (nonatomic, weak, readwrite) MRCircularProgressView *circularProgressView;
 @property (nonatomic, weak, readwrite) UIProgressView *horizontalBarProgressView;
+@property (nonatomic, weak, readwrite) MRIconView *checkmarkIconView;
+@property (nonatomic, weak, readwrite) MRIconView *crossIconView;
 
 @end
 
@@ -105,6 +108,16 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         UIProgressView *horizontalBarProgressView = [UIProgressView new];
         self.horizontalBarProgressView = horizontalBarProgressView;
         [dialogView addSubview:horizontalBarProgressView];
+        
+        // Create checkmark icon view for checkmark mode
+        MRCheckmarkIconView *checkmarkIconView = [MRCheckmarkIconView new];
+        self.checkmarkIconView = checkmarkIconView;
+        [dialogView addSubview:checkmarkIconView];
+        
+        // Create cross icon view for cross mode
+        MRCrossIconView *crossIconView = [MRCrossIconView new];
+        self.crossIconView = crossIconView;
+        [dialogView addSubview:crossIconView];
     }
     
     [self updateMode];
@@ -133,6 +146,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     [self.smallActivityIndicatorView stopAnimating];
     self.circularProgressView.hidden = YES;
     self.horizontalBarProgressView.hidden = YES;
+    self.checkmarkIconView.hidden = YES;
+    self.crossIconView.hidden = YES;
     
     switch (self.mode) {
         case MRProgressOverlayViewModeIndeterminate:
@@ -149,6 +164,14 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
             
         case MRProgressOverlayViewModeDeterminateHorizontalBar:
             self.horizontalBarProgressView.hidden = NO;
+            break;
+            
+        case MRProgressOverlayViewModeCheckmark:
+            self.checkmarkIconView.hidden = NO;
+            break;
+            
+        case MRProgressOverlayViewModeCross:
+            self.crossIconView.hidden = NO;
             break;
             
         default:
@@ -236,6 +259,9 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         CGRect modeViewFrame = CGRectMake(dialogPadding, y, innerViewWidth, innerViewWidth);
         self.activityIndicatorView.frame = modeViewFrame;
         self.circularProgressView.frame = modeViewFrame;
+        
+        self.checkmarkIconView.frame = modeViewFrame;
+        self.crossIconView.frame = modeViewFrame;
         
         self.horizontalBarProgressView.frame = CGRectMake(10, y, dialogWidth-20, 5);
         
