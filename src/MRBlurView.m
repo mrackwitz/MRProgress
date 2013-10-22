@@ -10,7 +10,7 @@
 #import <Accelerate/Accelerate.h>
 
 
-vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
+vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
     return (vImage_Buffer){
         .width = CGImageGetWidth(imageRef),
         .height = CGImageGetHeight(imageRef),
@@ -89,8 +89,8 @@ vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
         return nil;
     }
     
-    vImage_Buffer inBuffer = vImage_BufferForCGImageRef(sourceImageRef, (void *)CFDataGetBytePtr(inBitmapData));
-    vImage_Buffer outBuffer = vImage_BufferForCGImageRef(sourceImageRef, pixelBuffer);
+    vImage_Buffer inBuffer = vImage_BufferForCGImage(sourceImageRef, (void *)CFDataGetBytePtr(inBitmapData));
+    vImage_Buffer outBuffer = vImage_BufferForCGImage(sourceImageRef, pixelBuffer);
     vImage_Error error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
     if (error) {
         return nil;
