@@ -8,6 +8,7 @@
 
 #import "MRCircularProgressView.h"
 #import "MRProgressHelper.h"
+#import "MRWeakProxy.h"
 
 
 @interface MRCircularProgressView ()
@@ -232,7 +233,7 @@
     self.startTime = CACurrentMediaTime();
     
     [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(animateFrame:)];
+    self.displayLink = [CADisplayLink displayLinkWithTarget:[MRWeakProxy weakProxyWithTarget:self] selector:@selector(animateFrame:)];
     [self.displayLink addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
 }
 
