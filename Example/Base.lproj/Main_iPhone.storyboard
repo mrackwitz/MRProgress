@@ -346,7 +346,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onShowIndeterminteProgressView:" destination="Klh-H4-s6e" eventType="touchUpInside" id="pEB-VW-7Ts"/>
+                                    <action selector="onShowIndeterminateProgressView:" destination="Klh-H4-s6e" eventType="touchUpInside" id="O2s-5o-CMg"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aquarium-fish1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="d8n-ej-imf">
@@ -390,7 +390,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onShowTextProgress:" destination="Klh-H4-s6e" eventType="touchUpInside" id="hkk-z1-AuV"/>
+                                    <action selector="onShowIndeterminateSmallProgressView:" destination="Klh-H4-s6e" eventType="touchUpInside" id="39f-yh-V8Z"/>
                                 </connections>
                             </button>
                         </subviews>

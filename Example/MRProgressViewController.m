@@ -17,7 +17,7 @@
 
 @implementation MRProgressViewController
 
-- (IBAction)onShowIndeterminteProgressView:(id)sender {
+- (IBAction)onShowIndeterminateProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     [self.view addSubview:progressView];
     [progressView show];
@@ -40,7 +40,7 @@
     [self simulateProgressView:progressView];
 }
 
-- (IBAction)onShowTextProgress:(id)sender {
+- (IBAction)onShowIndeterminateSmallProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmall;
     [self.view addSubview:progressView];
