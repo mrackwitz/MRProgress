@@ -39,7 +39,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.image = [[self windowBelowDialogViewSnapshot] mr_applyBlurWithRadius:15.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+    self.image = [[self windowBelowDialogViewSnapshot] mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
 }
 
 
