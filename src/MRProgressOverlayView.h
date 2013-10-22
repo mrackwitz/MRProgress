@@ -30,6 +30,15 @@ typedef enum {
 @interface MRProgressOverlayView : UIView
 
 /**
+ Allows customization of blur effect.
+ 
+ If you override this method, you are responsible for adding the view to hierachy.
+ The view will not be retained.
+ The cornerRadius of the layer of the returnValue will be initialized.
+ */
+- (UIView *)initializeBlurView;
+
+/**
  Visualisation mode.
  
  How the progress should be visualised.

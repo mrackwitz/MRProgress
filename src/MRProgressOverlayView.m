@@ -21,7 +21,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
 @property (nonatomic, weak, readwrite) CAGradientLayer *gradientLayer;
-@property (nonatomic, weak, readwrite) MRBlurView *blurView;
+@property (nonatomic, weak, readwrite) UIView *blurView;
 
 @property (nonatomic, weak, readwrite) UILabel *titleLabel;
 
@@ -43,6 +43,26 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     return self;
 }
 
+- (UIView *)initializeBlurView {
+    UIView *blurView = [MRBlurView new];
+    blurView.alpha = 0.9;
+    [self.dialogView addSubview:blurView];
+    
+    // TODO Move this into MRBlurView
+    CAGradientLayer *gradientLayer = [CAGradientLayer new];
+    self.gradientLayer = gradientLayer;
+    gradientLayer.colors = @[
+                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
+                             (id)[[UIColor colorWithWhite:0.9f alpha:0.8f] CGColor],
+                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
+                             ];
+    
+    gradientLayer.cornerRadius = MRProgressOverlayViewCornerRadius;
+    [self.dialogView.layer insertSublayer:gradientLayer above:self.blurView.layer];
+    
+    return blurView;
+}
+
 - (void)commonInit {
     self.hidden = YES;
     
@@ -56,11 +76,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
     // Create blurView
-    MRBlurView *blurView = [MRBlurView new];
-    self.blurView = blurView;
-    blurView.alpha = 0.9;
-    blurView.layer.cornerRadius = cornerRadius;
-    [dialogView addSubview:blurView];
+    self.blurView = [self initializeBlurView];
+    self.blurView.layer.cornerRadius = cornerRadius;
     
     // Style the dialog to match the iOS7 UIAlertView
     dialogView.backgroundColor = UIColor.clearColor;
@@ -68,18 +85,6 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     dialogView.layer.shadowRadius = cornerRadius + 5;
     dialogView.layer.shadowOpacity = 0.1f;
     dialogView.layer.shadowOffset = CGSizeMake(-(cornerRadius+5)/2.0f, -(cornerRadius+5)/2.0f);
-    
-    CAGradientLayer *gradientLayer = [CAGradientLayer new];
-    self.gradientLayer = gradientLayer;
-    gradientLayer.frame = dialogView.bounds;
-    gradientLayer.colors = @[
-                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
-                             (id)[[UIColor colorWithWhite:0.9f alpha:0.8f] CGColor],
-                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
-                             ];
-    
-    gradientLayer.cornerRadius = cornerRadius;
-    [dialogView.layer insertSublayer:gradientLayer above:self.blurView.layer];
     
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
