@@ -46,6 +46,9 @@
 
 @interface UINavigationController (NavigationBarProgressView)
 
+/**
+ Access an already initialized progressView.
+ */
 @property (nonatomic, readonly) MRNavigationBarProgressView *progressView;
 
 @end

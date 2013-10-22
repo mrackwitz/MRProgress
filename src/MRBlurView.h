@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
+/**
+ Simple blur implementation based on an UIImageView, which displays a blurred image screenshot of the window cropped to
+ its absolute frame.
+ */
 @interface MRBlurView : UIImageView
 
 @end
