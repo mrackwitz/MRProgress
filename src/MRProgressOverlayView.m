@@ -20,7 +20,6 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 @interface MRProgressOverlayView ()
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
-@property (nonatomic, weak, readwrite) CAGradientLayer *gradientLayer;
 @property (nonatomic, weak, readwrite) UIView *blurView;
 
 @property (nonatomic, weak, readwrite) UILabel *titleLabel;
@@ -45,20 +44,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 - (UIView *)initializeBlurView {
     UIView *blurView = [MRBlurView new];
-    blurView.alpha = 0.9;
+    blurView.alpha = 0.98;
     [self.dialogView addSubview:blurView];
-    
-    // TODO Move this into MRBlurView
-    CAGradientLayer *gradientLayer = [CAGradientLayer new];
-    self.gradientLayer = gradientLayer;
-    gradientLayer.colors = @[
-                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
-                             (id)[[UIColor colorWithWhite:0.9f alpha:0.8f] CGColor],
-                             (id)[[UIColor colorWithWhite:0.8f alpha:0.8f] CGColor],
-                             ];
-    
-    gradientLayer.cornerRadius = MRProgressOverlayViewCornerRadius;
-    [self.dialogView.layer insertSublayer:gradientLayer above:self.blurView.layer];
     
     return blurView;
 }
@@ -263,7 +250,6 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
         self.blurView.frame = self.dialogView.bounds;
-        self.gradientLayer.frame = self.dialogView.bounds;
     }
 }
 

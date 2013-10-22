@@ -7,17 +7,7 @@
 //
 
 #import "MRBlurView.h"
-#import <Accelerate/Accelerate.h>
-
-
-vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
-    return (vImage_Buffer){
-        .width = CGImageGetWidth(imageRef),
-        .height = CGImageGetHeight(imageRef),
-        .rowBytes = CGImageGetBytesPerRow(imageRef),
-        .data = data
-    };
-}
+#import "UIImage+MRImageEffects.h"
 
 
 @interface MRBlurView ()
@@ -49,7 +39,7 @@ vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.image = [self blurredImageFromImage:[self windowBelowDialogViewSnapshot]];
+    self.image = [[self windowBelowDialogViewSnapshot] mr_applyBlurWithRadius:15.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
 }
 
 
@@ -75,48 +65,6 @@ vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
-}
-
-- (UIImage *)blurredImageFromImage:(UIImage *)sourceImage {
-    int boxSize = 129; // Must be odd!
-    
-    CGImageRef sourceImageRef = sourceImage.CGImage;
-    CGDataProviderRef inProvider = CGImageGetDataProvider(sourceImageRef);
-    CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
-    
-    void *pixelBuffer = malloc(CGImageGetBytesPerRow(sourceImageRef) * CGImageGetHeight(sourceImageRef));
-    if (pixelBuffer == NULL) {
-        return nil;
-    }
-    
-    vImage_Buffer inBuffer = vImage_BufferForCGImage(sourceImageRef, (void *)CFDataGetBytePtr(inBitmapData));
-    vImage_Buffer outBuffer = vImage_BufferForCGImage(sourceImageRef, pixelBuffer);
-    vImage_Error error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
-    if (error) {
-        return nil;
-    }
-    free(pixelBuffer);
-    
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef ctx = CGBitmapContextCreate(outBuffer.data,
-                                             outBuffer.width,
-                                             outBuffer.height,
-                                             8,
-                                             outBuffer.rowBytes,
-                                             colorSpace,
-                                             kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little);
-    
-    CGImageRef imageRef = CGBitmapContextCreateImage(ctx);
-    UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
-    
-    // Clean up
-    CGContextRelease(ctx);
-    CGColorSpaceRelease(colorSpace);
-    CFRelease(inBitmapData);
-    CGImageRelease(imageRef);
-    
-    return returnImage;
 }
 
 @end
