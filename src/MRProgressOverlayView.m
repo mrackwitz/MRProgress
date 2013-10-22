@@ -13,6 +13,9 @@
 #import "MRProgressHelper.h"
 
 
+const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
+
+
 @interface MRProgressOverlayView ()
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
@@ -288,10 +291,9 @@
 #pragma mark - Helper to create UIMotionEffects
 
 - (UIInterpolatingMotionEffect *)motionEffectWithKeyPath:(NSString *)keyPath type:(UIInterpolatingMotionEffectType)type {
-    const CGFloat motionEffectExtent = 10;
     UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:keyPath type:type];
-    effect.minimumRelativeValue = @(-motionEffectExtent);
-    effect.maximumRelativeValue = @(motionEffectExtent);
+    effect.minimumRelativeValue = @(-MRProgressOverlayViewMotionEffectExtent);
+    effect.maximumRelativeValue = @(MRProgressOverlayViewMotionEffectExtent);
     return effect;
 }
 
