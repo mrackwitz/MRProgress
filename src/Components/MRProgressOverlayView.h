@@ -16,8 +16,10 @@ typedef enum {
     MRProgressOverlayViewModeDeterminateCircular,
     /** Progress is shown using a horizontal progress bar. (UIProgressView) */
     MRProgressOverlayViewModeDeterminateHorizontalBar,
-    /** Shows primarily a label. Progress is shown using a small activity indicator. (UIActivityIndicatorView in UIActivityIndicatorViewStyleGray) */
+    /** Shows primarily a label. Progress is shown using a small activity indicator. (MRActivityIndicatorView) */
     MRProgressOverlayViewModeIndeterminateSmall,
+    /** Shows primarily a label. Progress is shown using a small activity indicator. (UIActivityIndicatorView in UIActivityIndicatorViewStyleGray) */
+    MRProgressOverlayViewModeIndeterminateSmallDefault,
     /** Shows a checkmark. (MRCheckmarkIconView) */
     MRProgressOverlayViewModeCheckmark,
     /** Shows a cross. (MRCrossIconView) */

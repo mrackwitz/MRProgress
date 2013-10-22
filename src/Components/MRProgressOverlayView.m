@@ -26,7 +26,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 @property (nonatomic, weak, readwrite) UILabel *titleLabel;
 
 @property (nonatomic, weak, readwrite) MRActivityIndicatorView *activityIndicatorView;
-@property (nonatomic, weak, readwrite) UIActivityIndicatorView *smallActivityIndicatorView;
+@property (nonatomic, weak, readwrite) MRActivityIndicatorView *smallActivityIndicatorView;
+@property (nonatomic, weak, readwrite) UIActivityIndicatorView *smallDefaultActivityIndicatorView;
 @property (nonatomic, weak, readwrite) MRCircularProgressView *circularProgressView;
 @property (nonatomic, weak, readwrite) UIProgressView *horizontalBarProgressView;
 @property (nonatomic, weak, readwrite) MRIconView *checkmarkIconView;
@@ -93,11 +94,17 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         [dialogView addSubview:activityIndicatorView];
         
         // Create small activity indicator for text mode
-        UIActivityIndicatorView *smallActivityIndicatorView = [UIActivityIndicatorView new];
+        MRActivityIndicatorView *smallActivityIndicatorView = [MRActivityIndicatorView new];
         self.smallActivityIndicatorView = smallActivityIndicatorView;
         smallActivityIndicatorView.hidesWhenStopped = YES;
-        smallActivityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         [dialogView addSubview:smallActivityIndicatorView];
+        
+        // Create small default activity indicator for text mode
+        UIActivityIndicatorView *smallDefaultActivityIndicatorView = [UIActivityIndicatorView new];
+        self.smallDefaultActivityIndicatorView = smallDefaultActivityIndicatorView;
+        smallDefaultActivityIndicatorView.hidesWhenStopped = YES;
+        smallDefaultActivityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        [dialogView addSubview:smallDefaultActivityIndicatorView];
         
         // Create circular progress view for determinate circular mode
         MRCircularProgressView *circularProgressView = [MRCircularProgressView new];
@@ -181,6 +188,9 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         case MRProgressOverlayViewModeIndeterminateSmall:
             return self.smallActivityIndicatorView;
             
+        case MRProgressOverlayViewModeIndeterminateSmallDefault:
+            return self.smallDefaultActivityIndicatorView;
+            
         case MRProgressOverlayViewModeDeterminateCircular:
             return self.circularProgressView;
             
@@ -245,6 +255,9 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     const CGFloat dialogPadding = 15;
     const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
     
+    const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
+                                || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
+    
     CGFloat y = dialogPaddingY;
     
     if (!self.titleLabel.hidden) {
@@ -252,8 +265,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         CGFloat titleLabelMaxWidth = innerViewWidth;
         CGFloat offset = 0;
         
-        CGSize modeViewSize = [self.smallActivityIndicatorView sizeThatFits:CGSizeMake(dialogWidth, dialogWidth)];
-        if (self.mode == MRProgressOverlayViewModeIndeterminateSmall) {
+        CGSize modeViewSize = [self.smallDefaultActivityIndicatorView sizeThatFits:CGSizeMake(dialogWidth, dialogWidth)];
+        if (hasSmallIndicator) {
             offset = modeViewSize.width + 7;
         }
         
@@ -266,10 +279,12 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         CGPoint titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
         self.titleLabel.frame = (CGRect){titleLabelOrigin, titleLabelSize};
         
-        if (self.mode == MRProgressOverlayViewModeIndeterminateSmall) {
+        if (hasSmallIndicator) {
             CGPoint modeViewOrigin = CGPointMake(titleLabelOrigin.x - offset,
                                                  y + (titleLabelSize.height - modeViewSize.height) / 2.0f);
-            self.smallActivityIndicatorView.frame = (CGRect){modeViewOrigin, modeViewSize};
+            CGRect modeViewFrame = {modeViewOrigin, modeViewSize};
+            self.smallActivityIndicatorView.frame = modeViewFrame;
+            self.smallDefaultActivityIndicatorView.frame = modeViewFrame;
         }
         
         y += CGRectGetMaxY(self.titleLabel.frame);
@@ -290,7 +305,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         
         if (self.mode == MRProgressOverlayViewModeDeterminateHorizontalBar) {
             y += self.horizontalBarProgressView.frame.size.height + 15;
-        } else if (self.mode != MRProgressOverlayViewModeIndeterminateSmall) {
+        } else if (!hasSmallIndicator) {
             y += modeViewFrame.size.height + 20;
         }
     }
