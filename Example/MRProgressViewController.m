@@ -50,6 +50,16 @@
     } afterDelay:2.0];
 }
 
+- (IBAction)onShowIndeterminateSmallDefaultProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.mode = MRProgressOverlayViewModeIndeterminateSmallDefault;
+    [self.view addSubview:progressView];
+    [progressView show];
+    [self performBlock:^{
+        [progressView hide];
+    } afterDelay:2.0];
+}
+
 - (IBAction)onShowAlertView:(id)sender {
     [[[UIAlertView alloc] initWithTitle:@"Native Alert View" message:@"Just to compare blur effects." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
