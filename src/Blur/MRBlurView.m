@@ -39,13 +39,13 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.image = [[self windowBelowDialogViewSnapshot] mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+    self.image = [[self snapshot] mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
 }
 
 
 #pragma mark - Image helper
 
-- (UIImage *)windowBelowDialogViewSnapshot {
+- (UIImage *)snapshot {
     CGPoint origin = [self convertPoint:self.frame.origin toView:self.window];
     
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, self.window.screen.scale);
