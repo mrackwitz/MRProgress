@@ -119,6 +119,9 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
             // Stop intercepting navigationBar.delegate messages
             id receiver = ((MRMessageInterceptor *)navigationController.delegate).receiver;
             navigationController.delegate = receiver != self ? receiver : nil;
+            
+            // Forward intercepted message
+            [navigationController.delegate navigationController:navigationController willShowViewController:viewController animated:animated];
         } else {
             navigationController.delegate = nil;
         }
