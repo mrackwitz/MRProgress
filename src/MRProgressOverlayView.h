@@ -22,8 +22,6 @@ typedef enum {
 
 
 /**
- TODO Split in MRDialogView <- MRProgressView && MRDialogView <- MRAlertView
- 
  Progress HUD to be shown over a whole view controller's view or window.
  Similar look to UIAlertView.
  */
