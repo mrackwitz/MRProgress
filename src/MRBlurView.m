@@ -10,6 +10,16 @@
 #import <Accelerate/Accelerate.h>
 
 
+vImage_Buffer vImage_BufferForCGImageRef(CGImageRef imageRef, void *data) {
+    return (vImage_Buffer){
+        .width = CGImageGetWidth(imageRef),
+        .height = CGImageGetHeight(imageRef),
+        .rowBytes = CGImageGetBytesPerRow(imageRef),
+        .data = data
+    };
+}
+
+
 @interface MRBlurView ()
 
 @end
@@ -60,31 +70,17 @@
     int boxSize = 129; // Must be odd!
     
     CGImageRef sourceImageRef = sourceImage.CGImage;
-    
-    vImage_Buffer inBuffer, outBuffer;
-    vImage_Error error;
-    
-    void *pixelBuffer;
-    
     CGDataProviderRef inProvider = CGImageGetDataProvider(sourceImageRef);
     CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
     
-    inBuffer.width = CGImageGetWidth(sourceImageRef);
-    inBuffer.height = CGImageGetHeight(sourceImageRef);
-    inBuffer.rowBytes = CGImageGetBytesPerRow(sourceImageRef);
-    inBuffer.data = (void *)CFDataGetBytePtr(inBitmapData);
-    
-    pixelBuffer = malloc(CGImageGetBytesPerRow(sourceImageRef) * CGImageGetHeight(sourceImageRef));
+    void *pixelBuffer = malloc(CGImageGetBytesPerRow(sourceImageRef) * CGImageGetHeight(sourceImageRef));
     if (pixelBuffer == NULL) {
         return nil;
     }
     
-    outBuffer.width = CGImageGetWidth(sourceImageRef);
-    outBuffer.height = CGImageGetHeight(sourceImageRef);
-    outBuffer.rowBytes = CGImageGetBytesPerRow(sourceImageRef);
-    outBuffer.data = pixelBuffer;
-    
-    error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
+    vImage_Buffer inBuffer = vImage_BufferForCGImageRef(sourceImageRef, (void *)CFDataGetBytePtr(inBitmapData));
+    vImage_Buffer outBuffer = vImage_BufferForCGImageRef(sourceImageRef, pixelBuffer);
+    vImage_Error error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
     if (error) {
         return nil;
     }
