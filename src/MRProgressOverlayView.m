@@ -13,6 +13,7 @@
 #import "MRProgressHelper.h"
 
 
+const CGFloat MRProgressOverlayViewCornerRadius = 7;
 const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 
@@ -52,7 +53,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     
     [self applyMotionEffects];
     
-    const CGFloat cornerRadius = 7;
+    const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
     // Create blurView
     MRBlurView *blurView = [MRBlurView new];
