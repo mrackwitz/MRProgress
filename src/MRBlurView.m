@@ -46,7 +46,7 @@
 #pragma mark - Image helper
 
 - (UIImage *)windowBelowDialogViewSnapshot {
-    CGPoint origin = self.superview.frame.origin;
+    CGPoint origin = [self convertPoint:self.frame.origin toView:UIApplication.sharedApplication.keyWindow];
     UIGraphicsBeginImageContext(self.frame.size);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(ctx, -origin.x, -origin.y);
