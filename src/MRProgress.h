@@ -8,5 +8,6 @@
 
 #import "MRActivityIndicatorView.h"
 #import "MRCircularProgressView.h"
+#import "MRIconView.h"
 #import "MRNavigationBarProgressView.h"
-#import "MRProgressView.h"
+#import "MRProgressOverlayView.h"
