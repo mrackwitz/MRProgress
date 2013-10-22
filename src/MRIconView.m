@@ -71,9 +71,9 @@
     UIBezierPath *path = [UIBezierPath new];
     
     CGRect bounds = self.bounds;
-    [path moveToPoint:CGPointMake(bounds.size.width * 0.25f, bounds.size.height * 0.5f)];
-    [path addLineToPoint:CGPointMake(bounds.size.width * 0.5f, bounds.size.height * 0.75f)];
-    [path addLineToPoint:CGPointMake(bounds.size.width * 0.75f, bounds.size.height * 0.25f)];
+    [path moveToPoint:CGPointMake(bounds.size.width * 0.2f, bounds.size.height * 0.55f)];
+    [path addLineToPoint:CGPointMake(bounds.size.width * 0.325f, bounds.size.height * 0.7f)];
+    [path addLineToPoint:CGPointMake(bounds.size.width * 0.75f, bounds.size.height * 0.3f)];
     
     return path;
 }
