@@ -56,9 +56,9 @@ vImage_Buffer vImage_BufferForCGImage(CGImageRef imageRef, void *data) {
 #pragma mark - Image helper
 
 - (UIImage *)windowBelowDialogViewSnapshot {
-    CGPoint origin = [self convertPoint:self.frame.origin toView:UIApplication.sharedApplication.keyWindow];
+    CGPoint origin = [self convertPoint:self.frame.origin toView:self.window];
     
-    UIGraphicsBeginImageContext(self.frame.size);
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, self.window.screen.scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
