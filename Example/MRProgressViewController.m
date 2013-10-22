@@ -55,6 +55,7 @@
 }
 
 - (void)simulateProgressView:(MRProgressOverlayView *)progressView {
+    static int i=0;
     [progressView show];
     [self performBlock:^{
         [progressView setProgress:0.2 animated:YES];
@@ -69,7 +70,10 @@
                         [self performBlock:^{
                             [progressView setProgress:1.0 animated:YES];
                             [self performBlock:^{
-                                [progressView hide];
+                                progressView.mode = ++i%2==0 ? MRProgressOverlayViewModeCross : MRProgressOverlayViewModeCheckmark;
+                                [self performBlock:^{
+                                    [progressView hide];
+                                } afterDelay:0.5];
                             } afterDelay:1.0];
                         } afterDelay:0.33];
                     } afterDelay:0.2];
