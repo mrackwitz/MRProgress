@@ -20,9 +20,9 @@
 - (IBAction)onShowIndeterminateProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     [self.view addSubview:progressView];
-    [progressView show];
+    [progressView show:YES];
     [self performBlock:^{
-        [progressView hide];
+        [progressView hide:YES];
     } afterDelay:2.0];
 }
 
@@ -44,19 +44,17 @@
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmall;
     [self.view addSubview:progressView];
-    [progressView show];
+    [progressView show:YES];
     [self performBlock:^{
-        [progressView hide];
+        [progressView hide:YES];
     } afterDelay:2.0];
 }
 
 - (IBAction)onShowIndeterminateSmallDefaultProgressView:(id)sender {
-    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmallDefault;
-    [self.view addSubview:progressView];
-    [progressView show];
     [self performBlock:^{
-        [progressView hide];
+        [progressView hide:YES];
     } afterDelay:2.0];
 }
 
@@ -66,7 +64,7 @@
 
 - (void)simulateProgressView:(MRProgressOverlayView *)progressView {
     static int i=0;
-    [progressView show];
+    [progressView show:YES];
     [self performBlock:^{
         [progressView setProgress:0.2 animated:YES];
         [self performBlock:^{
@@ -82,7 +80,7 @@
                             [self performBlock:^{
                                 progressView.mode = ++i%2==0 ? MRProgressOverlayViewModeCross : MRProgressOverlayViewModeCheckmark;
                                 [self performBlock:^{
-                                    [progressView hide];
+                                    [progressView hide:YES];
                                 } afterDelay:0.5];
                             } afterDelay:1.0];
                         } afterDelay:0.33];
