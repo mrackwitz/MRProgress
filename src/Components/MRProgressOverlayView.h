@@ -34,7 +34,7 @@ typedef enum {
 @interface MRProgressOverlayView : UIView
 
 /**
- Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is hideOverlayForView:animated.
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
  
  @param view The view that the overlay will be added to
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
@@ -49,7 +49,7 @@ typedef enum {
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  @return YES if a overlay was found and removed, NO otherwise.
  */
-+ (BOOL)hideOverlayForView:(UIView *)view animated:(BOOL)animated;
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated;
 
 /**
  Finds all the overlay subviews and hides them.
@@ -58,7 +58,7 @@ typedef enum {
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  @return the number of overlays found and removed.
  */
-+ (NSUInteger)hideAllOverlaysForView:(UIView *)view animated:(BOOL)animated;
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated;
 
 /**
  Finds the top-most overlay subview and returns it.

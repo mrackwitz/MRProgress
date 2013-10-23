@@ -45,7 +45,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 	return overlayView;
 }
 
-+ (BOOL)hideOverlayForView:(UIView *)view animated:(BOOL)animated {
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self overlayForView:view];
 	if (overlayView != nil) {
 		[overlayView dismiss:animated];
@@ -54,7 +54,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 	return NO;
 }
 
-+ (NSUInteger)hideAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
     NSArray *views = [self allOverlaysForView:view];
 	for (MRProgressOverlayView *overlayView in views) {
 		[overlayView dismiss:YES];
