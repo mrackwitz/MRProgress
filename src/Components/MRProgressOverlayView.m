@@ -48,9 +48,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 + (BOOL)hideOverlayForView:(UIView *)view animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self overlayForView:view];
 	if (overlayView != nil) {
-		[overlayView hide:animated completion:^{
-            [overlayView removeFromSuperview];
-        }];
+		[overlayView dismiss:animated];
 		return YES;
 	}
 	return NO;
@@ -59,9 +57,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 + (NSUInteger)hideAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
     NSArray *views = [self allOverlaysForView:view];
 	for (MRProgressOverlayView *overlayView in views) {
-		[overlayView hide:animated completion:^{
-            [overlayView removeFromSuperview];
-        }];
+		[overlayView dismiss:YES];
 		return YES;
 	}
 	return views.count;
@@ -284,6 +280,12 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     } else {
         animBlock();
     }
+}
+
+- (void)dismiss:(BOOL)animated {
+    [self hide:animated completion:^{
+        [self removeFromSuperview];
+    }];
 }
 
 - (void)hide:(BOOL)animated {

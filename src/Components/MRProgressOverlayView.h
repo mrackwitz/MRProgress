@@ -134,4 +134,11 @@ typedef enum {
  */
 - (void)hide:(BOOL)animated;
 
+/**
+ Hide the progress view and remove on animation completion from the view hierachy.
+ 
+ @param aniamted Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ */
+- (void)dismiss:(BOOL)animated;
+
 @end
