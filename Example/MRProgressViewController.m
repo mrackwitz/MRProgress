@@ -46,7 +46,7 @@
     [self.view addSubview:progressView];
     [progressView show:YES];
     [self performBlock:^{
-        [progressView hide:YES];
+        [progressView dismiss:YES];
     } afterDelay:2.0];
 }
 
@@ -54,7 +54,7 @@
     MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmallDefault;
     [self performBlock:^{
-        [progressView hide:YES];
+        [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
     } afterDelay:2.0];
 }
 
@@ -80,7 +80,7 @@
                             [self performBlock:^{
                                 progressView.mode = ++i%2==0 ? MRProgressOverlayViewModeCross : MRProgressOverlayViewModeCheckmark;
                                 [self performBlock:^{
-                                    [progressView hide:YES];
+                                    [progressView dismiss:YES];
                                 } afterDelay:0.5];
                             } afterDelay:1.0];
                         } afterDelay:0.33];
