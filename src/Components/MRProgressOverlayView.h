@@ -79,12 +79,16 @@ typedef enum {
 
 /**
  Show the progress view.
+ 
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
-- (void)show;
+- (void)show:(BOOL)animated;
 
 /**
  Hide the progress view.
+ 
+ @param aniamted Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
-- (void)hide;
+- (void)hide:(BOOL)animated;
 
 @end

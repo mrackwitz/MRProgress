@@ -209,38 +209,64 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 #pragma mark - Transitions
 
-- (void)show {
+- (void)show:(BOOL)animated {
     [self initialLayoutSubviews];
     
-    UIView *dialogView = self.dialogView;
-    dialogView.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
-    dialogView.alpha = 0.5f;
+    __weak UIView *dialogView = self.dialogView;
+    if (animated) {
+        dialogView.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
+        dialogView.alpha = 0.5f;
+        self.backgroundColor = UIColor.clearColor;
+    }
     
-    self.backgroundColor = UIColor.clearColor;
     self.hidden = NO;
     
-    [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
-                         dialogView.transform = CGAffineTransformIdentity;
-                         dialogView.alpha = 1.0f;
-                     } completion:nil];
+    void(^animBlock)() = ^{
+        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
+        dialogView.transform = CGAffineTransformIdentity;
+        dialogView.alpha = 1.0f;
+    };
+    
+    if (animated) {
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+                         animations:animBlock
+                         completion:nil];
+    } else {
+        animBlock();
+    }
 }
 
-- (void)hide {
-    UIView *dialogView = self.dialogView;
+- (void)hide:(BOOL)animated {
+    [self hide:animated completion:nil];
+}
+
+- (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
+    __weak UIView *dialogView = self.dialogView;
     dialogView.transform = CGAffineTransformIdentity;
     dialogView.alpha = 1.0f;
     
-    [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
-                     animations:^{
-                         self.backgroundColor = UIColor.clearColor;
-                         dialogView.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
-                         dialogView.alpha = 0.0f;
-                     } completion:^(BOOL finished) {
-                         self.hidden = YES;
-                         [self.activityIndicatorView stopAnimating];
-                     }];
+    void(^animBlock)() = ^{
+        self.backgroundColor = UIColor.clearColor;
+        dialogView.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
+        dialogView.alpha = 0.0f;
+    };
+    
+    void(^animCompletionBlock)(BOOL) = ^(BOOL finished) {
+        self.hidden = YES;
+        [self.activityIndicatorView stopAnimating];
+        if (completionBlock) {
+            completionBlock();
+        }
+    };
+    
+    if (animated) {
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
+                         animations:animBlock
+                         completion:animCompletionBlock];
+    } else {
+        animBlock();
+        animCompletionBlock(YES);
+    }
 }
 
 
