@@ -38,6 +38,56 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 @implementation MRProgressOverlayView
 
++ (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
+    MRProgressOverlayView *overlayView = [self new];
+	[view addSubview:overlayView];
+	[overlayView show:animated];
+	return overlayView;
+}
+
++ (BOOL)hideOverlayForView:(UIView *)view animated:(BOOL)animated {
+    MRProgressOverlayView *overlayView = [self overlayForView:view];
+	if (overlayView != nil) {
+		[overlayView hide:animated completion:^{
+            [overlayView removeFromSuperview];
+        }];
+		return YES;
+	}
+	return NO;
+}
+
++ (NSUInteger)hideAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
+    NSArray *views = [self allOverlaysForView:view];
+	for (MRProgressOverlayView *overlayView in views) {
+		[overlayView hide:animated completion:^{
+            [overlayView removeFromSuperview];
+        }];
+		return YES;
+	}
+	return views.count;
+}
+
++ (instancetype)overlayForView:(UIView *)view {
+    NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
+	for (UIView *subview in subviewsEnum) {
+		if ([subview isKindOfClass:self]) {
+			return (MRProgressOverlayView *)subview;
+		}
+	}
+	return nil;
+}
+
++ (NSArray *)allOverlaysForView:(UIView *)view {
+    NSMutableArray *overlays = [NSMutableArray new];
+	NSArray *subviews = view.subviews;
+	for (UIView *view in subviews) {
+		if ([view isKindOfClass:self]) {
+			[overlays addObject:view];
+		}
+	}
+	return overlays;
+}
+
 - (id)init {
     self = [super init];
     if (self) {

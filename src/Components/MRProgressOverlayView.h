@@ -34,6 +34,49 @@ typedef enum {
 @interface MRProgressOverlayView : UIView
 
 /**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is hideOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated;
+
+/**
+ Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
+ 
+ @param view The view that is going to be searched for a overlay subview.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return YES if a overlay was found and removed, NO otherwise.
+ */
++ (BOOL)hideOverlayForView:(UIView *)view animated:(BOOL)animated;
+
+/**
+ Finds all the overlay subviews and hides them.
+ 
+ @param view The view that is going to be searched for overlay subviews.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return the number of overlays found and removed.
+ */
++ (NSUInteger)hideAllOverlaysForView:(UIView *)view animated:(BOOL)animated;
+
+/**
+ Finds the top-most overlay subview and returns it.
+ 
+ @param view The view that is going to be searched.
+ @return A reference to the last overlay subview discovered.
+ */
++ (instancetype)overlayForView:(UIView *)view;
+
+/**
+ Finds all overlay subviews and returns them.
+ 
+ @param view The view that is going to be searched.
+ @return All found overlay views (array of MBProgressOverlayView objects).
+ */
++ (NSArray *)allOverlaysForView:(UIView *)view;
+
+/**
  Allows customization of blur effect.
  
  If you override this method, you are responsible for adding the view to hierachy.
