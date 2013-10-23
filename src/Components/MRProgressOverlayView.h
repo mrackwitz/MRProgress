@@ -100,6 +100,13 @@ typedef enum {
 @property (nonatomic, assign) float progress;
 
 /**
+ Title label text.
+ 
+ By default "Loading ...".
+ */
+@property (nonatomic, strong) NSString *titleLabelText;
+
+/**
  Change the tint color of the mode views.
  
  Redeclared to document usage, internally ```tintColorDidChange``` is used.

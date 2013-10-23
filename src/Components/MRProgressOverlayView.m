@@ -177,6 +177,21 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     [self showCurrentModeView];
 }
 
+
+#pragma mark - Title label text
+
+- (void)setTitleLabelText:(NSString *)titleLabelText {
+    self.titleLabel.text = titleLabelText;
+    [self initialLayoutSubviews];
+}
+
+- (NSString *)titleLabelText {
+    return self.titleLabel.text;
+}
+
+
+#pragma mark - Tint color
+
 - (void)setTintColor:(UIColor *)tintColor {
     // Implemented to silent warning
     super.tintColor = tintColor;
