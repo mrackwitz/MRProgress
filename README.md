@@ -168,44 +168,45 @@ Progress is shown using a large round activity indicator view. (```MRActivityInd
 
 #### ```MRProgressOverlayViewModeDeterminateCircular```
 
-[![](/Images/screenshot_005_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_005.png)
-  
 Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
 
+[![](/Images/screenshot_005_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_005.png)
+ 
 
 #### ```MRProgressOverlayViewModeDeterminateHorizontalBar```
+
+Progress is shown using a horizontal progress bar. (```UIProgressView```)
     
 [![](/Images/screenshot_006_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_006.png)
     
-Progress is shown using a horizontal progress bar. (```UIProgressView```)
-
     
 #### ```MRProgressOverlayViewModeIndeterminateSmall```
 
-[![](/Images/screenshot_007_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_007.png)
-
 Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
+
+[![](/Images/screenshot_007_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_007.png)
 
 
 #### ```MRProgressOverlayViewModeIndeterminateSmallDefault```
 
-[![](/Images/screenshot_008_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_008.png)
-
 Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
+
+[![](/Images/screenshot_008_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_008.png)
 
 
 #### ```MRProgressOverlayViewModeCheckmark```
 
-[![](/Images/screenshot_009_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_009.png)
-
 Shows a checkmark. (```MRCheckmarkIconView```)
+
+[![](/Images/screenshot_009_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_009.png)
 
 
 #### ```MRProgressOverlayViewModeCross```
 
+Shows a cross. (```MRCrossIconView```)
+
 [![](/Images/screenshot_010_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_010.png)
     
-Shows a cross. (```MRCrossIconView```)
 
 
 
