@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license               = 'MIT License'
   s.source                = { :git => 'https://github.com/mrackwitz/MRProgress.git', :tag => s.version.to_s }
   s.source_files          = 'src/**.{h,m}'
-  s.prefix_header_file    = 'MRProgress.h'
+  s.prefix_header_file    = 'src/MRProgress.h'
   s.platform              = :ios, '7.0'
   s.requires_arc          = true
   s.ios.frameworks        = %w{UIKit QuartzCore CoreGraphics Accelerate}
