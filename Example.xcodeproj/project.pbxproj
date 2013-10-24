@@ -25,26 +25,9 @@
 		71F50A3C181895D200FF4B8E /* MRProgressOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		710BD5861816AC8300654750 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7197CEB718169F210022A19D;
-			remoteInfo = MRProgress;
-		};
-		710BD5881816ACB400654750 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7197CEB618169F210022A19D;
-			remoteInfo = MRProgress;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7111E5B71806116B00016A43 /* aquarium-fish1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aquarium-fish1.jpg"; sourceTree = "<group>"; };
-		7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MRProgress.xcodeproj; path = ../MRProgress/MRProgress.xcodeproj; sourceTree = "<group>"; };
+		7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MRProgress.xcodeproj; path = ../MRProgress.xcodeproj; sourceTree = "<group>"; };
 		7197CF111816AA4C0022A19D /* libMRProgress.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMRProgress.a; path = "MRProgress/build/Debug-iphoneos/libMRProgress.a"; sourceTree = "<group>"; };
 		71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorViewController.h; sourceTree = "<group>"; };
 		71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorViewController.m; sourceTree = "<group>"; };
@@ -85,14 +68,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		710BD5831816AC8300654750 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				710BD5871816AC8300654750 /* libMRProgress.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		71EC36641805BB7100C85C5B = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +146,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				710BD5891816ACB400654750 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = MRNavigationControllerProgressBar;
@@ -199,28 +173,12 @@
 			mainGroup = 71EC36641805BB7100C85C5B;
 			productRefGroup = 71EC366E1805BB7100C85C5B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 710BD5831816AC8300654750 /* Products */;
-					ProjectRef = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				71EC366C1805BB7100C85C5B /* Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		710BD5871816AC8300654750 /* libMRProgress.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMRProgress.a;
-			remoteRef = 710BD5861816AC8300654750 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		71EC366B1805BB7100C85C5B /* Resources */ = {
@@ -254,14 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		710BD5891816ACB400654750 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MRProgress;
-			targetProxy = 710BD5881816ACB400654750 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		71EC36791805BB7100C85C5B /* InfoPlist.strings */ = {
