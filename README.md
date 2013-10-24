@@ -106,6 +106,7 @@ The provided Example app demonstrates how they can be used.
 * Frameworks:
     * QuartzCore
     * CoreGraphics
+    * Accelerate
 
 
 
