@@ -118,9 +118,11 @@ typedef enum {
 /**
  Mode view.
  
- Can be customized.
+ Should only be customized when in MRProgressOverlayViewModeCustom. In other modes you will get the documented
+ components. When mode is changed to MRProgressOverlayViewModeCustom from another, this property will be initialized
+ with a new UIView instance. You should make sure to call setMode: first. You are responsible to set the frame size.
  */
-@property (nonatomic, weak) UIView *modeView;
+@property (nonatomic, strong) UIView *modeView;
 
 /**
  Change the tint color of the mode views.

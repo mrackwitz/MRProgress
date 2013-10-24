@@ -162,8 +162,12 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     UIView *modeView = [self createViewForMode:self.mode];
     self.modeView = modeView;
     modeView.tintColor = self.tintColor;
-    [self.dialogView addSubview:modeView];
     return modeView;
+}
+
+- (void)setModeView:(UIView *)modeView {
+    _modeView = modeView;
+    [self.dialogView addSubview:modeView];
 }
 
 - (UIView *)createViewForMode:(MRProgressOverlayViewMode)mode {
