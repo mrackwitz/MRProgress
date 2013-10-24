@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
+/**
+ Use an activity indicator to show that a task is in progress. An activity indicator appears as a circle slice that is
+ either spinning or stopped.
+ */
 @interface MRActivityIndicatorView : UIControl {
     BOOL _animating;
 }

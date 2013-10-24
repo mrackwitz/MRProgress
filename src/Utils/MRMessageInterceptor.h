@@ -30,6 +30,8 @@
 
 /**
  Init a new instance with given middle man.
+ 
+ @param middleMan Favored forward target for all received selectors.
  */
 - (id)initWithMiddleMan:(id)middleMan;
 

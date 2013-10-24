@@ -28,22 +28,32 @@
 /**
  Change progress animated.
  
- If you set a lower value then the current progess the animation bounces.
- If you set a higher value then the current progress the animation eases out.
+ If you set a lower value than the current progess then the animation bounces.
+ If you set a higher value than the current progress then the animation eases out.
+ 
+ The progress bar will be hidden, if you set the progress to 1.0, automatically.
+ 
+ @param progress The new progress value.
+ 
+ @param animated Specify YES to animate the change or NO if you do not want the change to be animated.
  */
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 
 /**
  Get current progress view or initialize a new for given navigation controller.
  
- The navigationBar will be used to initialize the progress views frame and progressTintColor.
- You can destroy the current instance by using removeFromSuperview.
+ @param navigationController  The navigationBar of the navigationController will be used to initialize the progress
+ views frame and progressTintColor. The navigationController's delegate will be intercepted to automatically to remove
+ the progress bar on push or pop. You can destroy the current instance by using removeFromSuperview, manually.
  */
 + (instancetype)progressViewForNavigationController:(UINavigationController *)navigationController;
 
 @end
 
 
+/**
+ Helper to access MRNavigationBarProgressView from view controllers.
+ */
 @interface UINavigationController (NavigationBarProgressView)
 
 /**

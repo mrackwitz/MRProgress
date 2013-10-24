@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+/**
+ You use the MRCircularProgressView class to depict the progress of a task over time.
+ */
 @interface MRCircularProgressView : UIControl
 
 /**
@@ -35,12 +39,11 @@
 /**
  Change progress animated.
  
- If you set a lower value then the current progess the animation bounces.
- If you set a higher value then the current progress the animation eases out.
+ The animation will be always linear.
  
  @param progress The new progress value.
  
- @param animated Wether the change should been animated or not.
+ @param animated Specify YES to animate the change or NO if you do not want the change to be animated.
  */
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 

@@ -118,12 +118,10 @@ typedef enum {
 /**
  Change progress animated.
  
- If you set a lower value then the current progess the animation bounces.
- If you set a higher value then the current progress the animation eases out.
+ The animation will be always linear.
  
  @param progress The new progress value.
- 
- @param animated Wether the change should been animated or not.
+ @param animated Specify YES to animate the change or NO if you do not want the change to be animated.
  */
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 
@@ -137,14 +135,14 @@ typedef enum {
 /**
  Hide the progress view.
  
- @param aniamted Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
 - (void)hide:(BOOL)animated;
 
 /**
  Hide the progress view and remove on animation completion from the view hierachy.
  
- @param aniamted Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
 - (void)dismiss:(BOOL)animated;
 
