@@ -22,52 +22,52 @@ MRProgress is a collection of drop-in components that displays a dimmed overlay 
 The components used in ```MRProgressOverlayView``` could be used seperately.
 The provided Example app demonstrates how they can be used.
 
-* **```MRProgressOverlayView```**
-    
-    ![](/Images/screenshot_004_1.jpg)
-    
-    * Supports different modes
-    * Animated show and hide
-    * Blured background
-    * With UIMotionEffects for tilting like ```UIAlertView```
+### ```MRProgressOverlayView```
+
+![](/Images/screenshot_004_1.jpg)
+
+* Supports different modes
+* Animated show and hide
+* Blured background
+* With UIMotionEffects for tilting like ```UIAlertView```
 
 
-* **```MRCircularProgressView```**
+### ```MRCircularProgressView```
 
-    ![](/Images/screenshot_001_1.jpg)
-    ![](/Images/screenshot_002_1.jpg)
-    
-    * Circular progress view like in AppStore
-    * Inherits from ```UIControl``` and can display a stop button
-    * Animated with ```CADisplayLink```
+![](/Images/screenshot_001_1.jpg)
+![](/Images/screenshot_002_1.jpg)
 
-
-* **```MRNavigationBarProgressView```**
-    
-    ![](/Images/screenshot_003_1.jpg)
-    
-    * Display a progress view in a ```UINavigationController```
-    * Hooks ```UINavigationControllerDelegate``` and is automatically removed on push or pop
-    * Can be used in ```UINavigationBar``` or ```UIToolbar```
+* Circular progress view like in AppStore
+* Inherits from ```UIControl``` and can display a stop button
+* Animated with ```CADisplayLink```
 
 
-* **```MRCheckmarkIconView``` and ```MRCrossIconView```**
+### ```MRNavigationBarProgressView```
 
-    ![](/Images/screenshot_011_1.jpg)
-    
-    * Tint color can be changed
-    * Scalable
-    * Animatable
-    * Backed by ```CAShapeLayer```
+![](/Images/screenshot_003_1.jpg)
+
+* Display a progress view in a ```UINavigationController```
+* Hooks ```UINavigationControllerDelegate``` and is automatically removed on push or pop
+* Can be used in ```UINavigationBar``` or ```UIToolbar```
 
 
-* **```MRActivityIndicatorView```**
+### ```MRCheckmarkIconView``` and ```MRCrossIconView```
 
-    ![](/Images/screenshot_012_1.jpg)
-    
-    * Tint color can be changed
-    * Same API as ```UIActivityIndicatorView```
-    * Animated with ```CABasicAnimation```
+![](/Images/screenshot_011_1.jpg)
+
+* Tint color can be changed
+* Scalable
+* Animatable
+* Backed by ```CAShapeLayer```
+
+
+### ```MRActivityIndicatorView```
+
+![](/Images/screenshot_012_1.jpg)
+
+* Tint color can be changed
+* Same API as ```UIActivityIndicatorView```
+* Animated with ```CABasicAnimation```
 
 
 
@@ -159,47 +159,53 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
 
 ### Modes
 
-* **```MRProgressOverlayViewModeIndeterminate```**
+#### ```MRProgressOverlayViewModeIndeterminate```
 
-    [![](/Images/screenshot_004_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_004.png)
+[![](/Images/screenshot_004_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_004.png)
     
-    Progress is shown using a large round activity indicator view. (```MRActivityIndicatorView```) This is the default.
+Progress is shown using a large round activity indicator view. (```MRActivityIndicatorView```) This is the default.
 
-* **```MRProgressOverlayViewModeDeterminateCircular```**
 
-    [![](/Images/screenshot_005_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_005.png)
+#### ```MRProgressOverlayViewModeDeterminateCircular```
+
+[![](/Images/screenshot_005_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_005.png)
+  
+Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
+
+
+#### ```MRProgressOverlayViewModeDeterminateHorizontalBar```
     
-    Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
-
-* **```MRProgressOverlayViewModeDeterminateHorizontalBar```**
+[![](/Images/screenshot_006_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_006.png)
     
-    [![](/Images/screenshot_006_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_006.png)
+Progress is shown using a horizontal progress bar. (```UIProgressView```)
+
     
-    Progress is shown using a horizontal progress bar. (```UIProgressView```)
+#### ```MRProgressOverlayViewModeIndeterminateSmall```
+
+[![](/Images/screenshot_007_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_007.png)
+
+Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
+
+
+#### ```MRProgressOverlayViewModeIndeterminateSmallDefault```
+
+[![](/Images/screenshot_008_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_008.png)
+
+Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
+
+
+#### ```MRProgressOverlayViewModeCheckmark```
+
+[![](/Images/screenshot_009_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_009.png)
+
+Shows a checkmark. (```MRCheckmarkIconView```)
+
+
+#### ```MRProgressOverlayViewModeCross```
+
+[![](/Images/screenshot_010_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_010.png)
     
-* **```MRProgressOverlayViewModeIndeterminateSmall```**
-
-    [![](/Images/screenshot_007_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_007.png)
-
-    Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
-
-* **```MRProgressOverlayViewModeIndeterminateSmallDefault```**
-
-    [![](/Images/screenshot_008_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_008.png)
-
-    Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
-
-* **```MRProgressOverlayViewModeCheckmark```**
-
-    [![](/Images/screenshot_009_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_009.png)
-
-    Shows a checkmark. (```MRCheckmarkIconView```)
-
-* **```MRProgressOverlayViewModeCross```**
-
-    [![](/Images/screenshot_010_2.jpg)](http://github.com/mrackwitz/MRProgress/master/Images/screenshot_010.png)
-    
-    Shows a cross. (```MRCrossIconView```)
+Shows a cross. (```MRCrossIconView```)
 
 
 
