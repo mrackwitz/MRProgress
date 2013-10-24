@@ -109,6 +109,12 @@ typedef enum {
 @property (nonatomic, strong) NSString *titleLabelText;
 
 /**
+ Title label.
+ 
+ Use this reference to customize titleLabel attributes.
+ */
+@property (readonly) UILabel *titleLabel;
+
 /**
  Mode view.
  
