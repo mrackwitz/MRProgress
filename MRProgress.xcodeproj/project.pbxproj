@@ -206,6 +206,7 @@
 			buildConfigurationList = 7197CEDA18169F210022A19D /* Build configuration list for PBXNativeTarget "MRProgress" */;
 			buildPhases = (
 				7197CEB318169F210022A19D /* Sources */,
+				71F50A471819B0CA00FF4B8E /* Build Documentation */,
 				7197CEB418169F210022A19D /* Frameworks */,
 				7197CEF91816A1750022A19D /* Headers */,
 			);
@@ -243,6 +244,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		71F50A471819B0CA00FF4B8E /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = bin/build_appledoc.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7197CEB318169F210022A19D /* Sources */ = {
