@@ -1,5 +1,8 @@
 ## MRProgress
 
+![Pod Version](http://cocoapod-badges.herokuapp.com/v/MRProgress/badge.png)
+![Pod Platform](http://cocoapod-badges.herokuapp.com/p/MRProgress/badge.png)
+
 MRProgress is a collection of drop-in components that displays a dimmed overlay with a blurred box view with an indicator and/or labels while work is being done in a background thread.
 
 [![](/Images/screenshot_004_2.jpg)](/Images/screenshot_004.png)
