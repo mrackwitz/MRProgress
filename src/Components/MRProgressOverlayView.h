@@ -24,6 +24,8 @@ typedef enum {
     MRProgressOverlayViewModeCheckmark,
     /** Shows a cross. (MRCrossIconView) */
     MRProgressOverlayViewModeCross,
+    /** Shows a custom view. (UIView) */
+    MRProgressOverlayViewModeCustom,
 } MRProgressOverlayViewMode;
 
 
@@ -83,7 +85,7 @@ typedef enum {
  The view will not be retained.
  The cornerRadius of the layer of the returnValue will be initialized.
  */
-- (UIView *)initializeBlurView;
+- (UIView *)createBlurView;
 
 /**
  Visualisation mode.
@@ -105,6 +107,14 @@ typedef enum {
  By default "Loading ...".
  */
 @property (nonatomic, strong) NSString *titleLabelText;
+
+/**
+/**
+ Mode view.
+ 
+ Can be customized.
+ */
+@property (nonatomic, weak) UIView *modeView;
 
 /**
  Change the tint color of the mode views.

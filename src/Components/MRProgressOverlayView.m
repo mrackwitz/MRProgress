@@ -22,21 +22,29 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
 @property (nonatomic, weak, readwrite) UIView *blurView;
-
 @property (nonatomic, weak, readwrite) UILabel *titleLabel;
 
-@property (nonatomic, weak, readwrite) MRActivityIndicatorView *activityIndicatorView;
-@property (nonatomic, weak, readwrite) MRActivityIndicatorView *smallActivityIndicatorView;
-@property (nonatomic, weak, readwrite) UIActivityIndicatorView *smallDefaultActivityIndicatorView;
-@property (nonatomic, weak, readwrite) MRCircularProgressView *circularProgressView;
-@property (nonatomic, weak, readwrite) UIProgressView *horizontalBarProgressView;
-@property (nonatomic, weak, readwrite) MRIconView *checkmarkIconView;
-@property (nonatomic, weak, readwrite) MRIconView *crossIconView;
+- (UIView *)createModeView;
+- (UIView *)createViewForMode:(MRProgressOverlayViewMode)mode;
+
+- (MRActivityIndicatorView *)createActivityIndicatorView;
+- (MRActivityIndicatorView *)createSmallActivityIndicatorView;
+- (UIActivityIndicatorView *)createSmallDefaultActivityIndicatorView;
+- (MRCircularProgressView *)createCircularProgressView;
+- (UIProgressView *)createHorizontalBarProgressView;
+- (MRIconView *)createCheckmarkIconView;
+- (MRIconView *)createCrossIconView;
+- (UIView *)createCustomView;
+
+- (void)showModeView:(UIView *)modeView;
+- (void)hideModeView:(UIView *)modeView;
 
 @end
 
 
 @implementation MRProgressOverlayView
+
+#pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self new];
@@ -84,20 +92,23 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 	return overlays;
 }
 
-- (id)init {
-    self = [super init];
+
+#pragma mark - Initialization
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         [self commonInit];
     }
     return self;
 }
 
-- (UIView *)initializeBlurView {
-    UIView *blurView = [MRBlurView new];
-    blurView.alpha = 0.98;
-    [self.dialogView addSubview:blurView];
-    
-    return blurView;
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
 }
 
 - (void)commonInit {
@@ -113,7 +124,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
     // Create blurView
-    self.blurView = [self initializeBlurView];
+    self.blurView = [self createBlurView];
     self.blurView.layer.cornerRadius = cornerRadius;
     
     // Style the dialog to match the iOS7 UIAlertView
@@ -132,49 +143,109 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [dialogView addSubview:titleLabel];
     
-    // Create mode dependent subviews
-    {
-        // Create activity indicator for indeterminate mode
-        MRActivityIndicatorView *activityIndicatorView = [MRActivityIndicatorView new];
-        self.activityIndicatorView = activityIndicatorView;
-        [dialogView addSubview:activityIndicatorView];
-        
-        // Create small activity indicator for text mode
-        MRActivityIndicatorView *smallActivityIndicatorView = [MRActivityIndicatorView new];
-        self.smallActivityIndicatorView = smallActivityIndicatorView;
-        smallActivityIndicatorView.hidesWhenStopped = YES;
-        [dialogView addSubview:smallActivityIndicatorView];
-        
-        // Create small default activity indicator for text mode
-        UIActivityIndicatorView *smallDefaultActivityIndicatorView = [UIActivityIndicatorView new];
-        self.smallDefaultActivityIndicatorView = smallDefaultActivityIndicatorView;
-        smallDefaultActivityIndicatorView.hidesWhenStopped = YES;
-        smallDefaultActivityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-        [dialogView addSubview:smallDefaultActivityIndicatorView];
-        
-        // Create circular progress view for determinate circular mode
-        MRCircularProgressView *circularProgressView = [MRCircularProgressView new];
-        self.circularProgressView = circularProgressView;
-        [dialogView addSubview:circularProgressView];
-        
-        // Create horizontal progress bar for determinate horizontal bar mode
-        UIProgressView *horizontalBarProgressView = [UIProgressView new];
-        self.horizontalBarProgressView = horizontalBarProgressView;
-        [dialogView addSubview:horizontalBarProgressView];
-        
-        // Create checkmark icon view for checkmark mode
-        MRCheckmarkIconView *checkmarkIconView = [MRCheckmarkIconView new];
-        self.checkmarkIconView = checkmarkIconView;
-        [dialogView addSubview:checkmarkIconView];
-        
-        // Create cross icon view for cross mode
-        MRCrossIconView *crossIconView = [MRCrossIconView new];
-        self.crossIconView = crossIconView;
-        [dialogView addSubview:crossIconView];
-    }
+    // Create modeView
+    [self createModeView];
+}
+
+
+#pragma mark - Create subviews
+
+- (UIView *)createBlurView {
+    UIView *blurView = [MRBlurView new];
+    blurView.alpha = 0.98;
+    [self.dialogView addSubview:blurView];
     
-    [self hideAllModeViews];
-    [self showCurrentModeView];
+    return blurView;
+}
+
+- (UIView *)createModeView {
+    UIView *modeView = [self createViewForMode:self.mode];
+    self.modeView = modeView;
+    modeView.tintColor = self.tintColor;
+    [self.dialogView addSubview:modeView];
+    return modeView;
+}
+
+- (UIView *)createViewForMode:(MRProgressOverlayViewMode)mode {
+    switch (mode) {
+        case MRProgressOverlayViewModeIndeterminate:
+            return [self createActivityIndicatorView];
+        
+        case MRProgressOverlayViewModeIndeterminateSmall:
+            return [self createSmallActivityIndicatorView];
+        
+        case MRProgressOverlayViewModeIndeterminateSmallDefault:
+            return [self createSmallDefaultActivityIndicatorView];
+        
+        case MRProgressOverlayViewModeDeterminateCircular:
+            return [self createCircularProgressView];
+        
+        case MRProgressOverlayViewModeDeterminateHorizontalBar:
+            return [self createHorizontalBarProgressView];
+        
+        case MRProgressOverlayViewModeCheckmark:
+            return [self createCheckmarkIconView];
+        
+        case MRProgressOverlayViewModeCross:
+            return [self createCrossIconView];
+            
+        case MRProgressOverlayViewModeCustom:
+            return [self createCustomView];
+    }
+    return nil;
+}
+
+
+#pragma mark - Mode view factory methods
+
+- (MRActivityIndicatorView *)createActivityIndicatorView {
+    // Create activity indicator for indeterminate mode
+    MRActivityIndicatorView *activityIndicatorView = [MRActivityIndicatorView new];
+    return activityIndicatorView;
+}
+
+- (MRActivityIndicatorView *)createSmallActivityIndicatorView {
+    // Create small activity indicator for text mode
+    MRActivityIndicatorView *smallActivityIndicatorView = [MRActivityIndicatorView new];
+    smallActivityIndicatorView.hidesWhenStopped = YES;
+    return smallActivityIndicatorView;
+}
+
+- (UIActivityIndicatorView *)createSmallDefaultActivityIndicatorView {
+    // Create small default activity indicator for text mode
+    UIActivityIndicatorView *smallDefaultActivityIndicatorView = [UIActivityIndicatorView new];
+    smallDefaultActivityIndicatorView.hidesWhenStopped = YES;
+    smallDefaultActivityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    return smallDefaultActivityIndicatorView;
+}
+
+- (MRCircularProgressView *)createCircularProgressView {
+    // Create circular progress view for determinate circular mode
+    MRCircularProgressView *circularProgressView = [MRCircularProgressView new];
+    return circularProgressView;
+}
+
+- (UIProgressView *)createHorizontalBarProgressView {
+    // Create horizontal progress bar for determinate horizontal bar mode
+    UIProgressView *horizontalBarProgressView = [UIProgressView new];
+    return horizontalBarProgressView;
+}
+
+- (MRIconView *)createCheckmarkIconView {
+    // Create checkmark icon view for checkmark mode
+    MRCheckmarkIconView *checkmarkIconView = [MRCheckmarkIconView new];
+    return checkmarkIconView;
+}
+
+- (MRIconView *)createCrossIconView {
+    // Create cross icon view for cross mode
+    MRCrossIconView *crossIconView = [MRCrossIconView new];
+    return crossIconView;
+}
+
+- (UIView *)createCustomView {
+    // Create custom base view
+    return [UIView new];
 }
 
 
@@ -199,80 +270,44 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 - (void)tintColorDidChange {
     [super tintColorDidChange];
-    self.activityIndicatorView.tintColor = self.tintColor;
-    self.smallActivityIndicatorView.tintColor = self.tintColor;
-    self.circularProgressView.tintColor = self.tintColor;
-    self.horizontalBarProgressView.tintColor = self.tintColor;
-    self.checkmarkIconView.tintColor = self.tintColor;
-    self.crossIconView.tintColor = self.tintColor;
+    self.modeView.tintColor = self.tintColor;
 }
 
 
 #pragma mark - Mode
 
 - (void)setMode:(MRProgressOverlayViewMode)mode {
-    UIView *oldView = [self viewForMode:self.mode];
-    oldView.hidden = YES;
-    if ([oldView respondsToSelector:@selector(stopAnimating)]) {
-        [oldView performSelector:@selector(stopAnimating)];
-    }
+    [self hideModeView:self.modeView];
     
     _mode = mode;
     
-    [self showCurrentModeView];
+    [self showModeView:[self createModeView]];
     
     if (!self.hidden) {
         [self initialLayoutSubviews];
     }
 }
 
-- (void)showCurrentModeView {
-    UIView *newView = [self viewForMode:self.mode];
-    newView.hidden = NO;
-    if ([newView respondsToSelector:@selector(startAnimating)]) {
-        [newView performSelector:@selector(startAnimating)];
+- (void)showModeView:(UIView *)modeView {
+    modeView.hidden = NO;
+    if ([modeView respondsToSelector:@selector(startAnimating)]) {
+        [modeView performSelector:@selector(startAnimating)];
     }
 }
 
-- (void)hideAllModeViews {
-    [self.activityIndicatorView stopAnimating];
-    [self.smallActivityIndicatorView stopAnimating];
-    self.circularProgressView.hidden = YES;
-    self.horizontalBarProgressView.hidden = YES;
-    self.checkmarkIconView.hidden = YES;
-    self.crossIconView.hidden = YES;
-}
-
-- (UIView *)viewForMode:(MRProgressOverlayViewMode)mode {
-    switch (mode) {
-        case MRProgressOverlayViewModeIndeterminate:
-            return self.activityIndicatorView;
-            
-        case MRProgressOverlayViewModeIndeterminateSmall:
-            return self.smallActivityIndicatorView;
-            
-        case MRProgressOverlayViewModeIndeterminateSmallDefault:
-            return self.smallDefaultActivityIndicatorView;
-            
-        case MRProgressOverlayViewModeDeterminateCircular:
-            return self.circularProgressView;
-            
-        case MRProgressOverlayViewModeDeterminateHorizontalBar:
-            return self.horizontalBarProgressView;
-            
-        case MRProgressOverlayViewModeCheckmark:
-            return self.checkmarkIconView;
-            
-        case MRProgressOverlayViewModeCross:
-            return self.crossIconView;
+- (void)hideModeView:(UIView *)modeView {
+    modeView.hidden = YES;
+    if ([modeView respondsToSelector:@selector(stopAnimating)]) {
+        [modeView performSelector:@selector(stopAnimating)];
     }
-    return nil;
 }
 
 
 #pragma mark - Transitions
 
 - (void)show:(BOOL)animated {
+    [self showModeView:self.modeView];
+    
     [self initialLayoutSubviews];
     
     __weak UIView *dialogView = self.dialogView;
@@ -322,7 +357,7 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     
     void(^animCompletionBlock)(BOOL) = ^(BOOL finished) {
         self.hidden = YES;
-        [self.activityIndicatorView stopAnimating];
+        [self hideModeView:self.modeView];
         if (completionBlock) {
             completionBlock();
         }
@@ -345,23 +380,29 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)initialLayoutSubviews {
     self.frame = self.superview.frame;
     
-    const CGFloat dialogPaddingY = 7;
-    const CGFloat dialogWidth = 150;
     const CGFloat dialogPadding = 15;
-    const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
+    const CGFloat modePadding = 30;
+    
+    CGFloat dialogWidth = 150;
+    if (self.mode == MRProgressOverlayViewModeCustom) {
+        dialogWidth = self.modeView.frame.size.width + 2*modePadding;
+    }
     
     const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
                                 || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
     
-    CGFloat y = dialogPaddingY;
+    CGFloat y = 7;
     
     if (!self.titleLabel.hidden) {
+        const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
+        
         CGFloat titleLabelMinX = dialogPadding;
         CGFloat titleLabelMaxWidth = innerViewWidth;
         CGFloat offset = 0;
         
-        CGSize modeViewSize = [self.smallDefaultActivityIndicatorView sizeThatFits:CGSizeMake(dialogWidth, dialogWidth)];
+        CGSize modeViewSize;
         if (hasSmallIndicator) {
+            modeViewSize = CGSizeMake(20, 20);
             offset = modeViewSize.width + 7;
         }
         
@@ -372,37 +413,35 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
         
         CGSize titleLabelSize = [self.titleLabel sizeThatFits:CGSizeMake(titleLabelMaxWidth, self.frame.size.height)];
         CGPoint titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
-        self.titleLabel.frame = (CGRect){titleLabelOrigin, titleLabelSize};
+        CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
+        self.titleLabel.frame = titleLabelFrame;
         
         if (hasSmallIndicator) {
             CGPoint modeViewOrigin = CGPointMake(titleLabelOrigin.x - offset,
                                                  y + (titleLabelSize.height - modeViewSize.height) / 2.0f);
             CGRect modeViewFrame = {modeViewOrigin, modeViewSize};
-            self.smallActivityIndicatorView.frame = modeViewFrame;
-            self.smallDefaultActivityIndicatorView.frame = modeViewFrame;
+            self.modeView.frame = modeViewFrame;
         }
         
-        y += CGRectGetMaxY(self.titleLabel.frame);
+        y += CGRectGetMaxY(titleLabelFrame);
     }
     
-    {
-        const CGFloat dialogPadding = 30;
-        const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
+    if (!hasSmallIndicator) {
+        const CGFloat innerViewWidth = dialogWidth - 2*modePadding;
         
-        CGRect modeViewFrame = CGRectMake(dialogPadding, y, innerViewWidth, innerViewWidth);
-        self.activityIndicatorView.frame = modeViewFrame;
-        self.circularProgressView.frame = modeViewFrame;
+        CGRect modeViewFrame;
+        CGFloat paddingBottom = 0;
         
-        self.checkmarkIconView.frame = modeViewFrame;
-        self.crossIconView.frame = modeViewFrame;
-        
-        self.horizontalBarProgressView.frame = CGRectMake(10, y, dialogWidth-20, 5);
-        
-        if (self.mode == MRProgressOverlayViewModeDeterminateHorizontalBar) {
-            y += self.horizontalBarProgressView.frame.size.height + 15;
-        } else if (!hasSmallIndicator) {
-            y += modeViewFrame.size.height + 20;
+        if (self.mode != MRProgressOverlayViewModeDeterminateHorizontalBar) {
+            modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            paddingBottom = 20;
+        } else {
+            modeViewFrame = CGRectMake(10, y, dialogWidth-20, 5);
+            paddingBottom = 15;
         }
+        
+        self.modeView.frame = modeViewFrame;
+        y += modeViewFrame.size.height + paddingBottom;
     }
     
     {
@@ -420,21 +459,28 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
-    switch (self.mode) {
-        case MRProgressOverlayViewModeDeterminateCircular:
-            [self.circularProgressView setProgress:progress animated:animated];
-            break;
-            
-        case MRProgressOverlayViewModeDeterminateHorizontalBar:
-            [self.horizontalBarProgressView setProgress:progress animated:animated];
-            break;
-            
-        default:
-            NSLog(@"%@: %@ or %@ are only valid to call when receiver is in a determinate mode!",
+    if ([self.modeView respondsToSelector:@selector(setProgress:animated:)]) {
+        [((id)self.modeView) setProgress:progress animated:animated];
+    } else if ([self.modeView respondsToSelector:@selector(setProgress:)]) {
+        if (animated) {
+            #if DEBUG
+                NSLog(@"** WARNING - %@: %@ is only valid to call when receiver is in a determinate mode or custom view supports %@!",
+                      NSStringFromClass(self.class),
+                      NSStringFromSelector(_cmd),
+                      NSStringFromSelector(@selector(setProgress:animated:)));
+            #endif
+        }
+        [((id)self.modeView) setProgress:progress];
+    } else {
+        NSAssert(self.mode == MRProgressOverlayViewModeDeterminateCircular
+                 || self.mode == MRProgressOverlayViewModeDeterminateHorizontalBar,
+                 @"Mode must support %@, but doesnot!", NSStringFromSelector(@selector(setProgress:animated:)));
+        #if DEBUG
+            NSLog(@"** ERROR - %@: %@ or %@ are only valid to call when receiver is in a determinate mode!",
                   NSStringFromClass(self.class),
                   NSStringFromSelector(@selector(setProgress:)),
                   NSStringFromSelector(_cmd));
-            break;
+        #endif
     }
 }
 
