@@ -25,6 +25,16 @@
 		71F50A3C181895D200FF4B8E /* MRProgressOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		71F50A4B1819D05B00FF4B8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7197CEB718169F210022A19D;
+			remoteInfo = MRProgress;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7111E5B71806116B00016A43 /* aquarium-fish1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aquarium-fish1.jpg"; sourceTree = "<group>"; };
 		7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MRProgress.xcodeproj; path = ../MRProgress.xcodeproj; sourceTree = "<group>"; };
@@ -132,6 +142,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		71F50A481819D05B00FF4B8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71F50A4C1819D05B00FF4B8E /* libMRProgress.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,12 +191,28 @@
 			mainGroup = 71EC36641805BB7100C85C5B;
 			productRefGroup = 71EC366E1805BB7100C85C5B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 71F50A481819D05B00FF4B8E /* Products */;
+					ProjectRef = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				71EC366C1805BB7100C85C5B /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		71F50A4C1819D05B00FF4B8E /* libMRProgress.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMRProgress.a;
+			remoteRef = 71F50A4B1819D05B00FF4B8E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		71EC366B1805BB7100C85C5B /* Resources */ = {
