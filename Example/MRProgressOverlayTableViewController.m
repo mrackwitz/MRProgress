@@ -1,25 +1,29 @@
 //
-//  MRProgressViewController.m
+//  MRProgressOverlayTableViewController.m
 //  MRProgress
 //
 //  Created by Marius Rackwitz on 09.10.13.
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
-#import "MRProgressViewController.h"
+#import "MRProgressOverlayTableViewController.h"
 #import "MRProgressOverlayView.h"
 
 
-@interface MRProgressViewController ()
+@interface MRProgressOverlayTableViewController ()
 
 @end
 
 
-@implementation MRProgressViewController
+@implementation MRProgressOverlayTableViewController
+
+- (UIView *)rootView {
+    return self.delegate.viewForProgressOverlay;
+}
 
 - (IBAction)onShowIndeterminateProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
-    [self.view addSubview:progressView];
+    [self.rootView addSubview:progressView];
     [progressView show:YES];
     [self performBlock:^{
         [progressView hide:YES];
@@ -29,21 +33,21 @@
 - (IBAction)onShowDeterminateCircularProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
-    [self.view addSubview:progressView];
+    [self.rootView addSubview:progressView];
     [self simulateProgressView:progressView];
 }
 
 - (IBAction)onShowDeterminateHorizontalBarProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeDeterminateHorizontalBar;
-    [self.view addSubview:progressView];
+    [self.rootView addSubview:progressView];
     [self simulateProgressView:progressView];
 }
 
 - (IBAction)onShowIndeterminateSmallProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmall;
-    [self.view addSubview:progressView];
+    [self.rootView addSubview:progressView];
     [progressView show:YES];
     [self performBlock:^{
         [progressView dismiss:YES];
@@ -51,10 +55,28 @@
 }
 
 - (IBAction)onShowIndeterminateSmallDefaultProgressView:(id)sender {
-    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.rootView animated:YES];
     progressView.mode = MRProgressOverlayViewModeIndeterminateSmallDefault;
     [self performBlock:^{
-        [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
+        [MRProgressOverlayView dismissOverlayForView:self.rootView animated:YES];
+    } afterDelay:2.0];
+}
+
+- (IBAction)onShowCheckmarkProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.rootView animated:YES];
+    progressView.mode = MRProgressOverlayViewModeCheckmark;
+    progressView.titleLabelText = @"Succeed";
+    [self performBlock:^{
+        [progressView dismiss:YES];
+    } afterDelay:2.0];
+}
+
+- (IBAction)onShowCrossProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.rootView animated:YES];
+    progressView.mode = MRProgressOverlayViewModeCross;
+    progressView.titleLabelText = @"Failed";
+    [self performBlock:^{
+        [progressView dismiss:YES];
     } afterDelay:2.0];
 }
 
@@ -78,7 +100,13 @@
                         [self performBlock:^{
                             [progressView setProgress:1.0 animated:YES];
                             [self performBlock:^{
-                                progressView.mode = ++i%2==0 ? MRProgressOverlayViewModeCross : MRProgressOverlayViewModeCheckmark;
+                                if (++i%2==1) {
+                                    progressView.mode = MRProgressOverlayViewModeCheckmark;
+                                    progressView.titleLabelText = @"Succeed";
+                                } else {
+                                    progressView.mode = MRProgressOverlayViewModeCross;
+                                    progressView.titleLabelText = @"Failed";
+                                }
                                 [self performBlock:^{
                                     [progressView dismiss:YES];
                                 } afterDelay:0.5];
