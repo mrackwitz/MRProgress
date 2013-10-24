@@ -203,6 +203,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     self.smallActivityIndicatorView.tintColor = self.tintColor;
     self.circularProgressView.tintColor = self.tintColor;
     self.horizontalBarProgressView.tintColor = self.tintColor;
+    self.checkmarkIconView.tintColor = self.tintColor;
+    self.crossIconView.tintColor = self.tintColor;
 }
 
 
