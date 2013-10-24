@@ -26,7 +26,6 @@
     if ([self.receiver respondsToSelector:aSelector]) {
         return self.receiver;
     }
-    NSLog(@"no target");
     return [super forwardingTargetForSelector:aSelector];
 }
 
@@ -37,7 +36,6 @@
     if ([self.receiver respondsToSelector:aSelector]) {
         return YES;
     }
-    NSLog(@"no answer!");
     return [super respondsToSelector:aSelector];
 }
 
