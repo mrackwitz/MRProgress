@@ -18,8 +18,6 @@
 		710BD5B41817353E00654750 /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD59E1817353E00654750 /* MRCircularProgressView.m */; };
 		710BD5B51817353E00654750 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59F1817353E00654750 /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5B61817353E00654750 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A01817353E00654750 /* MRIconView.m */; };
-		710BD5B71817353E00654750 /* MRNativeNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A11817353E00654750 /* MRNativeNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		710BD5B81817353E00654750 /* MRNativeNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A21817353E00654750 /* MRNativeNavigationBarProgressView.m */; };
 		710BD5B91817353E00654750 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5BA1817353E00654750 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */; };
 		710BD5BB1817353E00654750 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A51817353E00654750 /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,8 +46,6 @@
 		710BD59E1817353E00654750 /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
 		710BD59F1817353E00654750 /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
 		710BD5A01817353E00654750 /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
-		710BD5A11817353E00654750 /* MRNativeNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNativeNavigationBarProgressView.h; sourceTree = "<group>"; };
-		710BD5A21817353E00654750 /* MRNativeNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNativeNavigationBarProgressView.m; sourceTree = "<group>"; };
 		710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
 		710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
 		710BD5A51817353E00654750 /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
@@ -104,8 +100,6 @@
 				710BD59E1817353E00654750 /* MRCircularProgressView.m */,
 				710BD59F1817353E00654750 /* MRIconView.h */,
 				710BD5A01817353E00654750 /* MRIconView.m */,
-				710BD5A11817353E00654750 /* MRNativeNavigationBarProgressView.h */,
-				710BD5A21817353E00654750 /* MRNativeNavigationBarProgressView.m */,
 				710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */,
 				710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */,
 				710BD5A51817353E00654750 /* MRProgressOverlayView.h */,
@@ -194,7 +188,6 @@
 				710BD5AF1817353E00654750 /* UIImage+MRImageEffects.h in Headers */,
 				710BD5AD1817353E00654750 /* MRBlurView.h in Headers */,
 				710BD5BF1817353E00654750 /* MRProgressHelper.h in Headers */,
-				710BD5B71817353E00654750 /* MRNativeNavigationBarProgressView.h in Headers */,
 				710BD5B51817353E00654750 /* MRIconView.h in Headers */,
 				710BD5BD1817353E00654750 /* MRMessageInterceptor.h in Headers */,
 				710BD5B91817353E00654750 /* MRNavigationBarProgressView.h in Headers */,
@@ -257,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				710BD5B81817353E00654750 /* MRNativeNavigationBarProgressView.m in Sources */,
 				710BD5BE1817353E00654750 /* MRMessageInterceptor.m in Sources */,
 				710BD5C11817353E00654750 /* MRWeakProxy.m in Sources */,
 				710BD5BA1817353E00654750 /* MRNavigationBarProgressView.m in Sources */,
