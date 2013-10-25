@@ -53,49 +53,49 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
-    MRProgressOverlayView *overlayView = [self new];
-	[view addSubview:overlayView];
-	[overlayView show:animated];
-	return overlayView;
+   MRProgressOverlayView *overlayView = [self new];
+   [view addSubview:overlayView];
+   [overlayView show:animated];
+   return overlayView;
 }
 
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
-    MRProgressOverlayView *overlayView = [self overlayForView:view];
-	if (overlayView != nil) {
-		[overlayView dismiss:animated];
-		return YES;
-	}
-	return NO;
+   MRProgressOverlayView *overlayView = [self overlayForView:view];
+   if (overlayView) {
+       [overlayView dismiss:animated];
+       return YES;
+   }
+   return NO;
 }
 
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
-    NSArray *views = [self allOverlaysForView:view];
-	for (MRProgressOverlayView *overlayView in views) {
-		[overlayView dismiss:YES];
-		return YES;
-	}
-	return views.count;
+   NSArray *views = [self allOverlaysForView:view];
+   for (MRProgressOverlayView *overlayView in views) {
+       [overlayView dismiss:YES];
+       return YES;
+   }
+   return views.count;
 }
 
 + (instancetype)overlayForView:(UIView *)view {
-    NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
-	for (UIView *subview in subviewsEnum) {
-		if ([subview isKindOfClass:self]) {
-			return (MRProgressOverlayView *)subview;
-		}
-	}
-	return nil;
+   NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
+   for (UIView *subview in subviewsEnum) {
+       if ([subview isKindOfClass:self]) {
+           return (MRProgressOverlayView *)subview;
+       }
+   }
+   return nil;
 }
 
 + (NSArray *)allOverlaysForView:(UIView *)view {
-    NSMutableArray *overlays = [NSMutableArray new];
-	NSArray *subviews = view.subviews;
-	for (UIView *view in subviews) {
-		if ([view isKindOfClass:self]) {
-			[overlays addObject:view];
-		}
-	}
-	return overlays;
+   NSMutableArray *overlays = [NSMutableArray new];
+   NSArray *subviews = view.subviews;
+   for (UIView *view in subviews) {
+       if ([view isKindOfClass:self]) {
+           [overlays addObject:view];
+       }
+   }
+   return overlays;
 }
 
 
