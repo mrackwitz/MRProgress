@@ -8,6 +8,7 @@
 
 #import "MRBlurView.h"
 #import "UIImage+MRImageEffects.h"
+#import "MRProgressHelper.h"
 
 
 @interface MRBlurView ()
@@ -50,16 +51,7 @@
     
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, self.window.screen.scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-    UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
-    if (orientation == UIInterfaceOrientationLandscapeLeft) {
-        CGContextRotateCTM(ctx, M_PI_2);
-    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
-        CGContextRotateCTM(ctx, -M_PI_2);
-    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-        CGContextRotateCTM(ctx, M_PI);
-    }
-    
+    CGContextRotateCTM(ctx, MRRotationForStatusBarOrientation());
     CGContextTranslateCTM(ctx, -origin.x, -origin.y);
     [self.window drawViewHierarchyInRect:self.window.bounds afterScreenUpdates:NO];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
