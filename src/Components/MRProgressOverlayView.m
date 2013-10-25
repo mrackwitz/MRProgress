@@ -119,6 +119,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)commonInit {
     self.hidden = YES;
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // Container with blured background
     UIView *dialogView = [UIView new];
@@ -152,8 +153,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Create modeView
     [self createModeView];
     
-    // Observe key paths
+    // Observe key paths and notification center
     [self registerForKVO];
+    [self registerForNotificationCenter];
 }
 
 
@@ -162,6 +164,23 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)dealloc {
     [self unregisterFromKVO];
     [self unregisterFromNotificationCenter];
+}
+
+
+#pragma mark - Notifications
+
+- (void)registerForNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)unregisterFromNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center removeObserver:self];
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)notification {
+    [self initialLayoutSubviews];
 }
 
 
