@@ -39,9 +39,15 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)showModeView:(UIView *)modeView;
 - (void)hideModeView:(UIView *)modeView;
 
+- (void)registerForNotificationCenter;
+- (void)unregisterFromNotificationCenter;
+- (void)deviceOrientationDidChange:(NSNotification *)notification;
+
 - (void)registerForKVO;
 - (void)unregisterFromKVO;
 - (NSArray *)observableKeypaths;
+
+- (CGAffineTransform)transformForOrientation;
 
 @end
 
@@ -180,7 +186,13 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)deviceOrientationDidChange:(NSNotification *)notification {
-    [self initialLayoutSubviews];
+    if ([self.superview isKindOfClass:UIWindow.class]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self manualLayoutSubviews];
+        }];
+    } else {
+        [self manualLayoutSubviews];
+    }
 }
 
 
@@ -204,7 +216,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == MRProgressOverlayViewObservationContext) {
-        [self initialLayoutSubviews];
+        [self manualLayoutSubviews];
         return;
     }
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -320,7 +332,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)setTitleLabelText:(NSString *)titleLabelText {
     self.titleLabel.text = titleLabelText;
-    [self initialLayoutSubviews];
+    [self manualLayoutSubviews];
 }
 
 - (NSString *)titleLabelText {
@@ -351,7 +363,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     [self showModeView:[self createModeView]];
     
     if (!self.hidden) {
-        [self initialLayoutSubviews];
+        [self manualLayoutSubviews];
     }
 }
 
@@ -375,7 +387,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)show:(BOOL)animated {
     [self showModeView:self.modeView];
     
-    [self initialLayoutSubviews];
+    [self manualLayoutSubviews];
     
     __weak UIView *dialogView = self.dialogView;
     if (animated) {
@@ -443,9 +455,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Layout
 
+- (CGAffineTransform)transformForOrientation {
+    if ([self.superview isKindOfClass:UIWindow.class]) {
+        return CGAffineTransformMakeRotation(MRRotationForStatusBarOrientation());
+    }
+    return CGAffineTransformIdentity;
+}
+
 // Don't overwrite layoutSubviews here. This would cause issues with animation.
-- (void)initialLayoutSubviews {
-    self.frame = self.superview.frame;
+- (void)manualLayoutSubviews {
+    const CGRect frame = self.superview.bounds;
+    self.transform = self.transformForOrientation;
+    self.frame = frame;
     
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
