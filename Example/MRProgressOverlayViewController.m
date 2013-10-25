@@ -12,6 +12,9 @@
 
 @interface MRProgressOverlayViewController () <MRProgressOverlayTableViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @end
 
 
@@ -25,7 +28,15 @@
 }
 
 - (UIView *)viewForProgressOverlay {
-    return self.view;
+    switch (self.segmentedControl.selectedSegmentIndex) {
+        case 0:
+            return self.view;
+        case 1:
+            return self.view.window;
+        case 2:
+            return self.imageView;
+    }
+    return nil;
 }
 
 @end
