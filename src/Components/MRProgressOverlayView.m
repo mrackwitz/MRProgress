@@ -39,10 +39,16 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)showModeView:(UIView *)modeView;
 - (void)hideModeView:(UIView *)modeView;
 
+- (void)registerForKVO;
+- (void)unregisterFromKVO;
+- (NSArray *)observableKeypaths;
+
 @end
 
 
 @implementation MRProgressOverlayView
+
+static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObservationContext;
 
 #pragma mark - Static helper methods
 
@@ -145,6 +151,44 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
     
     // Create modeView
     [self createModeView];
+    
+    // Observe key paths
+    [self registerForKVO];
+}
+
+
+#pragma mark - Clean up
+
+- (void)dealloc {
+    [self unregisterFromKVO];
+    [self unregisterFromNotificationCenter];
+}
+
+
+#pragma mark - Key-Value-Observing
+
+- (void)registerForKVO {
+    for (NSString *keyPath in self.observableKeypaths) {
+        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:MRProgressOverlayViewObservationContext];
+    }
+}
+
+- (void)unregisterFromKVO {
+    for (NSString *keyPath in self.observableKeypaths) {
+        [self removeObserver:self forKeyPath:keyPath];
+    }
+}
+
+- (NSArray *)observableKeypaths {
+    return @[@"titleLabel.text"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (context == MRProgressOverlayViewObservationContext) {
+        [self setNeedsLayout];
+        return;
+    }
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 
