@@ -185,7 +185,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == MRProgressOverlayViewObservationContext) {
-        [self setNeedsLayout];
+        [self initialLayoutSubviews];
         return;
     }
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
