@@ -39,6 +39,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)showModeView:(UIView *)modeView;
 - (void)hideModeView:(UIView *)modeView;
 
+- (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha;
+
 - (void)registerForNotificationCenter;
 - (void)unregisterFromNotificationCenter;
 - (void)deviceOrientationDidChange:(NSNotification *)notification;
@@ -228,7 +230,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (UIView *)createBlurView {
     UIView *blurView = [MRBlurView new];
     blurView.alpha = 0.98;
-    [self.dialogView addSubview:blurView];
+    [self addSubview:blurView];
     
     return blurView;
 }
@@ -384,24 +386,28 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Transitions
 
+- (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
+    self.blurView.transform = transform;
+    self.blurView.alpha = alpha;
+    self.dialogView.transform = transform;
+    self.dialogView.alpha = alpha;
+}
+
 - (void)show:(BOOL)animated {
     [self showModeView:self.modeView];
     
     [self manualLayoutSubviews];
     
-    __weak UIView *dialogView = self.dialogView;
     if (animated) {
-        dialogView.transform = CGAffineTransformMakeScale(1.3f, 1.3f);
-        dialogView.alpha = 0.5f;
+        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.5f];
         self.backgroundColor = UIColor.clearColor;
     }
     
     self.hidden = NO;
     
     void(^animBlock)() = ^{
+        [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
-        dialogView.transform = CGAffineTransformIdentity;
-        dialogView.alpha = 1.0f;
     };
     
     if (animated) {
@@ -424,14 +430,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
-    __weak UIView *dialogView = self.dialogView;
-    dialogView.transform = CGAffineTransformIdentity;
-    dialogView.alpha = 1.0f;
+    [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
     
     void(^animBlock)() = ^{
+        [self setSubviewTransform:CGAffineTransformMakeScale(0.6f, 0.6f) alpha:0.0f];
         self.backgroundColor = UIColor.clearColor;
-        dialogView.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
-        dialogView.alpha = 0.0f;
     };
     
     void(^animCompletionBlock)(BOOL) = ^(BOOL finished) {
@@ -465,8 +468,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 // Don't overwrite layoutSubviews here. This would cause issues with animation.
 - (void)manualLayoutSubviews {
     const CGRect frame = self.superview.bounds;
-    self.transform = self.transformForOrientation;
     self.frame = frame;
+    self.dialogView.transform = self.transformForOrientation;
+    self.blurView.transform = self.transformForOrientation;
     
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
@@ -535,7 +539,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     {
         self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
-        self.blurView.frame = self.dialogView.bounds;
+        self.blurView.frame = self.dialogView.frame;
     }
 }
 
