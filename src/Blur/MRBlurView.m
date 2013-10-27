@@ -40,11 +40,18 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.image = [[self snapshot] mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+    [self redraw];
 }
 
 
-#pragma mark - Image helper
+#pragma mark - Redraw
+
+- (void)redraw {
+    self.image = [self.snapshot mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+}
+
+
+#pragma mark - Snapshot helper
 
 - (UIImage *)snapshot {
     UIWindow *window = UIApplication.sharedApplication.delegate.window;
