@@ -47,14 +47,27 @@
 #pragma mark - Image helper
 
 - (UIImage *)snapshot {
-    CGPoint origin = [self convertPoint:self.frame.origin toView:self.window];
     UIWindow *window = UIApplication.sharedApplication.delegate.window;
+    
+    // Absolute origin of receiver
+    CGPoint origin = self.bounds.origin;
+    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+        origin = CGPointMake(origin.y, origin.x);
+    }
+    origin = [self convertPoint:origin toView:window];
     CGSize size = self.frame.size;
     
     // Begin context (with device scale)
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     const CGContextRef context = UIGraphicsGetCurrentContext();
     
+    // Apply window tranforms
+    // Author: NSElvis
+    // Source: http://stackoverflow.com/a/8017292
+    CGContextTranslateCTM(context, window.center.x, window.center.y);
+    CGContextConcatCTM(context, window.transform);
+    CGContextTranslateCTM(context, -window.bounds.size.width  * window.layer.anchorPoint.x,
+                                   -window.bounds.size.height * window.layer.anchorPoint.y);
     
     // Rotate according to device orientation
     CGContextRotateCTM(context, 2*M_PI - MRRotationForStatusBarOrientation());
