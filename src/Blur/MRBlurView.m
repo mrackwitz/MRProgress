@@ -72,7 +72,13 @@
 #pragma mark - Redraw
 
 - (void)redraw {
-    self.image = [self.snapshot mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+    __block UIImage *image = self.snapshot;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        image = [image mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = image;
+        });
+    });
 }
 
 
