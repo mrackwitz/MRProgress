@@ -11,6 +11,7 @@
 
 /**
  Blur implementation, which displays a blurred image screenshot of the window cropped to its absolute frame.
+ Hides it superview on redraw, temporarily.
  */
 @interface MRBlurView : UIImageView
 

@@ -85,6 +85,9 @@
 #pragma mark - Snapshot helper
 
 - (UIImage *)snapshot {
+    BOOL wasHidden = self.superview.hidden;
+    self.superview.hidden = YES;
+    
     UIWindow *window = UIApplication.sharedApplication.delegate.window;
     
     // Absolute origin of receiver
@@ -119,6 +122,9 @@
     // Capture the image and exit context
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
+    self.superview.hidden = wasHidden;
+    
     return image;
 }
 
