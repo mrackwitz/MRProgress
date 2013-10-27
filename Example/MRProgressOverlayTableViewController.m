@@ -26,7 +26,7 @@
     [self.rootView addSubview:progressView];
     [progressView show:YES];
     [self performBlock:^{
-        [progressView hide:YES];
+        [progressView dismiss:YES];
     } afterDelay:2.0];
 }
 
