@@ -443,7 +443,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                          animations:animBlock
                          completion:animCompletionBlock];
     } else {
