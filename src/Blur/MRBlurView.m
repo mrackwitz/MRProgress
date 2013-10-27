@@ -48,12 +48,24 @@
 
 - (UIImage *)snapshot {
     CGPoint origin = [self convertPoint:self.frame.origin toView:self.window];
+    UIWindow *window = UIApplication.sharedApplication.delegate.window;
+    CGSize size = self.frame.size;
     
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, self.window.screen.scale);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextRotateCTM(ctx, MRRotationForStatusBarOrientation());
-    CGContextTranslateCTM(ctx, -origin.x, -origin.y);
-    [self.window drawViewHierarchyInRect:self.window.bounds afterScreenUpdates:NO];
+    // Begin context (with device scale)
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    const CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    
+    // Rotate according to device orientation
+    CGContextRotateCTM(context, 2*M_PI - MRRotationForStatusBarOrientation());
+    
+    // Translate to draw at the absolute origin of the receiver
+    CGContextTranslateCTM(context, -origin.x, -origin.y);
+    
+    // Draw the window
+    [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+    
+    // Capture the image and exit context
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
