@@ -36,11 +36,36 @@
 
 - (void)commonInit {
     self.clipsToBounds = YES;
+    [self registerForNotificationCenter];
+}
+
+- (void)dealloc {
+    [self unregisterFromNotificationCenter];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self redraw];
+}
+
+
+#pragma mark - Notifications
+
+- (void)registerForNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)unregisterFromNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center removeObserver:self];
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)notification {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^{
+       [self redraw];
+    });
 }
 
 
