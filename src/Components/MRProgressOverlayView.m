@@ -129,18 +129,17 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     self.hidden = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    // Container with blured background
-    UIView *dialogView = [UIView new];
-    [self addSubview:dialogView];
-    self.dialogView = dialogView;
-    
-    [self applyMotionEffects];
-    
     const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
     // Create blurView
     self.blurView = [self createBlurView];
     self.blurView.layer.cornerRadius = cornerRadius;
+    
+    // Create container with contents
+    UIView *dialogView = [UIView new];
+    [self addSubview:dialogView];
+    self.dialogView = dialogView;
+    [self applyMotionEffects];
     
     // Style the dialog to match the iOS7 UIAlertView
     dialogView.backgroundColor = UIColor.clearColor;
