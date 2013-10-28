@@ -82,14 +82,14 @@ The provided Example app demonstrates how they can be used.
 
 1. Add a pod entry for MRProgress to your *Podfile* ```pod 'MRProgress', '~> 0.2'```.
 2. Install the pod(s) by running ```pod install```.
-3. Include MRProgress wherever you need it with #import "MRProgress.h".
+3. Include MRProgress wherever you need it with ```#import "MRProgress.h"```.
 
 
 ### Source files
 
 1. Download the [latest code version](http://github.com/mrackwitz/MRProgress/archive/master.zip) or add the repository as a git submodule to your git-tracked project.
 2. Drag and drop the **src** directory from the archive in your project navigator. Make sure to select *Copy items* when asked if you extracted the code archive outside of your project.
-3. Include MRProgress wherever you need any component with #import "MRProgress.h".
+3. Include MRProgress wherever you need any component with ```#import "MRProgress.h"```.
 
 
 ### Static library
