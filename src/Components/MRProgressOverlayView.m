@@ -466,10 +466,16 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 // Don't overwrite layoutSubviews here. This would cause issues with animation.
 - (void)manualLayoutSubviews {
-    const CGRect frame = self.superview.bounds;
-    self.frame = frame;
-    self.dialogView.transform = self.transformForOrientation;
-    self.blurView.transform = self.transformForOrientation;
+    self.transform = self.transformForOrientation;
+    
+    CGRect bounds = self.superview.bounds;
+    self.center = CGPointMake(bounds.size.width / 2.0f, bounds.size.height / 2.0f);
+    if ([self.superview isKindOfClass:UIWindow.class] && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
+        // Swap width and height
+        self.bounds = (CGRect){CGPointZero, {bounds.size.height, bounds.size.width}};
+    } else {
+        self.bounds = (CGRect){CGPointZero, bounds.size};
+    }
     
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
@@ -502,7 +508,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         
         y += 3;
         
-        CGSize titleLabelSize = [self.titleLabel sizeThatFits:CGSizeMake(titleLabelMaxWidth, self.frame.size.height)];
+        CGSize titleLabelSize = [self.titleLabel sizeThatFits:CGSizeMake(titleLabelMaxWidth, self.bounds.size.height)];
         CGPoint titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
         CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
         self.titleLabel.frame = titleLabelFrame;
