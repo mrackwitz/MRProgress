@@ -14,6 +14,7 @@
  either spinning or stopped.
  */
 @interface MRActivityIndicatorView : UIControl {
+@package
     BOOL _animating;
 }
 
