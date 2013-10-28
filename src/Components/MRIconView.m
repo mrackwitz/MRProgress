@@ -52,6 +52,7 @@
 }
 
 - (void)tintColorDidChange {
+    [super tintColorDidChange];
     UIColor *const tintColor = self.tintColor;
     self.layer.borderColor = tintColor.CGColor;
     self.shapeLayer.strokeColor = tintColor.CGColor;
