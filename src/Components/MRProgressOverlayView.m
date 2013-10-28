@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "MRProgressOverlayView.h"
 #import "MRActivityIndicatorView.h"
 #import "MRBlurView.h"
@@ -79,7 +81,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
    NSArray *views = [self allOverlaysForView:view];
    for (MRProgressOverlayView *overlayView in views) {
-       [overlayView dismiss:YES];
+       [overlayView dismiss:animated];
        return YES;
    }
    return views.count;
