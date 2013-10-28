@@ -102,6 +102,7 @@
  */
 
 #import "UIImage+MRImageEffects.h"
+#import <CoreGraphics/CoreGraphics.h>
 #import <Accelerate/Accelerate.h>
 
 

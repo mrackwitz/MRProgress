@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MRCircularProgressView.h"
 #import "MRProgressHelper.h"
 #import "MRWeakProxy.h"

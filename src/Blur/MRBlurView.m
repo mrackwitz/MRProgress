@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "MRBlurView.h"
 #import "UIImage+MRImageEffects.h"
 #import "MRProgressHelper.h"
