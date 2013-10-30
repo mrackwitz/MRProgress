@@ -105,9 +105,14 @@ typedef enum {
  Title label text.
  
  By default "Loading ...".
- You can also set an attributed text, otherwise a new attributed text will been set on base of the current string attributes.
+ This will automatically call setTitleLabelAttributedText: with current string attributes.
  */
 @property (nonatomic, strong) NSString *titleLabelText;
+
+/**
+ Title label attributed text.
+ */
+@property (nonatomic, strong) NSAttributedString *titleLabelAttributedText;
 
 /**
  Title label.

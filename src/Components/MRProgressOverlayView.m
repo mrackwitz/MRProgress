@@ -53,6 +53,8 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 - (CGAffineTransform)transformForOrientation;
 
+- (NSDictionary *)titleTextAttributesToCopy;
+
 @end
 
 
@@ -337,19 +339,26 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Title label text
 
+- (NSDictionary *)titleTextAttributesToCopy {
+    return [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
+}
+
 - (void)setTitleLabelText:(NSString *)titleLabelText {
-    if ([titleLabelText isKindOfClass:NSAttributedString.class]) {
-        self.titleLabel.attributedText = (NSAttributedString *)titleLabelText;
-    } else {
-        NSDictionary *attributes = [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
-        self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:titleLabelText attributes:attributes];
-    }
-    
+    self.titleLabelAttributedText = [[NSAttributedString alloc] initWithString:titleLabelText attributes:self.titleTextAttributesToCopy];
     [self manualLayoutSubviews];
 }
 
 - (NSString *)titleLabelText {
     return self.titleLabel.text;
+}
+
+- (void)setTitleLabelAttributedText:(NSAttributedString *)titleLabelAttributedText {
+    self.titleLabel.attributedText = titleLabelAttributedText;
+    [self manualLayoutSubviews];
+}
+
+- (NSAttributedString *)titleLabelAttributedText {
+    return self.titleLabel.attributedText;
 }
 
 
