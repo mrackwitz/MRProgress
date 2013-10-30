@@ -20,7 +20,9 @@ const CGFloat MRProgressOverlayViewCornerRadius = 7;
 const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 
-@interface MRProgressOverlayView ()
+@interface MRProgressOverlayView () {
+    NSDictionary *_savedAttributes;
+}
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
 @property (nonatomic, weak, readwrite) UIView *blurView;
@@ -209,7 +211,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)registerForKVO {
     for (NSString *keyPath in self.observableKeypaths) {
-        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:MRProgressOverlayViewObservationContext];
+        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionPrior context:MRProgressOverlayViewObservationContext];
     }
 }
 
@@ -225,6 +227,23 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == MRProgressOverlayViewObservationContext) {
+        if ([keyPath isEqualToString:@"titleLabel.text"]) {
+            if ([change[NSKeyValueChangeNotificationIsPriorKey] boolValue]) {
+                _savedAttributes = self.titleTextAttributesToCopy;
+                return;
+            } else {
+                if (!_savedAttributes) {
+                    self.titleLabelText = self.titleLabel.text;
+                    #if DEBUG
+                        NSLog(@"** WARNING - Instance of %@ used automatically setTitleLabelText: internally, instead of titleLabel.text, but some text attributes may been lost.",
+                              NSStringFromClass(self.class));
+                    #endif
+                } else {
+                    self.titleLabelText = (id)[[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:_savedAttributes];
+                    _savedAttributes = nil;
+                }
+            }
+        }
         [self manualLayoutSubviews];
         return;
     }
