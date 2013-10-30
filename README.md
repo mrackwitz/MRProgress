@@ -5,13 +5,13 @@
 
 MRProgress is a collection of drop-in components that display a dimmed overlay with a blurred box view with an indicator and/or labels while work is being done in a background thread.
 
-[![](/Images/screenshot_004_2.jpg)](/Images/screenshot_004.png)
-[![](/Images/screenshot_005_2.jpg)](/Images/screenshot_005.png)
-[![](/Images/screenshot_006_2.jpg)](/Images/screenshot_006.png)
-[![](/Images/screenshot_007_2.jpg)](/Images/screenshot_007.png)
-[![](/Images/screenshot_008_2.jpg)](/Images/screenshot_008.png)
-[![](/Images/screenshot_009_2.jpg)](/Images/screenshot_009.png)
-[![](/Images/screenshot_010_2.jpg)](/Images/screenshot_010.png)
+[![](Images/screenshot_004_2.jpg)](/Images/screenshot_004.png)
+[![](Images/screenshot_005_2.jpg)](/Images/screenshot_005.png)
+[![](Images/screenshot_006_2.jpg)](/Images/screenshot_006.png)
+[![](Images/screenshot_007_2.jpg)](/Images/screenshot_007.png)
+[![](Images/screenshot_008_2.jpg)](/Images/screenshot_008.png)
+[![](Images/screenshot_009_2.jpg)](/Images/screenshot_009.png)
+[![](Images/screenshot_010_2.jpg)](/Images/screenshot_010.png)
 
 * **Component oriented**: You don't have to use all components or ```MRProgressOverlayView```. You can use just the custom activity indicators or progress views.
 * **Configurable**: All components implement tintColor.
@@ -27,7 +27,7 @@ The provided Example app demonstrates how they can be used.
 
 ### ```MRProgressOverlayView```
 
-![](/Images/screenshot_004_1.jpg)
+![](Images/screenshot_004_1.jpg)
 
 * Supports different modes
 * Animated show and hide
@@ -38,8 +38,8 @@ The provided Example app demonstrates how they can be used.
 
 ### ```MRCircularProgressView```
 
-![](/Images/screenshot_001_1.jpg)
-![](/Images/screenshot_002_1.jpg)
+![](Images/screenshot_001_1.jpg)
+![](Images/screenshot_002_1.jpg)
 
 * Circular progress view like in AppStore
 * Inherits from ```UIControl``` and can display a stop button
@@ -48,7 +48,7 @@ The provided Example app demonstrates how they can be used.
 
 ### ```MRNavigationBarProgressView```
 
-![](/Images/screenshot_003_1.jpg)
+![](Images/screenshot_003_1.jpg)
 
 * Display a progress view in a ```UINavigationController```
 * Hooks ```UINavigationControllerDelegate``` and is automatically removed on push or pop
@@ -57,7 +57,7 @@ The provided Example app demonstrates how they can be used.
 
 ### ```MRCheckmarkIconView``` and ```MRCrossIconView```
 
-![](/Images/screenshot_011_1.jpg)
+![](Images/screenshot_011_1.jpg)
 
 * Tint color can be changed
 * Scalable
@@ -67,7 +67,7 @@ The provided Example app demonstrates how they can be used.
 
 ### ```MRActivityIndicatorView```
 
-![](/Images/screenshot_012_1.jpg)
+![](Images/screenshot_012_1.jpg)
 
 * Tint color can be changed
 * Same API as ```UIActivityIndicatorView```
@@ -166,13 +166,13 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
 
 Name (```MRProgressOverlayView<...>```)  | Screenshot                                                      | Description
 ---------------------------------------- | --------------------------------------------------------------- | :-----------
-**Indeterminate**                        | [![](/Images/screenshot_004_2.jpg)](/Images/screenshot_004.png) | Progress is shown using a large round activity indicator view. (```MRActivityIndicatorView```) This is the default.
-**DeterminateCircular**                  | [![](/Images/screenshot_005_2.jpg)](/Images/screenshot_005.png) | Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
-**DeterminateHorizontalBar**             | [![](/Images/screenshot_006_2.jpg)](/Images/screenshot_006.png) | Progress is shown using a horizontal progress bar. (```UIProgressView```)
-**IndeterminateSmall**                   | [![](/Images/screenshot_007_2.jpg)](/Images/screenshot_007.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
-**IndeterminateSmallDefault**            | [![](/Images/screenshot_008_2.jpg)](/Images/screenshot_008.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
-**Checkmark**                            | [![](/Images/screenshot_009_2.jpg)](/Images/screenshot_009.png) | Shows a checkmark. (```MRCheckmarkIconView```)
-**Cross**                                | [![](/Images/screenshot_010_2.jpg)](/Images/screenshot_010.png) | Shows a cross. (```MRCrossIconView```)
+**Indeterminate**                        | [![](Images/screenshot_004_2.jpg)](/Images/screenshot_004.png) | Progress is shown using a large round activity indicator view. (```MRActivityIndicatorView```) This is the default.
+**DeterminateCircular**                  | [![](Images/screenshot_005_2.jpg)](/Images/screenshot_005.png) | Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
+**DeterminateHorizontalBar**             | [![](Images/screenshot_006_2.jpg)](/Images/screenshot_006.png) | Progress is shown using a horizontal progress bar. (```UIProgressView```)
+**IndeterminateSmall**                   | [![](Images/screenshot_007_2.jpg)](/Images/screenshot_007.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
+**IndeterminateSmallDefault**            | [![](Images/screenshot_008_2.jpg)](/Images/screenshot_008.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
+**Checkmark**                            | [![](Images/screenshot_009_2.jpg)](/Images/screenshot_009.png) | Shows a checkmark. (```MRCheckmarkIconView```)
+**Cross**                                | [![](Images/screenshot_010_2.jpg)](/Images/screenshot_010.png) | Shows a cross. (```MRCrossIconView```)
 
 
 
