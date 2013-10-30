@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name                  = 'MRProgress'
   s.version               = '0.2.0'
-  s.summary               = 'MRProgress is a collection of drop-in components that displays a dimmed overlay with a blurred box view with different modes.'
+  s.summary               = 'Collection of iOS drop-in components to visualize progress with different modes'
   s.homepage              = 'https://github.com/mrackwitz/MRProgress'
   s.author                = { 'Marius Rackwitz' => 'git@mariusrackwitz.de' }
   s.license               = 'MIT License'
