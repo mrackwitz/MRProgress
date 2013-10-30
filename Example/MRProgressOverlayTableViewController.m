@@ -80,6 +80,23 @@
     } afterDelay:2.0];
 }
 
+- (IBAction)onShowProgressViewWithLongTitleLabelText:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.rootView animated:YES];
+    progressView.titleLabelText = @"Please stay awake!\nDo not press anykey while loading.";
+    [self performBlock:^{
+        [progressView dismiss:YES];
+    } afterDelay:2.0];
+}
+
+- (IBAction)onShowSmallProgressViewWithLongTitleLabelText:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView showOverlayAddedTo:self.rootView animated:YES];
+    progressView.mode = MRProgressOverlayViewModeIndeterminateSmall;
+    progressView.titleLabelText = @"Please stay awake!";
+    [self performBlock:^{
+        [progressView dismiss:YES];
+    } afterDelay:2.0];
+}
+
 - (IBAction)onShowAlertView:(id)sender {
     [[[UIAlertView alloc] initWithTitle:@"Native Alert View" message:@"Just to compare blur effects." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
