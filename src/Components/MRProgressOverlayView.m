@@ -598,6 +598,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     motionEffectGroup.motionEffects = @[[self motionEffectWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis],
                                         [self motionEffectWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis]];
     [self.dialogView addMotionEffect:motionEffectGroup];
+    [self.blurView addMotionEffect:motionEffectGroup];
 }
 
 @end
