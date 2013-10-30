@@ -10,6 +10,19 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 
+static inline CGFloat MRCGFloatCeil(CGFloat);
+
+#if defined(__LP64__) && __LP64__
+    static inline CGFloat MRCGFloatCeil(CGFloat x) {
+        return ceil(x);
+    }
+#else
+    static inline CGFloat MRCGFloatCeil(CGFloat x) {
+        return ceilf(x);
+    }
+#endif
+
+
 static inline CGRect MRCenterCGSizeInCGRect(CGSize innerRectSize, CGRect outerRect) {
     CGRect innerRect;
     innerRect.size = innerRectSize;
