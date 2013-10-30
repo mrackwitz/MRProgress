@@ -33,6 +33,7 @@ The provided Example app demonstrates how they can be used.
 * Animated show and hide
 * Blured background
 * With UIMotionEffects for tilting like ```UIAlertView```
+* Supports multi-line title label text
 
 
 ### ```MRCircularProgressView```
