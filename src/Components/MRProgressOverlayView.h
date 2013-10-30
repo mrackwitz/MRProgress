@@ -127,7 +127,7 @@ typedef enum {
 /**
  Change the tint color of the mode views.
  
- Redeclared to document usage, internally ```tintColorDidChange``` is used.
+ Redeclared to document usage, internally tintColorDidChange is used.
  
  @param tintColor The new tint color
  */
