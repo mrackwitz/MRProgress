@@ -153,10 +153,14 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
-    titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    titleLabel.textColor = UIColor.blackColor;
-    titleLabel.text = @"Loading ...";
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Loading ..." attributes:@{
+        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSFontAttributeName:            [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
+        NSKernAttributeName:            NSNull.null,  // turn on auto-kerning
+    }];
     titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.numberOfLines = 0;
+    titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [dialogView addSubview:titleLabel];
     
     // Create modeView
@@ -334,7 +338,13 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Title label text
 
 - (void)setTitleLabelText:(NSString *)titleLabelText {
-    self.titleLabel.text = titleLabelText;
+    if ([titleLabelText isKindOfClass:NSAttributedString.class]) {
+        self.titleLabel.attributedText = (NSAttributedString *)titleLabelText;
+    } else {
+        NSDictionary *attributes = [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
+        self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:titleLabelText attributes:attributes];
+    }
+    
     [self manualLayoutSubviews];
 }
 
@@ -510,7 +520,13 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         
         y += 3;
         
-        CGSize titleLabelSize = [self.titleLabel sizeThatFits:CGSizeMake(titleLabelMaxWidth, self.bounds.size.height)];
+        CGSize titleLabelMaxSize = CGSizeMake(titleLabelMaxWidth, self.bounds.size.height);
+        CGRect boundingRect = [self.titleLabel.attributedText boundingRectWithSize:titleLabelMaxSize
+                                                                           options:NSStringDrawingUsesLineFragmentOrigin
+                                                                           context:nil];
+        CGSize titleLabelSize = CGSizeMake(MRCGFloatCeil(boundingRect.size.width),
+                                           MRCGFloatCeil(boundingRect.size.height));
+        
         CGPoint titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
         CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
         self.titleLabel.frame = titleLabelFrame;
