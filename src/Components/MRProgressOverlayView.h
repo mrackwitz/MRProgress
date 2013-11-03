@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
-typedef enum {
+/** (MRProgressOverlayViewMode) */
+typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
     /** Progress is shown using a large round activity indicator view. (MRActivityIndicatorView) This is the default. */
     MRProgressOverlayViewModeIndeterminate,
     /** Progress is shown using a round, pie-chart like, progress view. (MRCircularProgressView) */
@@ -26,7 +26,7 @@ typedef enum {
     MRProgressOverlayViewModeCross,
     /** Shows a custom view. (UIView) */
     MRProgressOverlayViewModeCustom,
-} MRProgressOverlayViewMode;
+};
 
 
 /**
