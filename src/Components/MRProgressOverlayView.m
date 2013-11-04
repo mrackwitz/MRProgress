@@ -528,14 +528,14 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
-    
-    CGFloat dialogWidth = 150;
+    const CGFloat dialogMargin = 10;
+    const CGFloat dialogMinWidth = 150;
+    const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
+    || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
+    CGFloat dialogWidth = hasSmallIndicator ? CGRectGetWidth(bounds) - dialogMargin * 2 : dialogMinWidth;
     if (self.mode == MRProgressOverlayViewModeCustom) {
         dialogWidth = self.modeView.frame.size.width + 2*modePadding;
     }
-    
-    const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
-                                || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
     
     CGFloat y = 7;
     
@@ -563,18 +563,27 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
                                                                            context:nil];
         CGSize titleLabelSize = CGSizeMake(MRCGFloatCeil(boundingRect.size.width),
                                            MRCGFloatCeil(boundingRect.size.height));
-        
-        CGPoint titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
-        CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
-        self.titleLabel.frame = titleLabelFrame;
-        
+        CGPoint titleLabelOrigin;
         if (hasSmallIndicator) {
+            CGFloat titleLabelMinWidth = dialogMinWidth - 2*dialogPadding - offset;
+            if (titleLabelSize.width > titleLabelMinWidth) {
+                dialogWidth = titleLabelSize.width + offset + 2* dialogPadding;
+                titleLabelOrigin = CGPointMake(titleLabelMinX, y);
+            } else {
+                dialogWidth = dialogMinWidth;
+                titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMinWidth - titleLabelSize.width) / 2.0f, y);
+            }
+            
             CGPoint modeViewOrigin = CGPointMake(titleLabelOrigin.x - offset,
                                                  y + (titleLabelSize.height - modeViewSize.height) / 2.0f);
             CGRect modeViewFrame = {modeViewOrigin, modeViewSize};
             self.modeView.frame = modeViewFrame;
+        } else {
+            titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
         }
         
+        CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
+        self.titleLabel.frame = titleLabelFrame;
         y += CGRectGetMaxY(titleLabelFrame);
     }
     
