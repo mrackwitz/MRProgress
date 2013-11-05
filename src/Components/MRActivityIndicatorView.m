@@ -46,7 +46,6 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 - (void)commonInit {
     self.hidesWhenStopped = YES;
-    
     self.layer.borderWidth = 0;
     self.shapeLayer.lineWidth = 2.0f;
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
@@ -88,6 +87,9 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     self.shapeLayer.strokeColor = self.tintColor.CGColor;
 }
 
+- (void)setLineWidth:(CGFloat)width {
+    self.shapeLayer.lineWidth = width;
+}
 
 #pragma mark - Control animation
 
