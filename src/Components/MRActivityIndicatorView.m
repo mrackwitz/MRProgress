@@ -46,9 +46,8 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 - (void)commonInit {
     self.hidesWhenStopped = YES;
-    
     self.layer.borderWidth = 0;
-    self.shapeLayer.lineWidth = 2.0f;
+    self.lineWidth = 2.0f;
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
 }
 
@@ -80,6 +79,12 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
                                        clockwise:YES];
 }
 
+#pragma mark - Setters
+
+- (void)setLineWidth:(CGFloat)width {
+    _lineWidth = width;
+    self.shapeLayer.lineWidth = self.lineWidth;
+}
 
 #pragma mark - Hook tintColor
 
@@ -87,7 +92,6 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     [super tintColorDidChange];
     self.shapeLayer.strokeColor = self.tintColor.CGColor;
 }
-
 
 #pragma mark - Control animation
 

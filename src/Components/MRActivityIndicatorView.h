@@ -19,6 +19,13 @@
 }
 
 /**
+ A float value to indicate how thick the line of the activivity indicator is.
+ 
+ The default value is 2.f. 
+ */
+@property (nonatomic, assign) CGFloat lineWidth;
+
+/**
  A Boolean value that controls whether the receiver is hidden when the animation is stopped.
  
  If the value of this property is YES (the default), the receiver sets its hidden property (UIView) to YES when receiver
