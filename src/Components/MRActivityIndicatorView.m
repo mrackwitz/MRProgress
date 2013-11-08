@@ -87,9 +87,17 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     self.shapeLayer.strokeColor = self.tintColor.CGColor;
 }
 
+
+#pragma mark - Line width
+
 - (void)setLineWidth:(CGFloat)width {
     self.shapeLayer.lineWidth = width;
 }
+
+- (CGFloat)lineWidth {
+    return self.shapeLayer.lineWidth;
+}
+
 
 #pragma mark - Control animation
 
