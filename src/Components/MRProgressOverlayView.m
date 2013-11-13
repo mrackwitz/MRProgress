@@ -166,7 +166,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
-    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Loading ..." attributes:@{
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Loading ...", @"Loading ...") attributes:@{
         NSForegroundColorAttributeName: UIColor.blackColor,
         NSFontAttributeName:            [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSKernAttributeName:            NSNull.null,  // turn on auto-kerning
