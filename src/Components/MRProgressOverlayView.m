@@ -368,7 +368,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Title label text
 
 - (NSDictionary *)titleTextAttributesToCopy {
-    return [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
+    if (self.titleLabel.text.length > 0) {
+        return [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
+    } else {
+        return [NSDictionary dictionary];
+    }
 }
 
 - (void)setTitleLabelText:(NSString *)titleLabelText {
@@ -584,7 +588,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         
         CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
         self.titleLabel.frame = titleLabelFrame;
-        y += CGRectGetMaxY(titleLabelFrame);
+        
+        if (self.titleLabel.text.length > 0) {
+            y += CGRectGetMaxY(titleLabelFrame);
+        }
     }
     
     if (!hasSmallIndicator) {
@@ -594,7 +601,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         CGFloat paddingBottom = 0;
         
         if (self.mode != MRProgressOverlayViewModeDeterminateHorizontalBar) {
-            modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            if (self.titleLabel.text.length > 0) {
+                modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            } else {
+                modeViewFrame = CGRectMake(modePadding, modePadding, innerViewWidth, innerViewWidth);
+            }
             paddingBottom = 20;
         } else {
             modeViewFrame = CGRectMake(10, y, dialogWidth-20, 5);
@@ -606,7 +617,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     }
     
     {
-        self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
+        if (self.titleLabel.text.length > 0) {
+            self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
+        } else {
+            self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, dialogWidth), self.bounds);
+        }
         
         self.blurView.frame = self.dialogView.frame;
     }

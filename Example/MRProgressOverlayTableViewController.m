@@ -30,8 +30,26 @@
     } afterDelay:2.0];
 }
 
+- (IBAction)onShowIndeterminateNoTextProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.titleLabelText = @"";
+    [self.rootView addSubview:progressView];
+    [progressView show:YES];
+    [self performBlock:^{
+        [progressView dismiss:YES];
+    } afterDelay:2.0];
+}
+
 - (IBAction)onShowDeterminateCircularProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
+    [self.rootView addSubview:progressView];
+    [self simulateProgressView:progressView];
+}
+
+- (IBAction)onShowDeterminateCircularNoTextProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.titleLabelText = @"";
     progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
     [self.rootView addSubview:progressView];
     [self simulateProgressView:progressView];
@@ -119,10 +137,14 @@
                             [self performBlock:^{
                                 if (++i%2==1) {
                                     progressView.mode = MRProgressOverlayViewModeCheckmark;
-                                    progressView.titleLabelText = @"Succeed";
+                                    if (progressView.titleLabel.text.length > 0) {
+                                        progressView.titleLabelText = @"Succeed";
+                                    }
                                 } else {
                                     progressView.mode = MRProgressOverlayViewModeCross;
-                                    progressView.titleLabelText = @"Failed";
+                                    if (progressView.titleLabel.text.length > 0) {
+                                        progressView.titleLabelText = @"Failed";
+                                    }
                                 }
                                 [self performBlock:^{
                                     [progressView dismiss:YES];
