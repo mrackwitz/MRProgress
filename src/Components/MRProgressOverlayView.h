@@ -56,6 +56,18 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated;
 
 /**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
+ @param title Title label text
+ @param tintColor Tint color for the activity indicator
+ @param mode Visualization mode
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode tintColor:(UIColor *)tintColor animated:(BOOL)animated;
+
+/**
  Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
  
  @param view The view that is going to be searched for a overlay subview.
