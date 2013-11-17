@@ -82,6 +82,17 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return overlayView;
 }
 
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode tintColor:(UIColor *)tintColor animated:(BOOL)animated
+{
+    MRProgressOverlayView *overlayView = [self new];
+    overlayView.mode = mode;
+    overlayView.titleLabelText = title;
+    overlayView.tintColor = tintColor;
+    [view addSubview:overlayView];
+    [overlayView show:animated];
+    return overlayView;
+}
+
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
    MRProgressOverlayView *overlayView = [self overlayForView:view];
    if (overlayView) {
