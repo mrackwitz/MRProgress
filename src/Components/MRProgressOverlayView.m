@@ -371,7 +371,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     if (self.titleLabel.text.length > 0) {
         return [self.titleLabel.attributedText attributesAtIndex:0 effectiveRange:NULL];
     } else {
-        return [NSDictionary dictionary];
+        return @{};
     }
 }
 
@@ -534,16 +534,19 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     const CGFloat modePadding = 30;
     const CGFloat dialogMargin = 10;
     const CGFloat dialogMinWidth = 150;
+    
     const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
-    || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
+        || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
+    const BOOL isTextNonEmpty = self.titleLabel.text.length > 0;
+    
     CGFloat dialogWidth = hasSmallIndicator ? CGRectGetWidth(bounds) - dialogMargin * 2 : dialogMinWidth;
     if (self.mode == MRProgressOverlayViewModeCustom) {
         dialogWidth = self.modeView.frame.size.width + 2*modePadding;
     }
     
-    CGFloat y = 7;
+    CGFloat y = isTextNonEmpty ? 7 : modePadding;
     
-    if (!self.titleLabel.hidden) {
+    if (!self.titleLabel.hidden && isTextNonEmpty) {
         const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
         
         CGFloat titleLabelMinX = dialogPadding;
@@ -589,9 +592,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};
         self.titleLabel.frame = titleLabelFrame;
         
-        if (self.titleLabel.text.length > 0) {
-            y += CGRectGetMaxY(titleLabelFrame);
-        }
+        y += CGRectGetMaxY(titleLabelFrame);
     }
     
     if (!hasSmallIndicator) {
@@ -601,12 +602,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         CGFloat paddingBottom = 0;
         
         if (self.mode != MRProgressOverlayViewModeDeterminateHorizontalBar) {
-            if (self.titleLabel.text.length > 0) {
-                modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
-            } else {
-                modeViewFrame = CGRectMake(modePadding, modePadding, innerViewWidth, innerViewWidth);
-            }
-            paddingBottom = 20;
+            modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            paddingBottom = isTextNonEmpty ? 20 : modePadding;
         } else {
             modeViewFrame = CGRectMake(10, y, dialogWidth-20, 5);
             paddingBottom = 15;
@@ -617,11 +614,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     }
     
     {
-        if (self.titleLabel.text.length > 0) {
-            self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
-        } else {
-            self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, dialogWidth), self.bounds);
-        }
+        self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
         self.blurView.frame = self.dialogView.frame;
     }
