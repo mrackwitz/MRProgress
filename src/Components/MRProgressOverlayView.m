@@ -544,7 +544,12 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         dialogWidth = self.modeView.frame.size.width + 2*modePadding;
     }
     
-    CGFloat y = isTextNonEmpty ? 7 : modePadding;
+    CGFloat y = (isTextNonEmpty || hasSmallIndicator) ? 7 : modePadding;
+    
+    CGSize modeViewSize;
+    if (hasSmallIndicator) {
+        modeViewSize = CGSizeMake(20, 20);
+    }
     
     if (!self.titleLabel.hidden && isTextNonEmpty) {
         const CGFloat innerViewWidth = dialogWidth - 2*dialogPadding;
@@ -553,9 +558,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         CGFloat titleLabelMaxWidth = innerViewWidth;
         CGFloat offset = 0;
         
-        CGSize modeViewSize;
         if (hasSmallIndicator) {
-            modeViewSize = CGSizeMake(20, 20);
             offset = modeViewSize.width + 7;
         }
         
@@ -574,7 +577,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         if (hasSmallIndicator) {
             CGFloat titleLabelMinWidth = dialogMinWidth - 2*dialogPadding - offset;
             if (titleLabelSize.width > titleLabelMinWidth) {
-                dialogWidth = titleLabelSize.width + offset + 2* dialogPadding;
+                dialogWidth = titleLabelSize.width + offset + 2*dialogPadding;
                 titleLabelOrigin = CGPointMake(titleLabelMinX, y);
             } else {
                 dialogWidth = dialogMinWidth;
@@ -593,6 +596,14 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         self.titleLabel.frame = titleLabelFrame;
         
         y += CGRectGetMaxY(titleLabelFrame);
+    } else if (hasSmallIndicator) {
+        dialogWidth = modeViewSize.width + 2*y;
+        
+        CGPoint modeViewOrigin = CGPointMake(y, y);
+        CGRect modeViewFrame = {modeViewOrigin, modeViewSize};
+        self.modeView.frame = modeViewFrame;
+        
+        y += CGRectGetMaxY(modeViewFrame);
     }
     
     if (!hasSmallIndicator) {
