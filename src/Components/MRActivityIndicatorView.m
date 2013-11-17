@@ -51,6 +51,37 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
 }
 
+- (void)dealloc {
+    [self unregisterFromNotificationCenter];
+}
+
+
+#pragma mark - Notifications
+
+- (void)registerForNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [center addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+- (void)unregisterFromNotificationCenter {
+    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+    [center removeObserver:self];
+}
+
+- (void)applicationDidEnterBackground:(NSNotificationCenter *)note {
+    [self removeAnimation];
+}
+
+- (void)applicationWillEnterForeground:(NSNotificationCenter *)note {
+    if (self.isAnimating) {
+        [self addAnimation];
+    }
+}
+
+
+#pragma mark - Layout
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -102,14 +133,15 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 #pragma mark - Control animation
 
 - (void)startAnimating {
+    if (_animating) {
+        return;
+    }
+    
     _animating = YES;
     
-    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    spinAnimation.toValue        = @(1*2*M_PI);
-    spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    spinAnimation.duration       = 1.0;
-    spinAnimation.repeatCount    = INFINITY;
-    [self.layer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
+    [self registerForNotificationCenter];
+    
+    [self addAnimation];
     
     if (self.hidesWhenStopped) {
         self.hidden = NO;
@@ -117,9 +149,15 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 }
 
 - (void)stopAnimating {
+    if (!_animating) {
+        return;
+    }
+    
     _animating = NO;
     
-    [self.layer removeAnimationForKey:MRActivityIndicatorViewSpinAnimationKey];
+    [self unregisterFromNotificationCenter];
+    
+    [self removeAnimation];
     
     if (self.hidesWhenStopped) {
         self.hidden = YES;
@@ -128,6 +166,22 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 - (BOOL)isAnimating {
     return _animating;
+}
+
+
+#pragma mark - Add and remove animation
+
+- (void)addAnimation {
+    CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    spinAnimation.toValue        = @(1*2*M_PI);
+    spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    spinAnimation.duration       = 1.0;
+    spinAnimation.repeatCount    = INFINITY;
+    [self.layer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
+}
+
+- (void)removeAnimation {
+    [self.layer removeAnimationForKey:MRActivityIndicatorViewSpinAnimationKey];
 }
 
 @end
