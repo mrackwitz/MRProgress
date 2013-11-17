@@ -118,7 +118,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  By default "Loading ...".
  This will automatically call setTitleLabelAttributedText: with current string attributes.
  */
-@property (nonatomic, strong) NSString *titleLabelText;
+@property (nonatomic, strong) NSString *titleLabelText UI_APPEARANCE_SELECTOR;
 
 /**
  Title label attributed text.

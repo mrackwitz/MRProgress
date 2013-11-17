@@ -17,6 +17,10 @@
 
 @implementation MRProgressOverlayTableViewController
 
++ (void)load {
+    [MRProgressOverlayView appearanceWhenContainedIn:UIImageView.class, nil].titleLabelText = @"Waiting ...";
+}
+
 - (UIView *)rootView {
     return self.delegate.viewForProgressOverlay;
 }

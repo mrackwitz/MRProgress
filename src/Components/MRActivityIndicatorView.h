@@ -23,7 +23,7 @@
  
  The default value is 2.f. 
  */
-@property (nonatomic) CGFloat lineWidth;
+@property (nonatomic) CGFloat lineWidth UI_APPEARANCE_SELECTOR;
 
 /**
  A Boolean value that controls whether the receiver is hidden when the animation is stopped.

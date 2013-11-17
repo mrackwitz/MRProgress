@@ -34,7 +34,7 @@
  
  Default is 0.3s. Must be larger than zero.
  */
-@property (nonatomic, assign) CFTimeInterval animationDuration;
+@property (nonatomic, assign) CFTimeInterval animationDuration UI_APPEARANCE_SELECTOR;
 
 /**
  Change progress animated.

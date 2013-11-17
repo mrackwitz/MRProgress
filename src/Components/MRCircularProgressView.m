@@ -54,7 +54,7 @@
 }
 
 - (void)commonInit {
-    self.animationDuration = 0.3;
+    _animationDuration = 0.3;
     self.progress = 0;
     
     [self addTarget:self action:@selector(didTouchDown) forControlEvents:UIControlEventTouchDown];
