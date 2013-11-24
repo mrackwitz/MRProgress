@@ -25,4 +25,8 @@
     return _target;
 }
 
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
+    return [_target methodSignatureForSelector:sel];
+}
+
 @end
