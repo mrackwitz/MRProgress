@@ -4,7 +4,7 @@ _PATH=$PATH
 
 which appledoc &> /dev/null
 if [[ $? == 1 ]]; then
-	PATH=$PATH:/usr/local/bin
+	PATH=$PATH:/usr/local/bin:/opt/local/bin
 	which appledoc &> /dev/null
 	if [[ $? == 1 ]]; then
 		echo "Appledoc was not found. Try installing it by 'brew install appledoc'."
