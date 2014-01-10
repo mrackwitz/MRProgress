@@ -15,6 +15,8 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 @interface MRActivityIndicatorView ()
 
+@property (nonatomic, weak) CAShapeLayer *shapeLayer;
+
 @end
 
 
@@ -36,19 +38,15 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     return self;
 }
 
-+ (Class)layerClass {
-    return CAShapeLayer.class;
-}
-
-- (CAShapeLayer *)shapeLayer {
-    return (CAShapeLayer *)self.layer;
-}
-
 - (void)commonInit {
     self.hidesWhenStopped = YES;
-    self.layer.borderWidth = 0;
-    self.shapeLayer.lineWidth = 2.0f;
-    self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer new];
+    shapeLayer.borderWidth = 0;
+    shapeLayer.lineWidth = 2.0f;
+    shapeLayer.fillColor = UIColor.clearColor.CGColor;
+    [self.layer addSublayer:shapeLayer];
+    self.shapeLayer = shapeLayer;
 }
 
 - (void)dealloc {
@@ -84,6 +82,8 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.shapeLayer.frame = self.bounds;
     
     CGRect frame = self.frame;
     if (frame.size.width != frame.size.height) {
@@ -177,11 +177,11 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     spinAnimation.duration       = 1.0;
     spinAnimation.repeatCount    = INFINITY;
-    [self.layer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
+    [self.shapeLayer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
 }
 
 - (void)removeAnimation {
-    [self.layer removeAnimationForKey:MRActivityIndicatorViewSpinAnimationKey];
+    [self.shapeLayer removeAnimationForKey:MRActivityIndicatorViewSpinAnimationKey];
 }
 
 @end
