@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+    self.activityIndicatorView.mayStop = YES;
     [self.activityIndicatorView startAnimating];
 }
 
