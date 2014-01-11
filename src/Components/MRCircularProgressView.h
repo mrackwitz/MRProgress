@@ -7,27 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRStopableView.h"
 
 
 /**
  You use the MRCircularProgressView class to depict the progress of a task over time.
  */
-@interface MRCircularProgressView : UIView
-
-/**
- A Boolean value that controls whether the receiver shows a stop button.
- 
- If the value of this property is NO (the default), the receiver doesnot show a stop button. If the mayStop property is
- YES a stop button will be shown. You can catch fired events like known from UIControl.
- */
-@property (nonatomic, assign) BOOL mayStop;
-
-/**
- A button, which should only be shown if mayStop is equal to YES.
- 
- The button is in the middle of the control.
- */
-@property (nonatomic, readonly) UIButton *stopButton;
+@interface MRCircularProgressView : UIView<MRStopableView>
 
 /**
  Current progress.

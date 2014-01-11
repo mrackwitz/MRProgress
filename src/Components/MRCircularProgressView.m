@@ -30,6 +30,8 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     int _valueLabelProgressPercentDifference;
 }
 
+@synthesize stopButton = _stopButton;
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
