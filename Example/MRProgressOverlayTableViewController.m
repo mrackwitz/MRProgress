@@ -34,6 +34,16 @@
     } afterDelay:2.0];
 }
 
+- (IBAction)onShowIndeterminateMayStopProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
+    progressView.stopBlock = ^(MRProgressOverlayView *view){
+        [view dismiss:YES];
+    };
+    [self.rootView addSubview:progressView];
+    [self simulateProgressView:progressView];
+}
+
 - (IBAction)onShowIndeterminateNoTextProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.titleLabelText = @"";
@@ -47,6 +57,16 @@
 - (IBAction)onShowDeterminateCircularProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
     progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
+    [self.rootView addSubview:progressView];
+    [self simulateProgressView:progressView];
+}
+
+- (IBAction)onShowDeterminateCircularMayStopProgressView:(id)sender {
+    MRProgressOverlayView *progressView = [MRProgressOverlayView new];
+    progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
+    progressView.stopBlock = ^(MRProgressOverlayView *view){
+        [view dismiss:YES];
+    };
     [self.rootView addSubview:progressView];
     [self simulateProgressView:progressView];
 }
