@@ -82,6 +82,16 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return overlayView;
 }
 
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated stopBlock:(MRProgressOverlayViewStopBlock)stopBlock {
+    MRProgressOverlayView *overlayView = [self new];
+    overlayView.mode = mode;
+    overlayView.titleLabelText = title;
+    overlayView.stopBlock = stopBlock;
+    [view addSubview:overlayView];
+    [overlayView show:animated];
+    return overlayView;
+}
+
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
     return [self dismissOverlayForView:view animated:animated completion:nil];
 }
