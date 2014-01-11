@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MRCircularProgressView.h"
 #import "MRProgressHelper.h"
+#import "MRStopButton.h"
 
 
 NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
@@ -20,7 +21,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 @property (nonatomic, strong, readwrite) NSTimer *valueLabelUpdateTimer;
 
 @property (nonatomic, weak, readwrite) UILabel *valueLabel;
-@property (nonatomic, weak, readwrite) UIView *stopView;
+@property (nonatomic, weak, readwrite) MRStopButton *stopButton;
 
 @end
 
@@ -57,9 +58,6 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     _animationDuration = 0.3;
     self.progress = 0;
     
-    [self addTarget:self action:@selector(didTouchDown) forControlEvents:UIControlEventTouchDown];
-    [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
-    
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     self.numberFormatter = numberFormatter;
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
@@ -77,11 +75,11 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     valueLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:valueLabel];
     
-    UIControl *stopView = [UIControl new];
-    self.stopView = stopView;
-    [self addSubview:stopView];
+    MRStopButton *stopButton = [MRStopButton new];
+    [self addSubview:stopButton];
+    self.stopButton = stopButton;
     
-    [self mayStopDidChange];
+    self.mayStop = NO;
 }
 
 - (void)layoutSubviews {
@@ -96,18 +94,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     self.layer.cornerRadius = self.frame.size.width / 2.0f;
     self.shapeLayer.path = [self layoutPath].CGPath;
     
-    CGFloat stopViewSizeValue = MIN(self.bounds.size.width, self.bounds.size.height);
-    CGSize stopViewSize = CGSizeMake(stopViewSizeValue, stopViewSizeValue);
-    const CGFloat stopViewSizeRatio = 0.35;
-    CGRect stopViewFrame = CGRectInset(MRCenterCGSizeInCGRect(stopViewSize, self.bounds),
-                                       self.bounds.size.width * stopViewSizeRatio,
-                                       self.bounds.size.height * stopViewSizeRatio);
-    if (self.tracking && self.touchInside) {
-        stopViewFrame = CGRectInset(stopViewFrame,
-                                    self.bounds.size.width * 0.033,
-                                    self.bounds.size.height * 0.033);
-    }
-    self.stopView.frame = stopViewFrame;
+    self.stopButton.frame = [self.stopButton frameThatFits:self.bounds];
 }
 
 - (UIBezierPath *)layoutPath {
@@ -132,46 +119,19 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     self.shapeLayer.strokeColor = tintColor.CGColor;
     self.layer.borderColor = tintColor.CGColor;
     self.valueLabel.textColor = tintColor;
-    self.stopView.backgroundColor = tintColor;
+    self.stopButton.backgroundColor = tintColor;
 }
 
 
 #pragma mark - May stop implementation
 
 - (void)setMayStop:(BOOL)mayStop {
-    _mayStop = mayStop;
-    [self mayStopDidChange];
+    self.stopButton.hidden = !mayStop;
+    self.valueLabel.hidden = mayStop;
 }
 
-- (void)mayStopDidChange {
-    self.enabled = self.mayStop;
-    self.stopView.hidden = !self.mayStop;
-    self.valueLabel.hidden = self.mayStop;
-}
-
-- (void)didTouchDown {
-   [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-       [self layoutSubviews];
-   } completion:nil];
-}
-
-- (void)didTouchUpInside {
-    [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self layoutSubviews];
-    } completion:nil];
-}
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == self.stopView) {
-        // Allow hits inside stop view
-        return self;
-    } else if (hitView == self) {
-        // Ignore hits inside whole circular view
-        return nil;
-    }
-    // Allow all other subviews (external?)
-    return hitView;
+- (BOOL)mayStop {
+    return !self.stopButton.hidden;
 }
 
 
