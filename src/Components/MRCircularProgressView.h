@@ -25,7 +25,7 @@
 /**
  Current progress.
  
- Use associated setter for non animated changes. Otherwises use setProgress:aniamted:.
+ Use associated setter for non animated changes. Otherwises use setProgress:animated:.
  */
 @property (nonatomic, assign) float progress;
 
