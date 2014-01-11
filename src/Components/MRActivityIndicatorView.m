@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "MRActivityIndicatorView.h"
+#import "MRStopButton.h"
 
 
 NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorViewSpinAnimationKey";
@@ -16,11 +17,14 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 @interface MRActivityIndicatorView ()
 
 @property (nonatomic, weak) CAShapeLayer *shapeLayer;
+@property (nonatomic, weak, readwrite) MRStopButton *stopButton;
 
 @end
 
 
 @implementation MRActivityIndicatorView
+
+@synthesize stopButton = _stopButton;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -47,6 +51,12 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     shapeLayer.fillColor = UIColor.clearColor.CGColor;
     [self.layer addSublayer:shapeLayer];
     self.shapeLayer = shapeLayer;
+    
+    MRStopButton *stopButton = [MRStopButton new];
+    [self addSubview:stopButton];
+    self.stopButton = stopButton;
+    
+    self.mayStop = NO;
 }
 
 - (void)dealloc {
@@ -93,6 +103,8 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     self.shapeLayer.frame = frame;
     
     self.shapeLayer.path = [self layoutPath].CGPath;
+    
+    self.stopButton.frame = [self.stopButton frameThatFits:self.bounds];
 }
 
 - (UIBezierPath *)layoutPath {
@@ -114,6 +126,7 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 - (void)tintColorDidChange  {
     [super tintColorDidChange];
     self.shapeLayer.strokeColor = self.tintColor.CGColor;
+    self.stopButton.tintColor = self.tintColor;
 }
 
 
@@ -125,6 +138,17 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 - (CGFloat)lineWidth {
     return self.shapeLayer.lineWidth;
+}
+
+
+#pragma mark - MRStopableView's implementation
+
+- (void)setMayStop:(BOOL)mayStop {
+    self.stopButton.hidden = !mayStop;
+}
+
+- (BOOL)mayStop {
+    return !self.stopButton.hidden;
 }
 
 
