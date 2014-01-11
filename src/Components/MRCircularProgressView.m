@@ -9,25 +9,25 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MRCircularProgressView.h"
 #import "MRProgressHelper.h"
-#import "MRWeakProxy.h"
+
+
+NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
 
 
 @interface MRCircularProgressView ()
 
 @property (nonatomic, strong, readwrite) NSNumberFormatter *numberFormatter;
+@property (nonatomic, strong, readwrite) NSTimer *valueLabelUpdateTimer;
 
 @property (nonatomic, weak, readwrite) UILabel *valueLabel;
 @property (nonatomic, weak, readwrite) UIView *stopView;
 
-@property (nonatomic, assign, readwrite) float fromProgress;
-@property (nonatomic, assign, readwrite) float toProgress;
-@property (nonatomic, assign, readwrite) CFTimeInterval startTime;
-@property (nonatomic, strong, readwrite) CADisplayLink *displayLink;
-
 @end
 
 
-@implementation MRCircularProgressView
+@implementation MRCircularProgressView {
+    int _valueLabelProgressPercentDifference;
+}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -113,7 +113,7 @@
 - (UIBezierPath *)layoutPath {
     const double TWO_M_PI = 2.0 * M_PI;
     const double startAngle = 0.75 * TWO_M_PI;
-    const double endAngle = startAngle + TWO_M_PI * self.progress;
+    const double endAngle = startAngle + TWO_M_PI;
     
     CGFloat width = self.frame.size.width;
     return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
@@ -181,10 +181,7 @@
     NSParameterAssert(progress >= 0 && progress <= 1);
     
     // Stop running animation
-    if (self.displayLink) {
-        [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-        self.displayLink = nil;
-    }
+    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
     
     _progress = progress;
     
@@ -193,15 +190,15 @@
 
 - (void)updateProgress {
     [self updatePath];
-    [self updateLabel];
+    [self updateLabel:self.progress];
 }
 
 - (void)updatePath {
-    self.shapeLayer.path = [self layoutPath].CGPath;
+    self.shapeLayer.strokeEnd = self.progress;
 }
 
-- (void)updateLabel {
-    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(self.progress)];
+- (void)updateLabel:(float)progress {
+    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
@@ -210,14 +207,7 @@
             return;
         }
         
-        if (self.displayLink) {
-            // Reuse current display link and manipulate animation params
-            self.startTime = CACurrentMediaTime();
-            self.fromProgress = self.progress;
-            self.toProgress = progress;
-        } else {
-            [self animateToProgress:progress];
-        }
+        [self animateToProgress:progress];
     } else {
         self.progress = progress;
     }
@@ -229,40 +219,47 @@
 }
 
 - (void)animateToProgress:(float)progress {
-    self.fromProgress = self.progress;
-    self.toProgress = progress;
-    self.startTime = CACurrentMediaTime();
+    // Stop running animation
+    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
     
-    [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-    self.displayLink = [CADisplayLink displayLinkWithTarget:[MRWeakProxy weakProxyWithTarget:self] selector:@selector(animateFrame:)];
-    [self.displayLink addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+    // Add shape animation
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.duration = self.animationDuration;
+    animation.fromValue = @(self.progress);
+    animation.toValue = @(progress);
+    animation.delegate = self;
+    [self.shapeLayer addAnimation:animation forKey:MRCircularProgressViewProgressAnimationKey];
+    
+    // Add timer to update valueLabel
+    _valueLabelProgressPercentDifference = (progress - self.progress) * 100;
+    CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
+    self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
+                                                                  target:self
+                                                                selector:@selector(onValueLabelUpdateTimer:)
+                                                                userInfo:nil
+                                                                 repeats:YES];
+    
+    
+    _progress = progress;
 }
 
-- (void)animateFrame:(CADisplayLink *)displayLink {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        CGFloat d = (displayLink.timestamp - self.startTime) / self.animationDuration;
-        
-        if (d >= 1.0) {
-            // Order is important! Otherwise concurrency will cause errors, because setProgress: will detect an
-            // animation in progress and try to stop it by itself.
-            [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-            self.displayLink = nil;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.progress = self.toProgress;
-            });
-            
-            return;
-        }
-        
-        _progress = self.fromProgress + d * (self.toProgress - self.fromProgress);
-        UIBezierPath *path = [self layoutPath];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.shapeLayer.path = path.CGPath;
-            [self updateLabel];
-        });
-    });
+- (void)onValueLabelUpdateTimer:(NSTimer *)timer {
+    if (_valueLabelProgressPercentDifference > 0) {
+        _valueLabelProgressPercentDifference--;
+    } else {
+        _valueLabelProgressPercentDifference++;
+    }
+    
+    [self updateLabel:self.progress - (_valueLabelProgressPercentDifference / 100.0f)];
+}
+
+
+#pragma mark - CAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    [self updateProgress];
+    [self.valueLabelUpdateTimer invalidate];
+    self.valueLabelUpdateTimer = nil;
 }
 
 @end
