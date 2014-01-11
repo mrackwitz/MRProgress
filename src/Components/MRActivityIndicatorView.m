@@ -83,16 +83,14 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.shapeLayer.frame = self.bounds;
-    
-    CGRect frame = self.frame;
+    CGRect frame = self.bounds;
     if (frame.size.width != frame.size.height) {
         // Ensure that we have a square frame
-        CGFloat s = MAX(frame.size.width, frame.size.height);
+        CGFloat s = MIN(frame.size.width, frame.size.height);
         frame.size.width = s;
         frame.size.height = s;
-        self.frame = frame;
     }
+    self.shapeLayer.frame = frame;
     
     self.shapeLayer.path = [self layoutPath].CGPath;
 }
