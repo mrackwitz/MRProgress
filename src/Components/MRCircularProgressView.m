@@ -145,8 +145,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 - (void)setProgress:(float)progress {
     NSParameterAssert(progress >= 0 && progress <= 1);
     
-    // Stop running animation
-    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
+    [self stopAnimation];
     
     _progress = progress;
     
@@ -184,8 +183,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 }
 
 - (void)animateToProgress:(float)progress {
-    // Stop running animation
-    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
+    [self stopAnimation];
     
     // Add shape animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -206,6 +204,15 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     
     
     _progress = progress;
+}
+
+- (void)stopAnimation {
+    // Stop running animation
+    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
+    
+    // Stop timer
+    [self.valueLabelUpdateTimer invalidate];
+    self.valueLabelUpdateTimer = nil;
 }
 
 - (void)onValueLabelUpdateTimer:(NSTimer *)timer {
