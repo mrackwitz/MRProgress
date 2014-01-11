@@ -84,6 +84,9 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     self.mayStop = NO;
 }
 
+
+#pragma mark - Layout
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -125,7 +128,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 }
 
 
-#pragma mark - May stop implementation
+#pragma mark - MRStopableView's implementation
 
 - (void)setMayStop:(BOOL)mayStop {
     self.stopButton.hidden = !mayStop;
