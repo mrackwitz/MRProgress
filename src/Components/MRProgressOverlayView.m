@@ -82,13 +82,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return overlayView;
 }
 
-+ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated DEPRECATED_ATTRIBUTE {
-   MRProgressOverlayView *overlayView = [self overlayForView:view];
-   if (overlayView) {
-       [overlayView dismiss:animated completion:nil];
-       return YES;
-   }
-   return NO;
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
+    return [self dismissOverlayForView:view animated:animated completion:nil];
 }
 
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
@@ -99,13 +94,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     }
     return NO;}
 
-+ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated DEPRECATED_ATTRIBUTE {
-   NSArray *views = [self allOverlaysForView:view];
-   for (MRProgressOverlayView *overlayView in views) {
-       [overlayView dismiss:animated completion:nil];
-       return YES;
-   }
-   return views.count;
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
+   return [self dismissAllOverlaysForView:view animated:animated completion:nil];
 }
 
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
@@ -488,10 +478,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     }
 }
 
-- (void)dismiss:(BOOL)animated DEPRECATED_ATTRIBUTE {
-    [self hide:animated completion:^{
-        [self removeFromSuperview];
-    }];
+- (void)dismiss:(BOOL)animated {
+    [self dismiss:animated completion:nil];
 }
 
 - (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock {
