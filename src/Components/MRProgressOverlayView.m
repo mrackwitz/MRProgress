@@ -67,10 +67,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
-   MRProgressOverlayView *overlayView = [self new];
-   [view addSubview:overlayView];
-   [overlayView show:animated];
-   return overlayView;
+    MRProgressOverlayView *overlayView = [self new];
+    [view addSubview:overlayView];
+    [overlayView show:animated];
+    return overlayView;
 }
 
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated {
@@ -83,21 +83,29 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
-   MRProgressOverlayView *overlayView = [self overlayForView:view];
-   if (overlayView) {
-       [overlayView dismiss:animated];
-       return YES;
-   }
-   return NO;
+    return [self dismissOverlayForView:view animated:animated completion:nil];
+}
+
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
+    MRProgressOverlayView *overlayView = [self overlayForView:view];
+    if (overlayView) {
+        [overlayView dismiss:animated completion:completionBlock];
+        return YES;
+    }
+    return NO;
 }
 
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
-   NSArray *views = [self allOverlaysForView:view];
-   for (MRProgressOverlayView *overlayView in views) {
-       [overlayView dismiss:animated];
-       return YES;
-   }
-   return views.count;
+    return [self dismissAllOverlaysForView:view animated:animated completion:nil];
+}
+
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
+    NSArray *views = [self allOverlaysForView:view];
+    for (MRProgressOverlayView *overlayView in views) {
+        [overlayView dismiss:animated completion:completionBlock];
+        return YES;
+    }
+    return views.count;
 }
 
 + (instancetype)overlayForView:(UIView *)view {
@@ -472,8 +480,15 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)dismiss:(BOOL)animated {
+    [self dismiss:animated completion:nil];
+}
+
+- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock {
     [self hide:animated completion:^{
         [self removeFromSuperview];
+        if (completionBlock) {
+            completionBlock();
+        }
     }];
 }
 

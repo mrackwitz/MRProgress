@@ -65,6 +65,16 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated;
 
 /**
+ Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
+ 
+ @param view The view that is going to be searched for a overlay subview.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ @return YES if a overlay was found and removed, NO otherwise.
+ */
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
+
+/**
  Finds all the overlay subviews and hides them.
  
  @param view The view that is going to be searched for overlay subviews.
@@ -72,6 +82,16 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @return the number of overlays found and removed.
  */
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated;
+
+/**
+ Finds all the overlay subviews and hides them.
+ 
+ @param view The view that is going to be searched for overlay subviews.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ @return the number of overlays found and removed.
+ */
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
 
 /**
  Finds the top-most overlay subview and returns it.
@@ -183,5 +203,13 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
 - (void)dismiss:(BOOL)animated;
+
+/**
+ Hide the progress view and remove on animation completion from the view hierachy.
+ 
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ */
+- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock;
 
 @end
