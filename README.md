@@ -38,7 +38,7 @@ The provided Example app demonstrates how they can be used.
 
 ### `MRCircularProgressView`
 
-![](Images/screenshot_001_1.jpg)
+![](Images/circular_determinate.gif)
 ![](Images/screenshot_002_1.jpg)
 
 * Tint color can be changed
