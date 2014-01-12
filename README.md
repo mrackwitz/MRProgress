@@ -41,9 +41,11 @@ The provided Example app demonstrates how they can be used.
 ![](Images/screenshot_001_1.jpg)
 ![](Images/screenshot_002_1.jpg)
 
+* Tint color can be changed
 * Circular progress view like in AppStore
-* Inherits from ```UIControl``` and can display a stop button
-* Animated with ```CADisplayLink```
+* Can display a stop button
+* Animated with ```CABasicAnimation```
+* Percentage label change is animated over a ```NSTimer```
 
 
 ### ```MRNavigationBarProgressView```
@@ -71,6 +73,7 @@ The provided Example app demonstrates how they can be used.
 
 * Tint color can be changed
 * Same API as ```UIActivityIndicatorView```
+* Can display a stop button
 * Animated with ```CABasicAnimation```
 
 
