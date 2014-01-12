@@ -82,22 +82,39 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return overlayView;
 }
 
-+ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated DEPRECATED_ATTRIBUTE {
    MRProgressOverlayView *overlayView = [self overlayForView:view];
    if (overlayView) {
-       [overlayView dismiss:animated];
+       [overlayView dismiss:animated completion:nil];
        return YES;
    }
    return NO;
 }
 
-+ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
+    MRProgressOverlayView *overlayView = [self overlayForView:view];
+    if (overlayView) {
+        [overlayView dismiss:animated completion:completionBlock];
+        return YES;
+    }
+    return NO;}
+
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated DEPRECATED_ATTRIBUTE {
    NSArray *views = [self allOverlaysForView:view];
    for (MRProgressOverlayView *overlayView in views) {
-       [overlayView dismiss:animated];
+       [overlayView dismiss:animated completion:nil];
        return YES;
    }
    return views.count;
+}
+
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
+    NSArray *views = [self allOverlaysForView:view];
+    for (MRProgressOverlayView *overlayView in views) {
+        [overlayView dismiss:animated completion:completionBlock];
+        return YES;
+    }
+    return views.count;
 }
 
 + (instancetype)overlayForView:(UIView *)view {
@@ -471,9 +488,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     }
 }
 
-- (void)dismiss:(BOOL)animated {
+- (void)dismiss:(BOOL)animated DEPRECATED_ATTRIBUTE {
     [self hide:animated completion:^{
         [self removeFromSuperview];
+    }];
+}
+
+- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock {
+    [self hide:animated completion:^{
+        [self removeFromSuperview];
+        if (completionBlock) {
+            completionBlock();
+        }
     }];
 }
 
