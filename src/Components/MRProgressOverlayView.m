@@ -67,10 +67,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
-   MRProgressOverlayView *overlayView = [self new];
-   [view addSubview:overlayView];
-   [overlayView show:animated];
-   return overlayView;
+    MRProgressOverlayView *overlayView = [self new];
+    [view addSubview:overlayView];
+    [overlayView show:animated];
+    return overlayView;
 }
 
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated {
@@ -92,10 +92,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         [overlayView dismiss:animated completion:completionBlock];
         return YES;
     }
-    return NO;}
+    return NO;
+}
 
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated {
-   return [self dismissAllOverlaysForView:view animated:animated completion:nil];
+    return [self dismissAllOverlaysForView:view animated:animated completion:nil];
 }
 
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
