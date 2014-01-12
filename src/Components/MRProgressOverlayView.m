@@ -119,24 +119,24 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 + (instancetype)overlayForView:(UIView *)view {
-   NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
-   for (UIView *subview in subviewsEnum) {
-       if ([subview isKindOfClass:self]) {
-           return (MRProgressOverlayView *)subview;
-       }
-   }
-   return nil;
+    NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
+    for (UIView *subview in subviewsEnum) {
+        if ([subview isKindOfClass:self]) {
+            return (MRProgressOverlayView *)subview;
+        }
+    }
+    return nil;
 }
 
 + (NSArray *)allOverlaysForView:(UIView *)view {
-   NSMutableArray *overlays = [NSMutableArray new];
-   NSArray *subviews = view.subviews;
-   for (UIView *view in subviews) {
-       if ([view isKindOfClass:self]) {
-           [overlays addObject:view];
-       }
-   }
-   return overlays;
+    NSMutableArray *overlays = [NSMutableArray new];
+    NSArray *subviews = view.subviews;
+    for (UIView *view in subviews) {
+        if ([view isKindOfClass:self]) {
+            [overlays addObject:view];
+        }
+    }
+    return overlays;
 }
 
 
