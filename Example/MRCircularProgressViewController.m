@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.circularProgressView addTarget:self action:@selector(onCircularProgressViewTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [self.circularProgressView.stopButton addTarget:self action:@selector(onCircularProgressViewTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)onProgressSliderValueChanged:(id)sender {

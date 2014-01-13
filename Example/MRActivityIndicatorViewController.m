@@ -14,6 +14,7 @@
 @interface MRActivityIndicatorViewController () <MRColorPaletteDelegate>
 
 @property (weak, nonatomic) IBOutlet MRActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UISwitch *stopButtonSwitch;
 
 @end
 
@@ -31,6 +32,10 @@
         MRColorPaletteViewController *colorPaletteVC = (MRColorPaletteViewController *)segue.destinationViewController;
         colorPaletteVC.delegate = self;
     }
+}
+
+- (IBAction)onStopButtonSwitchValueChanged:(id)sender {
+    self.activityIndicatorView.mayStop = self.stopButtonSwitch.on;
 }
 
 - (void)colorPaletteViewController:(MRColorPaletteViewController *)colorPaletteViewController didSelectColor:(UIColor *)color {

@@ -3,6 +3,7 @@ Pod::Spec.new do |s|
   s.version               = '0.2.2'
   s.summary               = 'Collection of iOS drop-in components to visualize progress with different modes'
   s.homepage              = 'https://github.com/mrackwitz/MRProgress'
+  s.social_media_url      = 'https://twitter.com/mrackwitz'
   s.author                = { 'Marius Rackwitz' => 'git@mariusrackwitz.de' }
   s.license               = 'MIT License'
   s.source                = { :git => 'https://github.com/mrackwitz/MRProgress.git', :tag => s.version.to_s }

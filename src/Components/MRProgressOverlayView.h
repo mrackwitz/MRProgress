@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class MRProgressOverlayView;
+
+
+/** (MRProgressOverlayViewStopBlock) */
+typedef void(^MRProgressOverlayViewStopBlock)(MRProgressOverlayView *progressOverlayView);
+
 /** (MRProgressOverlayViewMode) */
 typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
     /** Progress is shown using a large round activity indicator view. (MRActivityIndicatorView) This is the default. */
@@ -54,6 +61,18 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @return A reference to the created overlay.
  */
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated;
+
+/**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
+ @param title Title label text
+ @param mode Visualization mode
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param stopBlock Block, which will be called when stop button is tapped.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated stopBlock:(MRProgressOverlayViewStopBlock)stopBlock;
 
 /**
  Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
@@ -163,6 +182,14 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  with a new UIView instance. You should make sure to call setMode: first. You are responsible to set the frame size.
  */
 @property (nonatomic, strong) UIView *modeView;
+
+/**
+ Block, which will be called when stop button is tapped.
+ 
+ Use this to set a block, which is callend when UIControlEventTouchUpInside is fired on the mode view's stop button,
+ if available. The receiver will not be hidden or dismissed, automatically.
+ */
+@property (nonatomic, copy) MRProgressOverlayViewStopBlock stopBlock;
 
 /**
  Change the tint color of the mode views.

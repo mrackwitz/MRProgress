@@ -82,6 +82,16 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return overlayView;
 }
 
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated stopBlock:(MRProgressOverlayViewStopBlock)stopBlock {
+    MRProgressOverlayView *overlayView = [self new];
+    overlayView.mode = mode;
+    overlayView.titleLabelText = title;
+    overlayView.stopBlock = stopBlock;
+    [view addSubview:overlayView];
+    [overlayView show:animated];
+    return overlayView;
+}
+
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated {
     return [self dismissOverlayForView:view animated:animated completion:nil];
 }
@@ -109,24 +119,24 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 + (instancetype)overlayForView:(UIView *)view {
-   NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
-   for (UIView *subview in subviewsEnum) {
-       if ([subview isKindOfClass:self]) {
-           return (MRProgressOverlayView *)subview;
-       }
-   }
-   return nil;
+    NSEnumerator *subviewsEnum = view.subviews.reverseObjectEnumerator;
+    for (UIView *subview in subviewsEnum) {
+        if ([subview isKindOfClass:self]) {
+            return (MRProgressOverlayView *)subview;
+        }
+    }
+    return nil;
 }
 
 + (NSArray *)allOverlaysForView:(UIView *)view {
-   NSMutableArray *overlays = [NSMutableArray new];
-   NSArray *subviews = view.subviews;
-   for (UIView *view in subviews) {
-       if ([view isKindOfClass:self]) {
-           [overlays addObject:view];
-       }
-   }
-   return overlays;
+    NSMutableArray *overlays = [NSMutableArray new];
+    NSArray *subviews = view.subviews;
+    for (UIView *view in subviews) {
+        if ([view isKindOfClass:self]) {
+            [overlays addObject:view];
+        }
+    }
+    return overlays;
 }
 
 
@@ -282,6 +292,13 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     UIView *modeView = [self createViewForMode:self.mode];
     self.modeView = modeView;
     modeView.tintColor = self.tintColor;
+    
+    if ([modeView conformsToProtocol:@protocol(MRStopableView)]
+        && [modeView respondsToSelector:@selector(stopButton)]) {
+        UIButton *stopButton = [((id<MRStopableView>)modeView) stopButton];
+        [stopButton addTarget:self action:@selector(modeViewStopButtonTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     return modeView;
 }
 
@@ -440,6 +457,33 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     modeView.hidden = YES;
     if ([modeView respondsToSelector:@selector(stopAnimating)]) {
         [modeView performSelector:@selector(stopAnimating)];
+    }
+}
+
+
+#pragma mark - Stop button
+
+- (void)setStopBlock:(MRProgressOverlayViewStopBlock)stopBlock {
+    _stopBlock = stopBlock;
+    
+    BOOL mayStop = stopBlock != nil;
+    if ([self.modeView conformsToProtocol:@protocol(MRStopableView)]
+        && [self.modeView respondsToSelector:@selector(setMayStop:)]) {
+        [((id<MRStopableView>)self.modeView) setMayStop:mayStop];
+    } else {
+        #if DEBUG
+            NSLog(@"** WARNING - %@: %@ is only valid to call when the mode view supports %@ declared in %@!",
+                  NSStringFromClass(self.class),
+                  NSStringFromSelector(_cmd),
+                  NSStringFromSelector(@selector(setMayStop:)),
+                  NSStringFromProtocol(@protocol(MRStopableView)));
+        #endif
+    }
+}
+
+- (void)modeViewStopButtonTouchUpInside {
+    if (self.stopBlock) {
+        self.stopBlock(self);
     }
 }
 

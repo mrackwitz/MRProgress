@@ -13,7 +13,7 @@ MRProgress is a collection of drop-in components that display a dimmed overlay w
 [![](Images/screenshot_009_2.jpg)](Images/screenshot_009.png)
 [![](Images/screenshot_010_2.jpg)](Images/screenshot_010.png)
 
-* **Component oriented**: You don't have to use all components or ```MRProgressOverlayView```. You can use just the custom activity indicators or progress views.
+* **Component oriented**: You don't have to use all components or `MRProgressOverlayView`. You can use just the custom activity indicators or progress views.
 * **Configurable**: All components implement tintColor.
 * **Customizable**: You can replace the given blur implementation and hook into your own you are maybe already using in other places of your app. Or simply throw in an [UIToolbar's layer](https://github.com/JagCesar/iOS-blur), if you prefer Apple's implementation. (Current blur implementation is as given by sample code of WWDC 2013.)
 * **Reusable**: The code is fragmented in small reusable pieces.
@@ -22,56 +22,59 @@ MRProgress is a collection of drop-in components that display a dimmed overlay w
 
 ## Components
 
-The components used in ```MRProgressOverlayView``` could be used seperately.
+The components used in `MRProgressOverlayView` could be used seperately.
 The provided Example app demonstrates how they can be used.
 
-### ```MRProgressOverlayView```
+### `MRProgressOverlayView`
 
 ![](Images/screenshot_004_1.jpg)
 
 * Supports different modes
 * Animated show and hide
 * Blured background
-* With UIMotionEffects for tilting like ```UIAlertView```
+* With UIMotionEffects for tilting like `UIAlertView`
 * Supports multi-line title label text
 
 
-### ```MRCircularProgressView```
+### `MRCircularProgressView`
 
-![](Images/screenshot_001_1.jpg)
+![](Images/circular_determinate.gif)
 ![](Images/screenshot_002_1.jpg)
 
+* Tint color can be changed
 * Circular progress view like in AppStore
-* Inherits from ```UIControl``` and can display a stop button
-* Animated with ```CADisplayLink```
+* Can display a stop button
+* Animated with `CABasicAnimation`
+* Percentage label change is animated over a `NSTimer`
 
 
-### ```MRNavigationBarProgressView```
+### `MRNavigationBarProgressView`
 
 ![](Images/screenshot_003_1.jpg)
 
-* Display a progress view in a ```UINavigationController```
-* Hooks ```UINavigationControllerDelegate``` and is automatically removed on push or pop
-* Can be used in ```UINavigationBar``` or ```UIToolbar```
+* Display a progress view in a `UINavigationController`
+* Hooks `UINavigationControllerDelegate` and is automatically removed on push or pop
+* Can be used in `UINavigationBar` or `UIToolbar`
 
 
-### ```MRCheckmarkIconView``` and ```MRCrossIconView```
+### `MRCheckmarkIconView` and `MRCrossIconView`
 
 ![](Images/screenshot_011_1.jpg)
 
 * Tint color can be changed
 * Scalable
 * Animatable
-* Backed by ```CAShapeLayer```
+* Backed by `CAShapeLayer`
 
 
-### ```MRActivityIndicatorView```
+### `MRActivityIndicatorView`
 
-![](Images/screenshot_012_1.jpg)
+![](Images/circular_indeterminate.gif)
 
 * Tint color can be changed
-* Same API as ```UIActivityIndicatorView```
-* Animated with ```CABasicAnimation```
+* Same API as `UIActivityIndicatorView`
+* Can display a stop button
+* Animated with `CABasicAnimation`
 
 
 
@@ -81,16 +84,16 @@ The provided Example app demonstrates how they can be used.
 
 [CocoaPods](http://www.cocoapods.org) is the recommended way to add MRProgress to your project.
 
-1. Add a pod entry for MRProgress to your *Podfile* ```pod 'MRProgress', '~> 0.2'```.
-2. Install the pod(s) by running ```pod install```.
-3. Include MRProgress wherever you need it with ```#import "MRProgress.h"```.
+1. Add a pod entry for MRProgress to your *Podfile* `pod 'MRProgress', '~> 0.3'`.
+2. Install the pod(s) by running `pod install`.
+3. Include MRProgress wherever you need it with `#import "MRProgress.h"`.
 
 
 ### Source files
 
 1. Download the [latest code version](http://github.com/mrackwitz/MRProgress/archive/master.zip) or add the repository as a git submodule to your git-tracked project.
 2. Drag and drop the **src** directory from the archive in your project navigator. Make sure to select *Copy items* when asked if you extracted the code archive outside of your project.
-3. Include MRProgress wherever you need any component with ```#import "MRProgress.h"```.
+3. Include MRProgress wherever you need any component with `#import "MRProgress.h"`.
 
 
 ### Static library
@@ -98,7 +101,7 @@ The provided Example app demonstrates how they can be used.
 1. Drag and drop **MRProgress.xcodeproj** in your project navigator.
 2. Select your target and go to the *Build Phases* tab. In the *Link Binary With Libraries* section select the add button. On the sheet find and add libMRProgress.a.
 3. Add Target **MRProgress** to your *Target Dependencies* list.
-4. ```import <MRProgress/MRProgress.h>``` whereever you want to use the components. You could add it to your Prefix header file, if you want.
+4. `import <MRProgress/MRProgress.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
 
 
 
@@ -164,15 +167,15 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
 
 ### Modes
 
-Name (```MRProgressOverlayView<...>```)  | Screenshot                                                      | Description
----------------------------------------- | --------------------------------------------------------------- | :-----------
-**Indeterminate**                        | [![](Images/screenshot_004_2.jpg)](Images/screenshot_004.png) | Progress is shown using a large round activity indicator view. (```MRActivityIndicatorView```) This is the default.
-**DeterminateCircular**                  | [![](Images/screenshot_005_2.jpg)](Images/screenshot_005.png) | Progress is shown using a round, pie-chart like, progress view. (```MRCircularProgressView```)
-**DeterminateHorizontalBar**             | [![](Images/screenshot_006_2.jpg)](Images/screenshot_006.png) | Progress is shown using a horizontal progress bar. (```UIProgressView```)
-**IndeterminateSmall**                   | [![](Images/screenshot_007_2.jpg)](Images/screenshot_007.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```MRActivityIndicatorView```)
-**IndeterminateSmallDefault**            | [![](Images/screenshot_008_2.jpg)](Images/screenshot_008.png) | Shows primarily a label. Progress is shown using a small activity indicator. (```UIActivityIndicatorView``` in ```UIActivityIndicatorViewStyleGray```)
-**Checkmark**                            | [![](Images/screenshot_009_2.jpg)](Images/screenshot_009.png) | Shows a checkmark. (```MRCheckmarkIconView```)
-**Cross**                                | [![](Images/screenshot_010_2.jpg)](Images/screenshot_010.png) | Shows a cross. (```MRCrossIconView```)
+Name (`MRProgressOverlayView<...>`)  | Screenshot                                                    | Description
+------------------------------------ | ------------------------------------------------------------- | :-----------
+**Indeterminate**                    | [![](Images/screenshot_004_2.jpg)](Images/screenshot_004.png) | Progress is shown using a large round activity indicator view. (`MRActivityIndicatorView`) This is the default.
+**DeterminateCircular**              | [![](Images/screenshot_005_2.jpg)](Images/screenshot_005.png) | Progress is shown using a round, pie-chart like, progress view. (`MRCircularProgressView`)
+**DeterminateHorizontalBar**         | [![](Images/screenshot_006_2.jpg)](Images/screenshot_006.png) | Progress is shown using a horizontal progress bar. (`UIProgressView`)
+**IndeterminateSmall**               | [![](Images/screenshot_007_2.jpg)](Images/screenshot_007.png) | Shows primarily a label. Progress is shown using a small activity indicator. (`MRActivityIndicatorView`)
+**IndeterminateSmallDefault**        | [![](Images/screenshot_008_2.jpg)](Images/screenshot_008.png) | Shows primarily a label. Progress is shown using a small activity indicator. (`UIActivityIndicatorView` in `UIActivityIndicatorViewStyleGray`)
+**Checkmark**                        | [![](Images/screenshot_009_2.jpg)](Images/screenshot_009.png) | Shows a checkmark. (`MRCheckmarkIconView`)
+**Cross**                            | [![](Images/screenshot_010_2.jpg)](Images/screenshot_010.png) | Shows a cross. (`MRCrossIconView`)
 
 
 

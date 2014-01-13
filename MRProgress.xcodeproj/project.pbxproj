@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29CE9679186E0129006006B0 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29CE967A186E0129006006B0 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CE9678186E0129006006B0 /* MRStopButton.m */; };
 		710BD58B1816AD3700654750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BD58A1816AD3700654750 /* QuartzCore.framework */; };
 		710BD5AD1817353E00654750 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5961817353E00654750 /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5AE1817353E00654750 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5971817353E00654750 /* MRBlurView.m */; };
@@ -35,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		299730941881CB520022B27B /* MRStopableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
+		29CE9677186E0129006006B0 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
+		29CE9678186E0129006006B0 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
 		710BD58A1816AD3700654750 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		710BD5961817353E00654750 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		710BD5971817353E00654750 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
@@ -104,6 +109,9 @@
 				710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */,
 				710BD5A51817353E00654750 /* MRProgressOverlayView.h */,
 				710BD5A61817353E00654750 /* MRProgressOverlayView.m */,
+				299730941881CB520022B27B /* MRStopableView.h */,
+				29CE9677186E0129006006B0 /* MRStopButton.h */,
+				29CE9678186E0129006006B0 /* MRStopButton.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -191,6 +199,7 @@
 				710BD5BD1817353E00654750 /* MRMessageInterceptor.h in Headers */,
 				710BD5B91817353E00654750 /* MRNavigationBarProgressView.h in Headers */,
 				710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */,
+				29CE9679186E0129006006B0 /* MRStopButton.h in Headers */,
 				710BD5B31817353E00654750 /* MRCircularProgressView.h in Headers */,
 				710BD5B11817353E00654750 /* MRActivityIndicatorView.h in Headers */,
 				7197CF011816A1A10022A19D /* MRProgress.h in Headers */,
@@ -275,6 +284,7 @@
 				710BD5BC1817353E00654750 /* MRProgressOverlayView.m in Sources */,
 				710BD5B01817353E00654750 /* UIImage+MRImageEffects.m in Sources */,
 				710BD5AE1817353E00654750 /* MRBlurView.m in Sources */,
+				29CE967A186E0129006006B0 /* MRStopButton.m in Sources */,
 				710BD5B41817353E00654750 /* MRCircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
