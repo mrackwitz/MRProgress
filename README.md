@@ -69,7 +69,7 @@ The provided Example app demonstrates how they can be used.
 
 ### `MRActivityIndicatorView`
 
-![](Images/screenshot_012_1.jpg)
+![](Images/circular_indeterminate.gif)
 
 * Tint color can be changed
 * Same API as `UIActivityIndicatorView`
