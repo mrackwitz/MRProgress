@@ -113,7 +113,6 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     NSArray *views = [self allOverlaysForView:view];
     for (MRProgressOverlayView *overlayView in views) {
         [overlayView dismiss:animated completion:completionBlock];
-        return YES;
     }
     return views.count;
 }
