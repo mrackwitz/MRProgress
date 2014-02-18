@@ -172,7 +172,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  Attention:
  Never set titleLabel.text manually. This would unset titleLabel.attributedText where the layout relies on.
  */
-@property (readonly) UILabel *titleLabel;
+@property (readonly, weak) UILabel *titleLabel;
 
 /**
  Mode view.

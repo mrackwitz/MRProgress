@@ -28,6 +28,6 @@
  
  The button is in the middle of the control.
  */
-@property (nonatomic, readonly) UIButton *stopButton;
+@property (nonatomic, readonly, weak) UIButton *stopButton;
 
 @end
