@@ -104,6 +104,47 @@ The provided Example app demonstrates how they can be used.
 4. `import <MRProgress/MRProgress.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
 
 
+### Cocoapods - Subspecs
+
+The library is cut in small subspecs, so that you can just depend on selected components. See the following dependency tree:
+
+```
+─┬─MRProgress/
+ │
+ ├─┬─Blur
+ │ └───Helper
+ │
+ ├─┬─ActivityIndicator
+ │ └───Stopable
+ │
+ ├─┬─Circular
+ │ ├───Stopable
+ │ └───Helper
+ │
+ ├───Icons
+ │
+ ├─┬─NavigationBarProgress
+ │ └───MessageInterceptor
+ │
+ ├─┬─Overlay
+ │ ├───ActivityIndicator
+ │ ├───Circular
+ │ ├───Icons
+ │ ├───Blur
+ │ └───Helper
+ │
+ ├───MessageInterceptor
+ │
+ ├───WeakProxy
+ │
+ ├───Stopable†
+ │
+ └───Helper†
+```
+
+*† Do not depend on these explicitly.*
+
+
 
 ## Requirements
 
