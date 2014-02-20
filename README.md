@@ -111,15 +111,11 @@ The library is cut in small subspecs, so that you can just depend on selected co
 ```
 ─┬─MRProgress/
  │
- ├─┬─Blur
- │ └───Helper
+ ├───Blur
  │
- ├─┬─ActivityIndicator
- │ └───Stopable
+ ├───ActivityIndicator
  │
- ├─┬─Circular
- │ ├───Stopable
- │ └───Helper
+ ├───Circular
  │
  ├───Icons
  │
@@ -130,19 +126,12 @@ The library is cut in small subspecs, so that you can just depend on selected co
  │ ├───ActivityIndicator
  │ ├───Circular
  │ ├───Icons
- │ ├───Blur
- │ └───Helper
+ │ └───Blur
  │
  ├───MessageInterceptor
  │
- ├───WeakProxy
- │
- ├───Stopable†
- │
- └───Helper†
+ └───WeakProxy
 ```
-
-*† Do not depend on these explicitly.*
 
 
 
