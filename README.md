@@ -84,7 +84,7 @@ The provided Example app demonstrates how they can be used.
 
 [CocoaPods](http://www.cocoapods.org) is the recommended way to add MRProgress to your project.
 
-1. Add a pod entry for MRProgress to your *Podfile* `pod 'MRProgress', '~> 0.3'`.
+1. Add a pod entry for MRProgress to your *Podfile* `pod 'MRProgress'.
 2. Install the pod(s) by running `pod install`.
 3. Include MRProgress wherever you need it with `#import "MRProgress.h"`.
 
@@ -102,6 +102,36 @@ The provided Example app demonstrates how they can be used.
 2. Select your target and go to the *Build Phases* tab. In the *Link Binary With Libraries* section select the add button. On the sheet find and add libMRProgress.a.
 3. Add Target **MRProgress** to your *Target Dependencies* list.
 4. `import <MRProgress/MRProgress.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
+
+
+### Cocoapods - Subspecs
+
+The library is cut in small subspecs, so that you can just depend on selected components. See the following dependency tree:
+
+```
+─┬─MRProgress/
+ │
+ ├───Blur
+ │
+ ├───ActivityIndicator
+ │
+ ├───Circular
+ │
+ ├───Icons
+ │
+ ├─┬─NavigationBarProgress
+ │ └───MessageInterceptor
+ │
+ ├─┬─Overlay
+ │ ├───ActivityIndicator
+ │ ├───Circular
+ │ ├───Icons
+ │ └───Blur
+ │
+ ├───MessageInterceptor
+ │
+ └───WeakProxy
+```
 
 
 
