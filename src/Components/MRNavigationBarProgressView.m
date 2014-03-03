@@ -207,7 +207,7 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
         
         void(^completion)(BOOL) = ^(BOOL finished){
             [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.progressView.alpha = progress >= 1 ? 0 : 1;
+                self.progressView.alpha = self.progress >= 1 ? 0 : 1;
             } completion:nil];
         };
         
