@@ -66,14 +66,7 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     
     // Observe topItem
     progressView.viewController = navigationController.topViewController;
-    id delegate = navigationController.delegate;
-    if (delegate) {
-        MRMessageInterceptor *messageInterceptor = [[MRMessageInterceptor alloc] initWithMiddleMan:progressView];
-        messageInterceptor.receiver = delegate;
-        navigationController.delegate = (id<UINavigationControllerDelegate>)messageInterceptor;
-    } else {
-        navigationController.delegate = progressView;
-    }
+    [progressView registerObserverForNavigationController:navigationController];
     
     return progressView;
 }
@@ -111,20 +104,41 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     self.progress = 0;
 }
 
+- (void)registerObserverForNavigationController:(UINavigationController *)navigationController {
+    id delegate = navigationController.delegate;
+    if (delegate) {
+        MRMessageInterceptor *messageInterceptor = [[MRMessageInterceptor alloc] initWithMiddleMan:progressView];
+        messageInterceptor.receiver = delegate;
+        navigationController.delegate = (id<UINavigationControllerDelegate>)messageInterceptor;
+    } else {
+        navigationController.delegate = progressView;
+    }
+}
+
+- (void)unregisterObserverForNavigationController:(UINavigationController *)navigationController {
+    if (self.useInterceptor) {
+        // Stop intercepting navigationBar.delegate messages
+        id receiver = ((MRMessageInterceptor *)navigationController.delegate).receiver;
+        navigationController.delegate = receiver != self ? receiver : nil;
+    } else {
+        navigationController.delegate = nil;
+    }
+}
+
+- (BOOL)useInterceptor {
+    return [((id<NSObject>)navigationController.delegate) isKindOfClass:MRMessageInterceptor.class]
+}
+
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     // Check if our controller is still the topViewController or was popped
     NSUInteger index = [navigationController.viewControllers indexOfObject:self.viewController];
     if (index == NSNotFound || index < navigationController.viewControllers.count-1) {
-        if ([((id<NSObject>)navigationController.delegate) isKindOfClass:MRMessageInterceptor.class]) {
-            // Stop intercepting navigationBar.delegate messages
-            id receiver = ((MRMessageInterceptor *)navigationController.delegate).receiver;
-            navigationController.delegate = receiver != self ? receiver : nil;
-            
+        if (self.useInterceptor) {
             // Forward intercepted message
             [navigationController.delegate navigationController:navigationController willShowViewController:viewController animated:animated];
-        } else {
-            navigationController.delegate = nil;
         }
+        
+        [self unregisterObserverForNavigationController:navigationController];
         
         // Remove reference
         navigationController.progressView = nil;
