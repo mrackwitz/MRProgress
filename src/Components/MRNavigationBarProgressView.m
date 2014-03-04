@@ -7,7 +7,6 @@
 //
 
 #import "MRNavigationBarProgressView.h"
-#import "MRMessageInterceptor.h"
 #import <objc/runtime.h>
 
 

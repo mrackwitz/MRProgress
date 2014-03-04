@@ -37,7 +37,6 @@ Pod::Spec.new do |s|
   
   s.subspec 'NavigationBarProgress' do |subs|
     subs.source_files = 'src/Components/MRNavigationBarProgressView.{h,m}'
-    subs.dependency 'MRProgress/MessageInterceptor'
     subs.ios.frameworks = %w{UIKit}
   end
   

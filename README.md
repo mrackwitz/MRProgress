@@ -119,8 +119,7 @@ The library is cut in small subspecs, so that you can just depend on selected co
  │
  ├───Icons
  │
- ├─┬─NavigationBarProgress
- │ └───MessageInterceptor
+ ├───NavigationBarProgress
  │
  ├─┬─Overlay
  │ ├───ActivityIndicator
