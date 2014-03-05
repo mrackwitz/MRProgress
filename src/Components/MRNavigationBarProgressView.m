@@ -7,8 +7,13 @@
 //
 
 #import "MRNavigationBarProgressView.h"
-#import "MRMessageInterceptor.h"
 #import <objc/runtime.h>
+
+
+
+static NSString *const MR_UINavigationControllerDidShowViewControllerNotification = @"UINavigationControllerDidShowViewControllerNotification";
+static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UINavigationControllerLastVisibleViewController";
+
 
 
 @interface UINavigationController (NavigationBarProgressView_Private)
@@ -32,7 +37,7 @@
 
 
 
-@interface MRNavigationBarProgressView () <UINavigationControllerDelegate>
+@interface MRNavigationBarProgressView ()
 
 @property (nonatomic, weak, readwrite) UIView *progressView;
 @property (nonatomic, weak, readwrite) UIViewController *viewController;
@@ -42,8 +47,6 @@
 
 
 @implementation MRNavigationBarProgressView
-
-static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarProgressViewObservationContext;
 
 + (instancetype)progressViewForNavigationController:(UINavigationController *)navigationController {
     // Try to get existing bar
@@ -66,14 +69,7 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     
     // Observe topItem
     progressView.viewController = navigationController.topViewController;
-    id delegate = navigationController.delegate;
-    if (delegate) {
-        MRMessageInterceptor *messageInterceptor = [[MRMessageInterceptor alloc] initWithMiddleMan:progressView];
-        messageInterceptor.receiver = delegate;
-        navigationController.delegate = (id<UINavigationControllerDelegate>)messageInterceptor;
-    } else {
-        navigationController.delegate = progressView;
-    }
+    [progressView registerObserverForNavigationController:navigationController];
     
     return progressView;
 }
@@ -111,20 +107,25 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     self.progress = 0;
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // Check if our controller is still the topViewController or was popped
-    NSUInteger index = [navigationController.viewControllers indexOfObject:self.viewController];
-    if (index == NSNotFound || index < navigationController.viewControllers.count-1) {
-        if ([((id<NSObject>)navigationController.delegate) isKindOfClass:MRMessageInterceptor.class]) {
-            // Stop intercepting navigationBar.delegate messages
-            id receiver = ((MRMessageInterceptor *)navigationController.delegate).receiver;
-            navigationController.delegate = receiver != self ? receiver : nil;
-            
-            // Forward intercepted message
-            [navigationController.delegate navigationController:navigationController willShowViewController:viewController animated:animated];
-        } else {
-            navigationController.delegate = nil;
-        }
+- (void)registerObserverForNavigationController:(UINavigationController *)navigationController {
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(navigationControllerDidShowViewController:)
+                                               name:MR_UINavigationControllerDidShowViewControllerNotification
+                                             object:navigationController];
+}
+
+- (void)unregisterObserverForNavigationController:(UINavigationController *)navigationController {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)navigationControllerDidShowViewController:(NSNotification *)notification {
+    UINavigationController *navigationController = notification.object;
+    UIViewController *lastVisibleVC = notification.userInfo[MR_UINavigationControllerLastVisibleViewController];
+    
+    // Check if our controller will be still the topViewController or was popped
+    if (lastVisibleVC == self.viewController) {
+        // Unregister observer
+        [self unregisterObserverForNavigationController:navigationController];
         
         // Remove reference
         navigationController.progressView = nil;
