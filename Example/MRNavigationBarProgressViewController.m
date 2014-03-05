@@ -29,16 +29,28 @@ const NSInteger MRProgessSteps = 10;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 1;
+        return 2;
     }
     return MRProgessSteps+1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Actions";
+    } else {
+        return @"Set progress:";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"Simulate";
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Deeper";
+        } else {
+            cell.textLabel.text = @"Simulate";
+        }
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"%.1f", [self progressForRowAtIndexPath:indexPath]];
     }
@@ -50,7 +62,9 @@ const NSInteger MRProgessSteps = 10;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:NSBundle.mainBundle] instantiateViewControllerWithIdentifier:@"NavigationBarProgress"] animated:YES];
+    } else if (indexPath.section == 0 && indexPath.row == 1) {
         MRNavigationBarProgressView *progressView = [MRNavigationBarProgressView progressViewForNavigationController:self.navigationController];
         [self performBlock:^{
             [progressView setProgress:0.2 animated:YES];
