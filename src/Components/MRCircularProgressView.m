@@ -82,6 +82,8 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     self.stopButton = stopButton;
     
     self.mayStop = NO;
+    
+    [self tintColorDidChange];
 }
 
 
