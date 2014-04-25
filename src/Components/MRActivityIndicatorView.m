@@ -57,6 +57,8 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     self.stopButton = stopButton;
     
     self.mayStop = NO;
+    
+    [self tintColorDidChange];
 }
 
 - (void)dealloc {
