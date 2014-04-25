@@ -42,6 +42,8 @@
     
     [self addTarget:self action:@selector(didTouchDown) forControlEvents:UIControlEventTouchDown];
     [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self tintColorDidChange];
 }
 
 - (CGRect)frameThatFits:(CGRect)parentBounds {

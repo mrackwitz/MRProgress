@@ -199,6 +199,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Observe key paths and notification center
     [self registerForKVO];
     [self registerForNotificationCenter];
+    
+    [self tintColorDidChange];
 }
 
 

@@ -44,6 +44,8 @@
     self.layer.borderWidth = 1.0f;
     self.shapeLayer.lineWidth = 1.0f;
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
+    
+    [self tintColorDidChange];
 }
 
 - (void)layoutSubviews {

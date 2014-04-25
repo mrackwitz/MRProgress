@@ -105,6 +105,8 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
     self.progressView = progressView;
     
     self.progress = 0;
+    
+    [self tintColorDidChange];
 }
 
 - (void)registerObserverForNavigationController:(UINavigationController *)navigationController {
