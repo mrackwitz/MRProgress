@@ -1,7 +1,8 @@
 ## MRProgress
-
-![Pod Version](https://cocoapod-badges.herokuapp.com/v/MRProgress/badge.png)
-![Pod Platform](https://cocoapod-badges.herokuapp.com/p/MRProgress/badge.png)
+[![Twitter: @mrackwitz](https://img.shields.io/badge/contact-@mrackwitz-blue.svg?style=flat)](https://twitter.com/mrackwitz)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/mrackwitz/MRProgress/blob/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/MRProgress.svg?style=flat)](https://github.com/mrackwitz/MRProgress)
+[![Travis](http://img.shields.io/travis/mrackwitz/MRProgress.svg?style=flat)](https://travis-ci.org/mrackwitz/MRProgress)
 
 MRProgress is a collection of drop-in components that display a dimmed overlay with a blurred box view with an indicator and/or labels while work is being done in a background thread.
 
