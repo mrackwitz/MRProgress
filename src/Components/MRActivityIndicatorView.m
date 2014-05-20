@@ -79,11 +79,11 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     [center removeObserver:self];
 }
 
-- (void)applicationDidEnterBackground:(NSNotificationCenter *)note {
+- (void)applicationDidEnterBackground:(NSNotification *)note {
     [self removeAnimation];
 }
 
-- (void)applicationWillEnterForeground:(NSNotificationCenter *)note {
+- (void)applicationWillEnterForeground:(NSNotification *)note {
     if (self.isAnimating) {
         [self addAnimation];
     }
