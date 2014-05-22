@@ -16,6 +16,13 @@
 @interface MRCircularProgressView : UIView<MRStopableView>
 
 /**
+ Value label.
+ 
+ The label where the current progress is displayed, if the receiver's property mayStop has the value NO.
+ */
+@property (nonatomic, weak, readonly) UILabel *valueLabel;
+
+/**
  Current progress.
  
  Use associated setter for non animated changes. Otherwises use setProgress:animated:.
