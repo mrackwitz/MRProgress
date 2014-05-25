@@ -36,12 +36,14 @@
 
 - (IBAction)onShowIndeterminateMayStopProgressView:(id)sender {
     MRProgressOverlayView *progressView = [MRProgressOverlayView new];
-    progressView.mode = MRProgressOverlayViewModeDeterminateCircular;
     progressView.stopBlock = ^(MRProgressOverlayView *view){
         [view dismiss:YES];
     };
     [self.rootView addSubview:progressView];
-    [self simulateProgressView:progressView];
+    [progressView show:YES];
+    [self performBlock:^{
+        [progressView dismiss:YES];
+    } afterDelay:2.0];
 }
 
 - (IBAction)onShowIndeterminateNoTextProgressView:(id)sender {
