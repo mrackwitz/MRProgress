@@ -126,7 +126,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     self.shapeLayer.strokeColor = tintColor.CGColor;
     self.layer.borderColor = tintColor.CGColor;
     self.valueLabel.textColor = tintColor;
-    self.stopButton.backgroundColor = tintColor;
+    self.stopButton.tintColor = tintColor;
 }
 
 
