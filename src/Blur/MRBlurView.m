@@ -74,6 +74,15 @@
 #pragma mark - Redraw
 
 - (void)redraw {
+    #if DEBUG
+        if (!NSThread.isMainThread) {
+            NSLog(@"** WARNING - %@ -%@ should be always called on the main thread!",
+                  NSStringFromClass(self.class),
+                  NSStringFromSelector(_cmd));
+        }
+    #endif
+    
+    // This has to happen on the main queue, as the view hierachy will be redrawn.
     __block UIImage *image = self.snapshot;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         image = [image mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
