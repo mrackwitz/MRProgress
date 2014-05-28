@@ -36,6 +36,8 @@
 }
 
 - (void)commonInit {
+    self.insetSizeRatio = 0.35;
+    
     CAShapeLayer *shapeLayer = [CAShapeLayer new];
     [self.layer addSublayer:shapeLayer];
     self.shapeLayer= shapeLayer;
@@ -49,7 +51,7 @@
 - (CGRect)frameThatFits:(CGRect)parentBounds {
     CGFloat sizeValue = MIN(parentBounds.size.width, parentBounds.size.height);
     CGSize viewSize = CGSizeMake(sizeValue, sizeValue);
-    const CGFloat sizeRatio = 0.35;
+    const CGFloat sizeRatio = self.insetSizeRatio;
     return CGRectInset(MRCenterCGSizeInCGRect(viewSize, parentBounds),
                        sizeValue * sizeRatio,
                        sizeValue * sizeRatio);
