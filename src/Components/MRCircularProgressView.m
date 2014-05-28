@@ -193,6 +193,8 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     animation.fromValue = @(self.progress);
     animation.toValue = @(progress);
     animation.delegate = self;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
     [self.shapeLayer addAnimation:animation forKey:MRCircularProgressViewProgressAnimationKey];
     
     // Add timer to update valueLabel
@@ -232,8 +234,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     [self updateProgress];
-    [self.valueLabelUpdateTimer invalidate];
-    self.valueLabelUpdateTimer = nil;
+    [self stopAnimation];
 }
 
 @end

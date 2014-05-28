@@ -74,17 +74,33 @@
 #pragma mark - Redraw
 
 - (void)redraw {
+    #if DEBUG
+        if (!NSThread.isMainThread) {
+            NSLog(@"** WARNING - %@ -%@ should be always called on the main thread!",
+                  NSStringFromClass(self.class),
+                  NSStringFromSelector(_cmd));
+        }
+    #endif
+    
+    // This has to happen on the main queue, as the view hierachy will be redrawn.
     __block UIImage *image = self.snapshot;
+    
+    if (!self.image) {
+        self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         image = [image mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
+            // Fade on content's change, dependent if there was already an image.
+            CATransition *transition = [CATransition new];
+            transition.duration = self.image ? 0.3 : 0.1;
+            transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            transition.type = kCATransitionFade;
+            [self.layer addAnimation:transition forKey:nil];
+            
             if (self.image) {
-                // Fade on content's change, if there was already an image.
-                CATransition *transition = [CATransition new];
-                transition.duration = 0.3;
-                transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                transition.type = kCATransitionFade;
-                [self.layer addAnimation:transition forKey:nil];
+                self.backgroundColor = UIColor.clearColor;
             }
             
             self.image = image;
