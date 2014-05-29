@@ -66,11 +66,8 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
     numberFormatter.locale = NSLocale.currentLocale;
     
     self.borderWidth = 2.0f;
-    self.layer.borderWidth = self.borderWidth;
-    
     self.lineWidth = 2.0f;
-    self.shapeLayer.lineWidth = self.lineWidth;
-
+    
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
     
     UILabel *valueLabel = [UILabel new];
