@@ -144,7 +144,12 @@
     CGContextTranslateCTM(context, -origin.x, -origin.y);
     
     // Draw the window
-    [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+    BOOL drawAfterUpdates = YES;
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        // WORKAROUND: For flickering issue on iPad
+        drawAfterUpdates = NO;
+    }
+    [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:drawAfterUpdates];
     
     // Capture the image and exit context
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
