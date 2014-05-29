@@ -89,13 +89,19 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 
 #pragma mark - Properties
 
+- (CGFloat)borderWidth {
+    return self.shapeLayer.borderWidth;
+}
+
 - (void)setBorderWidth:(CGFloat)borderWidth {
-    _borderWidth = borderWidth;
     self.shapeLayer.borderWidth = borderWidth;
 }
 
+- (CGFloat)lineWidth {
+    return self.shapeLayer.lineWidth;
+}
+
 - (void)setLineWidth:(CGFloat)lineWidth {
-    _lineWidth = lineWidth;
     self.shapeLayer.lineWidth = lineWidth;
 }
 
