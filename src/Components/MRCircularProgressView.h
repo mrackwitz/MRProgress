@@ -37,6 +37,20 @@
 @property (nonatomic, assign) CFTimeInterval animationDuration UI_APPEARANCE_SELECTOR;
 
 /**
+ The line width of the outer circle
+ 
+ Default is 2.0. Must be larger than zero.
+ */
+@property (nonatomic, assign) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
+
+/**
+ The line width of the inner circle
+ 
+ Default is 2.0. Must be larger than zero.
+ */
+@property (nonatomic, assign) CGFloat lineWidth UI_APPEARANCE_SELECTOR;
+
+/**
  Change progress animated.
  
  The animation will be always linear.
