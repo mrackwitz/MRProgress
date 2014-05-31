@@ -58,6 +58,27 @@
     }
 }
 
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    // See `didMoveToWindow`
+    if (self.window) {
+        [self redraw];
+    }
+}
+
+- (void)didMoveToWindow {
+    [super didMoveToWindow];
+    // As the documentation states: The window property may be nil by the time that this method is called
+    if (self.window) {
+        // This is needed e.g. for the push animation of UINavigationController.
+        CFTimeInterval timeInterval = CATransaction.animationDuration > 0 ? CATransaction.animationDuration : 0.25;
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC));
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            [self redraw];
+        });
+    }
+}
+
 
 #pragma mark - Notifications
 
