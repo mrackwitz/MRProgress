@@ -52,7 +52,9 @@
     [super layoutSubviews];
     if (self.redrawOnFrameChange) {
         self.redrawOnFrameChange = NO;
-        [self redraw];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self redraw];
+        });
     }
 }
 
