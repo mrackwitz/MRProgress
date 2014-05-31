@@ -21,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AFNetworking/UIKit (= 2.2.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
