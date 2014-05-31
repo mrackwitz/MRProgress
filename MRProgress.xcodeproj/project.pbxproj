@@ -30,6 +30,10 @@
 		710BD5BF1817353E00654750 /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AA1817353E00654750 /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AB1817353E00654750 /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5C11817353E00654750 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5AC1817353E00654750 /* MRWeakProxy.m */; };
+		717B67CF193A296900829442 /* MRActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */; };
+		717B67D0193A296F00829442 /* MRCircularProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */; };
+		717B67D1193A296F00829442 /* MRNavigationBarProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */; };
+		717B67D2193A296F00829442 /* MRProgressOverlayView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */; };
 		7197CEBB18169F210022A19D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CEBA18169F210022A19D /* Foundation.framework */; };
 		7197CF011816A1A10022A19D /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7197CF161816AA6F0022A19D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF141816AA6F0022A19D /* Accelerate.framework */; };
@@ -62,6 +66,14 @@
 		710BD5AA1817353E00654750 /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
 		710BD5AB1817353E00654750 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		710BD5AC1817353E00654750 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
+		717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67C9193A296300829442 /* MRCircularProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRCircularProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRCircularProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67CB193A296300829442 /* MRNavigationBarProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRNavigationBarProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRNavigationBarProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+AFNetworking.m"; sourceTree = "<group>"; };
 		7197CEB718169F210022A19D /* libMRProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMRProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7197CEBA18169F210022A19D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7197CEBE18169F210022A19D /* MRProgress-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgress-Prefix.pch"; sourceTree = "<group>"; };
@@ -132,6 +144,29 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		717B67C5193A296300829442 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				717B67C6193A296300829442 /* AFNetworking */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		717B67C6193A296300829442 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */,
+				717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */,
+				717B67C9193A296300829442 /* MRCircularProgressView+AFNetworking.h */,
+				717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */,
+				717B67CB193A296300829442 /* MRNavigationBarProgressView+AFNetworking.h */,
+				717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */,
+				717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */,
+				717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		7197CEAE18169F210022A19D = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +220,7 @@
 			children = (
 				710BD5951817353E00654750 /* Blur */,
 				710BD59A1817353E00654750 /* Components */,
+				717B67C5193A296300829442 /* Support */,
 				710BD5A71817353E00654750 /* Utils */,
 				7197CEEE18169F470022A19D /* MRProgress.h */,
 			);
