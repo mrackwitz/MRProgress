@@ -37,6 +37,7 @@
 }
 
 - (void)commonInit {
+    [self setPlaceholder];
     self.clipsToBounds = YES;
     [self registerForNotificationCenter];
 }
