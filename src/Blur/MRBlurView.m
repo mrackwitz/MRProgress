@@ -73,6 +73,14 @@
 
 #pragma mark - Redraw
 
+- (void)setPlaceholder {
+    self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.96];
+}
+
+- (void)clearPlaceholder {
+    self.backgroundColor = UIColor.clearColor;
+}
+
 - (void)redraw {
     #if DEBUG
         if (!NSThread.isMainThread) {
@@ -86,7 +94,7 @@
     __block UIImage *image = self.snapshot;
     
     if (!self.image) {
-        self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.9];
+        [self setPlaceholder];
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -100,7 +108,7 @@
             [self.layer addAnimation:transition forKey:nil];
             
             if (self.image) {
-                self.backgroundColor = UIColor.clearColor;
+                [self clearPlaceholder];
             }
             
             self.image = image;
