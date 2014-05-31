@@ -56,7 +56,9 @@
 
 - (void)registerForNotificationCenter {
     NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-    [center addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [center addObserver:self
+               selector:@selector(statusBarOrientationDidChange:)
+                   name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
 
 - (void)unregisterFromNotificationCenter {
@@ -64,7 +66,7 @@
     [center removeObserver:self];
 }
 
-- (void)deviceOrientationDidChange:(NSNotification *)notification {
+- (void)statusBarOrientationDidChange:(NSNotification *)notification {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^{
        [self redraw];
