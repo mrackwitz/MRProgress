@@ -15,6 +15,8 @@
 
 @interface MRBlurView ()
 
+@property (nonatomic, assign) BOOL redrawOnFrameChange;
+
 @end
 
 
@@ -48,7 +50,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self redraw];
+    if (self.redrawOnFrameChange) {
+        self.redrawOnFrameChange = NO;
+        [self redraw];
+    }
 }
 
 
@@ -67,10 +72,7 @@
 }
 
 - (void)statusBarOrientationDidChange:(NSNotification *)notification {
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^{
-       [self redraw];
-    });
+    self.redrawOnFrameChange = YES;
 }
 
 
