@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRProgressView.h"
 #import "MRStopableView.h"
 
 
 /**
  You use the MRCircularProgressView class to depict the progress of a task over time.
  */
-@interface MRCircularProgressView : UIView<MRStopableView>
+@interface MRCircularProgressView : MRProgressView<MRStopableView>
 
 /**
  Value label.

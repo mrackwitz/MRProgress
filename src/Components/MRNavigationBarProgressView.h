@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRProgressView.h"
 
 
 /**
  A custom progress view which can be displayed at the bottom edge of the navigation bar like in Messages app
  or at the top edge of the toolbar like in Safari.
  */
-@interface MRNavigationBarProgressView : UIView
+@interface MRNavigationBarProgressView : MRProgressView
 
 /**
  Tint color of progress bar.
