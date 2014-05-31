@@ -1,3 +1,3 @@
 workspace 'MRProgress.xcworkspace'
 xcodeproj 'MRProgress.xcodeproj'
-platform :ios
+platform :ios, '7.0'
