@@ -55,6 +55,10 @@ Pod::Spec.new do |s|
     subs.source_files = 'src/Utils/MRMessageInterceptor.{h,m}'
   end
   
+  s.subspec 'MethodCopier' do |subs|
+    subs.source_files = 'src/Utils/MRMethodCopier.{h,m}'
+  end
+
   s.subspec 'WeakProxy' do |subs|
     subs.source_files = 'src/Utils/MRWeakProxy.{h,m}'
   end
