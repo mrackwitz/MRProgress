@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
     subs.source_files = 'src/Components/MRCircularProgressView.{h,m}'
     subs.dependency 'MRProgress/Stopable'
     subs.dependency 'MRProgress/Helper'
+    subs.dependency 'MRProgress/ProgressBaseClass'
     subs.ios.frameworks = %w{UIKit QuartzCore}
   end
 
@@ -37,6 +38,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'NavigationBarProgress' do |subs|
     subs.source_files = 'src/Components/MRNavigationBarProgressView.{h,m}'
+    subs.dependency 'MRProgress/ProgressBaseClass'
     subs.ios.frameworks = %w{UIKit}
   end
   
@@ -64,6 +66,11 @@ Pod::Spec.new do |s|
   end
 
   # "Private" helper subspecs - do not depend on these
+  s.subspec 'ProgressBaseClass' do |subs|
+    subs.source_files = 'src/Components/MRProgressView.{h,m}'
+    subs.ios.frameworks = %w{UIKit}
+  end
+
   s.subspec 'Stopable' do |subs|
     subs.source_files = 'src/Components/{MRStopableView,MRStopButton}.{h,m}'
     subs.ios.frameworks = %w{UIKit QuartzCore}
