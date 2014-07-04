@@ -137,6 +137,10 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
     }
 }
 
+- (void) dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)setBarView:(UIView *)barView {
     _barView = barView;
     [self layoutSubviews];
