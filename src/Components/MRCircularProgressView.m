@@ -65,6 +65,9 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 - (void)commonInit {
     self.progress = 0;
     
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for circular progress view");
+    
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     self.numberFormatter = numberFormatter;
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
@@ -187,6 +190,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 
 - (void)updateLabel:(float)progress {
     self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
+    self.accessibilityValue = self.valueLabel.text;
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {

@@ -95,6 +95,10 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 }
 
 - (void)commonInit {
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for navigation bar progress view");
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
+    
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.opaque = NO;
     

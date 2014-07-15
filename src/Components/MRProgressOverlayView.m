@@ -158,6 +158,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)commonInit {
+    self.accessibilityViewIsModal = YES;
+    
     self.hidden = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -188,6 +190,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         NSFontAttributeName:            [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSKernAttributeName:            NSNull.null,  // turn on auto-kerning
     }];
+    titleLabel.accessibilityTraits = UIAccessibilityTraitHeader;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
