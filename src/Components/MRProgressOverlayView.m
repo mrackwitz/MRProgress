@@ -43,6 +43,8 @@ static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)showModeView:(UIView *)modeView;
 - (void)hideModeView:(UIView *)modeView;
 
+- (BOOL)mayStop;
+
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha;
 
 - (void)registerForNotificationCenter;
@@ -498,6 +500,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)modeViewStopButtonTouchUpInside {
     if (self.stopBlock) {
         self.stopBlock(self);
+    }
+}
+
+
+#pragma mark - A11y
+
+- (BOOL)accessibilityPerformEscape {
+    if (self.mayStop) {
+        [self modeViewStopButtonTouchUpInside];
+        return YES;
+    } else {
+        return NO;
     }
 }
 
