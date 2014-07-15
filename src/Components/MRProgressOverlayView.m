@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
+#define MR_UIEffectViewIsAllowed   (__IPHONE_OS_VERSION_MAX_ALLOWED >= 80000)
+#define MR_UIEffectViewIsAvailable (MR_UIEffectViewIsAllowed && NSClassFromString(@"UIVisualEffectView") != nil)
+
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "MRProgressOverlayView.h"
@@ -287,11 +290,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Create subviews
 
 - (UIView *)createBlurView {
-    UIView *blurView = [MRBlurView new];
-    blurView.alpha = 0.98;
-    [self addSubview:blurView];
-    
-    return blurView;
+    if (MR_UIEffectViewIsAvailable) {
+        #if MR_UIEffectViewIsAllowed
+            UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+            [self addSubview:effectView];
+            return effectView;
+        #endif
+    } else {
+        UIView *blurView = [MRBlurView new];
+        blurView.alpha = 0.98;
+        [self addSubview:blurView];
+        return blurView;
+    }
 }
 
 - (UIView *)createModeView {
