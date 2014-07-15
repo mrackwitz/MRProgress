@@ -63,8 +63,6 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 - (void)commonInit {
-    self.progress = 0;
-    
     self.isAccessibilityElement = YES;
     self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for circular progress view");
     
@@ -87,6 +85,8 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     self.stopButton = stopButton;
     
     self.mayStop = NO;
+    
+    self.progress = 0;
     
     [self tintColorDidChange];
 }
