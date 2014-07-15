@@ -530,9 +530,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
     self.blurView.transform = transform;
-    self.blurView.alpha = alpha;
     self.dialogView.transform = transform;
-    self.dialogView.alpha = alpha;
+    self.alpha = alpha;
 }
 
 - (void)show:(BOOL)animated {
