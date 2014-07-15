@@ -549,6 +549,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     } else {
         animBlock();
     }
+    
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, self.titleLabelText);
 }
 
 - (void)dismiss:(BOOL)animated {
@@ -579,6 +582,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     void(^animCompletionBlock)(BOOL) = ^(BOOL finished) {
         self.hidden = YES;
         [self hideModeView:self.modeView];
+        
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+        
         if (completionBlock) {
             completionBlock();
         }
