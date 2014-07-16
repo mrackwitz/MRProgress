@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7111E5B81806116B00016A43 /* aquarium-fish1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7111E5B71806116B00016A43 /* aquarium-fish1.jpg */; };
+		711417391976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */; };
 		7197CF101816AA420022A19D /* MRProgress.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */; };
 		7197CF131816AA5B0022A19D /* libMRProgress.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF111816AA4C0022A19D /* libMRProgress.a */; };
 		71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		7111E5B71806116B00016A43 /* aquarium-fish1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aquarium-fish1.jpg"; sourceTree = "<group>"; };
+		711417371976ABC4005A1DAD /* MRAFNetworkingSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAFNetworkingSupportViewController.h; sourceTree = "<group>"; };
+		711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAFNetworkingSupportViewController.m; sourceTree = "<group>"; };
 		7197CF0F1816AA420022A19D /* MRProgress.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MRProgress.xcodeproj; path = ../MRProgress.xcodeproj; sourceTree = "<group>"; };
 		7197CF111816AA4C0022A19D /* libMRProgress.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMRProgress.a; path = "MRProgress/build/Debug-iphoneos/libMRProgress.a"; sourceTree = "<group>"; };
 		71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorViewController.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				71EC36821805BB7100C85C5B /* Main_iPhone.storyboard */,
 				71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */,
 				71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */,
+				711417371976ABC4005A1DAD /* MRAFNetworkingSupportViewController.h */,
+				711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */,
 				71E898D318158B450035F290 /* MRCircularProgressViewController.h */,
 				71E898D418158B450035F290 /* MRCircularProgressViewController.m */,
 				71E898D0181451710035F290 /* MRColorPaletteViewController.h */,
@@ -238,6 +243,7 @@
 				71EC36811805BB7100C85C5B /* MRAppDelegate.m in Sources */,
 				71EC36BA1805D94500C85C5B /* MRProgressOverlayTableViewController.m in Sources */,
 				71F50A3C181895D200FF4B8E /* MRProgressOverlayViewController.m in Sources */,
+				711417391976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m in Sources */,
 				71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */,
 				71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */,
 				71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */,
