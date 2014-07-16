@@ -31,8 +31,6 @@
 		710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AB1817353E00654750 /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5C11817353E00654750 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5AC1817353E00654750 /* MRWeakProxy.m */; };
 		717B67CF193A296900829442 /* MRActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */; };
-		717B67D0193A296F00829442 /* MRCircularProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */; };
-		717B67D1193A296F00829442 /* MRNavigationBarProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */; };
 		717B67D2193A296F00829442 /* MRProgressOverlayView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */; };
 		717B67D5193A2CC100829442 /* MRMethodCopier.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D3193A2CC100829442 /* MRMethodCopier.h */; };
 		717B67D6193A2CC100829442 /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67D4193A2CC100829442 /* MRMethodCopier.m */; };
@@ -72,10 +70,6 @@
 		710BD5AC1817353E00654750 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
-		717B67C9193A296300829442 /* MRCircularProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRCircularProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRCircularProgressView+AFNetworking.m"; sourceTree = "<group>"; };
-		717B67CB193A296300829442 /* MRNavigationBarProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRNavigationBarProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRNavigationBarProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+AFNetworking.h"; sourceTree = "<group>"; };
 		717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+AFNetworking.m"; sourceTree = "<group>"; };
 		717B67D3193A2CC100829442 /* MRMethodCopier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMethodCopier.h; sourceTree = "<group>"; };
@@ -169,10 +163,6 @@
 			children = (
 				717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */,
 				717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */,
-				717B67C9193A296300829442 /* MRCircularProgressView+AFNetworking.h */,
-				717B67CA193A296300829442 /* MRCircularProgressView+AFNetworking.m */,
-				717B67CB193A296300829442 /* MRNavigationBarProgressView+AFNetworking.h */,
-				717B67CC193A296300829442 /* MRNavigationBarProgressView+AFNetworking.m */,
 				717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */,
 				717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */,
 			);
@@ -370,9 +360,7 @@
 				717B67CF193A296900829442 /* MRActivityIndicatorView+AFNetworking.m in Sources */,
 				710BD5B61817353E00654750 /* MRIconView.m in Sources */,
 				710BD5B21817353E00654750 /* MRActivityIndicatorView.m in Sources */,
-				717B67D1193A296F00829442 /* MRNavigationBarProgressView+AFNetworking.m in Sources */,
 				717B67D6193A2CC100829442 /* MRMethodCopier.m in Sources */,
-				717B67D0193A296F00829442 /* MRCircularProgressView+AFNetworking.m in Sources */,
 				710BD5BC1817353E00654750 /* MRProgressOverlayView.m in Sources */,
 				717B67DA193A813300829442 /* MRProgressView.m in Sources */,
 				710BD5B01817353E00654750 /* UIImage+MRImageEffects.m in Sources */,
