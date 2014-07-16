@@ -848,9 +848,35 @@
                     <view key="view" contentMode="scaleToFill" id="iPS-Ky-Nl6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="U2I-7z-1gP" customClass="MRActivityIndicatorView">
+                                <rect key="frame" x="110" y="100" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="JsI-Ig-xNc" customClass="MRCircularProgressView">
+                                <rect key="frame" x="110" y="220" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCJ-i6-jtl">
+                                <rect key="frame" x="137" y="350" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGo:" destination="TWP-ZS-peV" eventType="touchUpInside" id="9G5-yR-67Z"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="AFNetworking Support" id="Aql-AW-XiO"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="U2I-7z-1gP" id="gUv-tW-e5q"/>
+                        <outlet property="circularProgressView" destination="JsI-Ig-xNc" id="wMo-8c-y4i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4A-Nv-yDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
