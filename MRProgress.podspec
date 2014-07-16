@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.source_files          = 'src/MRProgress.h'
   s.platform              = :ios, '7.0'
   s.requires_arc          = true
+  s.default_subspecs      = %w{Blur ActivityIndicator Circular Icons NavigationBarProgress Overlay}
   
   s.subspec 'Blur' do |subs|
     subs.source_files = 'src/Blur/*.{h,m}'
