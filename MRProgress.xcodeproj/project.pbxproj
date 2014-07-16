@@ -69,6 +69,7 @@
 		710BD5AA1817353E00654750 /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
 		710BD5AB1817353E00654750 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		710BD5AC1817353E00654750 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
+		711417411976ED7F005A1DAD /* MRProgress.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = MRProgress.podspec; sourceTree = "<group>"; };
 		717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		717B67C9193A296300829442 /* MRProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgressView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 				7197CEBC18169F210022A19D /* MRProgress */,
 				7197CEB918169F210022A19D /* Frameworks */,
 				7197CEB818169F210022A19D /* Products */,
+				711417411976ED7F005A1DAD /* MRProgress.podspec */,
 				1878F9F9EFE64EB280742D50 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
