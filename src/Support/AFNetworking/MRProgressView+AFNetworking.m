@@ -1,5 +1,5 @@
 //
-//  MRActivityIndicatorView+AFNetworking.h
+//  MRProgressView+AFNetworking.m
 //  MRProgress
 //
 //  Created by Marius Rackwitz on 12.03.14.
@@ -27,45 +27,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <MRProgress/MRProgress.h>
+#import "MRProgressView+AFNetworking.h"
+#import "MRMethodCopier.h"
 
-#import <Availability.h>
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+@implementation MRProgressView (AFNetworking)
 
-#import <UIKit/UIKit.h>
-
-@class AFURLConnectionOperation;
-
-/**
- This category adds methods to the MRProgress library's `MRActivityIndicatorView` class. The methods in this category provide support for automatically starting and stopping animation depending on the loading state of a request operation or session task.
- */
-@interface MRActivityIndicatorView (AFNetworking)
-
-///----------------------------------
-/// @name Animating for Session Tasks
-///----------------------------------
-
-/**
- Binds the animating state to the state of the specified task.
- 
- @param task The task. If `nil`, automatic updating from any previously specified operation will be disabled.
- */
++ (void)load {
+    MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIActivityIndicatorView.class toClass:self];
+    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-- (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task;
+    [copier copyInstanceMethod:@selector(setProgressWithUploadProgressOfTask:animated:)];
+    [copier copyInstanceMethod:@selector(setProgressWithDownloadProgressOfTask:animated:)];
 #endif
-
-///---------------------------------------
-/// @name Animating for Request Operations
-///---------------------------------------
-
-/**
- Binds the animating state to the execution state of the specified operation.
- 
- @param operation The operation. If `nil`, automatic updating from any previously specified operation will be disabled.
- */
-- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation;
+    
+    [copier copyInstanceMethod:@selector(setProgressWithUploadProgressOfOperation:animated:)];
+    [copier copyInstanceMethod:@selector(setProgressWithDownloadProgressOfOperation:animated:)];
+    
+    // Internal methods
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_uploadProgressAnimated")];
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_setUploadProgressAnimated:")];
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_downloadProgressAnimated")];
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_setDownloadProgressAnimated:")];
+    [copier copyInstanceMethod:@selector(observeValueForKeyPath:ofObject:change:context:)];
+}
 
 @end
-
-#endif

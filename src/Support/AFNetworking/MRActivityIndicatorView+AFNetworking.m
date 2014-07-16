@@ -28,9 +28,24 @@
 // THE SOFTWARE.
 
 #import "MRActivityIndicatorView+AFNetworking.h"
-#import <AFNetworking/AFNetworking.h>
+#import "MRMethodCopier.h"
 
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @implementation MRActivityIndicatorView (AFNetworking)
+
++ (void)load {
+    MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIActivityIndicatorView.class toClass:self];
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfTask:)];
+#endif
+    
+    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfTask:)];
+    
+    // Internal methods
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_startAnimating")];
+    [copier copyInstanceMethod:NSSelectorFromString(@"af_stopAnimating")];
+}
 
 @end
