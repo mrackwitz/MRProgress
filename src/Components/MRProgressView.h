@@ -16,7 +16,10 @@
  This has the advantage that we can define an usual category on this class to extend
  the functionality of all other custom progress view subclasses provided by this library.
  */
-@interface MRProgressView : UIView
+@interface MRProgressView : UIView {
+@protected
+    float _progress;
+}
 
 /**
  Current progress. Use associated setter for non animated changes. Otherwises use setProgress:aniamted:.
