@@ -63,8 +63,8 @@
 }
 
 - (IBAction)onOverlayViewGo:(id)sender {
-    NSURLSessionDataTask *task = [self.manager GET:@"/drip"
-                                        parameters:@{ @"numbytes": @100, @"duration": @0.1, @"delay": @2 }
+    NSURLSessionDataTask *task = [self.manager GET:@"/delay/2"
+                                        parameters:nil
                                            success:nil
                                            failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                NSLog(@"Task %@ failed with error: %@", task, error);
