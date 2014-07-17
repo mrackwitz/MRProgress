@@ -53,6 +53,37 @@ Pod::Spec.new do |s|
     subs.ios.frameworks = %w{UIKit QuartzCore CoreGraphics}
   end
   
+  # Optional support subspecs - you can use them if they make sense for you
+  s.subspec 'AFNetworking' do |subs|
+    subs.subspec 'Base' do |subs|
+      subs.dependency 'MRProgress/MethodCopier'
+      subs.dependency 'AFNetworking'
+      subs.dependency 'AFNetworking/UIKit', '2.2.1'
+    end
+
+    def subs.subspec_with_category_for(spec_name, class_name)
+      subspec spec_name do |subs|
+        subs.dependency 'MRProgress/AFNetworking/Base'
+        subs.dependency "MRProgress/#{spec_name}"
+        subs.source_files = "src/Support/AFNetworking/#{class_name}+AFNetworking.{h,m}"
+      end
+    end
+
+    def subs.alias_subspecs(hash)
+      hash.each do |alias_name, target_name|
+        subspec alias_name do |subs|
+          subs.dependency "MRProgress/AFNetworking/#{target_name}"
+        end
+      end
+    end
+
+    subs.subspec_with_category_for 'ActivityIndicator', 'MRActivityIndicatorView'
+    subs.subspec_with_category_for 'Overlay',           'MRProgressOverlayView'
+    subs.subspec_with_category_for 'ProgressBaseClass', 'MRProgressView'
+    subs.alias_subspecs 'Circular'              => 'ProgressBaseClass'
+    subs.alias_subspecs 'NavigationBarProgress' => 'ProgressBaseClass'
+  end
+  
   # "Public" helper subspecs - you can rely on these
   s.subspec 'MessageInterceptor' do |subs|
     subs.source_files = 'src/Utils/MRMessageInterceptor.{h,m}'
