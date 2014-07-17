@@ -29,18 +29,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://httpbin.org/"]];
+    self.activityIndicatorView.hidesWhenStopped = NO;
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
+    
+    AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://httpbin.org/"] sessionConfiguration:config];
     self.manager = sessionManager;
 }
 
-- (IBAction)onGo:(id)sender {
+- (IBAction)onActivityIndicatorGo:(id)sender {
+    NSURLSessionDataTask *task = [self.manager GET:@"/delay/3"
+                                            parameters:nil
+                                               success:nil
+                                               failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                   NSLog(@"Task %@ failed with error: %@", task, error);
+                                               }];
+    [self.activityIndicatorView setAnimatingWithStateOfTask:task];
+}
+
+- (IBAction)onCircularProgressViewGo:(id)sender {
     NSProgress *downloadProgress = nil;
-    
-    NSURLSessionDownloadTask *task = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@""]]
+    NSURLSessionDownloadTask *task = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.manager.baseURL]]
                                                                   progress:&downloadProgress
                                                                destination:nil
-                                                         completionHandler:nil];
-    [self.activityIndicatorView setAnimatingWithStateOfTask:task];
+                                                         completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
+                                                             NSLog(@"Task completed with error: %@", error);
+                                                         }];
+    [task resume];
     [self.circularProgressView setProgressWithDownloadProgressOfTask:task animated:YES];
 }
 

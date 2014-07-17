@@ -851,7 +851,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" id="U2I-7z-1gP" customClass="MRActivityIndicatorView">
                                 <rect key="frame" x="110" y="100" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="JsI-Ig-xNc" customClass="MRCircularProgressView">
@@ -860,13 +860,23 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCJ-i6-jtl">
-                                <rect key="frame" x="137" y="350" width="46" height="30"/>
+                                <rect key="frame" x="254" y="135" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onGo:" destination="TWP-ZS-peV" eventType="touchUpInside" id="9G5-yR-67Z"/>
+                                    <action selector="onActivityIndicatorGo:" destination="TWP-ZS-peV" eventType="touchUpInside" id="fIg-vW-gIB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QgO-dd-W4E">
+                                <rect key="frame" x="254" y="255" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCircularProgressViewGo:" destination="TWP-ZS-peV" eventType="touchUpInside" id="NiI-qV-Ub4"/>
                                 </connections>
                             </button>
                         </subviews>
