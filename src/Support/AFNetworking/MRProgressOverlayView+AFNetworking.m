@@ -100,8 +100,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             __weak __typeof(self)weakSelf = self;
             __weak __typeof(operation)weakOperation = operation;
             
-            void (^originalUploadProgressBlock)(NSUInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) = [operation.uploadProgress copy];
-            [operation setUploadProgressBlock:^(NSUInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
+            void (^originalUploadProgressBlock)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) = [operation.uploadProgress copy];
+            [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
                 if (originalUploadProgressBlock) {
                     originalUploadProgressBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
                 }
@@ -113,8 +113,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                 [weakOperation setUploadProgressBlock:originalUploadProgressBlock];
             }];
             
-            void (^originalDownloadProgressBlock)(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) = [operation.downloadProgress copy];
-            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+            void (^originalDownloadProgressBlock)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) = [operation.downloadProgress copy];
+            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
                 if (originalDownloadProgressBlock) {
                     originalDownloadProgressBlock(bytesRead, totalBytesRead, totalBytesExpectedToRead);
                 }
