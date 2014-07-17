@@ -122,4 +122,14 @@
                                                       }];
 }
 
+- (IBAction)onOverlayViewError:(id)sender {
+    NSURLSessionDataTask *task = [self.manager GET:@"/status/418"
+                                        parameters:nil
+                                           success:nil
+                                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                               NSLog(@"Task %@ failed, as expected, with error: %@", task, error);
+                                           }];
+    [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
+}
+
 @end
