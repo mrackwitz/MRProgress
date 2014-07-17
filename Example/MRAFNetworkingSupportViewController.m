@@ -12,6 +12,7 @@
 #import "MRCircularProgressView.h"
 #import "MRActivityIndicatorView+AFNetworking.h"
 #import "MRProgressView+AFNetworking.h"
+#import "MRProgressOverlayView+AFNetworking.h"
 
 
 @interface MRAFNetworkingSupportViewController ()
@@ -58,6 +59,16 @@
                                                          }];
     [task resume];
     [self.circularProgressView setProgressWithDownloadProgressOfTask:task animated:YES];
+}
+
+- (IBAction)onOverlayViewGo:(id)sender {
+    NSURLSessionDataTask *task = [self.manager GET:@"/drip"
+                                        parameters:@{ @"numbytes": @100, @"duration": @0.1, @"delay": @2 }
+                                           success:nil
+                                           failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                               NSLog(@"Task %@ failed with error: %@", task, error);
+                                           }];
+    [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
 }
 
 @end
