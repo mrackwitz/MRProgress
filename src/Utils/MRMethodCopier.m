@@ -22,8 +22,10 @@
 - (void)copyInstanceMethod:(SEL)selector {
     Method originMethod = class_getInstanceMethod(self.originClass, selector);
     IMP originImplementation = method_getImplementation(originMethod);
+    NSAssert(originImplementation != NULL, @"Didn't found method %@ on origin class %@.", NSStringFromSelector(selector), self.originClass);
     const char *methodTypes = method_getTypeEncoding(originMethod);
-    class_addMethod(self.targetClass, selector, originImplementation, methodTypes);
+    BOOL success = class_addMethod(self.targetClass, selector, originImplementation, methodTypes);
+    NSAssert(success, @"Failed to copy method %@ from origin class %@ to target class %@.", NSStringFromSelector(selector), self.originClass, self.targetClass);
 }
 
 @end
