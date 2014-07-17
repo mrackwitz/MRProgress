@@ -35,7 +35,7 @@
 @implementation MRProgressView (AFNetworking)
 
 + (void)load {
-    MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIActivityIndicatorView.class toClass:self];
+    MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIProgressView.class toClass:self];
     
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     [copier copyInstanceMethod:@selector(setProgressWithUploadProgressOfTask:animated:)];

@@ -41,7 +41,7 @@
     [copier copyInstanceMethod:@selector(setAnimatingWithStateOfTask:)];
 #endif
     
-    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfTask:)];
+    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfOperation:)];
     
     // Internal methods
     [copier copyInstanceMethod:NSSelectorFromString(@"af_startAnimating")];
