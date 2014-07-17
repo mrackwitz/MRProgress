@@ -72,4 +72,54 @@
     [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
 }
 
+- (IBAction)onOverlayViewUpload:(id)sender {
+    // See [AFNetworking/AFNetworking#2128](https://github.com/AFNetworking/AFNetworking/issues/2128)
+    NSString *fileName = @"aquarium-fish1.jpg";
+    NSString *filePath = [NSBundle.mainBundle pathForResource:fileName.stringByDeletingPathExtension ofType:fileName.pathExtension];
+    
+    // Prepare a temporary file to store the multipart request prior to sending it to the server due to an alleged
+    // bug in NSURLSessionTask.
+    NSString* tmpFilename = [NSString stringWithFormat:@"%f", NSDate.timeIntervalSinceReferenceDate];
+    NSURL* tmpFileUrl = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename]];
+    
+    // Create a multipart form request.
+    NSMutableURLRequest *multipartRequest = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST"
+                                                                                                       URLString:[[NSURL URLWithString:@"/post" relativeToURL:self.manager.baseURL] absoluteString]
+                                                                                                      parameters:nil
+                                                                                       constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                                                                           [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath]
+                                                                                                                      name:@"file"
+                                                                                                                  fileName:fileName
+                                                                                                                  mimeType:@"image/jpeg" error:nil];
+                                                                                       } error:nil];
+    
+    // Dump multipart request into the temporary file.
+    [AFHTTPRequestSerializer.serializer requestWithMultipartFormRequest:multipartRequest
+                                            writingStreamContentsToFile:tmpFileUrl
+                                                      completionHandler:^(NSError *error) {
+                                                          // Once the multipart form is serialized into a temporary file, we can initialize
+                                                          // the actual HTTP request using session manager.
+                                                           
+                                                          // Create default session manager.
+                                                          AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration];
+                                                            
+                                                          // Here note that we are submitting the initial multipart request. We are, however,
+                                                          // forcing the body stream to be read from the temporary file.
+                                                          NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:multipartRequest
+                                                                                                                     fromFile:tmpFileUrl
+                                                                                                                     progress:nil
+                                                                                                            completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                                                                                                                // Cleanup: remove temporary file.
+                                                                                                                [NSFileManager.defaultManager removeItemAtURL:tmpFileUrl error:nil];
+                                                                                                                  
+                                                                                                                NSLog(@"Task completed with error: %@", error);
+                                                                                                            }];
+                                                            
+                                                          // Start the file upload.
+                                                          [uploadTask resume];
+                                                           
+                                                          [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:uploadTask];
+                                                      }];
+}
+
 @end
