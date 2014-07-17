@@ -18,43 +18,34 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - MRProgress (0.5.1):
+  - MRProgress (0.6.0):
     - MRProgress/ActivityIndicator
     - MRProgress/Blur
     - MRProgress/Circular
-    - MRProgress/Helper
     - MRProgress/Icons
-    - MRProgress/MessageInterceptor
-    - MRProgress/MethodCopier
     - MRProgress/NavigationBarProgress
     - MRProgress/Overlay
-    - MRProgress/ProgressBaseClass
+  - MRProgress/ActivityIndicator (0.6.0):
     - MRProgress/Stopable
-    - MRProgress/WeakProxy
-  - MRProgress/ActivityIndicator (0.5.1):
-    - MRProgress/Stopable
-  - MRProgress/Blur (0.5.1):
+  - MRProgress/Blur (0.6.0):
     - MRProgress/Helper
-  - MRProgress/Circular (0.5.1):
+  - MRProgress/Circular (0.6.0):
     - MRProgress/Helper
     - MRProgress/ProgressBaseClass
     - MRProgress/Stopable
-  - MRProgress/Helper (0.5.1)
-  - MRProgress/Icons (0.5.1)
-  - MRProgress/MessageInterceptor (0.5.1)
-  - MRProgress/MethodCopier (0.5.1)
-  - MRProgress/NavigationBarProgress (0.5.1):
+  - MRProgress/Helper (0.6.0)
+  - MRProgress/Icons (0.6.0)
+  - MRProgress/NavigationBarProgress (0.6.0):
     - MRProgress/ProgressBaseClass
-  - MRProgress/Overlay (0.5.1):
+  - MRProgress/Overlay (0.6.0):
     - MRProgress/ActivityIndicator
     - MRProgress/Blur
     - MRProgress/Circular
     - MRProgress/Helper
     - MRProgress/Icons
-  - MRProgress/ProgressBaseClass (0.5.1)
-  - MRProgress/Stopable (0.5.1):
+  - MRProgress/ProgressBaseClass (0.6.0)
+  - MRProgress/Stopable (0.6.0):
     - MRProgress/Helper
-  - MRProgress/WeakProxy (0.5.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -67,6 +58,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
-  MRProgress: cf24f1d1b449c87745ef5fcc781abb4a37a32ba1
+  MRProgress: c69391705d0652a80afbdc22419089c4276f0e30
 
 COCOAPODS: 0.33.1
