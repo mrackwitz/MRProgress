@@ -25,6 +25,14 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 @end
 
 
+@interface MRProgressOverlayView (_AFNetworking)
+
+@property (readwrite, nonatomic, retain) NSURLSessionTask *sessionTask;
+@property (readwrite, nonatomic, retain) AFURLConnectionOperation *operation;
+
+@end
+
+
 @implementation MRProgressOverlayView (AFNetworking)
 
 + (void)load {
@@ -49,6 +57,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 - (void)setModeAndProgressWithStateOfTask:(NSURLSessionTask *)task {
+    self.sessionTask = task;
+    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification   object:nil];
@@ -79,6 +89,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 #pragma mark -
 
 - (void)setModeAndProgressWithStateOfOperation:(AFURLConnectionOperation *)operation {
+    self.operation = operation;
+    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     [notificationCenter removeObserver:self name:AFNetworkingOperationDidStartNotification object:nil];
@@ -98,7 +110,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     
             // Observe progress
             __weak __typeof(self)weakSelf = self;
-            __weak __typeof(operation)weakOperation = operation;
             
             void (^originalUploadProgressBlock)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) = [operation.uploadProgress copy];
             [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
@@ -110,7 +121,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                 [weakSelf mr_showUploading];
                 
                 // Unregister
-                [weakOperation setUploadProgressBlock:originalUploadProgressBlock];
+                [weakSelf.operation setUploadProgressBlock:originalUploadProgressBlock];
             }];
             
             void (^originalDownloadProgressBlock)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) = [operation.downloadProgress copy];
@@ -123,10 +134,29 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                 [weakSelf mr_showDownloading];
                 
                 // Unregister
-                [weakOperation setDownloadProgressBlock:originalDownloadProgressBlock];
+                [weakSelf.operation setDownloadProgressBlock:originalDownloadProgressBlock];
             }];
         }
     }
+}
+
+
+#pragma mark - Getter and setter for Configuration
+
+- (void)setSessionTask:(NSURLSessionTask *)sessionTask {
+    objc_setAssociatedObject(self, @selector(sessionTask), sessionTask, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSURLSessionTask *)sessionTask {
+    return objc_getAssociatedObject(self, @selector(sessionTask));
+}
+
+- (void)setOperation:(AFURLConnectionOperation *)operation {
+    objc_setAssociatedObject(self, @selector(operation), operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (AFURLConnectionOperation *)operation {
+    return objc_getAssociatedObject(self, @selector(operation));
 }
 
 
@@ -140,7 +170,16 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 - (void)mr_hide {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismiss:YES];
+        if (self.sessionTask.error || self.operation.error) {
+            self.titleLabelText = NSLocalizedString(@"Error", @"Progress overlay view text when network operation fails");
+            self.mode = MRProgressOverlayViewModeCross;
+        } else {
+            self.titleLabelText = NSLocalizedString(@"Success", @"Progress overlay view text when network operation succeeds");
+            self.mode = MRProgressOverlayViewModeCheckmark;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dismiss:YES];
+        });
     });
 }
 
