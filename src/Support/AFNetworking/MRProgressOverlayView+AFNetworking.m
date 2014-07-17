@@ -172,6 +172,12 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 - (void)mr_hide {
     dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
+            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+        }
+        @catch (NSException * __unused exception) {}
+        
         if (self.sessionTask.error || self.operation.error) {
             self.titleLabelText = NSLocalizedString(@"Error", @"Progress overlay view text when network operation fails");
             self.mode = MRProgressOverlayViewModeCross;
@@ -225,27 +231,24 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(countOfBytesSent))]) {
             if ([object countOfBytesExpectedToSend] > 0) {
                 [self mr_showUploading];
+                
+                // Unregister
+                @try {
+                    [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
+                }
+                @catch (NSException * __unused exception) {}
             }
         } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(countOfBytesReceived))]) {
             if ([object countOfBytesExpectedToReceive] > 0) {
                 [self mr_showDownloading];
+                
+                // Unregister
+                @try {
+                    [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+                }
+                @catch (NSException * __unused exception) {}
             }
         }
-        
-        // Unregister
-        @try {
-            [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(state))];
-            
-            if (context == MRTaskCountOfBytesSentContext) {
-                [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
-            }
-            
-            if (context == MRTaskCountOfBytesReceivedContext) {
-                [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
-            }
-        }
-        @catch (NSException * __unused exception) {}
-        
         return;
     }
 #endif
