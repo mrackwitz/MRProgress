@@ -77,9 +77,12 @@ Pod::Spec.new do |s|
       end
     end
 
-    subs.subspec_with_category_for 'ActivityIndicator', 'MRActivityIndicatorView'
-    subs.subspec_with_category_for 'Overlay',           'MRProgressOverlayView'
-    subs.subspec_with_category_for 'ProgressBaseClass', 'MRProgressView'
+    subs.subspec_with_category_for('ActivityIndicator', 'MRActivityIndicatorView')
+    subs.subspec_with_category_for('ProgressBaseClass', 'MRProgressView')
+    subs.subspec_with_category_for('Overlay',           'MRProgressOverlayView').tap do |subs|
+      subs.dependency 'MRProgress/AFNetworking/ActivityIndicator'
+      subs.dependency 'MRProgress/AFNetworking/Circular'
+    end
     subs.alias_subspecs 'Circular'              => 'ProgressBaseClass'
     subs.alias_subspecs 'NavigationBarProgress' => 'ProgressBaseClass'
   end
