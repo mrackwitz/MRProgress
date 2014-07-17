@@ -36,6 +36,7 @@
     config.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
     
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://httpbin.org/"] sessionConfiguration:config];
+    sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     self.manager = sessionManager;
 }
 
