@@ -441,6 +441,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     _mode = mode;
     
     [self showModeView:[self createModeView]];
+    [self updateModeViewMayStop];
     
     if (!self.hidden) {
         [self manualLayoutSubviews];
@@ -467,11 +468,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)setStopBlock:(MRProgressOverlayViewStopBlock)stopBlock {
     _stopBlock = stopBlock;
     
-    BOOL mayStop = stopBlock != nil;
-    if ([self.modeView conformsToProtocol:@protocol(MRStopableView)]
-        && [self.modeView respondsToSelector:@selector(setMayStop:)]) {
-        [((id<MRStopableView>)self.modeView) setMayStop:mayStop];
-    } else {
+    if (![self updateModeViewMayStop]) {
         #if DEBUG
             NSLog(@"** WARNING - %@: %@ is only valid to call when the mode view supports %@ declared in %@!",
                   NSStringFromClass(self.class),
@@ -480,6 +477,19 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
                   NSStringFromProtocol(@protocol(MRStopableView)));
         #endif
     }
+}
+
+- (BOOL)mayStop {
+    return _stopBlock != nil;
+}
+
+- (BOOL)updateModeViewMayStop {
+    if ([self.modeView conformsToProtocol:@protocol(MRStopableView)]
+        && [self.modeView respondsToSelector:@selector(setMayStop:)]) {
+        [((id<MRStopableView>)self.modeView) setMayStop:self.mayStop];
+        return YES;
+    }
+    return NO;
 }
 
 - (void)modeViewStopButtonTouchUpInside {
