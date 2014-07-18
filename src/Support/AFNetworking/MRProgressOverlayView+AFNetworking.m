@@ -76,9 +76,9 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             }
             
             // Observe state
-            [notificationCenter addObserver:self selector:@selector(mr_show) name:AFNetworkingTaskDidResumeNotification   object:task];
-            [notificationCenter addObserver:self selector:@selector(mr_hide) name:AFNetworkingTaskDidCompleteNotification object:task];
-            [notificationCenter addObserver:self selector:@selector(mr_hide) name:AFNetworkingTaskDidSuspendNotification  object:task];
+            [notificationCenter addObserver:self selector:@selector(mr_show:) name:AFNetworkingTaskDidResumeNotification   object:task];
+            [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingTaskDidCompleteNotification object:task];
+            [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingTaskDidSuspendNotification  object:task];
             
             // Observe progress
             [task addObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))     options:0 context:MRTaskCountOfBytesSentContext];
@@ -107,8 +107,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             }
             
             // Observe state
-            [notificationCenter addObserver:self selector:@selector(mr_show) name:AFNetworkingOperationDidStartNotification  object:operation];
-            [notificationCenter addObserver:self selector:@selector(mr_hide) name:AFNetworkingOperationDidFinishNotification object:operation];
+            [notificationCenter addObserver:self selector:@selector(mr_show:) name:AFNetworkingOperationDidStartNotification  object:operation];
+            [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingOperationDidFinishNotification object:operation];
     
             // Observe progress
             __weak __typeof(self)weakSelf = self;
@@ -164,13 +164,13 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 #pragma mark - Helper methods to dispatch UI changes on main queue
 
-- (void)mr_show {
+- (void)mr_show:(NSNotification *)note {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self show:YES];
     });
 }
 
-- (void)mr_hide {
+- (void)mr_hide:(NSNotification *)note {
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
@@ -178,7 +178,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         }
         @catch (NSException * __unused exception) {}
         
-        if (self.sessionTask.error || self.operation.error) {
+        if (self.sessionTask.error || self.operation.error || note.userInfo[AFNetworkingTaskDidCompleteErrorKey]) {
             self.titleLabelText = NSLocalizedString(@"Error", @"Progress overlay view text when network operation fails");
             self.mode = MRProgressOverlayViewModeCross;
         } else {
