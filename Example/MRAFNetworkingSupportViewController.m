@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet MRActivityIndicatorView *activityIndicatorView;
 @property (weak, nonatomic) IBOutlet MRCircularProgressView *circularProgressView;
 
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
 
 @end
 
@@ -38,28 +38,28 @@
     
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://httpbin.org/"] sessionConfiguration:config];
     sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    self.manager = sessionManager;
+    self.sessionManager = sessionManager;
 }
 
 - (NSURLSessionDownloadTask *)bytesDownloadTask {
     NSProgress *downloadProgress = nil;
-    NSURLSessionDownloadTask *task = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.manager.baseURL]]
-                                                                  progress:&downloadProgress
-                                                               destination:nil
-                                                         completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
-                                                             NSLog(@"Task completed with error: %@", error);
-                                                         }];
+    NSURLSessionDownloadTask *task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.sessionManager.baseURL]]
+                                                                         progress:&downloadProgress
+                                                                      destination:nil
+                                                                completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
+                                                                    NSLog(@"Task completed with error: %@", error);
+                                                                }];
     [task resume];
     return task;
 }
 
 - (IBAction)onActivityIndicatorGo:(id)sender {
-    NSURLSessionDataTask *task = [self.manager GET:@"/delay/3"
-                                            parameters:nil
-                                               success:nil
-                                               failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                   NSLog(@"Task %@ failed with error: %@", task, error);
-                                               }];
+    NSURLSessionDataTask *task = [self.sessionManager GET:@"/delay/3"
+                                               parameters:nil
+                                                  success:nil
+                                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                      NSLog(@"Task %@ failed with error: %@", task, error);
+                                                  }];
     [self.activityIndicatorView setAnimatingWithStateOfTask:task];
 }
 
@@ -69,16 +69,16 @@
 }
 
 - (IBAction)onOverlayViewGo:(id)sender {
-    NSURLSessionDataTask *task = [self.manager GET:@"/delay/2"
-                                        parameters:nil
-                                           success:nil
-                                           failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                               if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
-                                                   NSLog(@"Task was cancelled by user.");
-                                               } else {
-                                                   NSLog(@"Task %@ failed with error: %@", task, error);
-                                               }
-                                           }];
+    NSURLSessionDataTask *task = [self.sessionManager GET:@"/delay/2"
+                                               parameters:nil
+                                                  success:nil
+                                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                   if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
+                                                       NSLog(@"Task was cancelled by user.");
+                                                   } else {
+                                                       NSLog(@"Task %@ failed with error: %@", task, error);
+                                                   }
+                                               }];
     
     MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
     [overlayView setModeAndProgressWithStateOfTask:task];
@@ -97,7 +97,7 @@
     
     // Create a multipart form request.
     NSMutableURLRequest *multipartRequest = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST"
-                                                                                                       URLString:[[NSURL URLWithString:@"/post" relativeToURL:self.manager.baseURL] absoluteString]
+                                                                                                       URLString:[[NSURL URLWithString:@"/post" relativeToURL:self.sessionManager.baseURL] absoluteString]
                                                                                                       parameters:nil
                                                                                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                                                            [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath]
@@ -136,12 +136,12 @@
 }
 
 - (IBAction)onOverlayViewError:(id)sender {
-    NSURLSessionDataTask *task = [self.manager GET:@"/status/418"
-                                        parameters:nil
-                                           success:nil
-                                           failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                               NSLog(@"Task %@ failed, as expected, with error: %@", task, error);
-                                           }];
+    NSURLSessionDataTask *task = [self.sessionManager GET:@"/status/418"
+                                               parameters:nil
+                                                  success:nil
+                                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                      NSLog(@"Task %@ failed, as expected, with error: %@", task, error);
+                                                  }];
     [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
 }
 
