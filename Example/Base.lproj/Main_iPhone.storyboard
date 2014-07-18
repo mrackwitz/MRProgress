@@ -913,7 +913,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AFNetworking Support" id="Aql-AW-XiO"/>
+                    <navigationItem key="navigationItem" title="AFNetworking Support" id="Aql-AW-XiO">
+                        <barButtonItem key="rightBarButtonItem" title="Go" id="UEn-V3-0Gh">
+                            <connections>
+                                <action selector="onNavigationBarProgressViewGo:" destination="TWP-ZS-peV" id="xB1-pA-zzc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="U2I-7z-1gP" id="gUv-tW-e5q"/>
                         <outlet property="circularProgressView" destination="JsI-Ig-xNc" id="wMo-8c-y4i"/>

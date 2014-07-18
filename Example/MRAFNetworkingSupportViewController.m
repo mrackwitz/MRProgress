@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "MRActivityIndicatorView.h"
 #import "MRCircularProgressView.h"
+#import "MRNavigationBarProgressViewController.h"
 #import "MRActivityIndicatorView+AFNetworking.h"
 #import "MRProgressView+AFNetworking.h"
 #import "MRProgressOverlayView+AFNetworking.h"
@@ -40,6 +41,18 @@
     self.manager = sessionManager;
 }
 
+- (NSURLSessionDownloadTask *)bytesDownloadTask {
+    NSProgress *downloadProgress = nil;
+    NSURLSessionDownloadTask *task = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.manager.baseURL]]
+                                                                  progress:&downloadProgress
+                                                               destination:nil
+                                                         completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
+                                                             NSLog(@"Task completed with error: %@", error);
+                                                         }];
+    [task resume];
+    return task;
+}
+
 - (IBAction)onActivityIndicatorGo:(id)sender {
     NSURLSessionDataTask *task = [self.manager GET:@"/delay/3"
                                             parameters:nil
@@ -51,14 +64,7 @@
 }
 
 - (IBAction)onCircularProgressViewGo:(id)sender {
-    NSProgress *downloadProgress = nil;
-    NSURLSessionDownloadTask *task = [self.manager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.manager.baseURL]]
-                                                                  progress:&downloadProgress
-                                                               destination:nil
-                                                         completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
-                                                             NSLog(@"Task completed with error: %@", error);
-                                                         }];
-    [task resume];
+    NSURLSessionDownloadTask *task = [self bytesDownloadTask];
     [self.circularProgressView setProgressWithDownloadProgressOfTask:task animated:YES];
 }
 
@@ -137,6 +143,12 @@
                                                NSLog(@"Task %@ failed, as expected, with error: %@", task, error);
                                            }];
     [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
+}
+
+- (IBAction)onNavigationBarProgressViewGo:(id)sender {
+    NSURLSessionDownloadTask *task = [self bytesDownloadTask];
+    [[MRNavigationBarProgressView progressViewForNavigationController:self.navigationController]
+     setProgressWithDownloadProgressOfTask:task animated:YES];
 }
 
 @end
