@@ -9,9 +9,19 @@
 #import <Foundation/Foundation.h>
 
 
+/**
+ Copy dynamically methods from one class to another
+ */
 @interface MRMethodCopier : NSObject
 
+/**
+ The origin class, where method type encondings and implementations will be taken from.
+ */
 @property (nonatomic, assign) Class originClass;
+
+/**
+ The target class, where methods should be added to.
+ */
 @property (nonatomic, assign) Class targetClass;
 
 /**
