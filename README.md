@@ -127,12 +127,25 @@ The library is cut in small subspecs, so that you can just depend on selected co
  │ ├───Circular
  │ ├───Icons
  │ └───Blur
+ |
+ ├─┬─AFNetworking (optional)
+ │ ├───ActivityIndicator
+ │ ├───Circular
+ │ ├───NavigationBarProgress
+ │ └───Overlay
+ |
+ ├───MethodCopier (optional)
  │
- ├───MessageInterceptor
+ ├───MessageInterceptor (optional)
  │
- └───WeakProxy
+ └───WeakProxy (optional)
 ```
 
+The tree only list *public* specs, where you can rely on.
+You will see in the podspec and your Podfile.lock other subspecs, but you should
+*NOT* rely on these. Those are implementation details, which are subject to
+change and may been removed, even with a minor version update.
+Furthermore this tree doesn't show any cross-dependencies, which do exist.
 
 
 ## Requirements
