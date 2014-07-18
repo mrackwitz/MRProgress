@@ -67,9 +67,16 @@
                                         parameters:nil
                                            success:nil
                                            failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                               NSLog(@"Task %@ failed with error: %@", task, error);
+                                               if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
+                                                   NSLog(@"Task was cancelled by user.");
+                                               } else {
+                                                   NSLog(@"Task %@ failed with error: %@", task, error);
+                                               }
                                            }];
-    [[MRProgressOverlayView showOverlayAddedTo:self.view animated:YES] setModeAndProgressWithStateOfTask:task];
+    
+    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+    [overlayView setModeAndProgressWithStateOfTask:task];
+    [overlayView setStopBlockForTask:task];
 }
 
 - (IBAction)onOverlayViewUpload:(id)sender {

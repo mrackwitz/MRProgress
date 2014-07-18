@@ -21,6 +21,8 @@
  */
 @interface MRProgressOverlayView (AFNetworking)
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+
 ///----------------------------------
 /// @name Animating for Session Tasks
 ///----------------------------------
@@ -30,8 +32,14 @@
  
  @param task The task. If `nil`, automatic updating from any previously specified operation will be disabled.
  */
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 - (void)setModeAndProgressWithStateOfTask:(NSURLSessionTask *)task;
+/**
+ Sets the `stopBlock` of the receiver, so that it will stop the specified task.
+ 
+ @param task  The task. If `nil`, it clears the `stopBlock`.
+ */
+- (void)setStopBlockForTask:(NSURLSessionTask *)task;
+
 #endif
 
 ///---------------------------------------
@@ -44,6 +52,13 @@
  @param operation The operation. If `nil`, automatic updating from any previously specified operation will be disabled.
  */
 - (void)setModeAndProgressWithStateOfOperation:(AFURLConnectionOperation *)operation;
+
+/**
+ Sets the `stopBlock` of the receiver, so that it will stop the specified operation.
+ 
+ @param operation The operation. If `nil`, it clears the `stopBlock`.
+ */
+- (void)setStopBlockForOperation:(AFURLConnectionOperation *)operation;
 
 @end
 

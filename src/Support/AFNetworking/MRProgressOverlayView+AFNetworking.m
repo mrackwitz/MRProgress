@@ -58,6 +58,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 #pragma mark -
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+
 - (void)setModeAndProgressWithStateOfTask:(NSURLSessionTask *)task {
     self.sessionTask = task;
     
@@ -83,6 +84,20 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         }
     }
 }
+
+- (void)setStopBlockForTask:(__weak NSURLSessionTask *)task {
+    if (task) {
+        self.stopBlock = ^(MRProgressOverlayView *self){
+            [self mr_unregisterObserver];
+            
+            [self dismiss:YES];
+            [task cancel];
+        };
+    } else {
+        self.stopBlock = nil;
+    }
+}
+
 #endif
 
 #pragma mark -
@@ -134,6 +149,19 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                 [weakSelf.operation setDownloadProgressBlock:originalDownloadProgressBlock];
             }];
         }
+    }
+}
+
+- (void)setStopBlockForOperation:(__weak AFURLConnectionOperation *)operation {
+    if (operation) {
+        self.stopBlock = ^(MRProgressOverlayView *self){
+            [self mr_unregisterObserver];
+            
+            [self dismiss:YES];
+            [operation cancel];
+        };
+    } else {
+        self.stopBlock = nil;
     }
 }
 
