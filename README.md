@@ -19,6 +19,7 @@ MRProgress is a collection of drop-in components that display a dimmed overlay w
 * **Customizable**: You can replace the given blur implementation and hook into your own you are maybe already using in other places of your app. Or simply throw in an [UIToolbar's layer](https://github.com/JagCesar/iOS-blur), if you prefer Apple's implementation. (Current blur implementation is as given by sample code of WWDC 2013.)
 * **Reusable**: The code is fragmented in small reusable pieces.
 * **Well documented**: You can install and open Appledoc documentation.
+* **Integrated**: It offers an integration into [AFNetworking](https://github.com/AFNetworking/AFNetworking).
 
 
 ## Components
@@ -207,6 +208,60 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
    // Dismiss
    [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
    ```
+
+### AFNetworking
+
+MRProgress offers an integration into the network library AFNetworking.
+
+1. Include the following **additional** line into your Podfile:
+
+   ```
+   pod 'MRProgress/AFNetworking'
+   ```
+
+2. Import the adequate category header for the component you want to use:
+
+   ```
+   import <MRProgress/MRProgressOverlayView+AFNetworking.h>
+   ```
+
+3. You can now just setup your task / operation as usual and use the category
+   methods to bind to execution state and progress as shown below.
+
+   ```
+   // Init the progress overlay as usual
+   MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
+
+   // The following line will do these things automatically:
+   // * Set mode to determinate when a download or upload is in progress
+   // * Set animated progress of the download or upload
+   // * Show a checkmark or cross pane at the end of the progress
+   [overlayView setModeAndProgressWithStateOfTask:task];
+
+   // Allows the user to cancel the task by using the provided stop button.
+   // If you use that, make sure that you handle the error code, which will be
+   // delivered to the failure block of the task like shown below:
+   //
+   //    if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
+   //        NSLog(@"Task was cancelled by user.");
+   //        return;
+   //    }
+   //
+   [overlayView setStopBlockForTask:task];
+
+   // If you use the activity indicator directly
+   [self.activityIndicatorView setAnimatingWithStateOfTask:task];
+
+   // If you use one of the progress views directly
+   [self.circularProgressView setProgressWithUploadProgressOfTask:downloadTask animated:YES];   // for uploads
+   [self.circularProgressView setProgressWithDownloadProgressOfTask:downloadTask animated:YES]; // for downloads
+   [[MRNavigationBarProgressView progressViewForNavigationController:self.navigationController]
+     setProgressWithDownloadProgressOfTask:downloadTask animated:YES];
+   ```
+
+   All methods are available for both 'NSURLSessionTask' and 'AFURLConnectionOperation' and their descendants.
+   For further examples, make sure to also checkout the [Example app](/blob/master/Example/MRAFNetworkingSupportViewController.m).
+
 
 ### Modes
 
