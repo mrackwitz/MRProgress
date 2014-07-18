@@ -160,7 +160,7 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
    // If used with Cocoapods
    #import "MRProgress.h"
    ```
-    
+
    ```
    // If used as Framework
    #import <MRProgress/MRProgress.h>
@@ -172,17 +172,17 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
    // Block whole window
    [MRProgressOverlayView showOverlayAddedTo:self.window animated:YES];
    ```
-    
+
    ```
    // Block only the navigation controller
    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
    ```
-    
+
    ```
    // Block only the view
    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
    ```
-    
+
    ```
    // Block a custom view
    [MRProgressOverlayView showOverlayAddedTo:self.imageView animated:YES];
