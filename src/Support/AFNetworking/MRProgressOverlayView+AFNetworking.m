@@ -61,11 +61,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 - (void)setModeAndProgressWithStateOfTask:(NSURLSessionTask *)task {
     self.sessionTask = task;
     
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification   object:nil];
-    [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification  object:nil];
-    [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
+    [self mr_unregisterObserver];
     
     if (task) {
         if (task.state != NSURLSessionTaskStateCompleted) {
@@ -76,6 +72,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             }
             
             // Observe state
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
             [notificationCenter addObserver:self selector:@selector(mr_show:) name:AFNetworkingTaskDidResumeNotification   object:task];
             [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingTaskDidCompleteNotification object:task];
             [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingTaskDidSuspendNotification  object:task];
@@ -93,10 +90,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 - (void)setModeAndProgressWithStateOfOperation:(AFURLConnectionOperation *)operation {
     self.operation = operation;
     
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    [notificationCenter removeObserver:self name:AFNetworkingOperationDidStartNotification object:nil];
-    [notificationCenter removeObserver:self name:AFNetworkingOperationDidFinishNotification object:nil];
+    [self mr_unregisterObserver];
     
     if (operation) {
         if (![operation isFinished]) {
@@ -107,6 +101,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             }
             
             // Observe state
+            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
             [notificationCenter addObserver:self selector:@selector(mr_show:) name:AFNetworkingOperationDidStartNotification  object:operation];
             [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingOperationDidFinishNotification object:operation];
     
@@ -172,11 +167,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 - (void)mr_hide:(NSNotification *)note {
     dispatch_async(dispatch_get_main_queue(), ^{
-        @try {
-            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
-            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
-        }
-        @catch (NSException * __unused exception) {}
+        [self mr_unregisterObserver];
         
         if (self.sessionTask.error || self.operation.error || note.userInfo[AFNetworkingTaskDidCompleteErrorKey]) {
             self.titleLabelText = NSLocalizedString(@"Error", @"Progress overlay view text when network operation fails");
@@ -189,6 +180,27 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             [self dismiss:YES];
         });
     });
+}
+
+- (void)mr_unregisterObserver {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    // Unregister observer for NSURLSessionTask-based interface
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+        [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification   object:nil];
+        [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification  object:nil];
+        [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
+    
+        @try {
+            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
+            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+        }
+        @catch (NSException * __unused exception) {}
+    #endif
+    
+    // Unregister observer for AFURLConnectionOperation-based interface
+    [notificationCenter removeObserver:self name:AFNetworkingOperationDidStartNotification object:nil];
+    [notificationCenter removeObserver:self name:AFNetworkingOperationDidFinishNotification object:nil];
 }
 
 - (void)mr_showUploading {
