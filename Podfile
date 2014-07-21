@@ -1,3 +1,11 @@
 workspace 'MRProgress.xcworkspace'
 xcodeproj 'MRProgress.xcodeproj'
-platform :ios
+platform :ios, '7.0'
+
+pod 'AFNetworking'
+
+target 'Example' do
+  xcodeproj 'Example.xcodeproj'
+  pod 'MRProgress', :path => '.'
+  pod 'MRProgress/AFNetworking'
+end

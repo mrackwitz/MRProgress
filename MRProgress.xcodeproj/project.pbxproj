@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1594464BC6BF48A88B7F9A6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF019C9ADBE4EEA962ED766 /* libPods.a */; };
 		29CE9679186E0129006006B0 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE967A186E0129006006B0 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CE9678186E0129006006B0 /* MRStopButton.m */; };
 		710BD58B1816AD3700654750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BD58A1816AD3700654750 /* QuartzCore.framework */; };
@@ -29,6 +30,13 @@
 		710BD5BF1817353E00654750 /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AA1817353E00654750 /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AB1817353E00654750 /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		710BD5C11817353E00654750 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5AC1817353E00654750 /* MRWeakProxy.m */; };
+		717B67CF193A296900829442 /* MRActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */; };
+		717B67D0193A296F00829442 /* MRProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CA193A296300829442 /* MRProgressView+AFNetworking.m */; };
+		717B67D2193A296F00829442 /* MRProgressOverlayView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */; };
+		717B67D5193A2CC100829442 /* MRMethodCopier.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D3193A2CC100829442 /* MRMethodCopier.h */; };
+		717B67D6193A2CC100829442 /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67D4193A2CC100829442 /* MRMethodCopier.m */; };
+		717B67D9193A813300829442 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D7193A813300829442 /* MRProgressView.h */; };
+		717B67DA193A813300829442 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67D8193A813300829442 /* MRProgressView.m */; };
 		7197CEBB18169F210022A19D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CEBA18169F210022A19D /* Foundation.framework */; };
 		7197CF011816A1A10022A19D /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7197CF161816AA6F0022A19D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF141816AA6F0022A19D /* Accelerate.framework */; };
@@ -37,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1878F9F9EFE64EB280742D50 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		299730941881CB520022B27B /* MRStopableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
 		29CE9677186E0129006006B0 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
 		29CE9678186E0129006006B0 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
@@ -60,6 +69,17 @@
 		710BD5AA1817353E00654750 /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
 		710BD5AB1817353E00654750 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
 		710BD5AC1817353E00654750 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
+		711417411976ED7F005A1DAD /* MRProgress.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = MRProgress.podspec; sourceTree = "<group>"; };
+		717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67C9193A296300829442 /* MRProgressView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67CA193A296300829442 /* MRProgressView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+AFNetworking.h"; sourceTree = "<group>"; };
+		717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+AFNetworking.m"; sourceTree = "<group>"; };
+		717B67D3193A2CC100829442 /* MRMethodCopier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMethodCopier.h; sourceTree = "<group>"; };
+		717B67D4193A2CC100829442 /* MRMethodCopier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMethodCopier.m; sourceTree = "<group>"; };
+		717B67D7193A813300829442 /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
+		717B67D8193A813300829442 /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
 		7197CEB718169F210022A19D /* libMRProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMRProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7197CEBA18169F210022A19D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7197CEBE18169F210022A19D /* MRProgress-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgress-Prefix.pch"; sourceTree = "<group>"; };
@@ -67,6 +87,7 @@
 		7197CF141816AA6F0022A19D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		7197CF151816AA6F0022A19D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = "<absolute>"; };
 		7197CF181816AA9A0022A19D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7AF019C9ADBE4EEA962ED766 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +100,7 @@
 				7197CF171816AA6F0022A19D /* CoreGraphics.framework in Frameworks */,
 				7197CEBB18169F210022A19D /* Foundation.framework in Frameworks */,
 				7197CF161816AA6F0022A19D /* Accelerate.framework in Frameworks */,
+				1594464BC6BF48A88B7F9A6B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +131,8 @@
 				710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */,
 				710BD5A51817353E00654750 /* MRProgressOverlayView.h */,
 				710BD5A61817353E00654750 /* MRProgressOverlayView.m */,
+				717B67D7193A813300829442 /* MRProgressView.h */,
+				717B67D8193A813300829442 /* MRProgressView.m */,
 				299730941881CB520022B27B /* MRStopableView.h */,
 				29CE9677186E0129006006B0 /* MRStopButton.h */,
 				29CE9678186E0129006006B0 /* MRStopButton.m */,
@@ -124,8 +148,31 @@
 				710BD5AA1817353E00654750 /* MRProgressHelper.h */,
 				710BD5AB1817353E00654750 /* MRWeakProxy.h */,
 				710BD5AC1817353E00654750 /* MRWeakProxy.m */,
+				717B67D3193A2CC100829442 /* MRMethodCopier.h */,
+				717B67D4193A2CC100829442 /* MRMethodCopier.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		717B67C5193A296300829442 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				717B67C6193A296300829442 /* AFNetworking */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		717B67C6193A296300829442 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */,
+				717B67C8193A296300829442 /* MRActivityIndicatorView+AFNetworking.m */,
+				717B67C9193A296300829442 /* MRProgressView+AFNetworking.h */,
+				717B67CA193A296300829442 /* MRProgressView+AFNetworking.m */,
+				717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */,
+				717B67CE193A296300829442 /* MRProgressOverlayView+AFNetworking.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		7197CEAE18169F210022A19D = {
@@ -135,6 +182,8 @@
 				7197CEBC18169F210022A19D /* MRProgress */,
 				7197CEB918169F210022A19D /* Frameworks */,
 				7197CEB818169F210022A19D /* Products */,
+				711417411976ED7F005A1DAD /* MRProgress.podspec */,
+				1878F9F9EFE64EB280742D50 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +203,7 @@
 				7197CF141816AA6F0022A19D /* Accelerate.framework */,
 				7197CF151816AA6F0022A19D /* CoreGraphics.framework */,
 				7197CEBA18169F210022A19D /* Foundation.framework */,
+				7AF019C9ADBE4EEA962ED766 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,6 +229,7 @@
 			children = (
 				710BD5951817353E00654750 /* Blur */,
 				710BD59A1817353E00654750 /* Components */,
+				717B67C5193A296300829442 /* Support */,
 				710BD5A71817353E00654750 /* Utils */,
 				7197CEEE18169F470022A19D /* MRProgress.h */,
 			);
@@ -196,10 +247,12 @@
 				710BD5AD1817353E00654750 /* MRBlurView.h in Headers */,
 				710BD5BF1817353E00654750 /* MRProgressHelper.h in Headers */,
 				710BD5B51817353E00654750 /* MRIconView.h in Headers */,
+				717B67D5193A2CC100829442 /* MRMethodCopier.h in Headers */,
 				710BD5BD1817353E00654750 /* MRMessageInterceptor.h in Headers */,
 				710BD5B91817353E00654750 /* MRNavigationBarProgressView.h in Headers */,
 				710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */,
 				29CE9679186E0129006006B0 /* MRStopButton.h in Headers */,
+				717B67D9193A813300829442 /* MRProgressView.h in Headers */,
 				710BD5B31817353E00654750 /* MRCircularProgressView.h in Headers */,
 				710BD5B11817353E00654750 /* MRActivityIndicatorView.h in Headers */,
 				7197CF011816A1A10022A19D /* MRProgress.h in Headers */,
@@ -214,10 +267,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7197CEDA18169F210022A19D /* Build configuration list for PBXNativeTarget "MRProgress" */;
 			buildPhases = (
+				EEF68FC34CDA4B7C90ACE8AF /* Check Pods Manifest.lock */,
 				7197CEB318169F210022A19D /* Sources */,
 				71F50A471819B0CA00FF4B8E /* Build Documentation */,
 				7197CEB418169F210022A19D /* Frameworks */,
 				7197CEF91816A1750022A19D /* Headers */,
+				B2F560B048334730A993FB57 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,6 +324,36 @@
 			shellPath = /bin/sh;
 			shellScript = bin/build_appledoc.sh;
 		};
+		B2F560B048334730A993FB57 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEF68FC34CDA4B7C90ACE8AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -279,10 +364,15 @@
 				710BD5BE1817353E00654750 /* MRMessageInterceptor.m in Sources */,
 				710BD5C11817353E00654750 /* MRWeakProxy.m in Sources */,
 				710BD5BA1817353E00654750 /* MRNavigationBarProgressView.m in Sources */,
+				717B67CF193A296900829442 /* MRActivityIndicatorView+AFNetworking.m in Sources */,
 				710BD5B61817353E00654750 /* MRIconView.m in Sources */,
 				710BD5B21817353E00654750 /* MRActivityIndicatorView.m in Sources */,
+				717B67D6193A2CC100829442 /* MRMethodCopier.m in Sources */,
+				717B67D0193A296F00829442 /* MRProgressView+AFNetworking.m in Sources */,
 				710BD5BC1817353E00654750 /* MRProgressOverlayView.m in Sources */,
+				717B67DA193A813300829442 /* MRProgressView.m in Sources */,
 				710BD5B01817353E00654750 /* UIImage+MRImageEffects.m in Sources */,
+				717B67D2193A296F00829442 /* MRProgressOverlayView+AFNetworking.m in Sources */,
 				710BD5AE1817353E00654750 /* MRBlurView.m in Sources */,
 				29CE967A186E0129006006B0 /* MRStopButton.m in Sources */,
 				710BD5B41817353E00654750 /* MRCircularProgressView.m in Sources */,
@@ -362,11 +452,15 @@
 		};
 		7197CEDB18169F210022A19D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1878F9F9EFE64EB280742D50 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -374,11 +468,15 @@
 		};
 		7197CEDC18169F210022A19D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1878F9F9EFE64EB280742D50 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
