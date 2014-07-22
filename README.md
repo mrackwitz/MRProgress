@@ -170,41 +170,41 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
 
 1. Add the following import to the top of the file or to your Prefix header:
 
-   ```
+   ```objc
    // If used with Cocoapods
    #import "MRProgress.h"
    ```
 
-   ```
+   ```objc
    // If used as Framework
    #import <MRProgress/MRProgress.h>
    ```
 
 2. Use one the following ways to display the overlay:
 
-   ```
+   ```objc
    // Block whole window
    [MRProgressOverlayView showOverlayAddedTo:self.window animated:YES];
    ```
 
-   ```
+   ```objc
    // Block only the navigation controller
    [MRProgressOverlayView showOverlayAddedTo:self.navigationController.view animated:YES];
    ```
 
-   ```
+   ```objc
    // Block only the view
    [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
    ```
 
-   ```
+   ```objc
    // Block a custom view
    [MRProgressOverlayView showOverlayAddedTo:self.imageView animated:YES];
    ```
 
 3. Simply dismiss after complete your task:
 
-   ```
+   ```objc
    // Dismiss
    [MRProgressOverlayView dismissOverlayForView:self.view animated:YES];
    ```
@@ -215,20 +215,20 @@ MRProgress offers an integration into the network library AFNetworking.
 
 1. Include the following **additional** line into your Podfile:
 
-   ```
+   ```ruby
    pod 'MRProgress/AFNetworking'
    ```
 
 2. Import the adequate category header for the component you want to use:
 
-   ```
+   ```objc
    import <MRProgress/MRProgressOverlayView+AFNetworking.h>
    ```
 
 3. You can now just setup your task / operation as usual and use the category
    methods to bind to execution state and progress as shown below.
 
-   ```
+   ```objc
    // Init the progress overlay as usual
    MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
 
