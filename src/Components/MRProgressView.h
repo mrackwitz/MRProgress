@@ -31,6 +31,8 @@
  
  The animation will be always linear.
  
+ @note See this as declared abstract. This MUST be overriden in subclasses.
+ 
  @param progress The new progress value.
  @param animated Specify YES to animate the change or NO if you do not want the change to be animated.
  */

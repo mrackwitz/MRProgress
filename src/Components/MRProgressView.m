@@ -11,4 +11,11 @@
 
 @implementation MRProgressView
 
+- (void)setProgress:(float)progress animated:(BOOL)animated {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override selector '%@' in %@ or a intermediate class!",
+                                           NSStringFromSelector(_cmd), NSStringFromClass(self.class)]
+                                 userInfo:nil];
+}
+
 @end
