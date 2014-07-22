@@ -191,6 +191,26 @@
                                             <segue destination="y4s-aP-5ld" kind="push" id="Cig-fx-R1R"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="doF-Pu-2P8" style="IBUITableViewCellStyleDefault" id="b8p-SK-3Fe">
+                                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8p-SK-3Fe" id="Ef7-Ph-IiQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="UIAppearance Support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="doF-Pu-2P8">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Stt-8f-Dyi" kind="push" id="mjh-SY-MPX"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -861,6 +881,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DS-1P-oO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="944" y="2103"/>
+        </scene>
+        <!--Appearance View Controller - UIAppearance Support-->
+        <scene sceneID="Daa-0J-ckI">
+            <objects>
+                <viewController id="Stt-8f-Dyi" customClass="MRAppearanceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rm8-el-cfH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="67V-Zl-9tE" customClass="MRActivityIndicatorView">
+                                <rect key="frame" x="110" y="100" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="O9P-sN-Zz4" customClass="MRCircularProgressView">
+                                <rect key="frame" x="110" y="220" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="izk-UP-eTK">
+                                <rect key="frame" x="60" y="340" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="UIAppearance Support" id="flx-hp-MDp"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="67V-Zl-9tE" id="hib-hT-BKo"/>
+                        <outlet property="circularProgressView" destination="O9P-sN-Zz4" id="P5X-rt-dLH"/>
+                        <outlet property="overlayContainerView" destination="izk-UP-eTK" id="tyJ-w7-b53"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yIW-UJ-a3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="4104"/>
         </scene>
         <!--Networking Support View Controller - AFNetworking Task Support-->
         <scene sceneID="DIh-sp-VeL">

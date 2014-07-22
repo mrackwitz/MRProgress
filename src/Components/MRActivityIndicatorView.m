@@ -26,6 +26,10 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
 
 @synthesize stopButton = _stopButton;
 
++ (void)load {
+    [self.appearance setLineWidth:2.0];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -47,7 +51,6 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     
     CAShapeLayer *shapeLayer = [CAShapeLayer new];
     shapeLayer.borderWidth = 0;
-    shapeLayer.lineWidth = 2.0f;
     shapeLayer.fillColor = UIColor.clearColor.CGColor;
     [self.layer addSublayer:shapeLayer];
     self.shapeLayer = shapeLayer;

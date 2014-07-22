@@ -32,6 +32,12 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 
 @synthesize stopButton = _stopButton;
 
++ (void)load {
+    [self.appearance setAnimationDuration:0.3];
+    [self.appearance setBorderWidth:2.0];
+    [self.appearance setLineWidth:2.0];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -57,16 +63,12 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 }
 
 - (void)commonInit {
-    _animationDuration = 0.3;
     self.progress = 0;
     
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     self.numberFormatter = numberFormatter;
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
     numberFormatter.locale = NSLocale.currentLocale;
-    
-    self.borderWidth = 2.0f;
-    self.lineWidth = 2.0f;
     
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
     
