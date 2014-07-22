@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Marius Rackwitz. All rights reserved.
 //
 
-#import <MRProgress/MRProgress.h>
+#import "MRProgressOverlayView.h"
 
 #import <Availability.h>
 
