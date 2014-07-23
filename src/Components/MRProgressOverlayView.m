@@ -704,9 +704,12 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Control progress
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-property-ivar"
 - (void)setProgress:(float)progress {
     [self setProgress:progress animated:NO];
 }
+#pragma clang diagnostic pop
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if ([self.modeView respondsToSelector:@selector(setProgress:animated:)]) {

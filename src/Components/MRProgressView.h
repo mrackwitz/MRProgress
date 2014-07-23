@@ -17,9 +17,12 @@
  the functionality of all other custom progress view subclasses provided by this library.
  */
 @interface MRProgressView : UIView {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 @protected
     float _progress;
 }
+#pragma clang diagnostic pop
 
 /**
  Current progress. Use associated setter for non animated changes. Otherwises use setProgress:aniamted:.
