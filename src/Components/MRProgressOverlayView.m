@@ -16,8 +16,8 @@
 #import "MRProgressHelper.h"
 
 
-const CGFloat MRProgressOverlayViewCornerRadius = 7;
-const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
+static const CGFloat MRProgressOverlayViewCornerRadius = 7;
+static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 
 @interface MRProgressOverlayView () {
