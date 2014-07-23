@@ -61,7 +61,7 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
     progressView.barView = navigationBar;
     
     progressView.progressTintColor = navigationBar.tintColor
-        ?: UIApplication.sharedApplication.delegate.window.tintColor;
+        ? navigationBar.tintColor : UIApplication.sharedApplication.delegate.window.tintColor;
     
     // Store bar and add to view hierachy
     navigationController.progressView = progressView;
