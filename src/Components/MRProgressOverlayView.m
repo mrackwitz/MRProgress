@@ -592,7 +592,16 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     self.transform = self.transformForOrientation;
     
     CGRect bounds = self.superview.bounds;
-    self.center = CGPointMake(bounds.size.width / 2.0f, bounds.size.height / 2.0f);
+    UIEdgeInsets insets = UIEdgeInsetsZero;
+    
+    if ([self.superview isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *sv = self.superview;
+        insets = sv.contentInset;
+    }
+    
+    self.center = CGPointMake((bounds.size.width - insets.left - insets.right) / 2.0f,
+                              (bounds.size.height - insets.top - insets.bottom) / 2.0f);
+
     if ([self.superview isKindOfClass:UIWindow.class] && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
         // Swap width and height
         self.bounds = (CGRect){CGPointZero, {bounds.size.height, bounds.size.width}};
