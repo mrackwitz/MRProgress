@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "MRActivityIndicatorView.h"
 #import "MRCircularProgressView.h"
-#import "MRNavigationBarProgressViewController.h"
+#import "MRNavigationBarProgressView.h"
 #import "MRActivityIndicatorView+AFNetworking.h"
 #import "MRProgressView+AFNetworking.h"
 #import "MRProgressOverlayView+AFNetworking.h"
