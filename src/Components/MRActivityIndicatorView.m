@@ -99,7 +99,7 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
     [super layoutSubviews];
     
     CGRect frame = self.bounds;
-    if (frame.size.width != frame.size.height) {
+    if (ABS(frame.size.width - frame.size.height) < CGFLOAT_MIN) {
         // Ensure that we have a square frame
         CGFloat s = MIN(frame.size.width, frame.size.height);
         frame.size.width = s;
