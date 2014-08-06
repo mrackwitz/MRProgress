@@ -704,16 +704,19 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Control progress
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-property-ivar"
 - (void)setProgress:(float)progress {
     [self setProgress:progress animated:NO];
 }
-#pragma clang diagnostic pop
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
+    NSParameterAssert(progress >= 0 && progress <= 1);
+    _progress = progress;
+    [self applyProgressAnimated:(BOOL)animated];
+}
+    
+- (void)applyProgressAnimated:(BOOL)animated {
     if ([self.modeView respondsToSelector:@selector(setProgress:animated:)]) {
-        [((id)self.modeView) setProgress:progress animated:animated];
+        [((id)self.modeView) setProgress:self.progress animated:animated];
     } else if ([self.modeView respondsToSelector:@selector(setProgress:)]) {
         if (animated) {
             #if DEBUG
@@ -723,7 +726,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
                       NSStringFromSelector(@selector(setProgress:animated:)));
             #endif
         }
-        [((id)self.modeView) setProgress:progress];
+        [((id)self.modeView) setProgress:self.progress];
     } else {
         NSAssert(self.mode == MRProgressOverlayViewModeDeterminateCircular
                  || self.mode == MRProgressOverlayViewModeDeterminateHorizontalBar,
