@@ -262,7 +262,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 - (void)mr_observeValueForKeyPath:(NSString *)keyPath
                          ofObject:(id)object
-                           change:(__unused NSDictionary *)change
+                           change:(NSDictionary *)change
                           context:(void *)context
 {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
