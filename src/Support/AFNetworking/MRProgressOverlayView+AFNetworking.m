@@ -79,8 +79,11 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingTaskDidSuspendNotification  object:task];
             
             // Observe progress
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
             [task addObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))     options:0 context:MRTaskCountOfBytesSentContext];
             [task addObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived)) options:0 context:MRTaskCountOfBytesReceivedContext];
+#pragma clang diagnostic pop
         }
     }
 }
