@@ -469,6 +469,7 @@
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-auto-import",
 					"-Wno-direct-ivar-access",
+					"-Wno-gnu",
 				);
 			};
 			name = Debug;
@@ -492,6 +493,7 @@
 					"-Wno-objc-missing-property-synthesis",
 					"-Wno-auto-import",
 					"-Wno-direct-ivar-access",
+					"-Wno-gnu",
 				);
 			};
 			name = Release;
