@@ -24,7 +24,12 @@
     IMP originImplementation = method_getImplementation(originMethod);
     NSAssert(originImplementation != NULL, @"Didn't found method %@ on origin class %@.", NSStringFromSelector(selector), self.originClass);
     const char *methodTypes = method_getTypeEncoding(originMethod);
-    BOOL success = class_addMethod(self.targetClass, selector, originImplementation, methodTypes);
+#if defined(NS_BLOCK_ASSERTIONS)
+    __attribute__((__unused__)) BOOL success;
+#else
+    BOOL success;
+#endif
+    success = class_addMethod(self.targetClass, selector, originImplementation, methodTypes);
     NSAssert(success, @"Failed to copy method %@ from origin class %@ to target class %@.", NSStringFromSelector(selector), self.originClass, self.targetClass);
 }
 
