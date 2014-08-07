@@ -595,8 +595,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     UIEdgeInsets insets = UIEdgeInsetsZero;
     
     if ([self.superview isKindOfClass:[UIScrollView class]]) {
-        UIScrollView *sv = self.superview;
-        insets = sv.contentInset;
+        UIScrollView *scrollView = (UIScrollView *)self.superview;
+        insets = scrollView.contentInset;
     }
     
     self.center = CGPointMake((bounds.size.width - insets.left - insets.right) / 2.0f,
