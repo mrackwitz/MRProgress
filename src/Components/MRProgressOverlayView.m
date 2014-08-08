@@ -16,8 +16,8 @@
 #import "MRProgressHelper.h"
 
 
-const CGFloat MRProgressOverlayViewCornerRadius = 7;
-const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
+static const CGFloat MRProgressOverlayViewCornerRadius = 7;
+static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 
 @interface MRProgressOverlayView () {
@@ -713,9 +713,12 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Control progress
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-property-ivar"
 - (void)setProgress:(float)progress {
     [self setProgress:progress animated:NO];
 }
+#pragma clang diagnostic pop
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if ([self.modeView respondsToSelector:@selector(setProgress:animated:)]) {

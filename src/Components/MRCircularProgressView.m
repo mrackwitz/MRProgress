@@ -12,7 +12,7 @@
 #import "MRStopButton.h"
 
 
-NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
+static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
 
 
 @interface MRCircularProgressView ()

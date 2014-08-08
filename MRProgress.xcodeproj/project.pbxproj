@@ -463,6 +463,20 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-covered-switch-default",
+					"-Wno-direct-ivar-access",
+					"-Wno-gnu-statement-expression",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-format-nonliteral",
+					"-Wno-undef",
+					"-Wno-documentation",
+					"-Wno-unused-macros",
+					"-Wno-auto-import",
+				);
 			};
 			name = Debug;
 		};
@@ -479,6 +493,20 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-covered-switch-default",
+					"-Wno-direct-ivar-access",
+					"-Wno-gnu-statement-expression",
+					"-Wno-float-equal",
+					"-Wno-assign-enum",
+					"-Wno-format-nonliteral",
+					"-Wno-undef",
+					"-Wno-documentation",
+					"-Wno-unused-macros",
+					"-Wno-auto-import",
+				);
 			};
 			name = Release;
 		};

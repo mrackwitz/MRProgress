@@ -11,7 +11,7 @@
 #import "MRStopButton.h"
 
 
-NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorViewSpinAnimationKey";
+static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorViewSpinAnimationKey";
 
 
 @interface MRActivityIndicatorView ()

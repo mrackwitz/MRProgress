@@ -15,8 +15,11 @@
  either spinning or stopped.
  */
 @interface MRActivityIndicatorView : UIView<MRStopableView> {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 @package
     BOOL _animating;
+#pragma clang diagnostic pop
 }
 
 /**
