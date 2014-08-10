@@ -12,7 +12,7 @@
 #import "MRStopButton.h"
 
 
-NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
+static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
 
 
 @interface MRCircularProgressView ()
@@ -191,7 +191,7 @@ NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgres
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (self.progress == progress) {
+        if (ABS(self.progress - progress) < CGFLOAT_MIN) {
             return;
         }
         

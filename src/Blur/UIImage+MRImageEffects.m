@@ -179,14 +179,16 @@ vImage_Buffer vImageBuffer_InitWithCGContext(CGContextRef contextRef) {
             };
             
             const int32_t divisor = 256;
-            
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wbad-function-cast"
+#pragma clang diagnostic ignored "-Wvla"
             // Convert saturation matrix from float to int
             NSUInteger matrixSize = sizeof(floatingPointSaturationMatrix)/sizeof(floatingPointSaturationMatrix[0]);
             int16_t saturationMatrix[matrixSize];
             for (NSUInteger i = 0; i < matrixSize; ++i) {
                 saturationMatrix[i] = (int16_t)roundf(floatingPointSaturationMatrix[i] * divisor);
             }
-            
+#pragma clang diagnostic pop
             vImageMatrixMultiply_ARGB8888(&inputBuffer, &outputBuffer, saturationMatrix, divisor, NULL, NULL, kvImageNoFlags);
         }
         

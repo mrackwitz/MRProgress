@@ -11,7 +11,7 @@
 #import "MRStopButton.h"
 
 
-NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorViewSpinAnimationKey";
+static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorViewSpinAnimationKey";
 
 
 @interface MRActivityIndicatorView ()
@@ -99,7 +99,7 @@ NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityIndicatorV
     [super layoutSubviews];
     
     CGRect frame = self.bounds;
-    if (frame.size.width != frame.size.height) {
+    if (ABS(frame.size.width - frame.size.height) < CGFLOAT_MIN) {
         // Ensure that we have a square frame
         CGFloat s = MIN(frame.size.width, frame.size.height);
         frame.size.width = s;

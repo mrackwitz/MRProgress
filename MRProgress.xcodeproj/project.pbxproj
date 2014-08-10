@@ -457,12 +457,20 @@
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-auto-import",
+					"-Wno-direct-ivar-access",
+					"-Wno-gnu",
+				);
 			};
 			name = Debug;
 		};
@@ -473,12 +481,20 @@
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRProgress/MRProgress-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wno-objc-missing-property-synthesis",
+					"-Wno-auto-import",
+					"-Wno-direct-ivar-access",
+					"-Wno-gnu",
+				);
 			};
 			name = Release;
 		};
