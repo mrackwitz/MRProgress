@@ -84,6 +84,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
             [task addObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))     options:0 context:MRTaskCountOfBytesSentContext];
             [task addObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived)) options:0 context:MRTaskCountOfBytesReceivedContext];
 #pragma clang diagnostic pop
+        } else {
+            [self dismiss:YES];
         }
     }
 }
@@ -151,6 +153,8 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                 // Unregister
                 [weakSelf.operation setDownloadProgressBlock:originalDownloadProgressBlock];
             }];
+        } else {
+            [self dismiss:YES];
         }
     }
 }
