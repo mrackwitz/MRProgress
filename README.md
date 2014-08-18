@@ -20,6 +20,7 @@ MRProgress is a collection of drop-in components that display a dimmed overlay w
 * **Reusable**: The code is fragmented in small reusable pieces.
 * **Well documented**: You can install and open Appledoc documentation.
 * **Integrated**: It offers an integration into [AFNetworking](https://github.com/AFNetworking/AFNetworking).
+* **Accessible**: It provides labels, traits and events for UIAccessibility.
 
 
 ## Components
