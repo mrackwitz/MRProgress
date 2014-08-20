@@ -74,8 +74,16 @@
                                                            }];
     
     MRProgressOverlayView *overlayView = [MRProgressOverlayView showOverlayAddedTo:self.view animated:YES];
-    [overlayView setModeAndProgressWithStateOfOperation:operation];
-    [overlayView setStopBlockForOperation:operation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        // Do an expensive background operation, before observing the operation
+        sleep(2);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [overlayView setModeAndProgressWithStateOfOperation:operation];
+            [overlayView setStopBlockForOperation:operation];
+        });
+    });
 }
 
 - (IBAction)onOverlayViewUpload:(id)sender {
