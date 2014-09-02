@@ -23,6 +23,7 @@
 		71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36891805BB7100C85C5B /* MRNavigationBarProgressViewController.m */; };
 		71EC368F1805BB7100C85C5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EC368E1805BB7100C85C5B /* Images.xcassets */; };
 		71EC36BA1805D94500C85C5B /* MRProgressOverlayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EC36B91805D94500C85C5B /* MRProgressOverlayTableViewController.m */; };
+		71ECDA1C19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ECDA1B19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m */; };
 		71F50A3C181895D200FF4B8E /* MRProgressOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */; };
 		D93A6441ABA44EEBB39D49F5 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C56F06180F46F3898B5A94 /* libPods-Example.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,8 @@
 		71EC368E1805BB7100C85C5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		71EC36B81805D94500C85C5B /* MRProgressOverlayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayTableViewController.h; sourceTree = "<group>"; };
 		71EC36B91805D94500C85C5B /* MRProgressOverlayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayTableViewController.m; sourceTree = "<group>"; };
+		71ECDA1A19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButtonMinHitAreaViewController.h; sourceTree = "<group>"; };
+		71ECDA1B19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButtonMinHitAreaViewController.m; sourceTree = "<group>"; };
 		71F50A3A181895D200FF4B8E /* MRProgressOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayViewController.h; sourceTree = "<group>"; };
 		71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayViewController.m; sourceTree = "<group>"; };
 		B9C56F06180F46F3898B5A94 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +132,8 @@
 				71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */,
 				71EC36B81805D94500C85C5B /* MRProgressOverlayTableViewController.h */,
 				71EC36B91805D94500C85C5B /* MRProgressOverlayTableViewController.m */,
+				71ECDA1A19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.h */,
+				71ECDA1B19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m */,
 				71EC368E1805BB7100C85C5B /* Images.xcassets */,
 				71EC36771805BB7100C85C5B /* Supporting Files */,
 			);
@@ -259,6 +264,7 @@
 				71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */,
 				71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */,
 				71EC368A1805BB7100C85C5B /* MRNavigationBarProgressViewController.m in Sources */,
+				71ECDA1C19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
