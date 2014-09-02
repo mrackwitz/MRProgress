@@ -36,6 +36,10 @@
 }
 
 - (void)commonInit {
+    self.accessibilityLabel = NSLocalizedString(@"Stop", @"Accessibility label for stop button");
+    self.accessibilityHint = NSLocalizedString(@"Stop the activity", @"Accessibility hint for stop button");
+    self.accessibilityTraits = UIAccessibilityTraitButton;
+    
     self.sizeRatio = 0.3;
     self.highlightedSizeRatio = 0.9;
     

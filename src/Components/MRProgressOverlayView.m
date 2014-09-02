@@ -43,6 +43,8 @@ static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)showModeView:(UIView *)modeView;
 - (void)hideModeView:(UIView *)modeView;
 
+- (BOOL)mayStop;
+
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha;
 
 - (void)registerForNotificationCenter;
@@ -158,6 +160,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)commonInit {
+    self.accessibilityViewIsModal = YES;
+    
     self.hidden = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -188,6 +192,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         NSFontAttributeName:            [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSKernAttributeName:            NSNull.null,  // turn on auto-kerning
     }];
+    titleLabel.accessibilityTraits = UIAccessibilityTraitHeader;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -499,6 +504,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 
+#pragma mark - A11y
+
+- (BOOL)accessibilityPerformEscape {
+    if (self.mayStop) {
+        [self modeViewStopButtonTouchUpInside];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
 #pragma mark - Transitions
 
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
@@ -532,6 +549,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     } else {
         animBlock();
     }
+    
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, self.titleLabelText);
 }
 
 - (void)dismiss:(BOOL)animated {
@@ -562,6 +582,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     void(^animCompletionBlock)(BOOL) = ^(BOOL finished) {
         self.hidden = YES;
         [self hideModeView:self.modeView];
+        
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+        
         if (completionBlock) {
             completionBlock();
         }

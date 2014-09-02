@@ -63,7 +63,9 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 - (void)commonInit {
-    self.progress = 0;
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for circular progress view");
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
     
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     self.numberFormatter = numberFormatter;
@@ -84,6 +86,8 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     self.stopButton = stopButton;
     
     self.mayStop = NO;
+    
+    self.progress = 0;
     
     [self tintColorDidChange];
 }
@@ -174,6 +178,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     _progress = progress;
     
     [self updateProgress];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)updateProgress {
@@ -187,6 +192,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 
 - (void)updateLabel:(float)progress {
     self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
+    self.accessibilityValue = self.valueLabel.text;
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
@@ -199,6 +205,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     } else {
         self.progress = progress;
     }
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)setAnimationDuration:(CFTimeInterval)animationDuration {

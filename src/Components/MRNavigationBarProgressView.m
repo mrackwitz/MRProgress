@@ -48,6 +48,15 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 
 @implementation MRNavigationBarProgressView
 
+static NSNumberFormatter *progressNumberFormatter;
+
++ (void)load {
+    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+    numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    numberFormatter.locale = NSLocale.currentLocale;
+    progressNumberFormatter = numberFormatter;
+}
+
 + (instancetype)progressViewForNavigationController:(UINavigationController *)navigationController {
     // Try to get existing bar
     MRNavigationBarProgressView *progressView = navigationController.progressView;
@@ -95,6 +104,10 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 }
 
 - (void)commonInit {
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for navigation bar progress view");
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
+    
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.opaque = NO;
     
@@ -203,6 +216,9 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 - (void)progressDidChange {
     self.progressView.alpha = self.progress >= 1 ? 0 : 1;
     [self layoutProgressView];
+    
+    self.accessibilityValue = [progressNumberFormatter stringFromNumber:@(self.progress)];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {

@@ -41,6 +41,8 @@
 }
 
 - (void)commonInit {
+    self.isAccessibilityElement = YES;
+    
     self.layer.borderWidth = 1.0f;
     self.shapeLayer.lineWidth = 1.0f;
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
@@ -70,6 +72,12 @@
 
 @implementation MRCheckmarkIconView
 
+- (void)commonInit {
+    [super commonInit];
+    
+    self.accessibilityLabel = NSLocalizedString(@"Checkmark", @"Accessibility label for custom rendered checkmark icon");
+}
+
 - (UIBezierPath *)path {
     UIBezierPath *path = [UIBezierPath new];
     
@@ -85,6 +93,12 @@
 
 
 @implementation MRCrossIconView
+
+- (void)commonInit {
+    [super commonInit];
+    
+    self.accessibilityLabel = NSLocalizedString(@"Cross", @"Accessibility label for custom rendered cross icon");
+}
 
 - (UIBezierPath *)path {
     UIBezierPath *path = [UIBezierPath new];

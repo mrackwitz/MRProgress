@@ -47,6 +47,9 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
 }
 
 - (void)commonInit {
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Indeterminate Progress", @"Accessibility label for activity indicator view");
+    
     self.hidesWhenStopped = YES;
     
     CAShapeLayer *shapeLayer = [CAShapeLayer new];
