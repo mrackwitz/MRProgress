@@ -10,6 +10,9 @@
 #import "MRProgressHelper.h"
 
 
+static CGFloat const MRStopButtonMinSize = 44.0;
+
+
 @interface MRStopButton ()
 
 @property (nonatomic, weak, readwrite) CAShapeLayer *shapeLayer;
@@ -60,6 +63,17 @@
     return CGRectInset(MRCenterCGSizeInCGRect(viewSize, parentBounds),
                        sizeValue * insetSizeRatio,
                        sizeValue * insetSizeRatio);
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    if (self.frame.size.width >= MRStopButtonMinSize || self.frame.size.height >= MRStopButtonMinSize) {
+        return [super pointInside:point withEvent:event];
+    } else {
+        CGFloat maxOffsetX = MAX(0, (MRStopButtonMinSize - self.frame.size.width) / 2.0);
+        CGFloat maxOffsetY = MAX(0, (MRStopButtonMinSize - self.frame.size.height) / 2.0);
+        CGRect hitRect = CGRectInset(self.bounds, -maxOffsetX, -maxOffsetY);
+        return CGRectContainsPoint(hitRect, point);
+    }
 }
 
 - (void)layoutSubviews {
