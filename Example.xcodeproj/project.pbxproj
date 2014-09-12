@@ -180,7 +180,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MR;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Marius Rackwitz";
 			};
 			buildConfigurationList = 71EC36681805BB7100C85C5B /* Build configuration list for PBXProject "Example" */;
