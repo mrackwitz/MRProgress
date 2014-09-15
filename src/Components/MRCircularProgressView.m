@@ -136,8 +136,9 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     
     CGFloat width = self.frame.size.width;
     CGFloat borderWidth = self.layer.borderWidth;
+    CGFloat lineWidth = self.lineWidth;
     return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
-                                          radius:width/2.0f - borderWidth
+                                          radius:width/2.0f - lineWidth/2.0f - borderWidth/2.0f
                                       startAngle:startAngle
                                         endAngle:endAngle
                                        clockwise:YES];
