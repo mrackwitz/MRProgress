@@ -120,7 +120,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     const CGFloat offset = 4;
     CGRect valueLabelRect = self.bounds;
     valueLabelRect.origin.x += offset;
-    valueLabelRect.size.width -= offset;
+    valueLabelRect.size.width -= 2*offset;
     self.valueLabel.frame = valueLabelRect;
     
     self.layer.cornerRadius = self.frame.size.width / 2.0f;
