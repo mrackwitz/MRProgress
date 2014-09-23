@@ -33,6 +33,8 @@
     {
         id apperance = [MRActivityIndicatorView appearanceWhenContainedIn:MRProgressOverlayView.class, MRAppearanceViewController.class, nil];
         [apperance setLineWidth:1.0];
+        
+        self.circularProgressView.layer.borderColor = UIColor.redColor.CGColor;
     }
     //[self.activityIndicatorView startAnimating];
     
