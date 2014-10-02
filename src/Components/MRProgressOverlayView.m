@@ -53,8 +53,6 @@ const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (void)unregisterFromKVO;
 - (NSArray *)observableKeypaths;
 
-- (CGAffineTransform)transformForOrientation;
-
 - (NSDictionary *)titleTextAttributesToCopy;
 
 @end
@@ -570,25 +568,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 #pragma mark - Layout
 
-- (CGAffineTransform)transformForOrientation {
-    if ([self.superview isKindOfClass:UIWindow.class]) {
-        return CGAffineTransformMakeRotation(MRRotationForStatusBarOrientation());
-    }
-    return CGAffineTransformIdentity;
-}
-
 // Don't overwrite layoutSubviews here. This would cause issues with animation.
 - (void)manualLayoutSubviews {
-    self.transform = self.transformForOrientation;
-    
     CGRect bounds = self.superview.bounds;
     self.center = CGPointMake(bounds.size.width / 2.0f, bounds.size.height / 2.0f);
-    if ([self.superview isKindOfClass:UIWindow.class] && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
-        // Swap width and height
-        self.bounds = (CGRect){CGPointZero, {bounds.size.height, bounds.size.width}};
-    } else {
-        self.bounds = (CGRect){CGPointZero, bounds.size};
-    }
+    self.bounds = (CGRect){CGPointZero, bounds.size};
     
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
