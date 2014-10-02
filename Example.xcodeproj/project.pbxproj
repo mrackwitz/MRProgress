@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		490892C8609849848E88A316 /* Pods-Example.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.xcconfig"; path = "Pods/Pods-Example.xcconfig"; sourceTree = "<group>"; };
+		2C88F7051F85E59D81751313 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7111E5B71806116B00016A43 /* aquarium-fish1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aquarium-fish1.jpg"; sourceTree = "<group>"; };
 		71135B77197D296800BE73F2 /* MRAppearanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAppearanceViewController.h; sourceTree = "<group>"; };
 		71135B78197D296800BE73F2 /* MRAppearanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAppearanceViewController.m; sourceTree = "<group>"; };
@@ -62,6 +62,7 @@
 		71ECDA1B19B5447A00F86877 /* MRStopButtonMinHitAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButtonMinHitAreaViewController.m; sourceTree = "<group>"; };
 		71F50A3A181895D200FF4B8E /* MRProgressOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayViewController.h; sourceTree = "<group>"; };
 		71F50A3B181895D200FF4B8E /* MRProgressOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayViewController.m; sourceTree = "<group>"; };
+		885A8F96CD2456C8A8217560 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		B9C56F06180F46F3898B5A94 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,7 +86,7 @@
 				71EC36761805BB7100C85C5B /* Example */,
 				71EC366F1805BB7100C85C5B /* Frameworks */,
 				71EC366E1805BB7100C85C5B /* Products */,
-				490892C8609849848E88A316 /* Pods-Example.xcconfig */,
+				9017475B5255F05B2B6AAD0E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +150,15 @@
 				71EC367E1805BB7100C85C5B /* Example-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9017475B5255F05B2B6AAD0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C88F7051F85E59D81751313 /* Pods-Example.debug.xcconfig */,
+				885A8F96CD2456C8A8217560 /* Pods-Example.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5EB04A316D14F988BD3BB1C /* Check Pods Manifest.lock */ = {
@@ -364,7 +374,7 @@
 		};
 		71EC36A61805BB7100C85C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 490892C8609849848E88A316 /* Pods-Example.xcconfig */;
+			baseConfigurationReference = 2C88F7051F85E59D81751313 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -377,7 +387,10 @@
 					"\"$(SRCROOT)/src\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = Example;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -386,7 +399,7 @@
 		};
 		71EC36A71805BB7100C85C5B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 490892C8609849848E88A316 /* Pods-Example.xcconfig */;
+			baseConfigurationReference = 885A8F96CD2456C8A8217560 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -399,7 +412,10 @@
 					"\"$(SRCROOT)/src\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = Example;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

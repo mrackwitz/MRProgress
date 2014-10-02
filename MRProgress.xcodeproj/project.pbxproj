@@ -45,10 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1878F9F9EFE64EB280742D50 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		299730941881CB520022B27B /* MRStopableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
 		29CE9677186E0129006006B0 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
 		29CE9678186E0129006006B0 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
+		5AF8C4C8C426723C443D1946 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		710BD58A1816AD3700654750 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		710BD5961817353E00654750 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
 		710BD5971817353E00654750 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		7197CF151816AA6F0022A19D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = "<absolute>"; };
 		7197CF181816AA9A0022A19D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7AF019C9ADBE4EEA962ED766 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DEF625A916700BFB602AEF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +184,7 @@
 				7197CEB918169F210022A19D /* Frameworks */,
 				7197CEB818169F210022A19D /* Products */,
 				711417411976ED7F005A1DAD /* MRProgress.podspec */,
-				1878F9F9EFE64EB280742D50 /* Pods.xcconfig */,
+				7E3EFD282CC041C41E88780D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +235,15 @@
 				7197CEEE18169F470022A19D /* MRProgress.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		7E3EFD282CC041C41E88780D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7DEF625A916700BFB602AEF0 /* Pods.debug.xcconfig */,
+				5AF8C4C8C426723C443D1946 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,7 +346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EEF68FC34CDA4B7C90ACE8AF /* Check Pods Manifest.lock */ = {
@@ -452,7 +462,7 @@
 		};
 		7197CEDB18169F210022A19D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1878F9F9EFE64EB280742D50 /* Pods.xcconfig */;
+			baseConfigurationReference = 7DEF625A916700BFB602AEF0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -476,7 +486,7 @@
 		};
 		7197CEDC18169F210022A19D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1878F9F9EFE64EB280742D50 /* Pods.xcconfig */;
+			baseConfigurationReference = 5AF8C4C8C426723C443D1946 /* Pods.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MRProgress.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
