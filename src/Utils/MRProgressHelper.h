@@ -23,6 +23,17 @@ static inline CGFloat MRCGFloatCeil(CGFloat);
 #endif
 
 
+static inline BOOL systemVersionGreaterThanOrEqualTo8 ()
+{
+    static BOOL res = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        res = ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending);
+    });
+    return res;
+}
+
+
 static inline CGRect MRCenterCGSizeInCGRect(CGSize innerRectSize, CGRect outerRect) {
     CGRect innerRect;
     innerRect.size = innerRectSize;
