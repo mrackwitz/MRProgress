@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
+#define MR_UIEffectViewIsAllowed   (__IPHONE_OS_VERSION_MAX_ALLOWED >= 80000)
+#define MR_UIEffectViewIsAvailable (MR_UIEffectViewIsAllowed && NSClassFromString(@"UIVisualEffectView") != nil)
+
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "MRProgressOverlayView.h"
@@ -26,6 +29,7 @@ static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 
 @property (nonatomic, weak, readwrite) UIView *dialogView;
 @property (nonatomic, weak, readwrite) UIView *blurView;
+@property (nonatomic, strong, readwrite) UIView *blurMaskView;
 @property (nonatomic, weak, readwrite) UILabel *titleLabel;
 
 - (UIView *)createModeView;
@@ -169,7 +173,6 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     // Create blurView
     self.blurView = [self createBlurView];
-    self.blurView.layer.cornerRadius = cornerRadius;
     
     // Create container with contents
     UIView *dialogView = [UIView new];
@@ -287,11 +290,30 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Create subviews
 
 - (UIView *)createBlurView {
-    UIView *blurView = [MRBlurView new];
-    blurView.alpha = 0.98;
-    [self addSubview:blurView];
+    const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
-    return blurView;
+    if (MR_UIEffectViewIsAvailable) {
+        #if MR_UIEffectViewIsAllowed
+            UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+            [self addSubview:effectView];
+            
+            // Setup mask view
+            UIView *maskView = [UIView new];
+            maskView.backgroundColor = UIColor.whiteColor;
+            maskView.layer.cornerRadius = cornerRadius;
+            self.blurMaskView = maskView; // Memorize for layout changes
+            
+            effectView.maskView = maskView;
+            
+            return effectView;
+        #endif
+    } else {
+        UIView *blurView = [MRBlurView new];
+        blurView.alpha = 0.98;
+        blurView.layer.cornerRadius = cornerRadius;
+        [self addSubview:blurView];
+        return blurView;
+    }
 }
 
 - (UIView *)createModeView {
@@ -520,9 +542,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
     self.blurView.transform = transform;
-    self.blurView.alpha = alpha;
     self.dialogView.transform = transform;
-    self.dialogView.alpha = alpha;
+    self.alpha = alpha;
 }
 
 - (void)show:(BOOL)animated {
@@ -730,6 +751,15 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
         self.blurView.frame = self.dialogView.frame;
+        
+        if (MR_UIEffectViewIsAvailable) {
+            #if MR_UIEffectViewIsAllowed
+                // As the blurMaskView will be copied internally by UIKit, we have to re-assign
+                // it to the blurView, after we change its layout
+                self.blurMaskView.frame = self.dialogView.bounds;
+                self.blurView.maskView = self.blurMaskView;
+            #endif
+        }
     }
 }
 
