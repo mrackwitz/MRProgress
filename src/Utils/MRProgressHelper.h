@@ -23,6 +23,11 @@ static inline CGFloat MRCGFloatCeil(CGFloat);
 #endif
 
 
+static inline BOOL MRSystemVersionGreaterThanOrEqualTo8() {
+    return [NSProcessInfo.processInfo respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)];
+}
+
+
 static inline CGRect MRCenterCGSizeInCGRect(CGSize innerRectSize, CGRect outerRect) {
     CGRect innerRect;
     innerRect.size = innerRectSize;
