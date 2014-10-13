@@ -24,12 +24,7 @@ static inline CGFloat MRCGFloatCeil(CGFloat);
 
 
 static inline BOOL MRSystemVersionGreaterThanOrEqualTo8() {
-    static BOOL res = NO;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        res = ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending);
-    });
-    return res;
+    return [NSProcessInfo.processInfo respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)];
 }
 
 
