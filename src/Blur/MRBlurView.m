@@ -174,7 +174,7 @@
                                    -window.bounds.size.height * window.layer.anchorPoint.y);
     
     // Rotate according to device orientation
-    if(!systemVersionGreaterThanOrEqualTo8()) {
+    if(!MRSystemVersionGreaterThanOrEqualTo8()) {
         CGContextRotateCTM(context, 2*M_PI - MRRotationForStatusBarOrientation());
     }
     

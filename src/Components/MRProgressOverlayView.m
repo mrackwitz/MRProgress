@@ -612,7 +612,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 
 // Don't overwrite layoutSubviews here. This would cause issues with animation.
 - (void)manualLayoutSubviews {
-    if (!systemVersionGreaterThanOrEqualTo8()) {
+    if (!MRSystemVersionGreaterThanOrEqualTo8()) {
         self.transform = self.transformForOrientation;
     }
     
@@ -627,7 +627,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     self.center = CGPointMake((bounds.size.width - insets.left - insets.right) / 2.0f,
                               (bounds.size.height - insets.top - insets.bottom) / 2.0f);
 
-    if (systemVersionGreaterThanOrEqualTo8()) {
+    if (MRSystemVersionGreaterThanOrEqualTo8()) {
         self.bounds = (CGRect){CGPointZero, bounds.size};
     } else {
         if ([self.superview isKindOfClass:UIWindow.class] && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {

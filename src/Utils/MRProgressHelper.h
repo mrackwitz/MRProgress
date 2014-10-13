@@ -23,8 +23,7 @@ static inline CGFloat MRCGFloatCeil(CGFloat);
 #endif
 
 
-static inline BOOL systemVersionGreaterThanOrEqualTo8 ()
-{
+static inline BOOL MRSystemVersionGreaterThanOrEqualTo8() {
     static BOOL res = NO;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
