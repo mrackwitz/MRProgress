@@ -67,7 +67,9 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     if (task) {
         if (task.state != NSURLSessionTaskStateCompleted) {
             if (task.state == NSURLSessionTaskStateRunning) {
-                [self show:YES];
+                if (self.isHidden) {
+                    [self show:YES];
+                }
             } else {
                 [self dismiss:YES];
             }
@@ -115,7 +117,9 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     if (operation) {
         if (![operation isFinished]) {
             if ([operation isExecuting]) {
-                [self show:YES];
+                if (self.isHidden) {
+                    [self show:YES];
+                }
             } else {
                 [self dismiss:YES];
             }
@@ -196,7 +200,9 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 
 - (void)mr_show:(NSNotification *)note {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self show:YES];
+        if (self.hidden) {
+            [self show:YES];
+        }
     });
 }
 
