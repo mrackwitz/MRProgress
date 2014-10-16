@@ -294,7 +294,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     if (MR_UIEffectViewIsAvailable) {
         #if MR_UIEffectViewIsAllowed
-            UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+            // Just imagine this would be an UIVisualEffectView.
+            // It is just too broken to be used.
+            UIToolbar *effectView = [UIToolbar new];
             [self addSubview:effectView];
             
             // Setup mask view
