@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--Table View Controller - Examples-->
+        <!--Examples-->
         <scene sceneID="hIW-e0-LMs">
             <objects>
                 <tableViewController id="Efm-ZY-ehU" sceneMemberID="viewController">
@@ -245,7 +245,7 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--Activity Indicator View Controller - Activity Indicator View-->
+        <!--Activity Indicator View-->
         <scene sceneID="tpP-RF-yYh">
             <objects>
                 <viewController id="Fa8-f0-1WW" customClass="MRActivityIndicatorViewController" sceneMemberID="viewController">
@@ -328,7 +328,7 @@
             </objects>
             <point key="canvasLocation" x="1465" y="-1108"/>
         </scene>
-        <!--Circular Progress View Controller - Circular Progress View-->
+        <!--Circular Progress View-->
         <scene sceneID="6kZ-pj-ntc">
             <objects>
                 <viewController id="vvS-u5-Fhn" customClass="MRCircularProgressViewController" sceneMemberID="viewController">
@@ -395,7 +395,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="-614"/>
         </scene>
-        <!--Navigation Bar Progress View Controller - Navigation Bar Progress View-->
+        <!--Navigation Bar Progress View-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController storyboardIdentifier="NavigationBarProgress" id="pGg-6v-bdr" customClass="MRNavigationBarProgressViewController" sceneMemberID="viewController">
@@ -435,7 +435,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="64"/>
         </scene>
-        <!--Progress Overlay Table View Controller - Progress Overlay View-->
+        <!--Progress Overlay View-->
         <scene sceneID="UAR-Md-RpD">
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="HUd-DC-Fgr" customClass="MRProgressOverlayTableViewController" sceneMemberID="viewController">
@@ -777,7 +777,7 @@
             </objects>
             <point key="canvasLocation" x="1465" y="889"/>
         </scene>
-        <!--Progress Overlay View Controller - Progress Overlay View-->
+        <!--Progress Overlay View-->
         <scene sceneID="dV7-IT-5Rt">
             <objects>
                 <viewController id="Kjh-56-7qt" customClass="MRProgressOverlayViewController" sceneMemberID="viewController">
@@ -830,7 +830,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="740"/>
         </scene>
-        <!--View Controller - Blur View-->
+        <!--Blur View-->
         <scene sceneID="Xlf-0u-JUz">
             <objects>
                 <viewController id="1be-hg-hgT" sceneMemberID="viewController">
@@ -875,7 +875,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="1417"/>
         </scene>
-        <!--View Controller - Icon View-->
+        <!--Icon View-->
         <scene sceneID="RlF-7x-KGx">
             <objects>
                 <viewController id="Pog-ko-OgJ" sceneMemberID="viewController">
@@ -902,7 +902,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="2103"/>
         </scene>
-        <!--Appearance View Controller - UIAppearance Support-->
+        <!--UIAppearance Support-->
         <scene sceneID="Daa-0J-ckI">
             <objects>
                 <viewController id="Stt-8f-Dyi" customClass="MRAppearanceViewController" sceneMemberID="viewController">
@@ -939,7 +939,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="4104"/>
         </scene>
-        <!--Networking Support View Controller - AFNetworking Task Support-->
+        <!--AFNetworking Task Support-->
         <scene sceneID="DIh-sp-VeL">
             <objects>
                 <viewController id="TWP-ZS-peV" customClass="MRAFNetworkingSupportViewController" sceneMemberID="viewController">
@@ -1026,7 +1026,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="2758"/>
         </scene>
-        <!--Networking Support Operation View Controller - AFNetworking Operation Support-->
+        <!--AFNetworking Operation Support-->
         <scene sceneID="8HG-cK-2HY">
             <objects>
                 <viewController id="y4s-aP-5ld" customClass="MRAFNetworkingSupportOperationViewController" sceneMemberID="viewController">
@@ -1113,7 +1113,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="3426"/>
         </scene>
-        <!--Stop Button Min Hit Area View Controller - MRStopButton Min Hit Area-->
+        <!--MRStopButton Min Hit Area-->
         <scene sceneID="Xri-ce-hdT">
             <objects>
                 <viewController id="HXa-es-5ki" customClass="MRStopButtonMinHitAreaViewController" sceneMemberID="viewController">
