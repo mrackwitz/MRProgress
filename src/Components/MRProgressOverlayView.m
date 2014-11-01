@@ -756,15 +756,17 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     {
         self.dialogView.frame = MRCenterCGSizeInCGRect(CGSizeMake(dialogWidth, y), self.bounds);
         
-        self.blurView.frame = self.dialogView.frame;
-        
-        if (MR_UIEffectViewIsAvailable) {
-            #if MR_UIEffectViewIsAllowed
-                // As the blurMaskView will be copied internally by UIKit, we have to re-assign
-                // it to the blurView, after we change its layout
-                self.blurMaskView.frame = self.dialogView.bounds;
-                self.blurView.maskView = self.blurMaskView;
-            #endif
+        if (!CGRectEqualToRect(self.blurView.frame, self.dialogView.frame)) {
+            self.blurView.frame = self.dialogView.frame;
+            
+            if (MR_UIEffectViewIsAvailable) {
+                #if MR_UIEffectViewIsAllowed
+                    // As the blurMaskView will be copied internally by UIKit, we have to re-assign
+                    // it to the blurView, after we change its layout
+                    self.blurMaskView.frame = self.dialogView.bounds;
+                    self.blurView.maskView = self.blurMaskView;
+                #endif
+            }
         }
     }
 }
