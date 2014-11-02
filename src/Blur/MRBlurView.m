@@ -182,7 +182,7 @@
     CGContextTranslateCTM(context, -origin.x, -origin.y);
     
     // Draw the window
-    [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+    [window.layer renderInContext:context];
     
     // Capture the image and exit context
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
