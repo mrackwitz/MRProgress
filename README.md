@@ -16,7 +16,7 @@ MRProgress is a collection of drop-in components that display a dimmed overlay w
 
 * **Component oriented**: You don't have to use all components or `MRProgressOverlayView`. You can use just the custom activity indicators or progress views.
 * **Configurable**: All components implement tintColor.
-* **Customizable**: You can replace the given blur implementation and hook into your own you are maybe already using in other places of your app. Or simply throw in an [UIToolbar's layer](https://github.com/JagCesar/iOS-blur), if you prefer Apple's implementation. The current blur implementation uses `UIVisualEffectView`.
+* **Customizable**: You can replace the given blur implementation and hook into your own you are maybe already using in other places of your app. Or simply throw in an [UIToolbar's layer](https://github.com/mrackwitz/MRProgress/tree/uitoolbar_blur), if you prefer Apple's implementation. (Current blur implementation is as given by sample code of WWDC 2013.)
 * **Reusable**: The code is fragmented in small reusable pieces.
 * **Well documented**: You can install and open Appledoc documentation.
 * **Integrated**: It offers an integration into [AFNetworking](https://github.com/AFNetworking/AFNetworking).
