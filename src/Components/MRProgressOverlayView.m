@@ -6,7 +6,13 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
-#define MR_UIEffectViewIsAllowed   (__IPHONE_OS_VERSION_MAX_ALLOWED >= 80000)
+//#define MRProgress_EnableUIVisualEffectView
+#if defined(MRProgress_EnableUIVisualEffectView)
+    #define MR_UIEffectViewIsEnabled   1
+#else
+    #define MR_UIEffectViewIsEnabled   0
+#endif
+#define MR_UIEffectViewIsAllowed   (MR_UIEffectViewIsEnabled && __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000)
 #define MR_UIEffectViewIsAvailable (MR_UIEffectViewIsAllowed && NSClassFromString(@"UIVisualEffectView") != nil)
 
 #import <QuartzCore/QuartzCore.h>
