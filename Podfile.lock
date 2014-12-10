@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.4.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.4.1)
+    - AFNetworking/NSURLSession (= 2.4.1)
+    - AFNetworking/Reachability (= 2.4.1)
+    - AFNetworking/Security (= 2.4.1)
+    - AFNetworking/Serialization (= 2.4.1)
+    - AFNetworking/UIKit (= 2.4.1)
   - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -21,21 +21,21 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - MRProgress (0.8.0):
-    - MRProgress/ActivityIndicator
-    - MRProgress/Blur
-    - MRProgress/Circular
-    - MRProgress/Icons
-    - MRProgress/NavigationBarProgress
-    - MRProgress/Overlay
+    - MRProgress/ActivityIndicator (= 0.8.0)
+    - MRProgress/Blur (= 0.8.0)
+    - MRProgress/Circular (= 0.8.0)
+    - MRProgress/Icons (= 0.8.0)
+    - MRProgress/NavigationBarProgress (= 0.8.0)
+    - MRProgress/Overlay (= 0.8.0)
   - MRProgress/ActivityIndicator (0.8.0):
     - MRProgress/Stopable
   - MRProgress/AFNetworking (0.8.0):
-    - MRProgress/AFNetworking/ActivityIndicator
-    - MRProgress/AFNetworking/Base
-    - MRProgress/AFNetworking/Circular
-    - MRProgress/AFNetworking/NavigationBarProgress
-    - MRProgress/AFNetworking/Overlay
-    - MRProgress/AFNetworking/ProgressBaseClass
+    - MRProgress/AFNetworking/ActivityIndicator (= 0.8.0)
+    - MRProgress/AFNetworking/Base (= 0.8.0)
+    - MRProgress/AFNetworking/Circular (= 0.8.0)
+    - MRProgress/AFNetworking/NavigationBarProgress (= 0.8.0)
+    - MRProgress/AFNetworking/Overlay (= 0.8.0)
+    - MRProgress/AFNetworking/ProgressBaseClass (= 0.8.0)
   - MRProgress/AFNetworking/ActivityIndicator (0.8.0):
     - MRProgress/ActivityIndicator
     - MRProgress/AFNetworking/Base
@@ -79,7 +79,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - MRProgress (from `.`)
-  - MRProgress/AFNetworking
+  - MRProgress/AFNetworking (from `.`)
 
 EXTERNAL SOURCES:
   MRProgress:
@@ -89,4 +89,4 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   MRProgress: 65b7fdadc6fa39d008e63075aa91b4e9d256773c
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0

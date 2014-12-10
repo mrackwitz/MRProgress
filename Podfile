@@ -9,5 +9,5 @@ pod 'AFNetworking'
 target 'Example' do
   xcodeproj 'Example.xcodeproj'
   pod 'MRProgress', :path => '.'
-  pod 'MRProgress/AFNetworking'
+  pod 'MRProgress/AFNetworking', :path => '.'
 end
