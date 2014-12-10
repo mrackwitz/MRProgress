@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'MRProgress'
-  s.version               = '0.8.0'
+  s.version               = '0.8.1'
   s.summary               = 'Collection of iOS drop-in components to visualize progress by a HUD with different modes'
   s.homepage              = 'https://github.com/mrackwitz/MRProgress'
   s.social_media_url      = 'https://twitter.com/mrackwitz'
