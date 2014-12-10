@@ -46,15 +46,18 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 @end
 
 
-@implementation MRNavigationBarProgressView
+@implementation MRNavigationBarProgressView {
+    NSNumberFormatter *_progressNumberFormatter;
+}
 
-static NSNumberFormatter *progressNumberFormatter;
-
-+ (void)load {
-    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-    numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
-    numberFormatter.locale = NSLocale.currentLocale;
-    progressNumberFormatter = numberFormatter;
+- (NSNumberFormatter *)progressNumberFormatter {
+    if (!_progressNumberFormatter) {
+        NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+        numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
+        numberFormatter.locale = NSLocale.currentLocale;
+        _progressNumberFormatter = numberFormatter;
+    }
+    return _progressNumberFormatter;
 }
 
 + (instancetype)progressViewForNavigationController:(UINavigationController *)navigationController {
@@ -217,7 +220,7 @@ static NSNumberFormatter *progressNumberFormatter;
     self.progressView.alpha = self.progress >= 1 ? 0 : 1;
     [self layoutProgressView];
     
-    self.accessibilityValue = [progressNumberFormatter stringFromNumber:@(self.progress)];
+    self.accessibilityValue = [self.progressNumberFormatter stringFromNumber:@(self.progress)];
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
