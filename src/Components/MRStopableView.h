@@ -19,7 +19,8 @@
  A Boolean value that controls whether the receiver shows a stop button.
  
  If the value of this property is NO (the default), the receiver doesnot show a stop button. If the mayStop property is
- YES a stop button will be shown. You can catch fired events like known from UIButton by the property stopButton.
+ YES a stop button will be shown. You can catch the events, which will be fired by the stop button by registering
+ targets and actions for particular events on the property stopButton with addTarget:action:forControlEvents:.
  */
 @property (nonatomic, assign) BOOL mayStop;
 
