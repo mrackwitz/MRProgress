@@ -50,7 +50,7 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 
 static NSNumberFormatter *progressNumberFormatter;
 
-+ (void)load {
++ (void)initialize {
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
     numberFormatter.locale = NSLocale.currentLocale;
