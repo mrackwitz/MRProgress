@@ -89,14 +89,14 @@ The provided Example app demonstrates how they can be used.
 
 1. Add a pod entry for MRProgress to your *Podfile* `pod 'MRProgress'`.
 2. Install the pod(s) by running `pod install`.
-3. Include MRProgress wherever you need it with `#import <MRProgress/MRProgress.h>`.
+3. Include MRProgress wherever you need it with `#import <MRProgress/MRProgress.h>` from Objective-C or `import MRProgress` from Swift.
 
 
 ### Source files
 
 1. Download the [latest code version](http://github.com/mrackwitz/MRProgress/archive/master.zip) or add the repository as a git submodule to your git-tracked project.
 2. Drag and drop the **src** directory from the archive in your project navigator. Make sure to select *Copy items* when asked if you extracted the code archive outside of your project.
-3. Include MRProgress wherever you need any component with `#import "MRProgress.h"`.
+3. Include MRProgress wherever you need any component with `#import "MRProgress.h"` or include it in your bridging header to use it in Swift.
 
 
 ### Static library
@@ -104,7 +104,7 @@ The provided Example app demonstrates how they can be used.
 1. Drag and drop **MRProgress.xcodeproj** in your project navigator.
 2. Select your target and go to the *Build Phases* tab. In the *Link Binary With Libraries* section select the add button. On the sheet find and add libMRProgress.a.
 3. Add Target **MRProgress** to your *Target Dependencies* list.
-4. `import <MRProgress/MRProgress.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
+4. Use `import <MRProgress/MRProgress.h>` from Objective-C or `import MRProgress` from Swift wherever you want to use the components.
 
 
 ### Cocoapods - Subspecs
