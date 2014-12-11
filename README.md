@@ -89,7 +89,7 @@ The provided Example app demonstrates how they can be used.
 
 1. Add a pod entry for MRProgress to your *Podfile* `pod 'MRProgress'`.
 2. Install the pod(s) by running `pod install`.
-3. Include MRProgress wherever you need it with `#import "MRProgress.h"`.
+3. Include MRProgress wherever you need it with `#import <MRProgress/MRProgress.h>`.
 
 
 ### Source files
