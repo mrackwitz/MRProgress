@@ -196,8 +196,12 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
+    UIColor *textColor = UIColor.blackColor;
+    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+        textColor = UIColor.whiteColor;
+    }
     self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"Loading ..." attributes:@{
-        NSForegroundColorAttributeName: UIColor.blackColor,
+        NSForegroundColorAttributeName: textColor,
         NSFontAttributeName:            [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSKernAttributeName:            NSNull.null,  // turn on auto-kerning
     }];
@@ -566,7 +570,12 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
+        if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+            self.backgroundColor = [UIColor colorWithWhite:1 alpha:0.4f];
+        } else {
+            self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
+        }
+
     };
     
     if (animated) {

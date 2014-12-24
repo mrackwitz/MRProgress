@@ -103,6 +103,10 @@
 
 - (void)setPlaceholder {
     self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.96];
+    
+    if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+        self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.96];
+    }
 }
 
 - (void)clearPlaceholder {
@@ -126,7 +130,11 @@
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        image = [image mr_applyBlurWithRadius:30.0 tintColor:[UIColor colorWithWhite:0.97 alpha:0.82] saturationDeltaFactor:1.0 maskImage:nil];
+        UIColor *defaultBgColor = [UIColor colorWithWhite:0.97 alpha:0.82];
+        if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+            defaultBgColor = [UIColor colorWithWhite:0.03 alpha:0.82];
+        }
+        image = [image mr_applyBlurWithRadius:30.0 tintColor:defaultBgColor saturationDeltaFactor:1.0 maskImage:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Fade on content's change, dependent if there was already an image.
             CATransition *transition = [CATransition new];
