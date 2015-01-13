@@ -337,8 +337,15 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)setModeView:(UIView *)modeView {
+    if (_modeView) {
+        [_modeView removeFromSuperview];
+    }
+    
     _modeView = modeView;
-    [self.dialogView addSubview:modeView];
+    
+    if (_modeView) {
+        [self.dialogView addSubview:_modeView];
+    }
 }
 
 - (UIView *)createViewForMode:(MRProgressOverlayViewMode)mode {
