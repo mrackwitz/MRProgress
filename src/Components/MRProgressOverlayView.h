@@ -145,6 +145,20 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
 @property (nonatomic, assign) MRProgressOverlayViewMode mode;
 
 /**
+ Minimum width to use when laying out the overlay view.
+
+ Default value is 150.0.
+ */
+@property (nonatomic, assign) CGFloat overlayViewMinWidth;
+
+/**
+ Maximum height to use when laying out the title label.
+
+ Default value is MAXFLOAT, which means not set.
+ */
+@property (nonatomic, assign) CGFloat titleLabelMaxHeight;
+
+/**
  Current progress.
  
  Use associated setter for non animated changes. Otherwises use setProgress:aniamted:.
