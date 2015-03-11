@@ -480,6 +480,7 @@
 					"-Wno-auto-import",
 					"-Wno-direct-ivar-access",
 					"-Wno-gnu",
+					"-Wno-cstring-format-directive",
 				);
 			};
 			name = Debug;
@@ -504,6 +505,7 @@
 					"-Wno-auto-import",
 					"-Wno-direct-ivar-access",
 					"-Wno-gnu",
+					"-Wno-cstring-format-directive",
 				);
 			};
 			name = Release;
