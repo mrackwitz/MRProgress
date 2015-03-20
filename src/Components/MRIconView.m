@@ -12,6 +12,11 @@
 
 @implementation MRIconView
 
++ (void)load {
+    [self.appearance setBorderWidth:1.0];
+    [self.appearance setLineWidth:1.0];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -42,9 +47,7 @@
 
 - (void)commonInit {
     self.isAccessibilityElement = YES;
-    
-    self.layer.borderWidth = 1.0f;
-    self.shapeLayer.lineWidth = 1.0f;
+
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
     
     [self tintColorDidChange];
@@ -66,6 +69,25 @@
     super.frame = frame;
     self.layer.cornerRadius = frame.size.width / 2.0f;
 }
+
+#pragma mark - Properties
+
+- (CGFloat)borderWidth {
+    return self.layer.borderWidth;
+}
+
+- (void)setBorderWidth:(CGFloat)borderWidth {
+    self.layer.borderWidth = borderWidth;
+}
+
+- (CGFloat)lineWidth {
+    return self.shapeLayer.lineWidth;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    self.shapeLayer.lineWidth = lineWidth;
+}
+
 
 @end
 
