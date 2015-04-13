@@ -29,6 +29,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 @implementation MRCircularProgressView {
     int _valueLabelProgressPercentDifference;
 }
+@dynamic progress;
 
 @synthesize stopButton = _stopButton;
 
