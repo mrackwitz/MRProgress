@@ -47,6 +47,7 @@ static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UI
 
 
 @implementation MRNavigationBarProgressView
+@dynamic progress;
 
 static NSNumberFormatter *progressNumberFormatter;
 
