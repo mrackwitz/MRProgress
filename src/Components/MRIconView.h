@@ -20,6 +20,20 @@
  */
 - (UIBezierPath *)path;
 
+/**
+ The line Width of circle
+
+ Default is 1.0. Must be larger than zero.
+ */
+@property (nonatomic) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
+
+/**
+ The line width of icon
+
+ Default is 1.0. Must be larger than zero.
+ */
+@property (nonatomic) CGFloat lineWidth UI_APPEARANCE_SELECTOR;
+
 @end
 
 
