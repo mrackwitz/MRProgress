@@ -142,7 +142,7 @@
 
             ],
             "AFNetworking": [
-
+              "~> 2.5.2"
             ],
             "AFNetworking/UIKit": [
 

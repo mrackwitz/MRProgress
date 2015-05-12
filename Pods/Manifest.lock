@@ -40,7 +40,7 @@ PODS:
     - MRProgress/ActivityIndicator
     - MRProgress/AFNetworking/Base
   - MRProgress/AFNetworking/Base (0.8.1):
-    - AFNetworking
+    - AFNetworking (~> 2.5.2)
     - AFNetworking/UIKit
     - MRProgress/MethodCopier
   - MRProgress/AFNetworking/Circular (0.8.1):
@@ -87,6 +87,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
-  MRProgress: 1be661677b224cf2b9d15d2875d596b0dd8c0651
+  MRProgress: 9f4575a616ca284d79d6f15f808ff99f0b20f314
 
 COCOAPODS: 0.37.0
