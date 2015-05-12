@@ -1,6 +1,6 @@
 {
   "name": "MRProgress",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "summary": "Collection of iOS drop-in components to visualize progress by a HUD with different modes",
   "homepage": "https://github.com/mrackwitz/MRProgress",
   "social_media_url": "https://twitter.com/mrackwitz",
@@ -10,7 +10,7 @@
   "license": "MIT License",
   "source": {
     "git": "https://github.com/mrackwitz/MRProgress.git",
-    "tag": "0.8.1"
+    "tag": "0.8.2"
   },
   "source_files": "src/MRProgress.h",
   "platforms": {
