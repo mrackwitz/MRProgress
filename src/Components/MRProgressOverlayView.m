@@ -180,6 +180,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     // Create blurView
     self.blurView = [self createBlurView];
     
+    self.shouldHideBackgroundMask = NO;
+    self.backgroundMaskOpacity = 0.4f;
+    
     // Create container with contents
     UIView *dialogView = [UIView new];
     [self addSubview:dialogView];
@@ -566,7 +569,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
+        if (!self.shouldHideBackgroundMask) {
+            self.backgroundColor = [UIColor colorWithWhite:0 alpha:self.backgroundMaskOpacity];
+        }
     };
     
     if (animated) {
