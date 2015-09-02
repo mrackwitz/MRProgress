@@ -748,7 +748,11 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         CGFloat paddingBottom = 0;
         
         if (self.mode != MRProgressOverlayViewModeDeterminateHorizontalBar) {
-            modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            if (self.mode == MRProgressOverlayViewModeCustom) {
+                modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, self.modeView.frame.size.height);
+            } else {
+                modeViewFrame = CGRectMake(modePadding, y, innerViewWidth, innerViewWidth);
+            }
             paddingBottom = isTextNonEmpty ? 20 : modePadding;
         } else {
             modeViewFrame = CGRectMake(10, y, dialogWidth-20, 5);
