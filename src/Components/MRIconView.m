@@ -15,6 +15,11 @@
 
 @implementation MRIconView
 
++ (void)load {
+    [self.appearance setBorderWidth:1.0];
+    [self.appearance setLineWidth:1.0];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -45,9 +50,7 @@
 
 - (void)commonInit {
     self.isAccessibilityElement = YES;
-    
-    self.layer.borderWidth = 1.0f;
-    self.shapeLayer.lineWidth = 1.0f;
+
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
 	self.animating = NO;
     

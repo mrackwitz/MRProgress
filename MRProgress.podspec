@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = 'MRProgress'
-  s.version               = '0.8.1'
+  s.version               = '0.8.2'
   s.summary               = 'Collection of iOS drop-in components to visualize progress by a HUD with different modes'
   s.homepage              = 'https://github.com/mrackwitz/MRProgress'
   s.social_media_url      = 'https://twitter.com/mrackwitz'
@@ -57,8 +57,8 @@ Pod::Spec.new do |s|
   s.subspec 'AFNetworking' do |subs|
     subs.subspec 'Base' do |subs|
       subs.dependency 'MRProgress/MethodCopier'
-      subs.dependency 'AFNetworking'
-      subs.dependency 'AFNetworking/UIKit', '2.4.1'
+      subs.dependency 'AFNetworking', '~> 2.5.2'
+      subs.dependency 'AFNetworking/UIKit'
     end
 
     def subs.subspec_with_category_for(spec_name, class_name)
