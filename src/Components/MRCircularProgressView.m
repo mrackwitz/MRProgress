@@ -199,7 +199,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (ABS(self.progress - progress) < CGFLOAT_MIN) {
+        if (ABS(self.progress - progress) * 100 < 1) {
             return;
         }
         
