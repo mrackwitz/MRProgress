@@ -28,11 +28,6 @@
 // THE SOFTWARE.
 
 #import "MRActivityIndicatorView.h"
-
-#import <Availability.h>
-
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-
 #import <UIKit/UIKit.h>
 
 @class AFURLConnectionOperation;
@@ -51,21 +46,6 @@
  
  @param task The task. If `nil`, automatic updating from any previously specified operation will be disabled.
  */
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 - (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task;
-#endif
-
-///---------------------------------------
-/// @name Animating for Request Operations
-///---------------------------------------
-
-/**
- Binds the animating state to the execution state of the specified operation.
- 
- @param operation The operation. If `nil`, automatic updating from any previously specified operation will be disabled.
- */
-- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation;
 
 @end
-
-#endif

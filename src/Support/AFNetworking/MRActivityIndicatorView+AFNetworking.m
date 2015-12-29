@@ -33,11 +33,7 @@
 @interface AFActivityIndicatorViewNotificationObserver : NSObject
 @property (readonly, nonatomic, weak) UIActivityIndicatorView *activityIndicatorView;
 - (instancetype)initWithActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView;
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 - (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task;
-#endif
-- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation;
 
 @end
 
@@ -54,10 +50,6 @@
 
 - (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task {
     [[self af_notificationObserver] setAnimatingWithStateOfTask:task];
-}
-
-- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation {
-    [[self af_notificationObserver] setAnimatingWithStateOfOperation:operation];
 }
 
 @end
