@@ -298,7 +298,7 @@
 		7197CEAF18169F210022A19D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Marius Rackwitz";
 			};
 			buildConfigurationList = 7197CEB218169F210022A19D /* Build configuration list for PBXProject "MRProgress" */;
