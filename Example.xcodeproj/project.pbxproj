@@ -10,7 +10,6 @@
 		7111E5B81806116B00016A43 /* aquarium-fish1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7111E5B71806116B00016A43 /* aquarium-fish1.jpg */; };
 		71135B79197D296800BE73F2 /* MRAppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71135B78197D296800BE73F2 /* MRAppearanceViewController.m */; };
 		711417391976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */; };
-		71B0F8B5197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B0F8B4197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.m */; };
 		71E898CF1814506B0035F290 /* MRActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */; };
 		71E898D2181451710035F290 /* MRColorPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D1181451710035F290 /* MRColorPaletteViewController.m */; };
 		71E898D518158B450035F290 /* MRCircularProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E898D418158B450035F290 /* MRCircularProgressViewController.m */; };
@@ -35,8 +34,6 @@
 		71135B78197D296800BE73F2 /* MRAppearanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAppearanceViewController.m; sourceTree = "<group>"; };
 		711417371976ABC4005A1DAD /* MRAFNetworkingSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAFNetworkingSupportViewController.h; sourceTree = "<group>"; };
 		711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAFNetworkingSupportViewController.m; sourceTree = "<group>"; };
-		71B0F8B3197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRAFNetworkingSupportOperationViewController.h; sourceTree = "<group>"; };
-		71B0F8B4197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRAFNetworkingSupportOperationViewController.m; sourceTree = "<group>"; };
 		71E898CD1814506B0035F290 /* MRActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorViewController.h; sourceTree = "<group>"; };
 		71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorViewController.m; sourceTree = "<group>"; };
 		71E898D0181451710035F290 /* MRColorPaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRColorPaletteViewController.h; sourceTree = "<group>"; };
@@ -119,8 +116,6 @@
 				71E898CE1814506B0035F290 /* MRActivityIndicatorViewController.m */,
 				711417371976ABC4005A1DAD /* MRAFNetworkingSupportViewController.h */,
 				711417381976ABC4005A1DAD /* MRAFNetworkingSupportViewController.m */,
-				71B0F8B3197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.h */,
-				71B0F8B4197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.m */,
 				71135B77197D296800BE73F2 /* MRAppearanceViewController.h */,
 				71135B78197D296800BE73F2 /* MRAppearanceViewController.m */,
 				71E898D318158B450035F290 /* MRCircularProgressViewController.h */,
@@ -279,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71B0F8B5197967EC000DE699 /* MRAFNetworkingSupportOperationViewController.m in Sources */,
 				71EC367D1805BB7100C85C5B /* main.m in Sources */,
 				71EC36811805BB7100C85C5B /* MRAppDelegate.m in Sources */,
 				71135B79197D296800BE73F2 /* MRAppearanceViewController.m in Sources */,
