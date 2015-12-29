@@ -407,6 +407,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mariusrackwitz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Example;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -431,6 +432,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mariusrackwitz.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Example;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
