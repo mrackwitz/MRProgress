@@ -11,21 +11,11 @@
 #import <objc/runtime.h>
 #import "MRActivityIndicatorView+AFNetworking.h"
 #import "MRProgressView+AFNetworking.h"
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-    #import "AFURLSessionManager.h"
-#endif
+#import "AFURLSessionManager.h"
 
 
 static void * MRTaskCountOfBytesSentContext     = &MRTaskCountOfBytesSentContext;
 static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedContext;
-
-@interface AFURLConnectionOperation (_UIProgressView)
-// Implemented in AFURLConnectionOperation
-@property (readwrite, nonatomic, copy) void (^uploadProgress)(NSUInteger bytes, NSInteger totalBytes, NSInteger totalBytesExpected);
-@property (readwrite, nonatomic, copy) void (^downloadProgress)(NSUInteger bytes, NSInteger totalBytes, NSInteger totalBytesExpected);
-@end
-
 
 @interface MRProgressOverlayView (_AFNetworking)
 
@@ -56,8 +46,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 }
 
 #pragma mark -
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
 
 - (void)setModeAndProgressWithStateOfTask:(NSURLSessionTask *)task {
     self.sessionTask = task;
@@ -105,78 +93,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     }
 }
 
-#endif
-
-#pragma mark -
-
-- (void)setModeAndProgressWithStateOfOperation:(AFURLConnectionOperation *)operation {
-    self.operation = operation;
-    
-    [self mr_unregisterObserver];
-    
-    if (operation) {
-        if (![operation isFinished]) {
-            if ([operation isExecuting]) {
-                if (self.isHidden) {
-                    [self show:YES];
-                }
-            } else {
-                [self dismiss:YES];
-            }
-            
-            // Observe state
-            NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-            [notificationCenter addObserver:self selector:@selector(mr_show:) name:AFNetworkingOperationDidStartNotification  object:operation];
-            [notificationCenter addObserver:self selector:@selector(mr_hide:) name:AFNetworkingOperationDidFinishNotification object:operation];
-    
-            // Observe progress
-            __weak __typeof(self)weakSelf = self;
-            
-            void (^originalUploadProgressBlock)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) = [operation.uploadProgress copy];
-            [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-                if (originalUploadProgressBlock) {
-                    originalUploadProgressBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
-                }
-                
-                // Set mode
-                [weakSelf mr_showUploading];
-                
-                // Unregister
-                [weakSelf.operation setUploadProgressBlock:originalUploadProgressBlock];
-            }];
-            
-            void (^originalDownloadProgressBlock)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) = [operation.downloadProgress copy];
-            [operation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-                if (originalDownloadProgressBlock) {
-                    originalDownloadProgressBlock(bytesRead, totalBytesRead, totalBytesExpectedToRead);
-                }
-                
-                // Set mode
-                [weakSelf mr_showDownloading];
-                
-                // Unregister
-                [weakSelf.operation setDownloadProgressBlock:originalDownloadProgressBlock];
-            }];
-        } else {
-            [self dismiss:YES];
-        }
-    }
-}
-
-- (void)setStopBlockForOperation:(__weak AFURLConnectionOperation *)operation {
-    if (operation) {
-        self.stopBlock = ^(MRProgressOverlayView *self){
-            [self mr_unregisterObserver];
-            
-            [self dismiss:YES];
-            [operation cancel];
-        };
-    } else {
-        self.stopBlock = nil;
-    }
-}
-
-
 #pragma mark - Getter and setter for Configuration
 
 - (void)setSessionTask:(NSURLSessionTask *)sessionTask {
@@ -186,15 +102,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
 - (NSURLSessionTask *)sessionTask {
     return objc_getAssociatedObject(self, @selector(sessionTask));
 }
-
-- (void)setOperation:(AFURLConnectionOperation *)operation {
-    objc_setAssociatedObject(self, @selector(operation), operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (AFURLConnectionOperation *)operation {
-    return objc_getAssociatedObject(self, @selector(operation));
-}
-
 
 #pragma mark - Helper methods to dispatch UI changes on main queue
 
@@ -210,7 +117,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     dispatch_async(dispatch_get_main_queue(), ^{
         [self mr_unregisterObserver];
         
-        if (self.sessionTask.error || self.operation.error || note.userInfo[AFNetworkingTaskDidCompleteErrorKey]) {
+        if (self.sessionTask.error || note.userInfo[AFNetworkingTaskDidCompleteErrorKey]) {
             self.titleLabelText = NSLocalizedString(@"Error", @"Progress overlay view text when network operation fails");
             self.mode = MRProgressOverlayViewModeCross;
         } else {
@@ -227,21 +134,15 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
     // Unregister observer for NSURLSessionTask-based interface
-    #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-        [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification   object:nil];
-        [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification  object:nil];
-        [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
-    
-        @try {
-            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
-            [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
-        }
-        @catch (NSException * __unused exception) {}
-    #endif
-    
-    // Unregister observer for AFURLConnectionOperation-based interface
-    [notificationCenter removeObserver:self name:AFNetworkingOperationDidStartNotification object:nil];
-    [notificationCenter removeObserver:self name:AFNetworkingOperationDidFinishNotification object:nil];
+    [notificationCenter removeObserver:self name:AFNetworkingTaskDidResumeNotification   object:nil];
+    [notificationCenter removeObserver:self name:AFNetworkingTaskDidSuspendNotification  object:nil];
+    [notificationCenter removeObserver:self name:AFNetworkingTaskDidCompleteNotification object:nil];
+
+    @try {
+        [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesSent))];
+        [self.sessionTask removeObserver:self forKeyPath:NSStringFromSelector(@selector(countOfBytesReceived))];
+    }
+    @catch (NSException * __unused exception) {}
 }
 
 - (void)mr_showUploading {
@@ -249,11 +150,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         // Set mode to upload
         self.titleLabelText = NSLocalizedString(@"Uploading …", @"Progress overlay view text when upload progress happens");
         self.mode = MRProgressOverlayViewModeDeterminateCircular;
-        if (self.sessionTask) {
-            [(MRProgressView *)self.modeView setProgressWithUploadProgressOfTask:(NSURLSessionUploadTask *)self.sessionTask animated:YES];
-        } else if (self.operation) {
-            [(MRProgressView *)self.modeView setProgressWithUploadProgressOfOperation:self.operation animated:YES];
-        }
+        [(MRProgressView *)self.modeView setProgressWithUploadProgressOfTask:(NSURLSessionUploadTask *)self.sessionTask animated:YES];
     });
 }
 
@@ -262,11 +159,7 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         // Set mode to download
         self.titleLabelText = NSLocalizedString(@"Loading …", @"Progress overlay view text when download progess happens");
         self.mode = MRProgressOverlayViewModeDeterminateCircular;
-        if (self.sessionTask) {
-            [(MRProgressView *)self.modeView setProgressWithDownloadProgressOfTask:(NSURLSessionDownloadTask *)self.sessionTask animated:YES];
-        } else if (self.operation) {
-            [(MRProgressView *)self.modeView setProgressWithDownloadProgressOfOperation:self.operation animated:YES];
-        }
+        [(MRProgressView *)self.modeView setProgressWithDownloadProgressOfTask:(NSURLSessionDownloadTask *)self.sessionTask animated:YES];
     });
 }
 
@@ -278,7 +171,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
                            change:(NSDictionary *)change
                           context:(void *)context
 {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     if (context == MRTaskCountOfBytesSentContext || context == MRTaskCountOfBytesReceivedContext) {
         // Set mode
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(countOfBytesSent))]) {
@@ -304,7 +196,6 @@ static void * MRTaskCountOfBytesReceivedContext = &MRTaskCountOfBytesReceivedCon
         }
         return;
     }
-#endif
     [self mr_observeValueForKeyPath:keyPath ofObject:object change:change context:context]; // Call original method
 }
 

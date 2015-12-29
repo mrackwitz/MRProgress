@@ -42,9 +42,8 @@
 }
 
 - (NSURLSessionDownloadTask *)bytesDownloadTask {
-    NSProgress *downloadProgress = nil;
     NSURLSessionDownloadTask *task = [self.sessionManager downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"/bytes/1000000" relativeToURL:self.sessionManager.baseURL]]
-                                                                         progress:&downloadProgress
+                                                                         progress:nil
                                                                       destination:nil
                                                                 completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
                                                                     NSLog(@"Task completed with error: %@", error);
@@ -56,6 +55,7 @@
 - (IBAction)onActivityIndicatorGo:(id)sender {
     NSURLSessionDataTask *task = [self.sessionManager GET:@"/delay/3"
                                                parameters:nil
+                                                 progress:nil
                                                   success:nil
                                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                       NSLog(@"Task %@ failed with error: %@", task, error);
@@ -71,6 +71,7 @@
 - (IBAction)onOverlayViewGo:(id)sender {
     NSURLSessionDataTask *task = [self.sessionManager GET:@"/delay/2"
                                                parameters:nil
+                                                 progress:nil
                                                   success:nil
                                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                    if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
@@ -138,6 +139,7 @@
 - (IBAction)onOverlayViewError:(id)sender {
     NSURLSessionDataTask *task = [self.sessionManager GET:@"/status/418"
                                                parameters:nil
+                                                 progress:nil
                                                   success:nil
                                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                       NSLog(@"Task %@ failed, as expected, with error: %@", task, error);

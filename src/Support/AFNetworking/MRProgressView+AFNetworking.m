@@ -37,14 +37,9 @@
 + (void)load {
     MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIProgressView.class toClass:self];
     
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     [copier copyInstanceMethod:@selector(setProgressWithUploadProgressOfTask:animated:)];
     [copier copyInstanceMethod:@selector(setProgressWithDownloadProgressOfTask:animated:)];
-#endif
-    
-    [copier copyInstanceMethod:@selector(setProgressWithUploadProgressOfOperation:animated:)];
-    [copier copyInstanceMethod:@selector(setProgressWithDownloadProgressOfOperation:animated:)];
-    
+
     // Internal methods
     [copier copyInstanceMethod:NSSelectorFromString(@"af_uploadProgressAnimated")];
     [copier copyInstanceMethod:NSSelectorFromString(@"af_setUploadProgressAnimated:")];
