@@ -279,7 +279,6 @@
 			buildPhases = (
 				EEF68FC34CDA4B7C90ACE8AF /* Check Pods Manifest.lock */,
 				7197CEB318169F210022A19D /* Sources */,
-				71F50A471819B0CA00FF4B8E /* Build Documentation */,
 				7197CEB418169F210022A19D /* Frameworks */,
 				7197CEF91816A1750022A19D /* Headers */,
 				B2F560B048334730A993FB57 /* Copy Pods Resources */,
@@ -320,20 +319,6 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		71F50A471819B0CA00FF4B8E /* Build Documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = bin/build_appledoc.sh;
-		};
 		B2F560B048334730A993FB57 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
