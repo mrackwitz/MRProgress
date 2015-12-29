@@ -28,24 +28,36 @@
 // THE SOFTWARE.
 
 #import "MRActivityIndicatorView+AFNetworking.h"
-#import "MRMethodCopier.h"
+#import <objc/runtime.h>
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
+@interface AFActivityIndicatorViewNotificationObserver : NSObject
+@property (readonly, nonatomic, weak) UIActivityIndicatorView *activityIndicatorView;
+- (instancetype)initWithActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView;
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+- (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task;
+#endif
+- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation;
+
+@end
 
 @implementation MRActivityIndicatorView (AFNetworking)
 
-+ (void)load {
-    MRMethodCopier *copier = [MRMethodCopier copierFromClass:UIActivityIndicatorView.class toClass:self];
-    
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
-    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfTask:)];
-#endif
-    
-    [copier copyInstanceMethod:@selector(setAnimatingWithStateOfOperation:)];
-    
-    // Internal methods
-    [copier copyInstanceMethod:NSSelectorFromString(@"af_startAnimating")];
-    [copier copyInstanceMethod:NSSelectorFromString(@"af_stopAnimating")];
+- (AFActivityIndicatorViewNotificationObserver *)af_notificationObserver {
+    AFActivityIndicatorViewNotificationObserver *notificationObserver = objc_getAssociatedObject(self, @selector(af_notificationObserver));
+    if (notificationObserver == nil) {
+        notificationObserver = [[AFActivityIndicatorViewNotificationObserver alloc] initWithActivityIndicatorView:(UIActivityIndicatorView *)self];
+        objc_setAssociatedObject(self, @selector(af_notificationObserver), notificationObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return notificationObserver;
+}
+
+- (void)setAnimatingWithStateOfTask:(NSURLSessionTask *)task {
+    [[self af_notificationObserver] setAnimatingWithStateOfTask:task];
+}
+
+- (void)setAnimatingWithStateOfOperation:(AFURLConnectionOperation *)operation {
+    [[self af_notificationObserver] setAnimatingWithStateOfOperation:operation];
 }
 
 @end
