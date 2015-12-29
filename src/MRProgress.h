@@ -6,47 +6,35 @@
 //  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
 //
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress
-
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_ActivityIndicator
-#import "MRActivityIndicatorView.h"
+#if __has_include(<MRProgress/MRActivityIndicatorView.h>)
+#import <MRProgress/MRActivityIndicatorView.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_Blur
-#import "MRBlurView.h"
-#import "UIImage+MRImageEffects.h"
+#if __has_include(<MRProgress/MRBlurView.h>)
+#import <MRProgress/MRBlurView.h>
+#import <MRProgress/UIImage+MRImageEffects.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_Circular
-#import "MRCircularProgressView.h"
+#if __has_include(<MRProgress/MRCircularProgressView.h>)
+#import <MRProgress/MRCircularProgressView.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_Icons
-#import "MRIconView.h"
+#if __has_include(<MRProgress/MRIconView.h>)
+#import <MRProgress/MRIconView.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_MessageInterceptor
-#import "MRMessageInterceptor.h"
+#if __has_include(<MRProgress/MRMessageInterceptor.h>)
+#import <MRProgress/MRMessageInterceptor.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_NavigationBarProgress
-#import "MRNavigationBarProgressView.h"
+#if __has_include(<MRProgress/MRNavigationBarProgressView.h>)
+#import <MRProgress/MRNavigationBarProgressView.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_Overlay
-#import "MRProgressOverlayView.h"
+#if __has_include(<MRProgress/MRProgressOverlayView.h>)
+#import <MRProgress/MRProgressOverlayView.h>
 #endif
 
-#ifdef COCOAPODS_POD_AVAILABLE_MRProgress_WeakProxy
-#import "MRWeakProxy.h"
-#endif
-
-#else
-
-#import "MRActivityIndicatorView.h"
-#import "MRCircularProgressView.h"
-#import "MRIconView.h"
-#import "MRNavigationBarProgressView.h"
-#import "MRProgressOverlayView.h"
-
+#if __has_include(<MRProgress/MRWeakProxy.h>)
+#import <MRProgress/MRWeakProxy.h>
 #endif
