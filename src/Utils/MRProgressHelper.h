@@ -37,7 +37,7 @@ static inline CGRect MRCenterCGSizeInCGRect(CGSize innerRectSize, CGRect outerRe
 }
 
 
-static inline CGFloat MRRotationForStatusBarOrientation() {
+static inline CGFloat MRRotationForStatusBarOrientation() NS_EXTENSION_UNAVAILABLE_IOS("Status bar orientation is not available in extensions.") {
     UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
     if (orientation == UIInterfaceOrientationLandscapeLeft) {
         return -M_PI_2;
