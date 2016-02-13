@@ -83,7 +83,7 @@ The provided Example app demonstrates how they can be used.
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 [CocoaPods](http://www.cocoapods.org) is the recommended way to add MRProgress to your project.
 
@@ -107,7 +107,7 @@ The provided Example app demonstrates how they can be used.
 4. Use `import <MRProgress/MRProgress.h>` from Objective-C or `import MRProgress` from Swift wherever you want to use the components.
 
 
-### Cocoapods - Subspecs
+### CocoaPods - Subspecs
 
 The library is cut in small subspecs, so that you can just depend on selected components. See the following dependency tree:
 
@@ -172,7 +172,7 @@ Make sure you also see [MRProgress documentation on Cocoadocs](http://cocoadocs.
 1. Add the following import to the top of the file or to your Prefix header:
 
    ```objc
-   // If used with Cocoapods
+   // If used with CocoaPods
    #import "MRProgress.h"
    ```
 
