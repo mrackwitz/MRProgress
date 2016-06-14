@@ -127,8 +127,8 @@ vImage_Buffer vImageBuffer_InitWithCGContext(CGContextRef contextRef) {
     const CGRect rect = {CGPointZero, image.size};
     const CGFloat scale = UIScreen.mainScreen.scale;
     
-    const BOOL hasBlur = blurRadius > __FLT_EPSILON__;
-    const BOOL hasSaturationChange = fabs(saturationDeltaFactor - 1.) > __FLT_EPSILON__;
+    const BOOL hasBlur = blurRadius > (double) __FLT_EPSILON__;
+    const BOOL hasSaturationChange = fabs(saturationDeltaFactor - 1.) > (double) __FLT_EPSILON__;
     
     if (hasBlur || hasSaturationChange) {
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, scale);
