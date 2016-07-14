@@ -191,7 +191,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     dialogView.layer.cornerRadius = cornerRadius;
     dialogView.layer.shadowRadius = cornerRadius + 5;
     dialogView.layer.shadowOpacity = 0.1f;
-    dialogView.layer.shadowOffset = CGSizeMake(-(cornerRadius+5)/2.0f, -(cornerRadius+5)/2.0f);
+    dialogView.layer.shadowOffset = CGSizeMake(-(cornerRadius+5)/2.0, -(cornerRadius+5)/2.0);
     
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
@@ -560,19 +560,19 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     [self manualLayoutSubviews];
     
     if (animated) {
-        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.5f];
+        [self setSubviewTransform:CGAffineTransformMakeScale(1.3, 1.3) alpha:0.5];
         self.backgroundColor = UIColor.clearColor;
     }
     
     self.hidden = NO;
     
     void(^animBlock)() = ^{
-        [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
+        [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0];
+        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                          animations:animBlock
                          completion:nil];
     } else {
@@ -601,10 +601,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
-    [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
+    [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0];
     
     void(^animBlock)() = ^{
-        [self setSubviewTransform:CGAffineTransformMakeScale(0.6f, 0.6f) alpha:0.0f];
+        [self setSubviewTransform:CGAffineTransformMakeScale(0.6, 0.6) alpha:0.0];
         self.backgroundColor = UIColor.clearColor;
     };
     
@@ -620,7 +620,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                          animations:animBlock
                          completion:animCompletionBlock];
     } else {
@@ -653,8 +653,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         insets = scrollView.contentInset;
     }
     
-    self.center = CGPointMake((bounds.size.width - insets.left - insets.right) / 2.0f,
-                              (bounds.size.height - insets.top - insets.bottom) / 2.0f);
+    self.center = CGPointMake((bounds.size.width - insets.left - insets.right) / 2.0,
+                              (bounds.size.height - insets.top - insets.bottom) / 2.0);
 
     if (MRSystemVersionGreaterThanOrEqualTo8()) {
         self.bounds = (CGRect){CGPointZero, bounds.size};
@@ -718,15 +718,15 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
                 titleLabelOrigin = CGPointMake(titleLabelMinX, y);
             } else {
                 dialogWidth = dialogMinWidth;
-                titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMinWidth - titleLabelSize.width) / 2.0f, y);
+                titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMinWidth - titleLabelSize.width) / 2.0, y);
             }
             
             CGPoint modeViewOrigin = CGPointMake(titleLabelOrigin.x - offset,
-                                                 y + (titleLabelSize.height - modeViewSize.height) / 2.0f);
+                                                 y + (titleLabelSize.height - modeViewSize.height) / 2.0);
             CGRect modeViewFrame = {modeViewOrigin, modeViewSize};
             self.modeView.frame = modeViewFrame;
         } else {
-            titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0f, y);
+            titleLabelOrigin = CGPointMake(titleLabelMinX + (titleLabelMaxWidth - titleLabelSize.width) / 2.0, y);
         }
         
         CGRect titleLabelFrame = {titleLabelOrigin, titleLabelSize};

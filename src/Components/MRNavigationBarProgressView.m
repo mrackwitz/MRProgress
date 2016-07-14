@@ -187,7 +187,7 @@ static NSNumberFormatter *progressNumberFormatter;
 }
 
 - (void)layoutProgressView {
-    self.progressView.frame = CGRectMake(0, 0, self.frame.size.width * self.progress, self.frame.size.height);
+    self.progressView.frame = CGRectMake(0, 0, self.frame.size.width * (double) self.progress, self.frame.size.height);
 }
 
 
@@ -224,7 +224,7 @@ static NSNumberFormatter *progressNumberFormatter;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (progress > 0 && progress < 1.0 && self.progressView.alpha <= CGFLOAT_MIN) {
+        if (progress > 0 && progress < 1.0f && self.progressView.alpha <= CGFLOAT_MIN) {
             // progressView was hidden. Make it visible first.
             self.progressView.alpha = 1;
         }
