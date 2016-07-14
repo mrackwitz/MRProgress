@@ -174,6 +174,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     self.hidden = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	self.overlayViewMinWidth = 150;
+	self.titleLabelMaxHeight = MAXFLOAT;
     
     const CGFloat cornerRadius = MRProgressOverlayViewCornerRadius;
     
@@ -670,7 +672,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     const CGFloat dialogPadding = 15;
     const CGFloat modePadding = 30;
     const CGFloat dialogMargin = 10;
-    const CGFloat dialogMinWidth = 150;
+    CGFloat dialogMinWidth = self.overlayViewMinWidth;
     
     const BOOL hasSmallIndicator = self.mode == MRProgressOverlayViewModeIndeterminateSmall
         || self.mode == MRProgressOverlayViewModeIndeterminateSmallDefault;
@@ -704,9 +706,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
         
         y += 3;
         
-        CGSize titleLabelMaxSize = CGSizeMake(titleLabelMaxWidth, self.bounds.size.height);
+		CGSize titleLabelMaxSize = CGSizeMake(titleLabelMaxWidth, self.titleLabelMaxHeight != MAXFLOAT ? self.titleLabelMaxHeight : self.bounds.size.height);
         CGRect boundingRect = [self.titleLabel.attributedText boundingRectWithSize:titleLabelMaxSize
-                                                                           options:NSStringDrawingUsesLineFragmentOrigin
+																		   options:NSStringDrawingUsesLineFragmentOrigin | (self.titleLabelMaxHeight != MAXFLOAT ? NSStringDrawingTruncatesLastVisibleLine : 0)
                                                                            context:nil];
         CGSize titleLabelSize = CGSizeMake(MRCGFloatCeil(boundingRect.size.width),
                                            MRCGFloatCeil(boundingRect.size.height));

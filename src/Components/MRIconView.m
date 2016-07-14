@@ -9,6 +9,9 @@
 #import "MRIconView.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface MRIconView ()
+@property (nonatomic, assign) BOOL animating;
+@end
 
 @implementation MRIconView
 
@@ -49,6 +52,7 @@
     self.isAccessibilityElement = YES;
 
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
+	self.animating = NO;
     
     [self tintColorDidChange];
 }
@@ -70,33 +74,64 @@
     self.layer.cornerRadius = frame.size.width / 2.0f;
 }
 
-#pragma mark - Properties
+#pragma mark - Appearance
 
-- (CGFloat)borderWidth {
-    return self.layer.borderWidth;
+- (CGFloat)borderWidth{
+	return self.layer.borderWidth;
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
-    self.layer.borderWidth = borderWidth;
+	self.layer.borderWidth = borderWidth;
 }
 
 - (CGFloat)lineWidth {
-    return self.shapeLayer.lineWidth;
+	return self.shapeLayer.lineWidth;
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth {
-    self.shapeLayer.lineWidth = lineWidth;
+	self.shapeLayer.lineWidth = lineWidth;
 }
 
+#pragma mark - Animation
+
+- (void)startAnimating {
+	if (self.animating || self.animationDuration == 0.0) return;
+	self.animating = YES;
+	[self addAnimation];
+}
+
+- (void)stopAnimating {
+	if (!self.animating) return;
+	self.animating = NO;
+	[self removeAnimation];
+}
+
+- (BOOL)isAnimating {
+	return self.animating;
+}
+
+- (void)addAnimation {
+	CABasicAnimation *drawShapeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+	drawShapeAnimation.duration = self.animationDuration;
+	drawShapeAnimation.removedOnCompletion = NO;
+	drawShapeAnimation.fillMode = kCAFillModeBoth;
+	drawShapeAnimation.fromValue = @(0);
+	drawShapeAnimation.toValue = @(1);
+	drawShapeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+	[self.shapeLayer addAnimation:drawShapeAnimation forKey:@"DrawShape"];
+}
+
+- (void)removeAnimation {
+	[self.shapeLayer removeAnimationForKey:@"DrawShape"];
+}
 
 @end
-
 
 @implementation MRCheckmarkIconView
 
 - (void)commonInit {
     [super commonInit];
-    
+
     self.accessibilityLabel = NSLocalizedString(@"Checkmark", @"Accessibility label for custom rendered checkmark icon");
 }
 
@@ -112,7 +147,6 @@
 }
 
 @end
-
 
 @implementation MRCrossIconView
 
