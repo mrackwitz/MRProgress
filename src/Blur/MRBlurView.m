@@ -151,7 +151,7 @@
     BOOL wasHidden = self.superview.hidden;
     self.superview.hidden = YES;
     
-    UIWindow *window = UIApplication.sharedApplication.delegate.window;
+    UIWindow *window = self.window;
     
     // Absolute origin of receiver
     CGPoint origin = self.bounds.origin;
