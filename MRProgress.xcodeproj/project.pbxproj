@@ -42,6 +42,31 @@
 		7197CF161816AA6F0022A19D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF141816AA6F0022A19D /* Accelerate.framework */; };
 		7197CF171816AA6F0022A19D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF151816AA6F0022A19D /* CoreGraphics.framework */; };
 		7197CF191816AA9A0022A19D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7197CF181816AA9A0022A19D /* UIKit.framework */; };
+		E0820C551C4F8EC4004F5507 /* MRProgressDynamicFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E0820C541C4F8EC4004F5507 /* MRProgressDynamicFramework.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		E0820C5A1C4F8F1F004F5507 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5961817353E00654750 /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C5C1C4F8F1F004F5507 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5981817353E00654750 /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C5E1C4F8F29004F5507 /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59B1817353E00654750 /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C601C4F8F29004F5507 /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59D1817353E00654750 /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C621C4F8F29004F5507 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59F1817353E00654750 /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C641C4F8F29004F5507 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C661C4F8F29004F5507 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A51817353E00654750 /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C681C4F8F29004F5507 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D7193A813300829442 /* MRProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C731C4F8F63004F5507 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C741C4F8F9C004F5507 /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AA1817353E00654750 /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C751C4F8FA7004F5507 /* MRMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A81817353E00654750 /* MRMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C761C4F8FB2004F5507 /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5AB1817353E00654750 /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0820C871C4F913D004F5507 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5971817353E00654750 /* MRBlurView.m */; };
+		E0820C881C4F913E004F5507 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5991817353E00654750 /* UIImage+MRImageEffects.m */; };
+		E0820C891C4F9140004F5507 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD59C1817353E00654750 /* MRActivityIndicatorView.m */; };
+		E0820C8A1C4F9143004F5507 /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD59E1817353E00654750 /* MRCircularProgressView.m */; };
+		E0820C8B1C4F9150004F5507 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A01817353E00654750 /* MRIconView.m */; };
+		E0820C8C1C4F9150004F5507 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */; };
+		E0820C8D1C4F9150004F5507 /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A61817353E00654750 /* MRProgressOverlayView.m */; };
+		E0820C8E1C4F9150004F5507 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67D8193A813300829442 /* MRProgressView.m */; };
+		E0820C8F1C4F9150004F5507 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CE9678186E0129006006B0 /* MRStopButton.m */; };
+		E0820C931C4F9150004F5507 /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A91817353E00654750 /* MRMessageInterceptor.m */; };
+		E0820C941C4F9150004F5507 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5AC1817353E00654750 /* MRWeakProxy.m */; };
+		E0820C951C4F9150004F5507 /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 717B67D4193A2CC100829442 /* MRMethodCopier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +114,9 @@
 		7197CF181816AA9A0022A19D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7AF019C9ADBE4EEA962ED766 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEF625A916700BFB602AEF0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E0820C521C4F8EC4004F5507 /* MRProgressDynamicFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MRProgressDynamicFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0820C541C4F8EC4004F5507 /* MRProgressDynamicFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRProgressDynamicFramework.h; sourceTree = "<group>"; };
+		E0820C561C4F8EC4004F5507 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +130,13 @@
 				7197CEBB18169F210022A19D /* Foundation.framework in Frameworks */,
 				7197CF161816AA6F0022A19D /* Accelerate.framework in Frameworks */,
 				1594464BC6BF48A88B7F9A6B /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0820C4E1C4F8EC4004F5507 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +216,7 @@
 			children = (
 				7197CEF418169F470022A19D /* src */,
 				7197CEBC18169F210022A19D /* MRProgress */,
+				E0820C531C4F8EC4004F5507 /* MRProgressDynamicFramework */,
 				7197CEB918169F210022A19D /* Frameworks */,
 				7197CEB818169F210022A19D /* Products */,
 				711417411976ED7F005A1DAD /* MRProgress.podspec */,
@@ -192,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				7197CEB718169F210022A19D /* libMRProgress.a */,
+				E0820C521C4F8EC4004F5507 /* MRProgressDynamicFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +283,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E0820C531C4F8EC4004F5507 /* MRProgressDynamicFramework */ = {
+			isa = PBXGroup;
+			children = (
+				E0820C541C4F8EC4004F5507 /* MRProgressDynamicFramework.h */,
+				E0820C561C4F8EC4004F5507 /* Info.plist */,
+			);
+			path = MRProgressDynamicFramework;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -267,6 +313,26 @@
 				710BD5B11817353E00654750 /* MRActivityIndicatorView.h in Headers */,
 				7197CF011816A1A10022A19D /* MRProgress.h in Headers */,
 				710BD5BB1817353E00654750 /* MRProgressOverlayView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0820C4F1C4F8EC4004F5507 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0820C751C4F8FA7004F5507 /* MRMessageInterceptor.h in Headers */,
+				E0820C741C4F8F9C004F5507 /* MRProgressHelper.h in Headers */,
+				E0820C731C4F8F63004F5507 /* MRProgress.h in Headers */,
+				E0820C5E1C4F8F29004F5507 /* MRActivityIndicatorView.h in Headers */,
+				E0820C601C4F8F29004F5507 /* MRCircularProgressView.h in Headers */,
+				E0820C621C4F8F29004F5507 /* MRIconView.h in Headers */,
+				E0820C761C4F8FB2004F5507 /* MRWeakProxy.h in Headers */,
+				E0820C641C4F8F29004F5507 /* MRNavigationBarProgressView.h in Headers */,
+				E0820C661C4F8F29004F5507 /* MRProgressOverlayView.h in Headers */,
+				E0820C681C4F8F29004F5507 /* MRProgressView.h in Headers */,
+				E0820C5A1C4F8F1F004F5507 /* MRBlurView.h in Headers */,
+				E0820C5C1C4F8F1F004F5507 /* UIImage+MRImageEffects.h in Headers */,
+				E0820C551C4F8EC4004F5507 /* MRProgressDynamicFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +358,24 @@
 			productReference = 7197CEB718169F210022A19D /* libMRProgress.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		E0820C511C4F8EC4004F5507 /* MRProgressDynamicFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0820C591C4F8EC4004F5507 /* Build configuration list for PBXNativeTarget "MRProgressDynamicFramework" */;
+			buildPhases = (
+				E0820C4D1C4F8EC4004F5507 /* Sources */,
+				E0820C4E1C4F8EC4004F5507 /* Frameworks */,
+				E0820C501C4F8EC4004F5507 /* Resources */,
+				E0820C4F1C4F8EC4004F5507 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MRProgressDynamicFramework;
+			productName = MRProgressDynamicFramework;
+			productReference = E0820C521C4F8EC4004F5507 /* MRProgressDynamicFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -300,6 +384,11 @@
 			attributes = {
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Marius Rackwitz";
+				TargetAttributes = {
+					E0820C511C4F8EC4004F5507 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
 			};
 			buildConfigurationList = 7197CEB218169F210022A19D /* Build configuration list for PBXProject "MRProgress" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -314,9 +403,20 @@
 			projectRoot = "";
 			targets = (
 				7197CEB618169F210022A19D /* MRProgress */,
+				E0820C511C4F8EC4004F5507 /* MRProgressDynamicFramework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E0820C501C4F8EC4004F5507 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		B2F560B048334730A993FB57 /* Copy Pods Resources */ = {
@@ -371,6 +471,25 @@
 				710BD5AE1817353E00654750 /* MRBlurView.m in Sources */,
 				29CE967A186E0129006006B0 /* MRStopButton.m in Sources */,
 				710BD5B41817353E00654750 /* MRCircularProgressView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0820C4D1C4F8EC4004F5507 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0820C8A1C4F9143004F5507 /* MRCircularProgressView.m in Sources */,
+				E0820C891C4F9140004F5507 /* MRActivityIndicatorView.m in Sources */,
+				E0820C8B1C4F9150004F5507 /* MRIconView.m in Sources */,
+				E0820C8C1C4F9150004F5507 /* MRNavigationBarProgressView.m in Sources */,
+				E0820C8D1C4F9150004F5507 /* MRProgressOverlayView.m in Sources */,
+				E0820C8E1C4F9150004F5507 /* MRProgressView.m in Sources */,
+				E0820C8F1C4F9150004F5507 /* MRStopButton.m in Sources */,
+				E0820C931C4F9150004F5507 /* MRMessageInterceptor.m in Sources */,
+				E0820C941C4F9150004F5507 /* MRWeakProxy.m in Sources */,
+				E0820C951C4F9150004F5507 /* MRMethodCopier.m in Sources */,
+				E0820C871C4F913D004F5507 /* MRBlurView.m in Sources */,
+				E0820C881C4F913E004F5507 /* UIImage+MRImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +615,63 @@
 			};
 			name = Release;
 		};
+		E0820C571C4F8EC4004F5507 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = MRProgressDynamicFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sales-i.MRProgressDynamicFramework";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E0820C581C4F8EC4004F5507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = MRProgressDynamicFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sales-i.MRProgressDynamicFramework";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,6 +689,15 @@
 			buildConfigurations = (
 				7197CEDB18169F210022A19D /* Debug */,
 				7197CEDC18169F210022A19D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0820C591C4F8EC4004F5507 /* Build configuration list for PBXNativeTarget "MRProgressDynamicFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0820C571C4F8EC4004F5507 /* Debug */,
+				E0820C581C4F8EC4004F5507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
