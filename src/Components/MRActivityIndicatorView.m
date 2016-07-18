@@ -51,7 +51,8 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
     self.accessibilityLabel = NSLocalizedString(@"Indeterminate Progress", @"Accessibility label for activity indicator view");
     
     self.hidesWhenStopped = YES;
-    
+    self.runnerSize = 0.9;
+
     CAShapeLayer *shapeLayer = [CAShapeLayer new];
     shapeLayer.borderWidth = 0;
     shapeLayer.fillColor = UIColor.clearColor.CGColor;
@@ -118,11 +119,12 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
 - (UIBezierPath *)layoutPath {
     const double TWO_M_PI = 2.0*M_PI;
     double startAngle = 0.75 * TWO_M_PI;
-    double endAngle = startAngle + TWO_M_PI * 0.9;
+    double endAngle = startAngle + TWO_M_PI * self.runnerSize;
     
     CGFloat width = self.bounds.size.width;
+    CGFloat lineWidth = self.lineWidth;
     return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
-                                          radius:width/2.2f
+                                          radius:(width - lineWidth)/2.0f
                                       startAngle:startAngle
                                         endAngle:endAngle
                                        clockwise:YES];
@@ -205,7 +207,7 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
     CABasicAnimation *spinAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     spinAnimation.toValue        = @(1*2*M_PI);
     spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    spinAnimation.duration       = 1.0;
+    spinAnimation.duration       = 1.2;
     spinAnimation.repeatCount    = INFINITY;
     [self.shapeLayer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
 }

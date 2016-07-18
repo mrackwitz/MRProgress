@@ -22,6 +22,8 @@
 #pragma clang diagnostic pop
 }
 
+@property (nonatomic, assign) float runnerSize;
+
 /**
  A float value to indicate how thick the line of the activivity indicator is.
  
