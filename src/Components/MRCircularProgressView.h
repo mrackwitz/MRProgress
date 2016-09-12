@@ -14,7 +14,7 @@
 /**
  You use the MRCircularProgressView class to depict the progress of a task over time.
  */
-@interface MRCircularProgressView : MRProgressView<MRStopableView>
+@interface MRCircularProgressView : MRProgressView<MRStopableView, CAAnimationDelegate>
 
 /**
  Value label.
