@@ -207,6 +207,7 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
     spinAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     spinAnimation.duration       = 1.0;
     spinAnimation.repeatCount    = INFINITY;
+    spinAnimation.removedOnCompletion = NO;
     [self.shapeLayer addAnimation:spinAnimation forKey:MRActivityIndicatorViewSpinAnimationKey];
 }
 
