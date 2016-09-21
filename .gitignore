@@ -19,3 +19,6 @@ DerivedData
 
 # Project
 /build
+
+# Carthage
+/Carthage/

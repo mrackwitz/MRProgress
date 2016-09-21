@@ -11,7 +11,6 @@
 #import <objc/runtime.h>
 #import "MRActivityIndicatorView+AFNetworking.h"
 #import "MRProgressView+AFNetworking.h"
-#import "AFURLSessionManager.h"
 
 
 static void * MRTaskCountOfBytesSentContext     = &MRTaskCountOfBytesSentContext;
