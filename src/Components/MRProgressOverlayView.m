@@ -79,18 +79,26 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
+    return [self showOverlayAddedTo:view delay:0 animated:animated];
+}
+
++ (instancetype)showOverlayAddedTo:(UIView *)view delay:(NSTimeInterval)delay animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self new];
     [view addSubview:overlayView];
-    [overlayView show:animated];
+    [overlayView showAfterDelay:delay animated:animated];
     return overlayView;
 }
 
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated {
+    return [self showOverlayAddedTo:view title:title mode:mode delay:0 animated:animated];
+}
+
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode delay:(NSTimeInterval)delay animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self new];
     overlayView.mode = mode;
     overlayView.titleLabelText = title;
     [view addSubview:overlayView];
-    [overlayView show:animated];
+    [overlayView showAfterDelay:delay animated:animated];
     return overlayView;
 }
 
@@ -555,6 +563,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)show:(BOOL)animated {
+    [self showAfterDelay:0 animated:animated];
+}
+
+- (void)showAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated {
     [self showModeView:self.modeView];
     
     [self manualLayoutSubviews];
@@ -572,7 +584,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:delay options:UIViewAnimationOptionCurveEaseInOut
                          animations:animBlock
                          completion:nil];
     } else {
