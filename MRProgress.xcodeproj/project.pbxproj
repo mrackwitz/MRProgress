@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1594464BC6BF48A88B7F9A6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF019C9ADBE4EEA962ED766 /* libPods.a */; };
-		294E51BD1D9235E800476F35 /* MRProgress-dynamic.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E51BB1D9235E800476F35 /* MRProgress-dynamic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		294E51C11D92360E00476F35 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5971817353E00654750 /* MRBlurView.m */; };
 		294E51C21D92360E00476F35 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5991817353E00654750 /* UIImage+MRImageEffects.m */; };
 		294E51C31D92360E00476F35 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD59C1817353E00654750 /* MRActivityIndicatorView.m */; };
@@ -36,9 +35,10 @@
 		29925DFD1D923751009A0191 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5AC1817353E00654750 /* MRWeakProxy.m */; };
 		29925DFE1D923751009A0191 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */; };
 		29925DFF1D923751009A0191 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A01817353E00654750 /* MRIconView.m */; };
-		29925E021D923751009A0191 /* MRProgress-dynamic.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E51BB1D9235E800476F35 /* MRProgress-dynamic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29925E0A1D9237C6009A0191 /* MRProgress-AFNetworking.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29925E091D9237C6009A0191 /* MRProgress-AFNetworking.plist */; };
 		29925E0C1D923A99009A0191 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29925E0B1D923A99009A0191 /* AFNetworking.framework */; };
+		29925E0F1D923E7D009A0191 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29925E101D923E81009A0191 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE9679186E0129006006B0 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE967A186E0129006006B0 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CE9678186E0129006006B0 /* MRStopButton.m */; };
 		710BD58B1816AD3700654750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BD58A1816AD3700654750 /* QuartzCore.framework */; };
@@ -77,7 +77,6 @@
 
 /* Begin PBXFileReference section */
 		294E51B91D9235E800476F35 /* MRProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MRProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		294E51BB1D9235E800476F35 /* MRProgress-dynamic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MRProgress-dynamic.h"; sourceTree = "<group>"; };
 		294E51BC1D9235E800476F35 /* MRProgress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MRProgress.plist; sourceTree = "<group>"; };
 		29925E071D923751009A0191 /* MRProgress_AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MRProgress_AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29925E091D9237C6009A0191 /* MRProgress-AFNetworking.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MRProgress-AFNetworking.plist"; sourceTree = "<group>"; };
@@ -163,7 +162,6 @@
 		294E51BA1D9235E800476F35 /* MRProgress-dynamic */ = {
 			isa = PBXGroup;
 			children = (
-				294E51BB1D9235E800476F35 /* MRProgress-dynamic.h */,
 				29925E091D9237C6009A0191 /* MRProgress-AFNetworking.plist */,
 				294E51BC1D9235E800476F35 /* MRProgress.plist */,
 			);
@@ -319,7 +317,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				294E51BD1D9235E800476F35 /* MRProgress-dynamic.h in Headers */,
+				29925E0F1D923E7D009A0191 /* MRProgress.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +325,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29925E021D923751009A0191 /* MRProgress-dynamic.h in Headers */,
+				29925E101D923E81009A0191 /* MRProgress.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,7 +584,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.mariusrackwitz.MRProgress-dynamic";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mariusrackwitz.MRProgress;
 				PRODUCT_NAME = MRProgress;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -623,7 +621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.mariusrackwitz.MRProgress-dynamic";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mariusrackwitz.MRProgress;
 				PRODUCT_NAME = MRProgress;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -662,7 +660,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.mariusrackwitz.MRProgress-dynamic";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mariusrackwitz.MRProgress;
 				PRODUCT_NAME = MRProgress_AFNetworking;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -703,7 +701,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.mariusrackwitz.MRProgress-dynamic";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mariusrackwitz.MRProgress;
 				PRODUCT_NAME = MRProgress_AFNetworking;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
