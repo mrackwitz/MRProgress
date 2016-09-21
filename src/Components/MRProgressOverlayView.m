@@ -56,6 +56,7 @@ static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (BOOL)mayStop;
 
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha;
+- (void)removeAllAnimationsFromSubview;
 
 - (void)registerForNotificationCenter;
 - (void)unregisterFromNotificationCenter;
@@ -563,11 +564,18 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     self.dialogView.alpha = alpha;
 }
 
+- (void)removeAllAnimationsFromSubview {
+    [self.blurView.layer removeAllAnimations];
+    [self.dialogView.layer removeAllAnimations];
+}
+
 - (void)show:(BOOL)animated {
     [self showAfterDelay:0 animated:animated];
 }
 
 - (void)showAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated {
+    [self removeAllAnimationsFromSubview];
+    
     [self showModeView:self.modeView];
     
     [self manualLayoutSubviews];
@@ -588,10 +596,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                          animations:backGroundAnimBlock
                          completion:nil];
-        [UIView animateWithDuration:0.2f delay:delay options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:delay options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                          animations:animBlock
                          completion:nil];
     } else {
@@ -621,7 +629,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
-    [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
+    [self removeAllAnimationsFromSubview];
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformMakeScale(0.6f, 0.6f) alpha:0.0f];
@@ -640,7 +648,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                          animations:animBlock
                          completion:animCompletionBlock];
     } else {
