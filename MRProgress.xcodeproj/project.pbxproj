@@ -36,9 +36,32 @@
 		29925DFE1D923751009A0191 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A41817353E00654750 /* MRNavigationBarProgressView.m */; };
 		29925DFF1D923751009A0191 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 710BD5A01817353E00654750 /* MRIconView.m */; };
 		29925E0C1D923A99009A0191 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29925E0B1D923A99009A0191 /* AFNetworking.framework */; };
-		29925E121D924084009A0191 /* MRProgress_AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 29925E111D924084009A0191 /* MRProgress_AFNetworking.h */; };
-		29925E131D924097009A0191 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29925E141D92409C009A0191 /* MRProgress_AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 29925E111D924084009A0191 /* MRProgress_AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C42F1D92436100567460 /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59B1817353E00654750 /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4301D92436900567460 /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59D1817353E00654750 /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4311D92436B00567460 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59F1817353E00654750 /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4321D92436E00567460 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4331D92437100567460 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A51817353E00654750 /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4341D92437600567460 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D7193A813300829442 /* MRProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4351D92437900567460 /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 299730941881CB520022B27B /* MRStopableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4361D92437E00567460 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4371D92438300567460 /* MRActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67C7193A296300829442 /* MRActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4381D92438500567460 /* MRProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67C9193A296300829442 /* MRProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4391D92438700567460 /* MRProgressOverlayView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67CD193A296300829442 /* MRProgressOverlayView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43A1D92439600567460 /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59B1817353E00654750 /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43B1D92439800567460 /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59D1817353E00654750 /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43C1D92439A00567460 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD59F1817353E00654750 /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43D1D92439C00567460 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A31817353E00654750 /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43E1D9243A200567460 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5A51817353E00654750 /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C43F1D9243A400567460 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B67D7193A813300829442 /* MRProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4401D9243A600567460 /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 299730941881CB520022B27B /* MRStopableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4411D9243A900567460 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4421D9243B200567460 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5961817353E00654750 /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4431D9243B400567460 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5981817353E00654750 /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4441D9243B800567460 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5961817353E00654750 /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4451D9243BA00567460 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 710BD5981817353E00654750 /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4471D9243EE00567460 /* MRProgress_AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 29A7C4461D9243EE00567460 /* MRProgress_AFNetworking.h */; };
+		29A7C4481D9243F600567460 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7197CEEE18169F470022A19D /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29A7C4491D9243F900567460 /* MRProgress_AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 29A7C4461D9243EE00567460 /* MRProgress_AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE9679186E0129006006B0 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CE9677186E0129006006B0 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE967A186E0129006006B0 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CE9678186E0129006006B0 /* MRStopButton.m */; };
 		710BD58B1816AD3700654750 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710BD58A1816AD3700654750 /* QuartzCore.framework */; };
@@ -80,8 +103,8 @@
 		294E51BC1D9235E800476F35 /* MRProgress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MRProgress.plist; path = MRProgress/MRProgress.plist; sourceTree = SOURCE_ROOT; };
 		29925E071D923751009A0191 /* MRProgress_AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MRProgress_AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29925E0B1D923A99009A0191 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
-		29925E111D924084009A0191 /* MRProgress_AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress_AFNetworking.h; sourceTree = "<group>"; };
 		299730941881CB520022B27B /* MRStopableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
+		29A7C4461D9243EE00567460 /* MRProgress_AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress_AFNetworking.h; sourceTree = "<group>"; };
 		29CE9677186E0129006006B0 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
 		29CE9678186E0129006006B0 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
 		5AF8C4C8C426723C443D1946 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,7 +311,7 @@
 				717B67C5193A296300829442 /* Support */,
 				710BD5A71817353E00654750 /* Utils */,
 				7197CEEE18169F470022A19D /* MRProgress.h */,
-				29925E111D924084009A0191 /* MRProgress_AFNetworking.h */,
+				29A7C4461D9243EE00567460 /* MRProgress_AFNetworking.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -309,7 +332,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29925E131D924097009A0191 /* MRProgress.h in Headers */,
+				29A7C4481D9243F600567460 /* MRProgress.h in Headers */,
+				29A7C4421D9243B200567460 /* MRBlurView.h in Headers */,
+				29A7C4431D9243B400567460 /* UIImage+MRImageEffects.h in Headers */,
+				29A7C43A1D92439600567460 /* MRActivityIndicatorView.h in Headers */,
+				29A7C43B1D92439800567460 /* MRCircularProgressView.h in Headers */,
+				29A7C43C1D92439A00567460 /* MRIconView.h in Headers */,
+				29A7C43D1D92439C00567460 /* MRNavigationBarProgressView.h in Headers */,
+				29A7C43E1D9243A200567460 /* MRProgressOverlayView.h in Headers */,
+				29A7C43F1D9243A400567460 /* MRProgressView.h in Headers */,
+				29A7C4401D9243A600567460 /* MRStopableView.h in Headers */,
+				29A7C4411D9243A900567460 /* MRStopButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +350,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29925E141D92409C009A0191 /* MRProgress_AFNetworking.h in Headers */,
+				29A7C4491D9243F900567460 /* MRProgress_AFNetworking.h in Headers */,
+				29A7C4441D9243B800567460 /* MRBlurView.h in Headers */,
+				29A7C4451D9243BA00567460 /* UIImage+MRImageEffects.h in Headers */,
+				29A7C42F1D92436100567460 /* MRActivityIndicatorView.h in Headers */,
+				29A7C4301D92436900567460 /* MRCircularProgressView.h in Headers */,
+				29A7C4311D92436B00567460 /* MRIconView.h in Headers */,
+				29A7C4321D92436E00567460 /* MRNavigationBarProgressView.h in Headers */,
+				29A7C4331D92437100567460 /* MRProgressOverlayView.h in Headers */,
+				29A7C4341D92437600567460 /* MRProgressView.h in Headers */,
+				29A7C4351D92437900567460 /* MRStopableView.h in Headers */,
+				29A7C4361D92437E00567460 /* MRStopButton.h in Headers */,
+				29A7C4371D92438300567460 /* MRActivityIndicatorView+AFNetworking.h in Headers */,
+				29A7C4381D92438500567460 /* MRProgressView+AFNetworking.h in Headers */,
+				29A7C4391D92438700567460 /* MRProgressOverlayView+AFNetworking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +376,9 @@
 				710BD5BF1817353E00654750 /* MRProgressHelper.h in Headers */,
 				710BD5B51817353E00654750 /* MRIconView.h in Headers */,
 				717B67D5193A2CC100829442 /* MRMethodCopier.h in Headers */,
-				29925E121D924084009A0191 /* MRProgress_AFNetworking.h in Headers */,
 				710BD5BD1817353E00654750 /* MRMessageInterceptor.h in Headers */,
 				710BD5B91817353E00654750 /* MRNavigationBarProgressView.h in Headers */,
+				29A7C4471D9243EE00567460 /* MRProgress_AFNetworking.h in Headers */,
 				710BD5C01817353E00654750 /* MRWeakProxy.h in Headers */,
 				29CE9679186E0129006006B0 /* MRStopButton.h in Headers */,
 				717B67D9193A813300829442 /* MRProgressView.h in Headers */,
