@@ -559,7 +559,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
     self.blurView.transform = transform;
     self.dialogView.transform = transform;
-    self.alpha = alpha;
+    self.blurView.alpha = alpha;
+    self.dialogView.alpha = alpha;
 }
 
 - (void)show:(BOOL)animated {
@@ -572,7 +573,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     [self manualLayoutSubviews];
     
     if (animated) {
-        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.5f];
+        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.0f];
         self.backgroundColor = UIColor.clearColor;
     }
     
@@ -580,14 +581,21 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
+    };
+    
+    void(^backGroundAnimBlock)() = ^{
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
     };
     
     if (animated) {
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut
+                         animations:backGroundAnimBlock
+                         completion:nil];
         [UIView animateWithDuration:0.2f delay:delay options:UIViewAnimationOptionCurveEaseInOut
                          animations:animBlock
                          completion:nil];
     } else {
+        backGroundAnimBlock();
         animBlock();
     }
     
