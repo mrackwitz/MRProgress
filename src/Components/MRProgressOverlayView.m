@@ -56,6 +56,7 @@ static const CGFloat MRProgressOverlayViewMotionEffectExtent = 10;
 - (BOOL)mayStop;
 
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha;
+- (void)removeAllAnimationsFromSubview;
 
 - (void)registerForNotificationCenter;
 - (void)unregisterFromNotificationCenter;
@@ -79,18 +80,26 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 #pragma mark - Static helper methods
 
 + (instancetype)showOverlayAddedTo:(UIView *)view animated:(BOOL)animated {
+    return [self showOverlayAddedTo:view delay:0 animated:animated];
+}
+
++ (instancetype)showOverlayAddedTo:(UIView *)view delay:(NSTimeInterval)delay animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self new];
     [view addSubview:overlayView];
-    [overlayView show:animated];
+    [overlayView showAfterDelay:delay animated:animated];
     return overlayView;
 }
 
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated {
+    return [self showOverlayAddedTo:view title:title mode:mode delay:0 animated:animated];
+}
+
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode delay:(NSTimeInterval)delay animated:(BOOL)animated {
     MRProgressOverlayView *overlayView = [self new];
     overlayView.mode = mode;
     overlayView.titleLabelText = title;
     [view addSubview:overlayView];
-    [overlayView show:animated];
+    [overlayView showAfterDelay:delay animated:animated];
     return overlayView;
 }
 
@@ -551,16 +560,28 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 - (void)setSubviewTransform:(CGAffineTransform)transform alpha:(CGFloat)alpha {
     self.blurView.transform = transform;
     self.dialogView.transform = transform;
-    self.alpha = alpha;
+    self.blurView.alpha = alpha;
+    self.dialogView.alpha = alpha;
+}
+
+- (void)removeAllAnimationsFromSubview {
+    [self.blurView.layer removeAllAnimations];
+    [self.dialogView.layer removeAllAnimations];
 }
 
 - (void)show:(BOOL)animated {
+    [self showAfterDelay:0 animated:animated];
+}
+
+- (void)showAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated {
+    [self removeAllAnimationsFromSubview];
+    
     [self showModeView:self.modeView];
     
     [self manualLayoutSubviews];
     
     if (animated) {
-        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.5f];
+        [self setSubviewTransform:CGAffineTransformMakeScale(1.3f, 1.3f) alpha:0.0f];
         self.backgroundColor = UIColor.clearColor;
     }
     
@@ -568,14 +589,21 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
+    };
+    
+    void(^backGroundAnimBlock)() = ^{
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
+                         animations:backGroundAnimBlock
+                         completion:nil];
+        [UIView animateWithDuration:0.2f delay:delay options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                          animations:animBlock
                          completion:nil];
     } else {
+        backGroundAnimBlock();
         animBlock();
     }
     
@@ -601,7 +629,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
 }
 
 - (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
-    [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
+    [self removeAllAnimationsFromSubview];
     
     void(^animBlock)() = ^{
         [self setSubviewTransform:CGAffineTransformMakeScale(0.6f, 0.6f) alpha:0.0f];
@@ -620,7 +648,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     };
     
     if (animated) {
-        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                          animations:animBlock
                          completion:animCompletionBlock];
     } else {

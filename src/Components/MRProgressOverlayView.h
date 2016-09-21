@@ -55,12 +55,34 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
  
  @param view The view that the overlay will be added to
+ @param delay The time of delay.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view delay:(NSTimeInterval)delay animated:(BOOL)animated;
+
+/**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
  @param title Title label text
  @param mode Visualization mode
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  @return A reference to the created overlay.
  */
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated;
+
+/**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
+ @param title Title label text
+ @param delay The time of delay.
+ @param mode Visualization mode
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode delay:(NSTimeInterval)delay animated:(BOOL)animated;
 
 /**
  Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
@@ -216,6 +238,14 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
 - (void)show:(BOOL)animated;
+
+/**
+ Show the progress view after delay.
+ 
+ @param delay The time of delay.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ */
+- (void)showAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated;
 
 /**
  Hide the progress view.
