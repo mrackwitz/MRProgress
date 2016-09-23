@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC33CFFBCDF1816FA1B1748C90648D80"
-               BuildableName = "libMRProgress.a"
-               BlueprintName = "MRProgress"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "29925DEF1D923751009A0191"
+               BuildableName = "MRProgress_AFNetworking.framework"
+               BlueprintName = "MRProgress-AFNetworking"
+               ReferencedContainer = "container:MRProgress.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AC33CFFBCDF1816FA1B1748C90648D80"
-            BuildableName = "libMRProgress.a"
-            BlueprintName = "MRProgress"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "29925DEF1D923751009A0191"
+            BuildableName = "MRProgress_AFNetworking.framework"
+            BlueprintName = "MRProgress-AFNetworking"
+            ReferencedContainer = "container:MRProgress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "29925DEF1D923751009A0191"
+            BuildableName = "MRProgress_AFNetworking.framework"
+            BlueprintName = "MRProgress-AFNetworking"
+            ReferencedContainer = "container:MRProgress.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

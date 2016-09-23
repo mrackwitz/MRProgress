@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC33CFFBCDF1816FA1B1748C90648D80"
-               BuildableName = "libMRProgress.a"
+               BlueprintIdentifier = "294E51B81D9235E800476F35"
+               BuildableName = "MRProgress.framework"
                BlueprintName = "MRProgress"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:MRProgress.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AC33CFFBCDF1816FA1B1748C90648D80"
-            BuildableName = "libMRProgress.a"
+            BlueprintIdentifier = "294E51B81D9235E800476F35"
+            BuildableName = "MRProgress.framework"
             BlueprintName = "MRProgress"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            ReferencedContainer = "container:MRProgress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "294E51B81D9235E800476F35"
+            BuildableName = "MRProgress.framework"
+            BlueprintName = "MRProgress"
+            ReferencedContainer = "container:MRProgress.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
