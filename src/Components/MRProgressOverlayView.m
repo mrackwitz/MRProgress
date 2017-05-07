@@ -192,7 +192,8 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     dialogView.layer.shadowRadius = cornerRadius + 5;
     dialogView.layer.shadowOpacity = 0.1f;
     dialogView.layer.shadowOffset = CGSizeMake(-(cornerRadius+5)/2.0f, -(cornerRadius+5)/2.0f);
-    
+    dialogView.accessibilityIdentifier = @"MRProgressOverlayView";
+
     // Create titleLabel
     UILabel *titleLabel = [UILabel new];
     self.titleLabel = titleLabel;
