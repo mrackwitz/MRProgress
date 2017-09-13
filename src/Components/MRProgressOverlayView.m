@@ -108,7 +108,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return [self dismissOverlayForView:view animated:animated completion:nil];
 }
 
-+ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)(void))completionBlock {
     MRProgressOverlayView *overlayView = [self overlayForView:view];
     if (overlayView) {
         [overlayView dismiss:animated completion:completionBlock];
@@ -121,7 +121,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     return [self dismissAllOverlaysForView:view animated:animated completion:nil];
 }
 
-+ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock {
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)(void))completionBlock {
     NSArray *views = [self allOverlaysForView:view];
     for (MRProgressOverlayView *overlayView in views) {
         [overlayView dismiss:animated completion:completionBlock];
@@ -566,7 +566,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     
     self.hidden = NO;
     
-    void(^animBlock)() = ^{
+    void(^animBlock)(void) = ^{
         [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4f];
     };
@@ -587,7 +587,7 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     [self dismiss:animated completion:nil];
 }
 
-- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock {
+- (void)dismiss:(BOOL)animated completion:(void(^)(void))completionBlock {
     [self hide:animated completion:^{
         [self removeFromSuperview];
         if (completionBlock) {
@@ -600,10 +600,10 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
     [self hide:animated completion:nil];
 }
 
-- (void)hide:(BOOL)animated completion:(void(^)())completionBlock {
+- (void)hide:(BOOL)animated completion:(void(^)(void))completionBlock {
     [self setSubviewTransform:CGAffineTransformIdentity alpha:1.0f];
     
-    void(^animBlock)() = ^{
+    void(^animBlock)(void) = ^{
         [self setSubviewTransform:CGAffineTransformMakeScale(0.6f, 0.6f) alpha:0.0f];
         self.backgroundColor = UIColor.clearColor;
     };

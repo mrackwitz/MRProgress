@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param completionBlock block will be called, when the animation has finished.
  @return YES if a overlay was found and removed, NO otherwise.
  */
-+ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)(void))completionBlock;
 
 /**
  Finds all the overlay subviews and hides them.
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param completionBlock block will be called, when the animation has finished.
  @return the number of overlays found and removed.
  */
-+ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)(void))completionBlock;
 
 /**
  Finds the top-most overlay subview and returns it.
@@ -237,6 +237,6 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  @param completionBlock block will be called, when the animation has finished.
  */
-- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock;
+- (void)dismiss:(BOOL)animated completion:(void(^)(void))completionBlock;
 
 @end

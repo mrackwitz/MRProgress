@@ -124,7 +124,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     valueLabelRect.size.width -= 2*offset;
     self.valueLabel.frame = valueLabelRect;
     
-    self.layer.cornerRadius = self.frame.size.width / 2.0f;
+    self.layer.cornerRadius = self.frame.size.width / 2.0;
     self.shapeLayer.path = [self layoutPath].CGPath;
     
     self.stopButton.frame = [self.stopButton frameThatFits:self.bounds];
@@ -138,8 +138,8 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
     CGFloat width = self.frame.size.width;
     CGFloat borderWidth = self.borderWidth;
     CGFloat lineWidth = self.lineWidth;
-    return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
-                                          radius:(width - lineWidth - borderWidth)/2.0f
+    return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0, width/2.0)
+                                          radius:(width - lineWidth - borderWidth)/2.0
                                       startAngle:startAngle
                                         endAngle:endAngle
                                        clockwise:YES];
@@ -189,7 +189,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 }
 
 - (void)updatePath {
-    self.shapeLayer.strokeEnd = self.progress;
+    self.shapeLayer.strokeEnd = (CGFloat) self.progress;
 }
 
 - (void)updateLabel:(float)progress {
@@ -199,7 +199,7 @@ static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircular
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (ABS(self.progress - progress) < CGFLOAT_MIN) {
+        if (ABS((CGFloat) (self.progress - progress)) < CGFLOAT_MIN) {
             return;
         }
         
