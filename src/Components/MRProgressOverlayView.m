@@ -808,7 +808,9 @@ static void *MRProgressOverlayViewObservationContext = &MRProgressOverlayViewObs
                       NSStringFromSelector(@selector(setProgress:animated:)));
             #endif
         }
-        [((id)self.modeView) setProgress:self.progress];
+        // [((id)self.modeView) setProgress:self.progress];
+        // Fixes build issue in Xcode 15
+        [self.modeView performSelector:@selector(setProgress:) withObject:[NSNumber numberWithFloat:self.progress]];
     } else {
         NSAssert(self.mode == MRProgressOverlayViewModeDeterminateCircular
                  || self.mode == MRProgressOverlayViewModeDeterminateHorizontalBar,
