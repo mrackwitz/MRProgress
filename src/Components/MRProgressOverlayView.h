@@ -191,6 +191,12 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  */
 @property (nonatomic, copy) MRProgressOverlayViewStopBlock stopBlock;
 
+/** Setting this value to YES will prevent backgroundColor change when displaying the Overlay */
+@property (nonatomic, assign) BOOL shouldHideBackgroundMask;
+
+/** Background Color Opacity */
+@property (nonatomic, assign) float backgroundMaskOpacity;
+
 /**
  Change the tint color of the mode views.
  
