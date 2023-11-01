@@ -121,8 +121,8 @@ static NSString *const MRActivityIndicatorViewSpinAnimationKey = @"MRActivityInd
     double endAngle = startAngle + TWO_M_PI * 0.9;
     
     CGFloat width = self.bounds.size.width;
-    return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
-                                          radius:width/2.2f
+    return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0, width/2.0)
+                                          radius:width/2.2
                                       startAngle:startAngle
                                         endAngle:endAngle
                                        clockwise:YES];

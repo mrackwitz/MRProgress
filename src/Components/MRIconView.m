@@ -67,7 +67,7 @@
 
 - (void)setFrame:(CGRect)frame {
     super.frame = frame;
-    self.layer.cornerRadius = frame.size.width / 2.0f;
+    self.layer.cornerRadius = frame.size.width / 2.0;
 }
 
 #pragma mark - Properties
@@ -104,9 +104,9 @@
     UIBezierPath *path = [UIBezierPath new];
     
     CGRect bounds = self.bounds;
-    [path moveToPoint:CGPointMake(bounds.size.width * 0.2f, bounds.size.height * 0.55f)];
-    [path addLineToPoint:CGPointMake(bounds.size.width * 0.325f, bounds.size.height * 0.7f)];
-    [path addLineToPoint:CGPointMake(bounds.size.width * 0.75f, bounds.size.height * 0.3f)];
+    [path moveToPoint:CGPointMake(bounds.size.width * 0.2, bounds.size.height * 0.55)];
+    [path addLineToPoint:CGPointMake(bounds.size.width * 0.325, bounds.size.height * 0.7)];
+    [path addLineToPoint:CGPointMake(bounds.size.width * 0.75, bounds.size.height * 0.3)];
     
     return path;
 }
